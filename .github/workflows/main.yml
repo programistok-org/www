@@ -23,8 +23,8 @@ jobs:
       with:
         log-level: verbose
         dry-run: true
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_LOGIN }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        server: ftp.programistok.org
+        username: programistok@programistok.org
+        password: ${{ secrets.password }}
         local-dir: ./dist/
         server-dir: /public_html/
