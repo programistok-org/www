@@ -22,7 +22,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         log-level: verbose
-        ftp-server: ftp://ftp.programistok.org/public_html/
+        ftp-server: ftp://ftp.programistok.org
         ftp-username: programistok@programistok.org
         ftp-password: ${{ secrets.PASSWORD }} 
         local-dir: ./dist/
