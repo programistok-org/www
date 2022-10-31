@@ -22,10 +22,8 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         log-level: verbose
-        server: ftp.programistok.org
-        username: programistok@programistok.org
-        password: ${{ secrets.PASSWORD }} 
+        ftp-server: ftp://ftp.programistok.org/public_html/
+        ftp-username: programistok@programistok.org
+        ftp-password: ${{ secrets.PASSWORD }} 
         local-dir: ./dist/
-        server-dir: ./public_html/
-        dry-run: true
-        security: loose
+        git-ftp-args: --dry-run
