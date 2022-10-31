@@ -11,7 +11,7 @@ jobs:
     - name: Use Node.js 16
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '14'
       
     - name: 🔨 Build Project
       run: |
@@ -22,7 +22,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
         log-level: verbose
-        dry-run: true
         server: ftp.programistok.org
         username: programistok@programistok.org
         password: ${{ secrets.PASSWORD }}
