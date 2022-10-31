@@ -23,7 +23,8 @@ jobs:
       with:
         local-dir: './dist/'
         server-dir: '/public_html/'
-        server:  ${{ secrets.FTP_SERVER }}
-        username:  ${{ secrets.FTP_LOGIN }}
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_LOGIN }}
         password: ${{ secrets.FTP_PASSWORD }}
         log-level: verbose
+        dry-run: true
