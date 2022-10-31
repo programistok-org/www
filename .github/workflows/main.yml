@@ -26,3 +26,4 @@ jobs:
         server:  ${{ secrets.FTP_SERVER }}
         username:  ${{ secrets.FTP_LOGIN }}
         password: ${{ secrets.FTP_PASSWORD }}
+        log-level: verbose
