@@ -19,12 +19,12 @@ jobs:
         yarn build
     
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.2
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         log-level: verbose
         server: ftp.programistok.org
         username: programistok@programistok.org
-        password: 5DUlBuIqHnlt#
+        password: ${{ secrets.PASSWORD }} 
         local-dir: ./dist/
         server-dir: ./public_html/
         dry-run: true
