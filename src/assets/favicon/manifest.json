@@ -1,0 +1,8 @@
+{
+	"name": "Programistok",
+	"icons": [
+	],
+	"theme_color": "#ffffff",
+	"start_url": "http:\/\/programistok.org\/",
+	"display": "standalone"
+}
