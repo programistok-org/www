@@ -8,10 +8,10 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
 
-    - name: Use Node.js 14
+    - name: Use Node.js 16
       uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '16'
       
     - name: 🔨 Build Project
       run: |
@@ -19,11 +19,12 @@ jobs:
         yarn build
     
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
         log-level: verbose
-        ftp-server: ftp://ftp.programistok.org
-        ftp-username: programistok@programistok.org
-        ftp-password: ${{ secrets.PASSWORD }} 
+        dry-run: true
+        server: ftp.programistok.org
+        username: programistok@programistok.org
+        password: ${{ secrets.PASSWORD }}
         local-dir: ./dist/
-        git-ftp-args: --dry-run
+        server-dir: /public_html/
