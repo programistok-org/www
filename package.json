@@ -18,7 +18,7 @@
     "tailwindcss": "^3.3.2"
   },
   "scripts": {
-    "build": "parcel build src/*.html",
+    "build": "parcel build src/*.html --public-url ./ && touch dist/.nojekyll",
     "start": "parcel src/index.html"
   },
   "dependencies": {
