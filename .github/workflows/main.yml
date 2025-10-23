@@ -34,6 +34,9 @@ jobs:
       - name: 🏗️ Build with Parcel
         run: yarn build
 
+      - name: 🔍 Check dist structure
+        run: ls -la dist/
+
       - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
