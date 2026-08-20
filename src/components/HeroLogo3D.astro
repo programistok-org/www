@@ -1,0 +1,198 @@
+---
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['relative', className]} data-hero-logo3d>
+  <canvas class="block h-full w-full" data-logo3d-canvas></canvas>
+  <div class="absolute inset-0 [perspective:1000px]" data-logo3d-fallback hidden>
+    <img
+      src="/programistok-sygnet.svg"
+      alt=""
+      class="h-full w-full [transform-style:preserve-3d] [will-change:transform] motion-safe:animate-[spin3d_9s_linear_infinite]"
+    />
+  </div>
+</div>
+
+<script>
+  import * as THREE from 'three';
+  import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+  import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-hero-logo3d]').forEach((el) => {
+    const canvas = el.querySelector('[data-logo3d-canvas]');
+    const fallback = el.querySelector('[data-logo3d-fallback]');
+    if (!canvas) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const pageBg = getComputedStyle(document.body).backgroundColor;
+    const opaqueBg = pageBg && !/transparent|rgba\(0,\s*0,\s*0,\s*0\)/.test(pageBg) ? pageBg : null;
+
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: !opaqueBg,
+        antialias: true,
+      });
+    } catch {
+      if (fallback) fallback.hidden = false;
+      return;
+    }
+    renderer.setPixelRatio(dpr);
+    if (opaqueBg) renderer.setClearColor(new THREE.Color(opaqueBg), 1);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 2000);
+    camera.position.set(0, 0, 440);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.65));
+    const key = new THREE.DirectionalLight(0xffffff, 1.5);
+    key.position.set(-0.6, 1, 0.9);
+    scene.add(key);
+    const rim = new THREE.DirectionalLight(0xffffff, 0.7);
+    rim.position.set(1, -0.4, 0.5);
+    scene.add(rim);
+
+    const pivot = new THREE.Group();
+    scene.add(pivot);
+
+    let ready = false;
+    let rafId = 0;
+    let visible = false;
+    let last = 0;
+
+    new SVGLoader().load('/programistok-sygnet.svg', (data) => {
+      const group = new THREE.Group();
+
+      const byColor = new Map();
+      for (const path of data.paths) {
+        const colorHex = path.color.getHex();
+        if (!byColor.has(colorHex)) byColor.set(colorHex, []);
+        const bucket = byColor.get(colorHex);
+        for (const shape of path.toShapes(true)) {
+          bucket.push(
+            new THREE.ExtrudeGeometry(shape, {
+              depth: 26,
+              bevelEnabled: true,
+              bevelThickness: 4,
+              bevelSize: 2.5,
+              bevelSegments: 2,
+              curveSegments: 12,
+            })
+          );
+        }
+      }
+
+      for (const [hex, geos] of byColor) {
+        const mat = new THREE.MeshPhongMaterial({
+          color: hex,
+          shininess: 28,
+          specular: 0x3a3a3a,
+          side: THREE.DoubleSide,
+        });
+        const merged = geos.length > 1 ? mergeGeometries(geos, false) : geos[0];
+        if (merged !== geos[0]) geos.forEach((g) => g.dispose());
+        group.add(new THREE.Mesh(merged, mat));
+      }
+
+      group.scale.y = -1;
+      const box = new THREE.Box3().setFromObject(group);
+      const center = box.getCenter(new THREE.Vector3());
+      group.position.sub(center);
+      pivot.add(group);
+      pivot.rotation.x = -0.14;
+      if (reduce) pivot.rotation.y = -0.5;
+
+      if (fallback) fallback.style.display = 'none';
+      ready = true;
+      resize();
+    });
+
+    function resize() {
+      const w = el.clientWidth || 1;
+      const h = el.clientHeight || 1;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      if (ready && !running()) renderer.render(scene, camera);
+    }
+    new ResizeObserver(resize).observe(el);
+    resize();
+
+    function running() {
+      return rafId !== 0;
+    }
+
+    const MIN_FPS = 24;
+    const WINDOW_MS = 1200;
+    let probeFrames = 0;
+    let probeTime = 0;
+    let badWindows = 0;
+    let warmup = true;
+    let degraded = false;
+
+    function tick(now) {
+      const raw = now - last;
+      const dt = Math.min(raw / 1000, 0.064);
+      last = now;
+      pivot.rotation.y += dt * 0.7;
+      renderer.render(scene, camera);
+
+      if (probeFrames > 0) {
+        probeTime += raw;
+        if (probeTime > WINDOW_MS) {
+          const fps = (probeFrames * 1000) / probeTime;
+          if (warmup) {
+            warmup = false;
+          } else if (fps < MIN_FPS) {
+            if (++badWindows >= 2) {
+              degraded = true;
+              stop();
+              renderer.render(scene, camera);
+              return;
+            }
+          } else {
+            badWindows = 0;
+          }
+          probeFrames = 0;
+          probeTime = 0;
+        }
+      }
+      probeFrames++;
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function start() {
+      if (rafId || reduce || degraded) return;
+      last = performance.now();
+      probeFrames = 0;
+      probeTime = 0;
+      warmup = true;
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function stop() {
+      if (!rafId) return;
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    }
+
+    function sync() {
+      if (visible && !document.hidden) start();
+      else stop();
+    }
+
+    new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        sync();
+      },
+      { threshold: 0 }
+    ).observe(el);
+
+    document.addEventListener('visibilitychange', sync);
+  });
+</script>

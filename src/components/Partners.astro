@@ -1,0 +1,61 @@
+---
+const partners = [
+  {
+    name: 'Fundacja INFOTECH',
+    logo: '/infotech.svg',
+    logoClass: 'h-8',
+    href: 'https://infotech.edu.pl',
+    description:
+      'Fundacja INFOTECH rozwija środowisko IT w Polsce. Prowadzimy Technikum Programistyczne i Kreatywne Liceum INFOTECH w Białymstoku i Wrocławiu, pierwsze klastrowe szkoły programistyczne w Polsce i Referencyjne Szkoły Google, ale nasza misja sięga dalej niż mury szkoły. Jesteśmy aktywnym członkiem SoDA, ITCORNER oraz Rady ds. EdTech Konfederacji Lewiatan. Szkolimy nauczycieli, wspieramy pierwsze startupy młodych programistów i łączymy uczniów, uczelnie oraz firmy z całej Polski. Programistok to naturalne przedłużenie tej misji: przestrzeń, w której spotyka się cała lokalna społeczność IT.',
+  },
+  {
+    name: 'Wydział Informatyki Politechniki Białostockiej',
+    logo: '/wi.svg',
+    logoClass: 'h-11',
+    href: 'https://wi.pb.edu.pl',
+    description:
+      'Wydział Informatyki Politechniki Białostockiej od lat łączy solidne podstawy inżynierskie z kierunkami odpowiadającymi na wyzwania współczesnej branży IT. Obok informatyki rozwija m.in. Data Science, a w tym roku uruchamia również Cyberbezpieczeństwo, konsekwentnie poszerzając ofertę o kompetencje najbardziej poszukiwane na rynku. Dla Programistoku to partner szczególnie bliski: większość zespołu organizacyjnego stanowią absolwenci Wydziału Informatyki, dlatego współpraca jest naturalną kontynuacją relacji budowanych jeszcze na studiach.',
+  },
+];
+
+const supporters = [
+  { name: 'Evoluma', logo: '/evoluma.svg', logoClass: 'h-14', href: 'https://evoluma.pl' },
+  { name: 'Białostocki Park Naukowo-Technologiczny', logo: '/bpnt.svg', logoClass: 'h-18', href: 'https://bpnt.bialystok.pl' },
+];
+---
+
+<section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="partnerzy-title">
+  <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Partnerzy</p>
+  <h2 id="partnerzy-title" class="max-w-[22ch] text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.05] tracking-[-0.03em]">
+    Programistok powstaje przy współpracy i dzięki wsparciu
+  </h2>
+
+  <div class="mt-10 grid gap-5 md:grid-cols-2">
+    {partners.map((p) => (
+      <article class="flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
+        <div class="mb-6 flex min-h-[48px] items-center">
+          <img src={p.logo} alt={p.name} class={`${p.logoClass} w-auto max-w-full`} />
+        </div>
+        <p class="flex-1 text-[15px] leading-relaxed text-muted text-pretty">{p.description}</p>
+        <a
+          href={p.href}
+          rel="noopener"
+          target="_blank"
+          class="mt-6 inline-flex items-center gap-2 self-start font-mono text-[13px] uppercase tracking-wide text-accent-ink transition-colors hover:text-ink"
+        >
+          {p.href.replace('https://', '')} <span aria-hidden="true">↗</span>
+        </a>
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-10 border-t border-line pt-10">
+    <div class="flex flex-wrap items-center gap-x-14 gap-y-8">
+      {supporters.map((s) => (
+        <a href={s.href} rel="noopener" target="_blank" class="transition hover:opacity-70">
+          <img src={s.logo} alt={s.name} loading="lazy" class={`${s.logoClass} w-auto max-w-full`} />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

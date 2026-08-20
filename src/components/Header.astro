@@ -1,0 +1,59 @@
+---
+import Logo from './Logo.astro';
+
+const nav = [
+  { href: '/agenda', label: 'Agenda' },
+  { href: '/dla-biznesu', label: 'Dla biznesu' },
+  { href: '/edycje', label: 'Poprzednie edycje' },
+  { href: '/#o-nas', label: 'O nas' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-[#141414] text-cream">
+  <div class="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-5 py-3.5 sm:px-8">
+    <a href="/" class="flex items-center gap-2.5" aria-label="Programistok, strona główna">
+      <Logo size={38} src="/programistok-sygnet-white.svg" />
+      <span class="text-xl font-black tracking-tight">'26</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-8 sm:flex" aria-label="Główna nawigacja">
+      {nav.map((item) => (
+        <a href={item.href} class="font-mono text-[13px] uppercase tracking-wide text-cream-faint transition-colors hover:text-cream">
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="https://programistok2026.konfeo.com/pl/groups"
+        rel="noopener"
+        target="_blank"
+        class="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+      >
+        Bilety <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
+
+    <!-- Mobile nav (bez JS, dostępny) -->
+    <details class="relative sm:hidden">
+      <summary
+        class="flex cursor-pointer list-none items-center rounded-lg border border-white/15 p-2 text-cream [&::-webkit-details-marker]:hidden"
+        aria-label="Otwórz menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </summary>
+      <nav
+        class="absolute right-0 mt-2 flex w-60 flex-col gap-1 rounded-xl border border-white/10 bg-ink p-2 shadow-xl"
+        aria-label="Główna nawigacja"
+      >
+        {nav.map((item) => (
+          <a href={item.href} class="rounded-lg px-3 py-2 font-mono text-[13px] uppercase text-cream-faint transition-colors hover:bg-white/5 hover:text-cream">
+            {item.label}
+          </a>
+        ))}
+        <a href="https://programistok2026.konfeo.com/pl/groups" rel="noopener" target="_blank" class="mt-1 rounded-lg bg-accent px-3 py-2 text-center text-sm font-semibold text-white">Bilety ↗</a>
+      </nav>
+    </details>
+  </div>
+</header>

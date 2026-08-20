@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import editions from '../../data/editions.json';
+
+const sorted = [...editions].sort((a, b) => {
+  if (b.year !== a.year) return b.year - a.year;
+  return (b.date || '').localeCompare(a.date || '');
+});
+
+const fmt = (date) =>
+  date ? new Date(date).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '';
+const plTalks = (n) => (n === 1 ? 'wystąpienie' : 'wystąpień');
+---
+
+<BaseLayout title="Poprzednie edycje · Programistok" description="Archiwum wszystkich edycji konferencji Programistok wraz z nagraniami wystąpień.">
+  <section class="mx-auto max-w-[1200px] px-5 pb-6 pt-14 sm:px-8">
+    <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Archiwum</p>
+    <h1 class="text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">
+      Poprzednie edycje
+    </h1>
+  </section>
+
+  <div class="mx-auto max-w-[1200px] px-5 pb-16 sm:px-8">
+    <ul class="border-t border-line">
+      {sorted.map((e) => (
+        <li>
+          <a
+            href={`/edycje/${e.slug}`}
+            class="group grid grid-cols-[3.5rem_1fr] items-baseline gap-x-4 gap-y-1 border-b border-line py-5 sm:grid-cols-[5rem_1fr_auto] sm:py-6"
+          >
+            <span class="font-mono text-sm text-faint sm:text-base">{e.year}</span>
+            <span class="text-[clamp(1.25rem,2.6vw,1.875rem)] font-bold tracking-[-0.02em] transition-colors group-hover:text-accent-ink">
+              {e.title}
+              <span class="ml-1 inline-block text-accent-ink opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">↗</span>
+            </span>
+            <span class="col-start-2 font-mono text-[13px] uppercase tracking-wide text-faint sm:col-start-3 sm:text-right">
+              {(e.talks?.length ?? 0) > 0 && <>{e.talks.length} {plTalks(e.talks.length)}</>}
+              {e.date && <> · {fmt(e.date)}</>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+// Sygnet Programistok. Domyślnie kolorowy; białą wersję podaj przez `src`.
+const { size = 38, class: className = '', src = '/programistok-sygnet.svg' } = Astro.props;
+---
+
+<img
+  src={src}
+  alt=""
+  width={size}
+  height={size}
+  class={className}
+  style={`width:${size}px;height:${size}px`}
+/>

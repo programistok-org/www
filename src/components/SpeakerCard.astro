@@ -1,0 +1,77 @@
+---
+const { speaker, track = 'it' } = Astro.props;
+
+const theme = {
+  it: { dot: 'bg-accent', label: 'text-accent-ink', chip: 'bg-accent/10 text-accent-ink' },
+  biznes: { dot: 'bg-biz', label: 'text-biz-ink', chip: 'bg-biz/10 text-biz-ink' },
+}[track];
+
+const initials = speaker.name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((p) => p[0].toUpperCase())
+  .join('');
+
+const paragraphs = (text) =>
+  (text || '')
+    .split(/\n{2,}/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+const abstract = paragraphs(speaker.abstract);
+const bio = paragraphs(speaker.bio);
+---
+
+<article class="grid overflow-hidden rounded-3xl border border-line bg-surface md:grid-cols-[minmax(0,280px)_1fr]">
+  <div class="aspect-[4/3] bg-ink md:aspect-auto md:min-h-[280px]">
+    {speaker.photo ? (
+      <img
+        src={speaker.photo}
+        alt={`${speaker.name}, wystąpienie na Programistoku 2026`}
+        loading="lazy"
+        class="h-full w-full object-cover object-[50%_22%]"
+      />
+    ) : (
+      <div class="flex h-full w-full items-center justify-center text-cream">
+        <span class="text-[clamp(2.5rem,6vw,4rem)] font-black tracking-[-0.04em]" aria-hidden="true">{initials}</span>
+      </div>
+    )}
+  </div>
+
+  <div class="flex flex-col gap-4 p-7 sm:p-9">
+    <div class="flex items-center gap-2.5">
+      <span class={`h-2.5 w-2.5 shrink-0 rounded-[3px] ${theme.dot}`} aria-hidden="true"></span>
+      <h3 class="text-balance text-xl font-black tracking-[-0.02em]">{speaker.name}</h3>
+    </div>
+
+    {speaker.topic ? (
+      <p class="text-balance text-[clamp(1.125rem,1.8vw,1.375rem)] font-bold leading-snug tracking-[-0.01em] text-ink">
+        {speaker.topic}
+      </p>
+    ) : (
+      <p class={`inline-flex w-fit rounded-full px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.1em] ${theme.chip}`}>
+        Temat wkrótce
+      </p>
+    )}
+
+    {abstract.length > 0 && (
+      <div class="flex flex-col gap-3">
+        {abstract.map((p) => (
+          <p class="text-[15px] leading-relaxed text-muted text-pretty">{p}</p>
+        ))}
+      </div>
+    )}
+
+    {bio.length > 0 && (
+      <div class="mt-auto border-t border-line pt-5">
+        <p class={`mb-2 font-mono text-[11px] uppercase tracking-[0.12em] ${theme.label}`}>Bio</p>
+        <div class="flex flex-col gap-2.5">
+          {bio.map((p) => (
+            <p class="text-[14px] leading-relaxed text-muted text-pretty">{p}</p>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</article>

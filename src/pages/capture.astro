@@ -1,0 +1,713 @@
+---
+// Dev-only: logo 3D + duży tekst → nagranie do webm (grafiki pod sociale).
+// NIE publikować. Użycie: npm run dev → /capture.
+import '@fontsource-variable/inter';
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>capture</title>
+    <style>
+      :root { --accent:#dc1945; --ink:#14130f; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; background: #2a2a2a; min-height: 100%; font-family: system-ui, sans-serif; color:#eee; }
+      .app { display: grid; grid-template-columns: 320px 1fr; gap: 24px; padding: 24px; align-items: start; }
+      .panel { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 18px; background:#1c1c1c; padding:20px; border-radius:14px; }
+      .field { display: flex; flex-direction: column; gap: 6px; }
+      label { font: 600 12px/1.2 monospace; text-transform: uppercase; letter-spacing: .08em; color:#999; }
+      input[type=text], select, textarea { font: 15px system-ui; padding: 10px 12px; border-radius: 8px; border: 1px solid #444; background:#111; color:#fff; }
+      textarea { resize: vertical; min-height: 64px; }
+      .row { display:flex; gap:10px; }
+      .row > * { flex:1; }
+      .swatches { display:flex; gap:8px; }
+      .sw { width:32px; height:32px; border-radius:8px; border:2px solid transparent; cursor:pointer; }
+      .sw[aria-pressed=true] { border-color:#fff; }
+      button.rec { font: 700 16px system-ui; padding: 14px; border-radius: 999px; border: 0; background: var(--accent); color: #fff; cursor: pointer; }
+      button.rec:disabled { opacity: .5; cursor: default; }
+      #status { font: 12px monospace; color:#8f8; min-height: 1em; }
+      .stage { display:flex; justify-content:center; }
+      canvas#out { max-width: 100%; max-height: calc(100vh - 48px); background:#fff; box-shadow: 0 10px 40px rgba(0,0,0,.4); border-radius:4px; }
+      canvas#gl { display:none; }
+      small { color:#888; font-size:11px; line-height:1.4; }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="panel">
+        <div class="field">
+          <label>Tryb</label>
+          <select id="mode">
+            <option value="classic">Klasyczny (logo + tekst)</option>
+            <option value="speaker">Prelegent (zdjęcie + logo w rogu)</option>
+            <option value="static">Statyczna (emoji + tekst, PNG)</option>
+          </select>
+        </div>
+
+        <div class="field" data-only="classic static">
+          <label>Tekst (Enter = nowa linia)</label>
+          <textarea id="text" placeholder="SOLD OUT">PIERWSZA PULA</textarea>
+        </div>
+
+        <div class="field" data-only="static">
+          <label>Emoji w tle (spacja = kolejne)</label>
+          <input id="emoji" type="text" value="🎤 💻 🚀 ⚡️" />
+          <div class="row" style="margin-top:6px">
+            <div class="field">
+              <label>Rozmiar <span id="emsizev">92</span></label>
+              <input id="emsize" type="range" min="30" max="220" step="2" value="92" />
+            </div>
+            <div class="field">
+              <label>Odstęp <span id="emgapv">1.70</span></label>
+              <input id="emgap" type="range" min="1.1" max="3" step="0.05" value="1.7" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Kąt <span id="emanglev">-20</span>°</label>
+              <input id="emangle" type="range" min="-45" max="45" step="1" value="-20" />
+            </div>
+            <div class="field">
+              <label>Krycie <span id="emopv">100</span>%</label>
+              <input id="emop" type="range" min="5" max="100" step="1" value="100" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Wariacja <span id="emvarv">65</span>%</label>
+              <input id="emvar" type="range" min="0" max="100" step="1" value="65" />
+            </div>
+            <div class="field">
+              <label>Układ <span id="emseedv">1</span></label>
+              <input id="emseed" type="range" min="1" max="40" step="1" value="1" />
+            </div>
+          </div>
+        </div>
+
+        <div class="field" data-only="static">
+          <label>Kolor tła (dowolny)</label>
+          <input id="bgpick" type="color" value="#dc1945" style="height:38px;padding:2px;background:#111;border:1px solid #444;border-radius:8px" />
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>1. Imię i nazwisko</label>
+          <textarea id="speaker" placeholder="Jan Kowalski">Jan Kowalski</textarea>
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>2. Tytuł prelekcji</label>
+          <textarea id="talk" placeholder="Tytuł prelekcji"></textarea>
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>3. Stopka</label>
+          <textarea id="footer">PROGRAMISTOK
+25-26.09.2026, Białystok</textarea>
+        </div>
+
+        <div class="field">
+          <label>Font</label>
+          <select id="font">
+            <option value='800|"Inter Variable", Inter, sans-serif'>Inter (gruby)</option>
+            <option value='700|"Helvetica Neue", Arial, sans-serif'>Helvetica Neue</option>
+            <option value='400|Impact, "Haettenschweiler", sans-serif'>Impact</option>
+            <option value='800|"Futura", "Avenir Next", sans-serif'>Futura</option>
+            <option value='800|"Avenir Next", "Avenir", sans-serif'>Avenir Next</option>
+            <option value='700|Georgia, "Times New Roman", serif'>Georgia (serif)</option>
+            <option value='700|"Courier New", monospace'>Mono</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Google Font</label>
+          <select id="gfont">
+            <option value="">— presety —</option>
+            <option value="Anton|400">Anton</option>
+            <option value="Bebas Neue|400">Bebas Neue</option>
+            <option value="Oswald|700">Oswald</option>
+            <option value="Archivo Black|400">Archivo Black</option>
+            <option value="Montserrat|800">Montserrat</option>
+            <option value="Teko|700">Teko</option>
+            <option value="Bricolage Grotesque|800">Bricolage Grotesque</option>
+            <option value="Space Grotesk|700">Space Grotesk</option>
+          </select>
+          <div class="row" style="margin-top:6px">
+            <input id="gfontName" type="text" placeholder="dowolna nazwa" />
+            <button id="gfontLoad" type="button" style="flex:0 0 auto;padding:0 12px;background:#333;color:#ccc;border:0;border-radius:8px;cursor:pointer">Załaduj</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Własny font (.ttf/.otf/.woff2)</label>
+          <input id="fontfile" type="file" accept=".ttf,.otf,.woff2,.woff" style="font-size:12px" />
+        </div>
+
+        <div class="field" data-only="classic speaker">
+          <label>Format</label>
+          <select id="format">
+            <option value="1080x1080">Kwadrat 1:1 (feed)</option>
+            <option value="1080x1350">Portret 4:5 (feed)</option>
+            <option value="1080x1920">Story / Reels 9:16</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Kolor tekstu</label>
+          <div class="swatches" id="swatches">
+            <div class="sw" data-color="#14130f" style="background:#14130f" aria-pressed="true"></div>
+            <div class="sw" data-color="#dc1945" style="background:#dc1945" aria-pressed="false"></div>
+            <div class="sw" data-color="#d9531e" style="background:#d9531e" aria-pressed="false"></div>
+          </div>
+        </div>
+
+        <div class="field" data-only="classic speaker">
+          <label>Tło (kolor)</label>
+          <div class="swatches" id="bgs">
+            <div class="sw" data-bg="#ffffff" style="background:#ffffff" aria-pressed="true"></div>
+            <div class="sw" data-bg="#f4f2ec" style="background:#f4f2ec" aria-pressed="false"></div>
+            <div class="sw" data-bg="#14130f" style="background:#14130f" aria-pressed="false"></div>
+          </div>
+        </div>
+
+        <div class="field" data-only="classic speaker">
+          <label>Tło / zdjęcie prelegenta</label>
+          <input id="bgfile" type="file" accept="image/*" style="font-size:12px" />
+          <button id="bgclear" type="button" style="font-size:12px;padding:4px;margin-top:4px;background:#333;color:#ccc;border:0;border-radius:6px;cursor:pointer">usuń obraz</button>
+        </div>
+
+        <div class="field" data-only="classic speaker">
+          <label>Kadr zdjęcia — skala <span id="zoomv">1.00</span></label>
+          <input id="zoom" type="range" min="1" max="3" step="0.01" value="1" />
+          <label>przesuń X <span id="offxv">0</span></label>
+          <input id="offx" type="range" min="-0.5" max="0.5" step="0.005" value="0" />
+          <label>przesuń Y <span id="offyv">0</span></label>
+          <input id="offy" type="range" min="-0.5" max="0.5" step="0.005" value="0" />
+        </div>
+
+        <div class="field" data-only="classic speaker">
+          <label>Nakładka na tło (0–100%)</label>
+          <div class="row">
+            <input id="dim" type="text" value="0" />
+            <div class="swatches" id="dimcolor" style="flex:0 0 auto">
+              <div class="sw" data-overlay="0,0,0" style="background:#14130f" aria-pressed="true" title="ciemna"></div>
+              <div class="sw" data-overlay="255,255,255" style="background:#fff" aria-pressed="false" title="jasna"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field" data-only="classic">
+            <label>Obroty</label>
+            <input id="turns" type="text" value="2" />
+          </div>
+          <div class="field">
+            <label>Rozmiar tekstu</label>
+            <input id="scale" type="text" value="1" />
+          </div>
+        </div>
+
+        <div class="row" data-only="speaker">
+          <div class="field">
+            <label>Prędkość (px/s)</label>
+            <input id="speed" type="text" value="130" />
+          </div>
+          <div class="field">
+            <label>Separator</label>
+            <input id="sep" type="text" value="  •  " />
+          </div>
+        </div>
+
+        <div class="field" data-only="speaker static">
+          <label>Logo w rogu — wielkość <span id="logosizev">0.22</span></label>
+          <input id="logosize" type="range" min="0.10" max="0.45" step="0.005" value="0.22" />
+        </div>
+
+        <button class="rec" id="rec">● Nagraj</button>
+        <div id="status"></div>
+        <small id="hint">Nagrywa kompozyt (logo + tekst) do .webm. Czas = obroty × 5 s (idealna pętla). Potem konwersja ffmpegiem do mp4.</small>
+      </div>
+
+      <div class="stage">
+        <canvas id="out" width="1080" height="1080"></canvas>
+        <canvas id="gl" width="900" height="900"></canvas>
+      </div>
+    </div>
+
+    <script>
+      import * as THREE from 'three';
+      import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+
+      const OMEGA = (Math.PI * 2) / 5; // pełny obrót = 5 s
+      const GL = 900; // wewnętrzny bufor logo
+
+      const out = document.getElementById('out');
+      const ctx = out.getContext('2d');
+      const gl = document.getElementById('gl');
+      const statusEl = document.getElementById('status');
+      const btn = document.getElementById('rec');
+      const textEl = document.getElementById('text');
+      const formatEl = document.getElementById('format');
+      const turnsEl = document.getElementById('turns');
+      const scaleEl = document.getElementById('scale');
+      const modeEl = document.getElementById('mode');
+      const speakerEl = document.getElementById('speaker');
+      const talkEl = document.getElementById('talk');
+      const footerEl = document.getElementById('footer');
+      const speedEl = document.getElementById('speed');
+      const sepEl = document.getElementById('sep');
+      const logoSizeEl = document.getElementById('logosize');
+      const zoomEl = document.getElementById('zoom');
+      const offxEl = document.getElementById('offx');
+      const offyEl = document.getElementById('offy');
+      const hintEl = document.getElementById('hint');
+      const emojiEl = document.getElementById('emoji');
+      const emSizeEl = document.getElementById('emsize');
+      const emGapEl = document.getElementById('emgap');
+      const emAngleEl = document.getElementById('emangle');
+      const emOpEl = document.getElementById('emop');
+      const emVarEl = document.getElementById('emvar');
+      const emSeedEl = document.getElementById('emseed');
+      const bgPickEl = document.getElementById('bgpick');
+
+      const HINTS = {
+        classic: 'Nagrywa kompozyt (logo + tekst) do .webm. Czas = obroty × 5 s (idealna pętla). Potem konwersja ffmpegiem do mp4.',
+        speaker: 'Zdjęcie + kręcące się logo + marquee na dole (nazwisko / tytuł / info). Czas pętli dobierany automatycznie do wielokrotności 5 s, żeby pierwsza i ostatnia klatka były identyczne.',
+        static: 'Kwadrat 1080×1080: emoji ułożone pod kątem na jednolitym tle, tekst na środku, logo w rogu. Zapis do .png.',
+      };
+
+      function applyMode() {
+        const m = modeEl.value;
+        document.querySelectorAll('[data-only]').forEach((el) => {
+          el.style.display = el.dataset.only.split(' ').includes(m) ? '' : 'none';
+        });
+        hintEl.textContent = HINTS[m];
+        btn.textContent = m === 'static' ? '⬇ Zapisz PNG' : '● Nagraj';
+        if (m === 'static') {
+          formatEl.value = '1080x1080';
+          setFormat();
+        }
+      }
+      modeEl.addEventListener('change', applyMode);
+
+      const readouts = [
+        [zoomEl, 'zoomv', 2],
+        [offxEl, 'offxv', 2],
+        [offyEl, 'offyv', 2],
+        [logoSizeEl, 'logosizev', 3],
+        [emSizeEl, 'emsizev', 0],
+        [emGapEl, 'emgapv', 2],
+        [emAngleEl, 'emanglev', 0],
+        [emOpEl, 'emopv', 0],
+        [emVarEl, 'emvarv', 0],
+        [emSeedEl, 'emseedv', 0],
+      ];
+      for (const [el, out, digits] of readouts) {
+        const o = document.getElementById(out);
+        const sync = () => { o.textContent = Number(el.value).toFixed(digits); };
+        el.addEventListener('input', sync);
+        sync();
+      }
+
+      let W = 1080, H = 1080;
+      let textColor = '#14130f';
+      let bgColor = '#ffffff';
+      let fontWeight = '800';
+      let fontFamily = '"Inter Variable", Inter, sans-serif';
+      let bgImg = null;
+
+      const fontEl = document.getElementById('font');
+      const gfontEl = document.getElementById('gfont');
+      const gfontName = document.getElementById('gfontName');
+      const gfontLoad = document.getElementById('gfontLoad');
+      const fontfileEl = document.getElementById('fontfile');
+      const bgfileEl = document.getElementById('bgfile');
+      const bgclearEl = document.getElementById('bgclear');
+      const dimEl = document.getElementById('dim');
+      let overlayRGB = '0,0,0';
+      document.getElementById('dimcolor').addEventListener('click', (e) => {
+        const t = e.target.closest('.sw'); if (!t) return;
+        overlayRGB = t.dataset.overlay;
+        [...e.currentTarget.children].forEach((c) => c.setAttribute('aria-pressed', c === t));
+      });
+
+      function setFontFromSelect() {
+        const [w, fam] = fontEl.value.split('|');
+        fontWeight = w; fontFamily = fam;
+      }
+      fontEl.addEventListener('change', setFontFromSelect);
+
+      // Google Fonts – wstrzyknij <link> i użyj po załadowaniu
+      function loadGoogle(name, weight) {
+        if (!name) return;
+        const id = 'gf-' + name.replace(/\s+/g, '-');
+        if (!document.getElementById(id)) {
+          const link = document.createElement('link');
+          link.id = id; link.rel = 'stylesheet';
+          link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(name)}:wght@${weight || 700}&display=swap`;
+          document.head.appendChild(link);
+        }
+        fontWeight = weight || '700';
+        fontFamily = `"${name}", sans-serif`;
+        // dociągnij żeby canvas miał glyphy
+        if (document.fonts && document.fonts.load) {
+          document.fonts.load(`${fontWeight} 100px "${name}"`).catch(() => {});
+        }
+        statusEl.textContent = `font: ${name}`;
+      }
+      gfontEl.addEventListener('change', () => {
+        if (!gfontEl.value) return;
+        const [name, weight] = gfontEl.value.split('|');
+        loadGoogle(name, weight);
+      });
+      gfontLoad.addEventListener('click', () => loadGoogle(gfontName.value.trim(), '700'));
+
+      // Własny plik fontu
+      fontfileEl.addEventListener('change', async (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const buf = await file.arrayBuffer();
+        const fam = 'CustomFont-' + Date.now();
+        const ff = new FontFace(fam, buf);
+        await ff.load();
+        document.fonts.add(ff);
+        fontFamily = `"${fam}", sans-serif`;
+        fontWeight = '400';
+        statusEl.textContent = `font: ${file.name}`;
+      });
+
+      // Tło – obraz
+      bgfileEl.addEventListener('change', (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const img = new Image();
+        img.onload = () => { bgImg = img; };
+        img.src = URL.createObjectURL(file);
+      });
+      bgclearEl.addEventListener('click', () => { bgImg = null; bgfileEl.value = ''; });
+
+      function drawCover(img, x, y, w, h) {
+        const zoom = parseFloat(zoomEl.value) || 1;
+        const r = Math.max(w / img.width, h / img.height) * zoom;
+        const iw = img.width * r, ih = img.height * r;
+        const dx = (parseFloat(offxEl.value) || 0) * w;
+        const dy = (parseFloat(offyEl.value) || 0) * h;
+        ctx.drawImage(img, x + (w - iw) / 2 + dx, y + (h - ih) / 2 + dy, iw, ih);
+      }
+
+      // three – logo z przezroczystym tłem (kompozyt daje 2D canvas)
+      const renderer = new THREE.WebGLRenderer({ canvas: gl, alpha: true, antialias: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(GL, GL, false);
+      renderer.setClearColor(0x000000, 0);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 2000);
+      camera.position.set(0, 0, 440);
+      scene.add(new THREE.AmbientLight(0xffffff, 0.65));
+      const key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(-0.6, 1, 0.9); scene.add(key);
+      const rim = new THREE.DirectionalLight(0xffffff, 0.7); rim.position.set(1, -0.4, 0.5); scene.add(rim);
+      const pivot = new THREE.Group(); scene.add(pivot);
+
+      new SVGLoader().load('/programistok-sygnet.svg', (data) => {
+        const group = new THREE.Group();
+        for (const path of data.paths) {
+          const mat = new THREE.MeshStandardMaterial({ color: path.color, metalness: 0.2, roughness: 0.42, side: THREE.DoubleSide });
+          for (const shape of path.toShapes(true)) {
+            const geo = new THREE.ExtrudeGeometry(shape, { depth: 26, bevelEnabled: true, bevelThickness: 4, bevelSize: 2.5, bevelSegments: 4, curveSegments: 24 });
+            group.add(new THREE.Mesh(geo, mat));
+          }
+        }
+        group.scale.y = -1;
+        const box = new THREE.Box3().setFromObject(group);
+        group.position.sub(box.getCenter(new THREE.Vector3()));
+        pivot.add(group);
+        pivot.rotation.x = -0.14;
+      });
+
+      function setFormat() {
+        [W, H] = formatEl.value.split('x').map(Number);
+        out.width = W; out.height = H;
+      }
+      setFormat();
+      formatEl.addEventListener('change', setFormat);
+      applyMode();
+
+      document.getElementById('swatches').addEventListener('click', (e) => {
+        const t = e.target.closest('.sw'); if (!t) return;
+        textColor = t.dataset.color;
+        [...e.currentTarget.children].forEach((c) => c.setAttribute('aria-pressed', c === t));
+      });
+      document.getElementById('bgs').addEventListener('click', (e) => {
+        const t = e.target.closest('.sw'); if (!t) return;
+        bgColor = t.dataset.bg;
+        [...e.currentTarget.children].forEach((c) => c.setAttribute('aria-pressed', c === t));
+      });
+
+      function fitFont(lines, maxW, startPx) {
+        let px = startPx;
+        while (px > 12) {
+          ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
+          const widest = Math.max(...lines.map((l) => ctx.measureText(l).width));
+          if (widest <= maxW) break;
+          px -= 2;
+        }
+        return px;
+      }
+
+      const LOGO_BAR = ['#14130f', '#dc1945', '#0296d8', '#f7d33d'];
+      const ROT_SEC = 5; // pełny obrót logo, patrz OMEGA
+
+      function marqueeFontPx() {
+        const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
+        return Math.round(H * 0.032 * userScale);
+      }
+
+      function marqueeText() {
+        const sep = sepEl.value || '  •  ';
+        const parts = [speakerEl, talkEl, footerEl]
+          .map((el) => el.value.replace(/\s*\n\s*/g, ' ').trim())
+          .filter(Boolean);
+        return parts.length ? parts.join(sep) + sep : '';
+      }
+
+      // szerokość jednej pełnej kopii taśmy – po jej przesunięciu klatka wraca do stanu wyjściowego
+      function marqueeContentW() {
+        const text = marqueeText();
+        if (!text) return 0;
+        ctx.font = `${fontWeight} ${marqueeFontPx()}px ${fontFamily}`;
+        return ctx.measureText(text).width;
+      }
+
+      // pętla = wielokrotność obrotu logo, więc pierwsza i ostatnia klatka są identyczne
+      function loopSec() {
+        const contentW = marqueeContentW();
+        if (!contentW) return ROT_SEC;
+        const target = Math.max(20, parseFloat(speedEl.value) || 130);
+        const turns = Math.max(1, Math.round(contentW / target / ROT_SEC));
+        return turns * ROT_SEC;
+      }
+
+      function drawSpeaker(elapsed) {
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, W, H);
+        if (bgImg) drawCover(bgImg, 0, 0, W, H);
+        const dim = Math.max(0, Math.min(100, parseFloat(dimEl.value) || 0)) / 100;
+        if (dim > 0) { ctx.fillStyle = `rgba(${overlayRGB},${dim})`; ctx.fillRect(0, 0, W, H); }
+
+        // logo – prawy górny róg, kręci się bez przerwy
+        const s = Math.min(W, H) * (parseFloat(logoSizeEl.value) || 0.22);
+        const m = W * 0.05;
+        ctx.drawImage(gl, W - m - s, m, s, s);
+
+        const text = marqueeText();
+        if (!text) return;
+
+        const px = marqueeFontPx();
+        const barH = Math.max(3, Math.round(H * 0.0055));
+        const panelH = Math.round(H * 0.105) + barH; // stała wysokość, niezależna od rozmiaru fontu
+        const panelTop = H - panelH;
+
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, panelTop, W, panelH);
+
+        const segW = W / LOGO_BAR.length;
+        LOGO_BAR.forEach((c, k) => {
+          ctx.fillStyle = c;
+          ctx.fillRect(Math.round(k * segW), panelTop, Math.ceil(segW), barH);
+        });
+
+        ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
+        const contentW = ctx.measureText(text).width;
+        if (!contentW) return;
+
+        const speed = contentW / loopSec();
+        const offset = (elapsed * speed) % contentW;
+        const copies = Math.ceil((W + contentW) / contentW) + 1;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, panelTop + barH, W, panelH - barH);
+        ctx.clip();
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        const ty = panelTop + barH + (panelH - barH) / 2;
+        for (let k = 0; k < copies; k++) ctx.fillText(text, -offset + k * contentW, ty);
+        ctx.restore();
+      }
+
+      function noise(i, j, salt) {
+        const s = Math.sin(i * 127.1 + j * 311.7 + salt * 74.7) * 43758.5453;
+        return s - Math.floor(s);
+      }
+
+      function drawCornerLogo() {
+        const s = Math.min(W, H) * (parseFloat(logoSizeEl.value) || 0.22);
+        const m = W * 0.05;
+        ctx.drawImage(gl, W - m - s, m, s, s);
+      }
+
+      function drawStatic() {
+        ctx.fillStyle = bgPickEl.value;
+        ctx.fillRect(0, 0, W, H);
+
+        const glyphs = emojiEl.value.split(/\s+/).filter(Boolean);
+        if (glyphs.length) {
+          const size = parseFloat(emSizeEl.value) || 92;
+          const step = size * (parseFloat(emGapEl.value) || 1.7);
+          const reach = Math.hypot(W, H) / 2 + step;
+          const varAmt = Math.max(0, Math.min(1, (parseFloat(emVarEl.value) || 0) / 100));
+          const seed = parseFloat(emSeedEl.value) || 1;
+          const minS = 1 - 0.6 * varAmt;
+          const maxS = 1 + 0.7 * varAmt;
+
+          ctx.save();
+          ctx.translate(W / 2, H / 2);
+          ctx.rotate(((parseFloat(emAngleEl.value) || 0) * Math.PI) / 180);
+          ctx.globalAlpha = Math.max(0.05, Math.min(1, (parseFloat(emOpEl.value) || 100) / 100));
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          const cols = Math.ceil(reach / step);
+          const rows = Math.ceil(reach / (step * 0.86));
+
+          for (let row = -rows; row <= rows; row++) {
+            const odd = Math.abs(row % 2) === 1;
+            const y = row * step * 0.86;
+            for (let col = -cols; col <= cols; col++) {
+              if (odd && col === cols) continue;
+              const x = odd ? (col + 0.5) * step : col * step;
+              const rs = noise(col, row, seed);
+              const rx = noise(col, row, seed + 17);
+              const ry = noise(col, row, seed + 41);
+              const rg = noise(col, row, seed + 73);
+              const px = size * (minS + (maxS - minS) * Math.pow(rs, 1.7));
+              ctx.font = `${px}px "Apple Color Emoji", "Segoe UI Emoji", sans-serif`;
+              ctx.fillText(
+                glyphs[Math.floor(rg * glyphs.length) % glyphs.length],
+                x + (rx - 0.5) * step * 0.14 * varAmt,
+                y + (ry - 0.5) * step * 0.14 * varAmt,
+              );
+            }
+          }
+          ctx.restore();
+          ctx.globalAlpha = 1;
+        }
+
+        drawCornerLogo();
+
+        const lines = textEl.value.split('\n').map((s) => s.trim()).filter(Boolean);
+        if (!lines.length) return;
+
+        const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
+        const px = fitFont(lines, W * 0.8, H * 0.13 * userScale);
+        const lineH = px * 1.08;
+        const blockH = lineH * lines.length;
+
+        ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        let y = (H - blockH) / 2 + lineH / 2;
+        for (const l of lines) { ctx.fillText(l, W / 2, y); y += lineH; }
+      }
+
+      let t0 = performance.now();
+      function draw(now) {
+        const elapsed = (now - t0) / 1000;
+        const still = modeEl.value === 'static';
+        pivot.rotation.y = still ? 0 : elapsed * OMEGA;
+        renderer.render(scene, camera);
+
+        if (still) {
+          drawStatic();
+          requestAnimationFrame(draw);
+          return;
+        }
+
+        if (modeEl.value === 'speaker') {
+          drawSpeaker(elapsed);
+          requestAnimationFrame(draw);
+          return;
+        }
+
+        // tło – kolor lub obraz (+ przyciemnienie)
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, W, H);
+        if (bgImg) drawCover(bgImg, 0, 0, W, H);
+        const dim = Math.max(0, Math.min(100, parseFloat(dimEl.value) || 0)) / 100;
+        if (dim > 0) { ctx.fillStyle = `rgba(${overlayRGB},${dim})`; ctx.fillRect(0, 0, W, H); }
+
+        const lines = textEl.value.split('\n').map((s) => s.trim()).filter(Boolean);
+        const hasText = lines.length > 0;
+
+        // logo – góra / środek
+        const logoSize = Math.min(W * 0.66, H * (hasText ? 0.5 : 0.72));
+        const logoX = (W - logoSize) / 2;
+        const logoY = hasText ? H * 0.10 : (H - logoSize) / 2;
+        ctx.drawImage(gl, logoX, logoY, logoSize, logoSize);
+
+        // tekst – pod logo
+        if (hasText) {
+          const areaTop = logoY + logoSize + H * 0.02;
+          const areaH = H - areaTop - H * 0.08;
+          const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
+          const px = fitFont(lines, W * 0.86, (areaH / lines.length) * 0.82 * userScale);
+          ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
+          ctx.fillStyle = textColor;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          const lineH = px * 1.05;
+          const blockH = lineH * lines.length;
+          let y = areaTop + (areaH - blockH) / 2 + lineH / 2;
+          for (const l of lines) { ctx.fillText(l, W / 2, y); y += lineH; }
+        }
+
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+
+      function slugify(src) {
+        return (src.split('\n')[0] || 'logo')
+          .toLowerCase()
+          .replace(/ł/g, 'l')
+          .normalize('NFD').replace(/[̀-ͯ]/g, '')
+          .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'logo';
+      }
+
+      btn.addEventListener('click', () => {
+        if (modeEl.value === 'static') {
+          const a = document.createElement('a');
+          a.href = out.toDataURL('image/png');
+          a.download = `${slugify(textEl.value)}-${W}x${H}.png`;
+          a.click();
+          statusEl.textContent = `pobrano ${a.download}`;
+          return;
+        }
+
+        const speakerMode = modeEl.value === 'speaker';
+        const turns = Math.max(1, Math.round(parseFloat(turnsEl.value) || 2));
+        const durMs = speakerMode ? Math.round(loopSec() * 1000) : turns * 5000;
+        const stream = out.captureStream(60);
+        const rec = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9', videoBitsPerSecond: 16_000_000 });
+        const chunks = [];
+        rec.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+        rec.onstop = () => {
+          const blob = new Blob(chunks, { type: 'video/webm' });
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          const slug = slugify(speakerMode ? speakerEl.value : textEl.value);
+          a.download = `${slug}-${W}x${H}.webm`;
+          a.click();
+          btn.disabled = false;
+          statusEl.textContent = `pobrano ${a.download}`;
+        };
+        t0 = performance.now(); // sync kąta = 0
+        rec.start();
+        btn.disabled = true;
+        statusEl.textContent = `nagrywam ${durMs / 1000}s…`;
+        setTimeout(() => rec.stop(), durMs);
+      });
+    </script>
+  </body>
+</html>

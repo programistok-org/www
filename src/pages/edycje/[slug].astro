@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TalkItem from '../../components/TalkItem.astro';
+import editions from '../../data/editions.json';
+
+export function getStaticPaths() {
+  return editions.map((edition) => ({
+    params: { slug: edition.slug },
+    props: { edition },
+  }));
+}
+
+const { edition } = Astro.props;
+const { title, date, coverPhoto, description, talks = [] } = edition;
+const formattedDate = date
+  ? new Date(date).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+---
+
+<BaseLayout
+  title={`${title} · Programistok`}
+  description={`Program i nagrania wystąpień z edycji ${title}.`}
+  image={coverPhoto || '/og.png'}
+>
+  <section class="mx-auto w-full max-w-[880px] px-5 pb-4 pt-12 sm:px-8">
+    <a href="/edycje" class="font-mono text-[13px] uppercase tracking-wide text-faint transition-colors hover:text-accent-ink">
+      ← Wszystkie edycje
+    </a>
+    <h1 class="mt-6 text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">{title}</h1>
+    {formattedDate && <p class="mt-4 font-mono text-sm uppercase tracking-wide text-faint">{formattedDate}</p>}
+  </section>
+
+  <div class="mx-auto w-full max-w-[880px] px-5 py-10 sm:px-8">
+    {coverPhoto && (
+      <img src={coverPhoto} alt={`Okładka: ${title}`} class="mb-8 aspect-video w-full rounded-3xl border border-line object-cover" />
+    )}
+
+    {description && (
+      <div
+        class="prose prose-lg max-w-none prose-headings:font-black prose-headings:tracking-tight prose-a:text-accent-ink prose-iframe:aspect-video prose-iframe:w-full prose-iframe:border prose-iframe:border-line"
+        set:html={description}
+      />
+    )}
+
+    {talks.length > 0 && (
+      <section class="mt-14" aria-labelledby="wystapienia-title">
+        <p class="mb-3 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">/ Program</p>
+        <h2 id="wystapienia-title" class="text-3xl font-black tracking-[-0.02em]">Wystąpienia</h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          {talks.map((talk) => <TalkItem talk={talk} />)}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>

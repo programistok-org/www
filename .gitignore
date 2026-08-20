@@ -1,0 +1,22 @@
+# build output
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# netlify
+.netlify/
+
+# env
+.env
+.env.production
+
+# macOS
+.DS_Store
+
+# claude
+.claude/settings.local.json
+
+# logs
+npm-debug.log*

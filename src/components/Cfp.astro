@@ -1,0 +1,89 @@
+---
+import agenda from '../data/agenda2026.json';
+
+const { only = null, tone = 'light' } = Astro.props;
+const { deadline, forms } = agenda.cfp;
+
+const scope = only ? agenda.tracks.filter((t) => t.id === only) : agenda.tracks;
+const onScope = only ? ` ścieżki ${scope[0].label}` : " '26";
+
+const pitch =
+  only === 'biznes'
+    ? 'Praktyka zamiast teorii. Wdrożenia, które ruszyły. Decyzje, które kosztowały. Wnioski, których nie ma w ofertach dostawców.'
+    : 'Praktyka zamiast teorii. Systemy, które działają na produkcji. Decyzje, które kosztowały. Wnioski, których nie ma w dokumentacji.';
+
+const deadlineLabel = new Intl.DateTimeFormat('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(deadline));
+
+const buttons = [
+  { id: 'it', label: 'Zgłoś prelekcję IT', href: forms.it, cls: 'bg-accent text-white hover:brightness-110' },
+  { id: 'biznes', label: 'Zgłoś prelekcję Business', href: forms.biznes, cls: 'bg-biz text-white hover:brightness-110' },
+].filter((b) => !only || b.id === only);
+
+const box =
+  tone === 'dark'
+    ? 'rounded-3xl bg-ink px-6 py-12 text-cream sm:px-12 lg:px-16 lg:py-16'
+    : 'rounded-3xl border border-line bg-surface px-6 py-12 sm:px-12 lg:px-16 lg:py-16';
+const kicker = tone === 'dark' ? 'text-cream-faint' : 'text-faint';
+const body = tone === 'dark' ? 'text-cream-dim' : 'text-muted';
+const strong = tone === 'dark' ? 'text-cream' : 'text-ink';
+const rule = tone === 'dark' ? 'border-cream/20' : 'border-line';
+---
+
+<div class={box}>
+  <p class={`mb-4 font-mono text-[13px] uppercase tracking-[0.16em] ${kicker}`}>// Call for Papers</p>
+
+  <h2 class="max-w-[24ch] text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.05] tracking-[-0.03em]">
+    Może właśnie Ciebie jeszcze nie znamy
+  </h2>
+
+  <p class={`mt-5 max-w-[54ch] text-lg leading-relaxed text-pretty ${body}`}>
+    Agendę{onScope} układa zespół programowy Programistoku. Większość miejsc jest już obsadzona,
+    ostatnie trzymamy dla osób, których jeszcze nie znamy.
+  </p>
+
+  <p class={`mt-4 max-w-[54ch] text-lg leading-relaxed text-pretty ${body}`}>
+    {pitch}
+  </p>
+
+  <dl class={`mt-8 grid gap-x-8 gap-y-5 border-t pt-6 sm:grid-cols-3 ${rule}`}>
+    <div>
+      <dt class={`font-mono text-[12px] uppercase tracking-[0.12em] ${kicker}`}>Publiczność</dt>
+      <dd class={`mt-1.5 text-[15px] leading-relaxed ${body}`}>
+        Dwa dni, dwie ścieżki, publiczność z całej Polski: od inżynierii po zarządy firm.
+      </dd>
+    </div>
+    <div>
+      <dt class={`font-mono text-[12px] uppercase tracking-[0.12em] ${kicker}`}>Doświadczenie</dt>
+      <dd class={`mt-1.5 text-[15px] leading-relaxed ${body}`}>
+        Ponad dekada edycji budowanych przez społeczność, nie przez agencję eventową.
+      </dd>
+    </div>
+    <div>
+      <dt class={`font-mono text-[12px] uppercase tracking-[0.12em] ${kicker}`}>Zgłoszenie</dt>
+      <dd class={`mt-1.5 text-[15px] leading-relaxed ${body}`}>
+        Formularz na kilka minut: temat, opis i to, czego dowie się publiczność.
+      </dd>
+    </div>
+  </dl>
+
+  <p class={`mt-8 text-lg leading-relaxed ${strong}`}>
+    <strong>Zgłoszenia przyjmujemy do {deadlineLabel}.</strong>
+  </p>
+
+  <div class="mt-6 flex flex-wrap gap-3.5">
+    {buttons.map((b) => (
+      <a
+        href={b.href}
+        rel="noopener"
+        target="_blank"
+        class={`inline-flex items-center gap-2 rounded-full px-7 py-4 text-base font-bold transition ${b.cls}`}
+      >
+        {b.label} <span aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+</div>

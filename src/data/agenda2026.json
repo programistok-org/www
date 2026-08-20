@@ -1,0 +1,64 @@
+{
+  "cfp": {
+    "deadline": "2026-08-15",
+    "forms": {
+      "it": "https://forms.gle/F4gFE2JgFCrj9wJW6",
+      "biznes": "https://forms.gle/ZenpMoPgYL6FWptk7"
+    }
+  },
+  "tracks": [
+    {
+      "id": "it",
+      "label": "IT",
+      "name": "Ścieżka IT",
+      "lead": "Architektura, jakość, skalowanie i praktyka inżynierska. Technologicznie agnostycznie.",
+      "slots": 12,
+      "speakers": [
+        {
+          "name": "Wojciech Kasa",
+          "photo": "/prelegenci/wojciech-kasa.webp",
+          "topic": "Residuality Theory na produkcji. Jak przewidzieć awarię, zanim wydarzy się naprawdę.",
+          "abstract": "Residuality Theory Barry'ego O'Reilly'ego to jedna z ciekawszych rzeczy, jaka wydarzyła się ostatnio w architekturze oprogramowania. Jest też jednocześnie często kwitowana zdaniem: „brzmi świetnie, ale jak to zastosować?”. Na tej prelekcji postaram się odpowiedzieć na to pytanie. Pokażę, jak użyliśmy Residuality Theory do przetestowania granic modularnego monolitu. Na warsztat weźmiemy krytyczną część produkcyjnej platformy dla branży insuretech: sprzedaż, rozliczenia i prowizje, czyli miejsce, gdzie płyną pieniądze i błędy kosztują najwięcej.\n\nNajpierw przejdziemy przez projektowanie stresorów, czyli to, jak realnie zdefiniować zagrożenia dla systemu (od tąpnięć biznesowych po nagłe zmiany regulacyjne KNF). Następnie omówię pracę z macierzą incydencji i to, jak namierzyć kruche miejsca w architekturze. Analiza wskazała u nas zupełnie inny komponent, niż podpowiadała intuicja zespołu. Pokażę też przełożenie teorii na kod, czyli jak z wyników tej symulacji wyciągnęliśmy konkretne decyzje architektoniczne (ADR) i przebudowaliśmy system przed wdrożeniem.",
+          "bio": "Wojtek od ponad 20 lat pracuje w branży IT. Uważa, że większość błędów architektonicznych nie wynika ze złych decyzji technicznych, ale z pytań, których nikt nie zadał wystarczająco wcześnie. Dlatego, zanim zaproponuje jakiekolwiek rozwiązanie, stara się zrozumieć, co tak naprawdę boli i czy w ogóle warto to budować.\n\nNa co dzień Lead Architect w MAK IT i współzałożyciel Arpeggia Studio, butikowej firmy konsultingowej działającej pod hasłem „compose before you code”. Arpeggia pomaga organizacjom myśleć architektonicznie, optymalizować procesy wytwarzania oprogramowania oraz prowadzi szkolenia dla architektów i zespołów deweloperskich.\n\nZwycięzca O'Reilly Architectural Kata (edycja Winter 2024)."
+        },
+        {
+          "name": "Michał Franc",
+          "photo": "/prelegenci/michal-franc.webp",
+          "topic": "Quo Vadis IT: odpowiedzialność, ownership i sprawczość, czyli dokąd zmierza rola inżyniera (na przykładzie Staff+)",
+          "abstract": "2025 i 2026 to lata ciekawych zmian w naszej branży. Jest intensywnie, chaotycznie i trochę niepewnie. Ciężko jednoznacznie ocenić, jak będzie wyglądał rynek i na co będzie zapotrzebowanie. Mam swoje przewidywania i chcę się nimi podzielić na tej prezentacji, by trochę obniżyć poziom niepewności, ale też zmienić mapy mentalne innym, świeżym punktem widzenia.\n\nGdy wchodziłem na rynek (18 lat temu), bazą w naszym zawodzie była znajomość języka i frameworku, pisanie kodu czy specjalistyczna wiedza techniczna. Na tym budowało się seniority. Dzisiaj jednak coraz częściej mówi się o tym, że wartość inżyniera odsuwa się od pisania kodu w stronę odpowiedzialności za efekt. Ta rewolucja nie jest do końca rewolucją, jest ewolucją procesów, które zachodziły już od lat. LLM-y i AI są tutaj tylko akceleratorem, a nie czymś, co fundamentalnie zmienia zasady gry. Nowym fundamentem inżyniera staje się triada: odpowiedzialność za efekt, ownership problemu i sprawczość, czyli zdolność, żeby realnie coś dowieźć i wygenerować wartość. To one, a nie znajomość narzędzi, zaczynają definiować seniority. Junior/mid/senior przestaje znaczyć „zna framework”, a zaczyna znaczyć „potrafi samodzielnie wziąć problem na siebie i go dowieźć”.\n\nTen chaotyczny galimatias powoduje, że na rynku zaczęły pojawiać się nowe role, takie jak Staff Engineer czy Staff+ Engineer. Na przykładzie tej roli opowiem, jak ewoluowała branża i co dziś ceni.",
+          "bio": "Michał Franc to principal engineer z 18-letnim doświadczeniem, który przeszedł całą drogę od juniora aż po principala w firmach produktowych, takich jak JustEat, JustGiving, Form3 i Affirm. Widzi swoją rolę jako architekta na dwóch poziomach: systemów oraz organizacji i sposobu, w jaki pracują ludzie. Budował skalowalne, niezawodne systemy rozproszone o globalnej skali, obsługujące dziesiątki milionów użytkowników i przetwarzające miliardy dolarów (Cloud Native, AWS, Platform Engineering, SRE, DevOps). Przede wszystkim jest jednak zorientowany na generowanie wartości biznesowej.\n\nPo godzinach hobbystycznie pisze gry (mfranc.com/game), dużo w nie gra i jest fanatykiem vima, Dwarf Fortress oraz CDDA."
+        }
+      ]
+    },
+    {
+      "id": "biznes",
+      "label": "Business",
+      "name": "Ścieżka Business",
+      "lead": "Decyzje technologiczne od strony biznesu: wdrożenia, koszty, efekty i wnioski.",
+      "slots": 12,
+      "speakers": [
+        {
+          "name": "Michał Matejczyk",
+          "photo": "/prelegenci/michal-matejczyk.webp",
+          "topic": "Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.",
+          "abstract": "Spojrzenie od strony konsultanta operacyjnego: jak jego klienci poradzili sobie z wdrożeniem systemu albo nie poradzili sobie wcale. Dlaczego jedni po 7 latach wciąż nie skończyli wdrożenia ERP, a inni dali radę.",
+          "bio": "Wiceprezes Zarządu i Dyrektor ds. Rozwoju w Entra Group. Ekspert z ponad 20-letnim doświadczeniem w obszarze produkcji, utrzymania ruchu, wdrażania projektów WCM w operacjach i zarządzania zmianą. Specjalizuje się w zmianach systemowych i procesowych w działach operacyjnych firm (produkcja, utrzymanie ruchu, jakość), angażowaniu i motywowaniu pracowników oraz zarządzaniu zmianą w oparciu o koncepcje Produkcji Klasy Światowej (WCM), TPM oraz Lean. Wypracowuje rozwiązania z zakresu zarządzania organizacją z wykorzystaniem wskaźników efektywności i wspiera firmy w transformacji oraz rozwoju kompetencji cyfrowych.\n\nDoświadczenie zdobywał w Polsce i za granicą, pracując dla kluczowych branż, m.in. przemysłu spożywczego, farmaceutycznego, ciężkiego, maszynowego, meblowego, chemicznego i wydobywczego. W Entra Group odpowiada przede wszystkim za realizację projektów w obszarach Produkcji i Utrzymania Ruchu oraz doskonalenie umiejętności miękkich pracowników w działach operacyjnych.\n\nMaster Trener WCM, członek SIM (Stowarzyszenie Interim Managerów), autor publikacji naukowych z zakresu transformacji organizacji i korzyści z wdrażania modelu WCM. Absolwent kierunku Automatyka i Robotyka na Wydziale Elektrotechniki i Automatyki Politechniki Gdańskiej."
+        },
+        {
+          "name": "Piotr Werner",
+          "photo": "/prelegenci/piotr-werner.webp",
+          "topic": "Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?",
+          "abstract": "W sezonie urlopowym 2026 r. nie ma już chyba na świecie szanującej się organizacji, która nie wdraża AI. Jak wiemy z materiałów reklamowych, to ekscytujący proces, prowadzący do zwielokrotnienia wartości firmy, przyśpieszenia procesów i uwolnienia ogromnych zasobów czasu. Armia agentów tylko czeka, by czuwać nad naszym sukcesem.\n\nMateriały reklamowe nie zawsze są jednak pisane przez ludzi (tu można by już postawić kropkę) zaangażowanych operacyjnie. Może się zdarzyć, że nie pokazują całej rzeczywistości. Może też być tak, że jeśli składniki, z których próbujemy wyczarować AI-ową zupkę nie są pierwszej jakości, potrawa może nie dostać gwiazdki Michelin.\n\nPiotrek podzieli się z nami doświadczeniem płynącym z bardziej i mniej udanych prób zastosowania AI w zespole marketingu Kuchni Vikinga. Będzie smacznie.",
+          "bio": "Mąż, ojciec, Head of Digital Analytics and Performance Marketing w Kuchni Vikinga. W codziennej pracy stara się tłumaczyć język techniczny na biznesowy (w obie strony) oraz odpowiadać na pytania: co, jak i dlaczego? Czasem również: kiedy?\n\nW e-commerce od 2014 r. Pracował głównie w in-house'owych zespołach, ma za sobą także epizod agencyjny. Zbudował od podstaw zespół analityki internetowej w Orange Polska, który pozostawił w dobrych rękach i przeniósł się do podlaskiej Kuchni Vikinga.\n\nSpecjalizuje się w analityce, ale jako że ta trudno sobie radzi bez uporządkowanych procesów, dobrych definicji celów biznesowych i KPI, a także rozsądnie zarządzanych zespołów, to również w tych obszarach ma pewne doświadczenie."
+        },
+        {
+          "name": "Norbert Pawluczuk",
+          "photo": "/prelegenci/norbert-pawluczuk.webp",
+          "topic": "Transformacja cyfrowa w branży produkcyjnej bez budżetu z kosmosu. Lekcje z wdrożenia Showroomu 3D i aplikacji myINTERTECH.",
+          "abstract": "Praktyczne studium przypadku efektywnej cyfryzacji w branży produkcyjnej bez przepalania budżetu. Na przykładzie Showroomu 3D i aplikacji myINTERTECH prelegent omówi przechodzenie od celów biznesowych do działających narzędzi B2B. Dowiesz się, jak oceniać ROI, unikać nierentownych wdrożeń, optymalizować koszty IT oraz skutecznie wykorzystywać dofinansowania na rozwój oprogramowania. Konkretne lekcje ze styku biznesu, inżynierii i technologii.",
+          "bio": "Dyrektor Marketingu / CMO w Intertech Sp. z o.o., z wieloletnim doświadczeniem w budowaniu strategii marketingowej, rebrandingu oraz cyfryzacji procesów w branży maszynowej i produkcyjnej (wcześniej związany m.in. z SaMASZ Sp. z o.o. i Pronar Sp. z o.o.). W swojej pracy łączy klasyczny marketing B2B z nowoczesnymi narzędziami cyfrowego wsparcia sprzedaży (sales enablement), stawiając na rozwiązania, które przynoszą mierzalny zwrot i realną wartość biznesową bez zbędnego przepalania budżetu.\n\nW Intertech odpowiada za całościową transformację wizerunkową marki oraz strategiczne projektowanie i wdrożenie cyfrowego ekosystemu klienta. Jest pomysłodawcą i inicjatorem projektu wirtualnego showroomu (3D/VR) oraz autorskiej aplikacji mobilnej myINTERTECH. Zwolennik praktycznego podejścia do technologii: traktuje ją nie jako marketingowy gadżet, lecz jako wieloetapowy proces skracający dystans do klienta. W ramach tworzonego środowiska digitalowego rozwija m.in. moduł „Mój Garaż” (dający użytkownikom maszyn natychmiastowy dostęp do dokumentacji i instrukcji), cyfrowy kanał zamówień części zamiennych, zdalne moduły szkoleniowe oraz narzędzia do budowania długofalowej bazy i relacji z użytkownikami końcowymi."
+        }
+      ]
+    }
+  ]
+}

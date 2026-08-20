@@ -1,0 +1,360 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SpeakerCard from '../components/SpeakerCard.astro';
+import Cfp from '../components/Cfp.astro';
+import agenda from '../data/agenda2026.json';
+
+const bizTrack = agenda.tracks.find((t) => t.id === 'biznes');
+const bizFree = bizTrack.slots - bizTrack.speakers.length;
+
+const prezentacje = (n) => {
+  const t = n % 10;
+  const h = n % 100;
+  if (n === 1) return 'prezentacja';
+  if (t >= 2 && t <= 4 && !(h >= 12 && h <= 14)) return 'prezentacje';
+  return 'prezentacji';
+};
+
+const audience = [
+  { role: 'CEO i COO', desc: 'szukających odpowiedzi, w co inwestować i jak nie przepalić budżetu.' },
+  { role: 'Dyrektorów produkcji i operacji', desc: 'mierzących się z cyfryzacją procesów i integracją danych.' },
+  { role: 'IT managerów w firmach nie-IT', desc: 'którzy wybierają dostawców, budują zespoły i rozmawiają z zarządem.' },
+  { role: 'Właścicieli firm', desc: 'którzy chcą wiedzieć, co robią firmy podobne do własnej, bez żargonu i marketingu.' },
+];
+
+const questions = [
+  'Jak zwiększyć efektywność organizacji i nie przepalić budżetu na transformację?',
+  'Jak odróżnić modne hasła od rozwiązań dających realną wartość?',
+  'Ile naprawdę kosztuje wdrożenie AI w firmie produkcyjnej?',
+  'Kiedy ERP jest odpowiedzią na problem, a kiedy jest samym problemem?',
+  'Jak firmy z regionu wybierają dostawców i czego żałują po podpisaniu umowy?',
+];
+
+const day1 = [
+  'wdrożenia AI i automatyzacji: efekty, koszty, błędy,',
+  'sukcesy i porażki digitalizacji,',
+  'co poszło nie tak i czego się nauczyliśmy.',
+];
+
+const day2 = [
+  'build vs. buy: jak to oceniać i jak nie żałować decyzji,',
+  'dane i procesy jako fundament: zanim zaczniesz wdrażać AI,',
+  'budowanie kompetencji IT w firmie nie-IT,',
+  'jak rozmawiać z dostawcami, żeby nie dać się zablokować.',
+];
+
+const formats = [
+  { name: 'Lightning Talks', desc: 'krótkie historie z praktyki.' },
+  { name: 'Case Studies', desc: 'decyzje, koszty, efekty i wnioski.' },
+  { name: 'Eksperci', desc: 'metody, które praktycy wdrażają u swoich klientów.' },
+  { name: 'Panele i AMA', desc: 'pytania, których nie zadasz podczas webinaru.' },
+  { name: 'Structured Networking', desc: '30 minut rozmów przy stolikach tematycznych. Zaplanowana wymiana z ludźmi mającymi podobne wyzwania.' },
+];
+
+const takeaways = [
+  'pomysłami wartymi sprawdzenia,',
+  'doświadczeniami innych firm,',
+  'kontaktami do ludzi rozwiązujących podobne problemy,',
+  'argumentami ułatwiającymi kolejne decyzje,',
+  'większą świadomością ryzyk i możliwości.',
+];
+---
+
+<BaseLayout
+  title="Ścieżka Business · Digitalizacja Przemysłu @ Programistok 2026"
+  description="Nowa ścieżka biznesowa konferencji Programistok. Dwa dni szczerych rozmów o decyzjach technologicznych, dla founderów, liderów i biznesu. 25–26.09.2026, Białystok."
+>
+  <!-- ===== HERO ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 pb-8 pt-14 sm:px-8 lg:pt-20" aria-labelledby="biz-title">
+    <div class="mb-6 flex flex-wrap items-center gap-3">
+      <span class="inline-flex items-center gap-2 rounded-full bg-biz px-3.5 py-1.5 font-mono text-[12px] font-semibold uppercase tracking-[0.12em] text-white">
+        <span class="h-2 w-2 rounded-full bg-white" aria-hidden="true"></span>
+        Nowość 2026
+      </span>
+      <span class="font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Ścieżka Business</span>
+    </div>
+
+    <h1 id="biz-title" class="max-w-[16ch] text-balance text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">
+      Digitalizacja <span class="text-biz-ink">Przemysłu</span> bez przepalonego budżetu
+    </h1>
+
+    <p class="mt-6 max-w-[58ch] text-[clamp(1.125rem,2vw,1.4375rem)] leading-relaxed text-muted text-balance">
+      Dwa dni, w których liderzy firm produkcyjnych i usługowych mówią wprost: co wdrożyli,
+      ile to kosztowało i czego by nie powtórzyli. Wyjdziesz z konkretnymi decyzjami do podjęcia u siebie.{' '}
+      <strong class="text-ink">Nie trzeba być programistą ani specjalistą IT.</strong>
+    </p>
+
+    <p class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-sm uppercase tracking-wide text-faint">
+      <span class="inline-flex items-center gap-2 text-ink">
+        <span class="h-3 w-3 rounded-[3px] bg-biz" aria-hidden="true"></span>25–26.09.2026
+      </span>
+      <span aria-hidden="true">//</span>
+      <span>Białystok · Politechnika Białostocka</span>
+    </p>
+
+    <div class="mt-9 flex flex-wrap gap-3.5">
+      <a href="https://programistok2026.konfeo.com/pl/groups" rel="noopener" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-biz px-7 py-4 text-base font-bold text-white transition hover:brightness-110">
+        Kup bilety <span aria-hidden="true">↗</span>
+      </a>
+      <a href="#kontakt" class="inline-flex items-center rounded-full border border-line bg-surface px-7 py-4 text-base font-semibold text-ink transition hover:border-ink">
+        Porozmawiaj z nami
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== NOWOŚĆ / NIE MASZ SIĘ CZEGO BAĆ ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="nowosc-title">
+    <div class="rounded-3xl border border-biz/25 bg-biz/[0.06] px-6 py-10 sm:px-12 lg:px-16 lg:py-14">
+      <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// To coś nowego</p>
+      <h2 id="nowosc-title" class="max-w-[24ch] text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.05] tracking-[-0.03em]">
+        Pierwszy raz otwieramy ścieżkę biznesową
+      </h2>
+      <p class="mt-5 max-w-[52ch] text-lg leading-relaxed text-muted text-balance">
+        Zbudowaliśmy ją dla ludzi, którzy podejmują decyzje o technologii, a sami jej nie piszą.
+      </p>
+      <div class="mt-10 grid gap-8 sm:gap-10 md:grid-cols-3">
+        <div class="border-t-2 border-biz/30 pt-5">
+          <p class="mb-2.5 font-mono text-[12px] font-semibold uppercase tracking-[0.1em] text-biz-ink">Bez żargonu</p>
+          <p class="text-[15px] leading-relaxed text-muted text-balance">Technologia jest tutaj narzędziem. Rozmawiamy o decyzjach, procesach i wynikach, nie o kodzie.</p>
+        </div>
+        <div class="border-t-2 border-biz/30 pt-5">
+          <p class="mb-2.5 font-mono text-[12px] font-semibold uppercase tracking-[0.1em] text-biz-ink">Bez sprzedaży</p>
+          <p class="text-[15px] leading-relaxed text-muted text-balance">Zero prezentacji produktów i sloganów. Praktycy mówią, co zadziałało, co nie i czego się nauczyli.</p>
+        </div>
+        <div class="border-t-2 border-biz/30 pt-5">
+          <p class="mb-2.5 font-mono text-[12px] font-semibold uppercase tracking-[0.1em] text-biz-ink">Wśród swoich</p>
+          <p class="text-[15px] leading-relaxed text-muted text-balance">Spotkasz ludzi, którzy mierzą się z tymi samymi decyzjami. Bez oceniania, przy jednym stole.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MANIFEST ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-label="Manifest">
+    <figure class="border-l-4 border-biz pl-6 sm:pl-10">
+      <blockquote class="max-w-[40ch] text-balance text-[clamp(1.5rem,3.5vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.02em]">
+        Jedna rozmowa z kimś, kto już przez to przeszedł, oszczędza miesiące błędów.
+      </blockquote>
+    </figure>
+  </section>
+
+  <!-- ===== DLA KOGO ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="dlakogo-title">
+    <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Dla kogo</p>
+    <h2 id="dlakogo-title" class="max-w-[20ch] text-balance text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.02] tracking-[-0.03em]">
+      Pytania, które znasz z własnej firmy
+    </h2>
+
+    <ul class="mt-8 overflow-hidden rounded-3xl border border-line bg-surface divide-y divide-line">
+      {questions.map((q, i) => (
+        <li class="flex items-baseline gap-4 px-6 py-5 sm:gap-6 sm:px-8">
+          <span class="font-mono text-sm font-semibold tabular-nums text-biz-ink" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <span class="text-balance text-[clamp(1.0625rem,1.7vw,1.3125rem)] font-medium leading-snug text-ink">{q}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-16">
+      <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Kogo tu spotkasz</p>
+      <p class="max-w-[62ch] text-lg leading-relaxed text-muted text-balance">
+        Jeżeli choć część z tych pytań pojawia się w Twojej firmie, to jesteś we właściwym miejscu.
+        Przy jednym stole spotkasz ludzi, którzy każdego dnia decydują o przyszłości swoich organizacji:
+      </p>
+
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+        {audience.map((a) => (
+          <div class="rounded-2xl border border-line bg-surface p-6 sm:p-7">
+            <div class="flex items-center gap-2.5">
+              <span class="h-2.5 w-2.5 shrink-0 rounded-[3px] bg-biz" aria-hidden="true"></span>
+              <h3 class="text-balance text-lg font-black tracking-[-0.01em]">{a.role}</h3>
+            </div>
+            <p class="mt-2.5 text-[15px] leading-relaxed text-muted text-balance">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAM DWÓCH DNI ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="program-title">
+    <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Program dwóch dni</p>
+    <h2 id="program-title" class="text-balance text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.02] tracking-[-0.03em]">
+      Jak to działa i jak to zbudować u siebie
+    </h2>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2">
+      <article class="rounded-3xl border border-line bg-surface p-8 sm:p-10">
+        <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.12em] text-biz-ink">Dzień 1</p>
+        <h3 class="mb-4 text-balance text-2xl font-black tracking-[-0.02em]">Jak to działa w praktyce</h3>
+        <p class="mb-6 text-[15px] leading-relaxed text-muted text-balance">
+          Firmy produkcyjne i usługowe z regionu opowiadają o swoich wdrożeniach: co zrobiły,
+          co z tego wyszło i jakie błędy popełniły.
+        </p>
+        <ul class="space-y-2.5">
+          {day1.map((t) => (
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-ink">
+              <span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-biz" aria-hidden="true"></span>{t}
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="rounded-3xl border border-line bg-surface p-8 sm:p-10">
+        <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.12em] text-biz-ink">Dzień 2</p>
+        <h3 class="mb-4 text-balance text-2xl font-black tracking-[-0.02em]">Jak to zbudować u siebie</h3>
+        <p class="mb-6 text-[15px] leading-relaxed text-muted text-balance">
+          Jak podejmować decyzje technologiczne bez technicznego zaplecza? Jak wybierać dostawców
+          i priorytetyzować inwestycje przy ograniczonym budżecie?
+        </p>
+        <ul class="space-y-2.5">
+          {day2.map((t) => (
+            <li class="flex items-start gap-3 text-[15px] leading-relaxed text-ink">
+              <span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-biz" aria-hidden="true"></span>{t}
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PRELEGENCI ŚCIEŻKI BUSINESS ===== -->
+  <section id="prelegenci" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="prelegenci-title">
+    <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Wystąpienia</p>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+      <h2 id="prelegenci-title" class="text-balance text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.02] tracking-[-0.03em]">
+        Kto wystąpi na ścieżce Business
+      </h2>
+      <span class="rounded-full bg-biz/10 px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] text-biz-ink">
+        {bizTrack.slots} {prezentacje(bizTrack.slots)}
+      </span>
+    </div>
+    <p class="mt-4 max-w-[62ch] text-lg leading-relaxed text-muted text-pretty">
+      Program ogłaszamy stopniowo. Poniżej wystąpienia potwierdzone do tej pory.
+    </p>
+
+    <div class="mt-10 flex flex-col gap-5">
+      {bizTrack.speakers.map((s) => <SpeakerCard speaker={s} track="biznes" />)}
+
+      <div class="flex flex-wrap items-center justify-between gap-5 rounded-3xl border border-dashed border-line bg-surface/50 px-7 py-8 sm:px-9">
+        <div>
+          <p class="mb-2 font-mono text-[12px] uppercase tracking-[0.12em] text-biz-ink">Wkrótce</p>
+          <p class="text-balance text-[17px] font-bold leading-snug text-ink">
+            Kolejne {bizFree} {prezentacje(bizFree)} ogłosimy w najbliższych tygodniach
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href={agenda.cfp.forms.biznes}
+            rel="noopener"
+            target="_blank"
+            class="inline-flex items-center gap-2 rounded-full bg-biz px-6 py-3.5 text-[15px] font-bold text-white transition hover:brightness-110"
+          >
+            Zgłoś prelekcję Business <span aria-hidden="true">↗</span>
+          </a>
+          <a href="/agenda#biznes" class="inline-flex items-center gap-1.5 font-semibold text-biz-ink transition hover:gap-2.5">
+            Pełna agenda <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CFP BUSINESS ===== -->
+  <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-label="Call for Papers">
+    <Cfp only="biznes" />
+  </section>
+
+  <!-- ===== JAK ROZMAWIAMY ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="format-title">
+    <div class="rounded-3xl bg-ink px-6 py-12 text-cream sm:px-12 lg:px-16 lg:py-16">
+      <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-cream">// Jak rozmawiamy</p>
+      <h2 id="format-title" class="max-w-[24ch] text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.05] tracking-[-0.03em]">
+        Budujemy program wokół wymiany doświadczeń, nie prezentacji
+      </h2>
+      <div class="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-9 lg:grid-cols-3">
+        {formats.map((f) => (
+          <div class="border-t-2 border-cream/25 pt-5">
+            <h3 class="mb-2 text-balance text-lg font-black tracking-[-0.01em] text-cream">{f.name}</h3>
+            <p class="text-[15px] leading-relaxed text-cream-dim text-balance">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JEDEN BILET / DWIE ŚCIEŻKI ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="jedno-title">
+    <div class="rounded-3xl border border-biz/25 bg-biz/[0.06] px-6 py-10 sm:px-12 lg:px-16 lg:py-14">
+      <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Jedno wydarzenie</p>
+      <h2 id="jedno-title" class="max-w-[26ch] text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.05] tracking-[-0.03em]">
+        Jeden bilet, dwa dni, dwie ścieżki
+      </h2>
+      <p class="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted text-balance">
+        Ścieżka Business jest częścią większego Programistoku. Ten sam bilet wpuszcza Cię też na ścieżkę IT.
+        Jeśli zechcesz zobaczyć, jak te same decyzje wyglądają od strony inżynierów, zapraszamy. Przerwy, lunch
+        i networking są wspólne dla wszystkich, więc founder siada do stołu z programistą.
+      </p>
+      <p class="mt-4 max-w-[62ch] text-lg leading-relaxed text-ink text-balance">
+        <strong>Programistok łączy biznes i technologię przy jednym stole</strong>, zamiast rozdzielać je na dwie osobne konferencje.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CO WYNIESIESZ ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="wynik-title">
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div>
+        <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Co z tego wyniesiesz</p>
+        <h2 id="wynik-title" class="text-balance text-[clamp(2rem,4.5vw,3rem)] font-black leading-[1.03] tracking-[-0.03em]">
+          Wrócisz z lepszymi decyzjami niż te, z którymi tu przyjeżdżasz
+        </h2>
+        <p class="mt-6 max-w-[50ch] text-lg leading-relaxed text-muted text-balance">
+          Nie sprzedajemy gotowych odpowiedzi, bo każda firma jest inna. Dajemy coś wartościowszego:
+          możliwość skonfrontowania własnych pomysłów z doświadczeniami firm, które już przez to przeszły.
+          Po dwóch dniach wrócisz do organizacji z:
+        </p>
+      </div>
+      <ul class="flex flex-col justify-center gap-3 border-t border-line pt-6 lg:border-t-0 lg:pt-0">
+        {takeaways.map((t) => (
+          <li class="flex items-start gap-3 border-b border-line pb-3 text-[17px] leading-relaxed text-ink text-balance">
+            <span class="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-biz" aria-hidden="true"></span>{t}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT (KAROL) ===== -->
+  <section id="kontakt" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="kontakt-title">
+    <div class="overflow-hidden rounded-3xl border border-line bg-surface">
+      <div class="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="px-6 py-12 sm:px-12 lg:py-16">
+          <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Kontakt</p>
+          <h2 id="kontakt-title" class="max-w-[20ch] text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.05] tracking-[-0.03em]">
+            Masz pytania o ścieżkę biznesową?
+          </h2>
+          <p class="mt-6 max-w-[48ch] text-lg leading-relaxed text-muted text-balance">
+            Za ścieżkę Business odpowiada <strong class="text-ink">Karol Wiszowaty</strong>. Napisz lub zadzwoń.
+            Chętnie opowie o programie, formacie i o tym, czy to wydarzenie jest dla Twojej firmy.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3.5">
+            <a href="mailto:karol.wiszowaty@gmail.com" class="inline-flex items-center gap-2 rounded-full bg-biz px-7 py-4 text-base font-bold text-white transition hover:brightness-110">
+              Napisz e-mail <span aria-hidden="true">↗</span>
+            </a>
+            <a href="tel:+48668095749" class="inline-flex items-center rounded-full border border-line bg-bg px-7 py-4 text-base font-semibold text-ink transition hover:border-ink">
+              +48 668 095 749
+            </a>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center gap-1 border-t border-line bg-ink px-6 py-10 text-cream sm:px-12 lg:border-l lg:border-t-0">
+          <p class="font-mono text-[12px] uppercase tracking-[0.14em] text-cream-faint">Opiekun ścieżki Business</p>
+          <p class="mt-2 text-2xl font-black tracking-[-0.02em]">Karol Wiszowaty</p>
+          <a href="mailto:karol.wiszowaty@gmail.com" class="mt-4 text-cream-dim underline decoration-white/25 underline-offset-4 transition hover:text-cream">karol.wiszowaty@gmail.com</a>
+          <a href="tel:+48668095749" class="text-cream-dim underline decoration-white/25 underline-offset-4 transition hover:text-cream">+48 668 095 749</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

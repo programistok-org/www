@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Self-hostowany Inter (zmienny) — bez zewnętrznych requestów (GDPR) */
+@import "@fontsource-variable/inter/index.css";
+
+@theme {
+  --font-sans: "Inter Variable", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+
+  /* Ciepła jasna baza */
+  --color-bg: #f5f3ee; /* papier */
+  --color-surface: #ffffff; /* karty */
+  --color-line: #e3e0d8; /* hairline */
+  --color-ink: #14130f; /* czerń */
+  --color-muted: #565249; /* pomocniczy — kontrast ~8:1 */
+  --color-faint: #6d685e; /* meta/mono — AA */
+
+  /* Akcent brand */
+  --color-accent: #dc1945;
+  --color-accent-ink: #b3123a; /* akcent jako tekst na jasnym — AA */
+  --color-biz: #d9531e; /* Business */
+  --color-biz-ink: #b5431a; /* Business jako tekst — AA */
+
+  /* Ciemna sekcja kontrastowa */
+  --color-dark: #14130f;
+  --color-cream: #f4f2ec;
+  --color-cream-dim: #d0ccc2;
+  --color-cream-faint: #a8a399;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  @keyframes spin3d {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  /* WCAG 2.3.3 — szanuj preferencję ograniczonego ruchu */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}

@@ -1,0 +1,503 @@
+[
+  {
+    "slug": "programistok-3",
+    "title": "Programistok #3",
+    "year": 2011,
+    "date": "2011-11-03",
+    "coverPhoto": "",
+    "description": "<p>Trzecie spotkanie lokalnej społeczności Programistok, poświęcone systemowi kontroli wersji Git.</p>",
+    "talks": [
+      {
+        "title": "Git",
+        "speaker": "Wojtek Piekutowski",
+        "shortDescription": "Wprowadzenie do systemu kontroli wersji Git.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=iIl_vjKezhA"
+      }
+    ]
+  },
+  {
+    "slug": "programistok-4",
+    "title": "Programistok #4",
+    "year": 2011,
+    "date": "2011-12-08",
+    "coverPhoto": "",
+    "description": "<p>Czwarte spotkanie lokalnej społeczności Programistok.</p>",
+    "talks": [
+      {
+        "title": "Vim",
+        "speaker": "",
+        "shortDescription": "Prelekcja dotycząca edytora Vim.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Integruj się",
+        "speaker": "",
+        "shortDescription": "",
+        "youtubeUrl": ""
+      }
+    ]
+  },
+  {
+    "slug": "programistok-5",
+    "title": "Programistok #5",
+    "year": 2012,
+    "date": "2012-01-12",
+    "coverPhoto": "",
+    "description": "<p>Piąte spotkanie Programistoku, poświęcone Ruby on Rails oraz testowaniu aplikacji railsowych.</p>",
+    "talks": [
+      {
+        "title": "Podstawy Ruby on Rails",
+        "speaker": "Hubert Łępicki",
+        "shortDescription": "Wprowadzenie do frameworka Ruby on Rails.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=sSger96gMEE"
+      },
+      {
+        "title": "O testowaniu w Railsach",
+        "speaker": "Wojtek Piekutowski",
+        "shortDescription": "Prelekcja o testowaniu aplikacji tworzonych w Ruby on Rails.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=lypRRc93jro"
+      }
+    ]
+  },
+  {
+    "slug": "programistok-6",
+    "title": "Programistok VI",
+    "year": 2012,
+    "date": "2012-03-15",
+    "coverPhoto": "",
+    "description": "<p>Szóste spotkanie Programistoku. Oficjalna playlista archiwalna zawiera materiały dotyczące Active Admin oraz testowania aplikacji mobilnych.</p>",
+    "talks": [
+      {
+        "title": "Active Admin",
+        "speaker": "",
+        "shortDescription": "Prelekcja dotycząca biblioteki Active Admin.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Testowanie aplikacji na Androida i iOS",
+        "speaker": "",
+        "shortDescription": "Materiał dotyczący testowania aplikacji mobilnych; właściwa prezentacja rozpoczyna się w połowie nagrania.",
+        "youtubeUrl": ""
+      }
+    ]
+  },
+  {
+    "slug": "programistok-2015",
+    "title": "Programistok 2015",
+    "year": 2015,
+    "date": "2015-10-10",
+    "coverPhoto": "",
+    "description": "<p>Pierwsza edycja technologicznie agnostycznej konferencji społeczności IT z Białegostoku. Odbyła się na Wydziale Elektrycznym Politechniki Białostockiej i obejmowała tematykę związaną między innymi z C#, Ruby, Pythonem i JavaScriptem.</p>",
+    "talks": [
+      {
+        "title": "Urządzenia, programista, „Internet of Things”",
+        "speaker": "Tomasz Kopacz",
+        "shortDescription": "Prelekcja poświęcona programowaniu urządzeń oraz rozwijającemu się obszarowi Internetu Rzeczy.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "From legacy to DDD",
+        "speaker": "Andrzej Krzywda",
+        "shortDescription": "Prelekcja o przechodzeniu od systemu legacy do architektury opartej na Domain-Driven Design.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "CRUD is dead",
+        "speaker": "Norbert Wójtowicz",
+        "shortDescription": "Prelekcja podważająca klasyczny model aplikacji CRUD i omawiająca alternatywne sposoby modelowania systemów.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Jak pisać, żeby nie testować?",
+        "speaker": "Łukasz Pełszyński",
+        "shortDescription": "Prelekcja o projektowaniu kodu w sposób ograniczający potrzebę rozbudowanych testów i ułatwiający utrzymanie systemu.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=_kUnZdQcr2Q"
+      },
+      {
+        "title": "Lightning Talks",
+        "speaker": "",
+        "shortDescription": "Sesja krótkich wystąpień podczas Programistok 2015.",
+        "youtubeUrl": ""
+      }
+    ]
+  },
+  {
+    "slug": "programistok-2016",
+    "title": "Programistok 2016",
+    "year": 2016,
+    "date": "2016-10-01",
+    "coverPhoto": "",
+    "description": "<p>Druga pełna edycja konferencji Programistok odbyła się 1 października 2016 roku na Wydziale Elektrycznym Politechniki Białostockiej. Program obejmował sześć głównych prelekcji oraz osiem pięciominutowych lightning talków.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/QK-KZ5uxt28\" title=\"Programistok 2016 - CODERS PARADISE & KODZIĆ CHCĘ\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+    "talks": [
+      {
+        "title": "Diabeł tkwi w szczegółach (albo: jak działają błędy bezpieczeństwa)",
+        "speaker": "Gynvael Coldwind",
+        "shortDescription": "Prelekcja o mechanizmach prowadzących do błędów bezpieczeństwa oraz niskopoziomowych szczegółach działania oprogramowania.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=hcp9ymfbofs"
+      },
+      {
+        "title": "Clean, Learn and Visualise data with R",
+        "speaker": "Barbara Fusińska",
+        "shortDescription": "Prelekcja o czyszczeniu, analizowaniu i wizualizowaniu danych przy użyciu języka R.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=tmCen7pBr34"
+      },
+      {
+        "title": "Raster Shadery na Commodore 64",
+        "speaker": "Michał Taszycki",
+        "shortDescription": "Techniczna prezentacja o efektach rastrowych i programowaniu grafiki na Commodore 64.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=7RTO6JfMhew"
+      },
+      {
+        "title": "Continuous Delivery — architektura i praktyka",
+        "speaker": "Łukasz Szydło",
+        "shortDescription": "Prelekcja o architekturze i praktycznym wdrażaniu Continuous Delivery.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=nBhnR-RfyjA"
+      },
+      {
+        "title": "Przygoda z React.js — czyli coś więcej niż technologia",
+        "speaker": "Marcin Grzywaczewski",
+        "shortDescription": "Prelekcja o doświadczeniach związanych z React.js oraz szerszym kontekście wdrażania tej technologii.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=qwpAxydW0ow"
+      },
+      {
+        "title": "",
+        "speaker": "Michał Szczepaniak",
+        "shortDescription": "",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Lightning Talks",
+        "speaker": "",
+        "shortDescription": "Sesja ośmiu pięciominutowych wystąpień podczas Programistok 2016.",
+        "youtubeUrl": ""
+      }
+    ]
+  },
+  {
+    "slug": "programistok-2017",
+    "title": "Programistok 2017",
+    "year": 2017,
+    "date": "2017-10-07",
+    "coverPhoto": "",
+    "description": "<p>Kolejna edycja społecznościowej konferencji IT w Białymstoku, łącząca prezentacje techniczne z wymianą doświadczeń pomiędzy przedstawicielami różnych technologii.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/e8O8S28f7gI\" title=\"Programistok 2017 - PROMO VIDEO\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+    "talks": [
+      {
+        "title": "Jak podnieść wydajność zespołu",
+        "speaker": "",
+        "shortDescription": "Prelekcja o metodach zwiększania efektywności pracy zespołu programistycznego.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=AtlnqFk6pqE"
+      },
+      {
+        "title": "Znajdź swoje korzenie — dziedziczenie w praktyce",
+        "speaker": "Agata Malec-Sromek",
+        "shortDescription": "Prelekcja dotycząca dziedziczenia oraz jego zastosowania w projektowaniu oprogramowania.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=WXc-e5YdotI"
+      },
+      {
+        "title": "Moja niesamowita przygoda z Open Source",
+        "speaker": "Adam Sitnik",
+        "shortDescription": "Historia zaangażowania autora w projekty open source oraz wynikające z niego doświadczenia.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=hKojnNR7vVo"
+      },
+      {
+        "title": "Czym się różni AWS od Azure?",
+        "speaker": "Mirosław Burnejko",
+        "shortDescription": "Porównanie dwóch popularnych platform chmurowych: Amazon Web Services i Microsoft Azure.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=un4FdJeFMPg"
+      },
+      {
+        "title": "DDD: Q&A — czyli co gryzie świadomego programistę/programistkę",
+        "speaker": "Sławomir Sobótka",
+        "shortDescription": "Sesja pytań i odpowiedzi dotycząca Domain-Driven Design oraz praktycznych problemów projektowania systemów.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=_5oXEJ4jdmc"
+      },
+      {
+        "title": "Lightning Talks",
+        "speaker": "",
+        "shortDescription": "Zbiorcze nagranie krótkich wystąpień podczas Programistok 2017.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=inz6ckmfHJ0"
+      }
+    ]
+  },
+  {
+    "slug": "programistok-2018",
+    "title": "Programistok 2018",
+    "year": 2018,
+    "date": "2018-09-29",
+    "coverPhoto": "",
+    "description": "<p>Edycja konferencji poświęcona wymianie wiedzy pomiędzy programistami, architektami, testerami i specjalistami danych. Wydarzenie pozostawało niezależne od konkretnych języków i platform.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/oS9afMYP210\" title=\"Programistok 2018 teaser trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+    "talks": [
+      {
+        "title": "Dane, dane, wszędzie dane. Co każdy powinien wiedzieć na ich temat",
+        "speaker": "Damian Widera",
+        "shortDescription": "Wprowadzenie do najważniejszych zagadnień związanych z danymi i ich znaczeniem we współczesnych systemach informatycznych.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=qWFBl9tlIaM"
+      },
+      {
+        "title": "Engineering Architecture",
+        "speaker": "Jakub Kubryński",
+        "shortDescription": "Prelekcja o praktycznym projektowaniu architektury oprogramowania i podejmowaniu decyzji architektonicznych.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=Dog9MPM3UMY"
+      },
+      {
+        "title": "Flutter — jak stworzyć piękną aplikację w godzinę",
+        "speaker": "Paulina Szklarska",
+        "shortDescription": "Praktyczna prezentacja tworzenia aplikacji mobilnej przy użyciu frameworka Flutter.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=8Wq1D-AV0QU"
+      },
+      {
+        "title": "Programowanie funkcyjne: rozpal na nowo programistyczną pasję",
+        "speaker": "Miłosz Piechocki",
+        "shortDescription": "Prelekcja pokazująca, jak idee programowania funkcyjnego mogą poprawić sposób projektowania i rozwijania oprogramowania.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=XnY2KHWgUtw"
+      },
+      {
+        "title": "Requirements & BDD: The lost art of analysis and acceptance",
+        "speaker": "",
+        "shortDescription": "Prelekcja o analizie wymagań oraz wykorzystaniu Behavior-Driven Development do definiowania kryteriów akceptacji.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=71fdXhlHXjE"
+      },
+      {
+        "title": "Kiedy od softu zależy ludzkie życie — o systemach safety-critical",
+        "speaker": "Maciej Gajdzica",
+        "shortDescription": "Prelekcja o procesach, normach, ograniczeniach i środkach bezpieczeństwa stosowanych przy tworzeniu systemów safety-critical.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Lightning Talks",
+        "speaker": "",
+        "shortDescription": "Zbiorcze nagranie krótkich wystąpień uczestników Programistok 2018.",
+        "youtubeUrl": ""
+      }
+    ]
+  },
+  {
+    "slug": "programistok-2019",
+    "title": "Programistok 2019",
+    "year": 2019,
+    "date": "",
+    "coverPhoto": "",
+    "description": "<p>Piąta edycja konferencji Programistok, organizowanej ponad podziałami technologicznymi przez białostockie społeczności IT.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qAaO3Wg9jb4\" title=\"Programistok 2019\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+    "talks": [
+      {
+        "title": "Kod w Kosmosie!",
+        "speaker": "Adam Kubera",
+        "shortDescription": "Prelekcja o oprogramowaniu wykorzystywanym w projektach związanych z technologiami kosmicznymi.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=QI9XiXE6zPw"
+      },
+      {
+        "title": "Loosely coupled architecture — jak pozbyć się efektu domina",
+        "speaker": "Radosław Maziarka",
+        "shortDescription": "Prelekcja o luźnym powiązaniu komponentów i ograniczaniu kaskadowego wpływu zmian w architekturze systemu.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=4jv_E5G9Z04"
+      },
+      {
+        "title": "A miało być tak... bez wycieków!",
+        "speaker": "Konrad Kokosa",
+        "shortDescription": "Prelekcja poświęcona zarządzaniu pamięcią i diagnozowaniu wycieków w aplikacjach.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=CVUQdiTHXro"
+      },
+      {
+        "title": "Przegląd i porównanie technologii programowania aplikacji mobilnych",
+        "speaker": "Jakub Turek",
+        "shortDescription": "Porównanie dostępnych technologii i podejść do budowania aplikacji mobilnych.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=EiKy2iDFJ2A"
+      },
+      {
+        "title": "Kubernetes na fizycznych maszynach po 1,5 roku na produkcji",
+        "speaker": "Michał Ambroziewicz",
+        "shortDescription": "Podsumowanie doświadczeń z produkcyjnego wykorzystania Kubernetesa na serwerach fizycznych.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=sMWKJVcwYy4"
+      },
+      {
+        "title": "Testy wydajnościowe — to proste (*)",
+        "speaker": "Sebastian Korczyk",
+        "shortDescription": "Praktyczne omówienie przygotowywania, wykonywania i interpretowania testów wydajnościowych.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=RSMu1l-r5Gk"
+      },
+      {
+        "title": "Lightning Talks",
+        "speaker": "",
+        "shortDescription": "Zbiorcze nagranie krótkich prezentacji uczestników i prelegentów Programistok 2019.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=hJIsxNBH8Eg"
+      }
+    ]
+  },
+  {
+    "slug": "programeetstok-2022",
+    "title": "PrograMeetstok 2022",
+    "year": 2022,
+    "date": "",
+    "coverPhoto": "",
+    "description": "<p>Powrót społeczności Programistok po przerwie pandemicznej w formule meetupu. Program wydarzenia obejmował cztery prezentacje techniczne oraz networking.</p>",
+    "talks": []
+  },
+  {
+    "slug": "programistok-2023",
+    "title": "Programistok 2023",
+    "year": 2023,
+    "date": "2023-10-07",
+    "coverPhoto": "",
+    "description": "<p>Szósta pełna edycja konferencji Programistok. Odbyła się na Politechnice Białostockiej i ponownie połączyła przedstawicieli różnych technologii, lokalnych społeczności oraz firm IT.</p>",
+    "talks": [
+      {
+        "title": "Dlaczego GraphQL?",
+        "speaker": "Artur Czemiel",
+        "shortDescription": "Omówienie zastosowań GraphQL, problemów rozwiązywanych przez tę technologię oraz jej miejsca w architekturze API.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=V4WTv0ffPPY"
+      },
+      {
+        "title": "Architektura Ewolucyjna. Co to i jak to ugryźć?",
+        "speaker": "Kamil Bączek i Michał Jędrzejewski",
+        "shortDescription": "Wprowadzenie do architektury ewolucyjnej oraz praktycznych sposobów rozwijania systemu wraz ze zmieniającymi się wymaganiami.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=tfCtM8D_DZ4"
+      },
+      {
+        "title": "Leniwy programista na autopilocie — o życiu z low-code i no-code",
+        "speaker": "Marcin Zajkowski",
+        "shortDescription": "Praktyczne spojrzenie na platformy low-code i no-code oraz ich wpływ na codzienną pracę programisty.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=-ASXrOy7nU8"
+      },
+      {
+        "title": "Piszę mniej testów i lepiej śpię — piramida testów w praktyce",
+        "speaker": "Dawid Dęby",
+        "shortDescription": "Prelekcja o doborze właściwych poziomów testów i praktycznym stosowaniu piramidy testów.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=EatjSJnYgbs"
+      },
+      {
+        "title": "Praktyczny Event Sourcing w aplikacji do cashflow managementu",
+        "speaker": "",
+        "shortDescription": "Studium praktycznego zastosowania Event Sourcingu w systemie służącym do zarządzania przepływami pieniężnymi.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=yeNsjfxmy_k"
+      },
+      {
+        "title": "Supermoce PostgreSQL, czyli poznajmy bazodanowy scyzoryk szwajcarski",
+        "speaker": "",
+        "shortDescription": "Przegląd mniej oczywistych możliwości PostgreSQL i funkcji pozwalających wykorzystywać bazę w zaawansowanych scenariuszach.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=8PAuuoG_PnM"
+      },
+      {
+        "title": "Lightning Talks",
+        "speaker": "",
+        "shortDescription": "Zbiorcze nagranie krótkich wystąpień zaprezentowanych podczas Programistok 2023.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=PB9_5YJl1h4"
+      }
+    ]
+  },
+  {
+    "slug": "programaistok-2025",
+    "title": "ProgramAIstok 2025",
+    "year": 2025,
+    "date": "2025-12-06",
+    "coverPhoto": "",
+    "description": "<p>Specjalna edycja Programistoku poświęcona praktycznemu wykorzystaniu sztucznej inteligencji w codziennej pracy programistów. Wydarzenie na Politechnice Białostockiej obejmowało prezentacje, panel o relacji AI i biznesu oraz networking.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Oq3HRK2tsFM\" title=\"ProgramAIstok 2025 - PROMO Song\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+    "talks": [
+      {
+        "title": "Open Source AI w praktyce, nie w hasłach",
+        "speaker": "Piotr Tynecki",
+        "shortDescription": "Praktyczna prezentacja otwartych narzędzi i modeli AI oraz ich rzeczywistych zastosowań.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=Q5oMTBg5cXQ"
+      },
+      {
+        "title": "Software development is dead. Long live software development!",
+        "speaker": "Maciej Lotkowski",
+        "shortDescription": "Prelekcja o wpływie narzędzi AI na proces tworzenia oprogramowania i zmieniającej się roli programisty.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=FkmaZ_r76Wg"
+      },
+      {
+        "title": "Moje małe potworki",
+        "speaker": "Rafał Camlet",
+        "shortDescription": "Praktyczna prezentacja autorskich eksperymentów, automatyzacji i narzędzi tworzonych z wykorzystaniem AI.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=TjLkzL1VUiY"
+      },
+      {
+        "title": "Ciemność widzę, ciemność. Co się stanie z prawdą opartą na faktach?",
+        "speaker": "Wojciech Łaguna",
+        "shortDescription": "Prelekcja o wpływie generatywnej AI na informację, wiarygodność źródeł i pojęcie prawdy opartej na faktach.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=CP4zq9yLOhI"
+      },
+      {
+        "title": "AI — od przewagi do zależności. Systemy Wysokiego Ryzyka",
+        "speaker": "Kamil Sijko i Łukasz Wałejko",
+        "shortDescription": "Prelekcja o przechodzeniu od przewagi zapewnianej przez AI do zależności od systemów wysokiego ryzyka.",
+        "youtubeUrl": "https://www.youtube.com/watch?v=UEcEcWHtKpQ"
+      },
+      {
+        "title": "AI w architekturze i oprogramowaniu",
+        "speaker": "S. Dąbkowski",
+        "shortDescription": "Prelekcja o zastosowaniu AI w projektowaniu architektury oraz wytwarzaniu oprogramowania.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "",
+        "speaker": "Janiak",
+        "shortDescription": "",
+        "youtubeUrl": ""
+      }
+    ]
+  },
+  {
+    "slug": "programeetstok-2026",
+    "title": "PrograMeetstok 2026",
+    "year": 2026,
+    "date": "2026-04-08",
+    "coverPhoto": "",
+    "description": "<p>Spotkanie społeczności Programistok w klubie GWINT w Białymstoku, skoncentrowane na praktycznym wykorzystaniu agentów AI. Program obejmował dwie pełne prezentacje oraz siedem lightning talków.</p>",
+    "talks": [
+      {
+        "title": "Większa produktywność — mniejsze zrozumienie",
+        "speaker": "Krzysztof Piotrowski",
+        "shortDescription": "Prelekcja o wzroście produktywności dzięki modelom językowym oraz ryzyku powstawania długu poznawczego.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Modelowanie domeny z LLM-ami, czyli jak ugryźć DDD z AI",
+        "speaker": "Tomasz Ducin",
+        "shortDescription": "Praktyczne spojrzenie na wykorzystanie modeli językowych podczas modelowania domeny i pracy z Domain-Driven Design.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Ja i AI",
+        "speaker": "Łukasz Własiukiewicz",
+        "shortDescription": "Lightning talk o zmianie roli programisty pod wpływem AI, od pisania kodu do projektowania i weryfikowania rozwiązań.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Nasze pliki.md",
+        "speaker": "Rafał Camlet",
+        "shortDescription": "Lightning talk o konfigurowaniu środowiska pracy z agentami oraz wykorzystaniu plików Markdown jako kontekstu dla AI.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Repozytorium jako żywa baza wiedzy dla AI i teamu",
+        "speaker": "Jakub Dakowicz",
+        "shortDescription": "Prezentacja sposobu przekształcenia repozytorium kodu w aktualizowaną bazę wiedzy przydatną zespołowi i agentom AI.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Fabryka własnych SaaS",
+        "speaker": "Mateusz Lemieszko",
+        "shortDescription": "Lightning talk o eksperymentach z budowaniem własnych produktów SaaS z wykorzystaniem narzędzi AI.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "AI Gateway — na co to komu?",
+        "speaker": "Jakub Wąsek",
+        "shortDescription": "Omówienie roli bramki AI, problemów rozwiązywanych przez ten komponent oraz przykładów jego zastosowania.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Embedded + LLM = Rewolucja w projektowaniu",
+        "speaker": "Adrian Białobrodzki i Damian Stefaniuk",
+        "shortDescription": "Przykład wykorzystania modeli językowych do analizowania dokumentacji technicznej i porównywania komponentów w projektach embedded.",
+        "youtubeUrl": ""
+      },
+      {
+        "title": "Bezpieczne AI w praktyce, czyli jak nie wylać danych razem z promptem",
+        "speaker": "Sebastian Burzyński",
+        "shortDescription": "Prezentacja lekkiego proxy chroniącego dane wrażliwe podczas komunikacji aplikacji z modelami językowymi.",
+        "youtubeUrl": ""
+      }
+    ]
+  }
+]

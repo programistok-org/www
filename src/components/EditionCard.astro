@@ -1,0 +1,56 @@
+---
+import Logo from './Logo.astro';
+
+const { edition } = Astro.props;
+const { slug, title, date, coverPhoto } = edition;
+const formattedDate = date
+  ? new Date(date).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+const talkCount = edition.talks?.length ?? 0;
+---
+
+<a
+  href={`/edycje/${slug}`}
+  class="group flex flex-col overflow-hidden rounded-3xl border border-line bg-surface transition hover:-translate-y-1 hover:shadow-[0_16px_40px_-16px_rgba(20,19,15,0.25)]"
+>
+  <div class="aspect-video overflow-hidden border-b border-line bg-bg">
+    {coverPhoto ? (
+      <img
+        src={coverPhoto}
+        alt={`Okładka: ${title}`}
+        loading="lazy"
+        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    ) : (
+      <div class="flex h-full w-full items-center justify-center [perspective:800px]">
+        <div
+          data-spin-logo
+          class="[animation-play-state:paused] [transform-style:preserve-3d] motion-safe:animate-[spin3d_9s_linear_infinite]"
+        >
+          <Logo size={64} />
+        </div>
+      </div>
+    )}
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="text-xl font-black tracking-[-0.02em] group-hover:text-accent-ink">{title}</h3>
+    <p class="mt-auto pt-3 font-mono text-[13px] uppercase tracking-wide text-faint">
+      {formattedDate}{talkCount > 0 && <> · {talkCount} {talkCount === 1 ? 'wystąpienie' : 'wystąpień'}</>}
+    </p>
+  </div>
+</a>
+
+<script>
+  const spinners = document.querySelectorAll('[data-spin-logo]');
+  if (spinners.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          e.target.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+        }
+      },
+      { rootMargin: '100px' }
+    );
+    spinners.forEach((s) => io.observe(s));
+  }
+</script>
