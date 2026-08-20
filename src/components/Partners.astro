@@ -1,4 +1,23 @@
 ---
+const sponsors = [
+  {
+    name: 'cronn',
+    logo: '/cronn.svg',
+    logoClass: 'h-10',
+    href: 'https://cronn.pl',
+    description:
+      'cronn tworzy oprogramowanie na zamówienie dla klientów z Niemiec i całej Europy, a jego zespoły pracują z Bonn, Hamburga i Białegostoku. Firma specjalizuje się w Javie i technologiach open source, prowadzi projekty w duchu agile oraz software craftsmanship, zajmuje się również automatyzacją testów, projektowaniem UI/UX i rozwiązaniami opartymi na sztucznej inteligencji. Białostocki oddział jest pełnoprawną częścią tej organizacji i realizuje te same projekty co koledzy zza Odry.',
+  },
+  {
+    name: 'PLUM',
+    logo: '/plum.svg',
+    logoClass: 'h-12',
+    href: 'https://plum.pl',
+    description:
+      'PLUM to białostocka firma technologiczna, w której oprogramowanie łączy się ze sprzętem i działa w świecie fizycznym. Programujemy systemy wbudowane w C i C++, tworzymy aplikacje mobilne w Kotlinie i Swifcie oraz aplikacje na platformę .NET, a także rozwijamy usługi IoT łączące urządzenia z chmurą. Nasze rozwiązania pracują między innymi w systemach HVAC i HEMS oraz w inteligentnych systemach pomiarowych dla branży wodnej i gazowej.',
+  },
+];
+
 const partners = [
   {
     name: 'Fundacja INFOTECH',
@@ -18,19 +37,78 @@ const partners = [
   },
 ];
 
-const supporters = [
-  { name: 'Evoluma', logo: '/evoluma.svg', logoClass: 'h-14', href: 'https://evoluma.pl' },
-  { name: 'Białostocki Park Naukowo-Technologiczny', logo: '/bpnt.svg', logoClass: 'h-18', href: 'https://bpnt.bialystok.pl' },
+const smallPartners = [
+  {
+    name: 'Izba Przemysłowo-Handlowa w Białymstoku',
+    logo: '/iph.svg',
+    logoClass: 'h-14',
+    href: 'https://iph.bialystok.pl',
+    description:
+      'Izba Przemysłowo-Handlowa w Białymstoku od 35 lat wspiera rozwój przedsiębiorczości i integruje środowisko biznesowe województwa podlaskiego. Łączy przedsiębiorców, instytucje publiczne, naukę i otoczenie biznesu, tworząc przestrzeń do współpracy, wymiany doświadczeń i realizacji inicjatyw wspierających rozwój gospodarczy regionu. IPH angażuje się również w projekty związane z innowacjami, nowymi technologiami oraz rozwojem kompetencji przedsiębiorców i pracowników.',
+  },
+  {
+    name: 'Podlaska Fundacja Rozwoju Regionalnego',
+    logo: '/pfrr.svg',
+    logoClass: 'h-11',
+    href: 'https://pfrr.pl',
+    description:
+      'Podlaska Fundacja Rozwoju Regionalnego pomaga lokalnym firmom od czasów, kiedy symbolami nowoczesnego biura były faks, drukarka igłowa i dyskietka. Wspiera przedsiębiorców w zdobywaniu dofinansowań, rozwijaniu działalności, wchodzeniu na rynki zagraniczne, innowacjach i cyfryzacji. Jeśli szukacie organizacji, która przełoży Wam język dofinansowań na konkretne możliwości, Starobojarska 15 w Białymstoku to dobry adres.',
+  },
+  {
+    name: 'Podlaski Klub Biznesu',
+    logo: '/pkb.webp',
+    logoClass: 'h-14 rounded-lg',
+    href: 'https://podlaskiklubbiznesu.com.pl',
+    description:
+      'Podlaski Klub Biznesu to jedna z największych organizacji biznesowych w północno-wschodniej Polsce, zrzeszająca przedsiębiorców, menedżerów i przedstawicieli instytucji otoczenia biznesu. Celem Klubu jest budowanie relacji, wspieranie rozwoju przedsiębiorczości oraz promocja współpracy pomiędzy biznesem, samorządem i środowiskiem naukowym. PKB organizuje konferencje, misje gospodarcze oraz inicjatywy wspierające rozwój gospodarczy i promocję województwa podlaskiego w kraju i za granicą.',
+  },
+  {
+    name: 'Evoluma',
+    logo: '/evoluma.svg',
+    logoClass: 'h-12',
+    href: 'https://evoluma.pl',
+    description:
+      'Evoluma to podlaski klaster przemysłowy, który zrzesza ponad 170 firm i instytucji zatrudniających razem około 14 tysięcy osób. Skupia branżę metalowo-maszynową, energetykę, automatyzację produkcji i IT, a swoim członkom pomaga w transformacji cyfrowej oraz zielonej, prowadząc szkolenia, projekty edukacyjne i program Bon na Cyfryzację.',
+  },
+  {
+    name: 'Białostocki Park Naukowo-Technologiczny',
+    logo: '/bpnt.svg',
+    logoClass: 'h-16',
+    href: 'https://bpnt.bialystok.pl',
+    description:
+      'Białostocki Park Naukowo-Technologiczny wspiera innowacyjne firmy oraz osoby, które dopiero zaczynają, udostępniając im biura, laboratoria, coworking Centroom i zaplecze konferencyjne. Prowadzi program inkubacji Hub of Talents, pomaga komercjalizować wyniki badań i gromadzi społeczność ponad dwudziestu pięciu rezydentów z branży technologicznej, medycznej oraz IT.',
+  },
 ];
 ---
 
 <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="partnerzy-title">
-  <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Partnerzy</p>
+  <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Wsparcie</p>
   <h2 id="partnerzy-title" class="max-w-[22ch] text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.05] tracking-[-0.03em]">
     Programistok powstaje przy współpracy i dzięki wsparciu
   </h2>
 
-  <div class="mt-10 grid gap-5 md:grid-cols-2">
+  <p class="mt-10 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Sponsorzy</p>
+  <div class="mt-5 grid gap-5 md:grid-cols-2">
+    {sponsors.map((s) => (
+      <article class="flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
+        <div class="mb-6 flex min-h-[48px] items-center">
+          <img src={s.logo} alt={s.name} class={`${s.logoClass} w-auto max-w-full`} />
+        </div>
+        <p class="flex-1 text-[15px] leading-relaxed text-muted text-pretty">{s.description}</p>
+        <a
+          href={s.href}
+          rel="noopener"
+          target="_blank"
+          class="mt-6 inline-flex items-center gap-2 self-start font-mono text-[13px] uppercase tracking-wide text-accent-ink transition-colors hover:text-ink"
+        >
+          {s.href.replace('https://', '')} <span aria-hidden="true">↗</span>
+        </a>
+      </article>
+    ))}
+  </div>
+
+  <p class="mt-12 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Partnerzy</p>
+  <div class="mt-5 grid gap-5 md:grid-cols-2">
     {partners.map((p) => (
       <article class="flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
         <div class="mb-6 flex min-h-[48px] items-center">
@@ -49,13 +127,23 @@ const supporters = [
     ))}
   </div>
 
-  <div class="mt-10 border-t border-line pt-10">
-    <div class="flex flex-wrap items-center gap-x-14 gap-y-8">
-      {supporters.map((s) => (
-        <a href={s.href} rel="noopener" target="_blank" class="transition hover:opacity-70">
-          <img src={s.logo} alt={s.name} loading="lazy" class={`${s.logoClass} w-auto max-w-full`} />
+  <div class="mt-5 grid gap-5 md:grid-cols-3">
+    {smallPartners.map((i) => (
+      <article class="flex flex-col rounded-3xl border border-line bg-surface p-7 sm:p-8">
+        <div class="mb-5 flex min-h-[56px] items-center">
+          <img src={i.logo} alt={i.name} loading="lazy" class={`${i.logoClass} w-auto max-w-full`} />
+        </div>
+        <p class="flex-1 text-[14px] leading-relaxed text-muted text-pretty">{i.description}</p>
+        <a
+          href={i.href}
+          rel="noopener"
+          target="_blank"
+          class="mt-5 inline-flex items-center gap-2 self-start font-mono text-[12px] uppercase tracking-wide text-accent-ink transition-colors hover:text-ink"
+        >
+          {i.href.replace('https://', '')} <span aria-hidden="true">↗</span>
         </a>
-      ))}
-    </div>
+      </article>
+    ))}
   </div>
+
 </section>
