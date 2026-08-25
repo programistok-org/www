@@ -18,7 +18,7 @@ const sponsors = [
   },
 ];
 
-const partners = [
+const hosts = [
   {
     name: 'Fundacja INFOTECH',
     logo: '/infotech.svg',
@@ -37,7 +37,7 @@ const partners = [
   },
 ];
 
-const smallPartners = [
+const partners = [
   {
     name: 'Izba Przemysłowo-Handlowa w Białymstoku',
     logo: '/iph.svg',
@@ -87,7 +87,26 @@ const smallPartners = [
     Programistok powstaje przy współpracy i dzięki wsparciu
   </h2>
 
-  <p class="mt-10 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Sponsorzy</p>
+  <div class="mt-10 grid gap-5 md:grid-cols-2">
+    {hosts.map((p) => (
+      <article class="flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
+        <div class="mb-6 flex min-h-[48px] items-center">
+          <img src={p.logo} alt={p.name} class={`${p.logoClass} w-auto max-w-full`} />
+        </div>
+        <p class="flex-1 text-[15px] leading-relaxed text-muted text-pretty">{p.description}</p>
+        <a
+          href={p.href}
+          rel="noopener"
+          target="_blank"
+          class="mt-6 inline-flex items-center gap-2 self-start font-mono text-[13px] uppercase tracking-wide text-accent-ink transition-colors hover:text-ink"
+        >
+          {p.href.replace('https://', '')} <span aria-hidden="true">↗</span>
+        </a>
+      </article>
+    ))}
+  </div>
+
+  <p class="mt-12 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Sponsorzy</p>
   <div class="mt-5 grid gap-5 md:grid-cols-2">
     {sponsors.map((s) => (
       <article class="flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
@@ -108,27 +127,8 @@ const smallPartners = [
   </div>
 
   <p class="mt-12 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Partnerzy</p>
-  <div class="mt-5 grid gap-5 md:grid-cols-2">
-    {partners.map((p) => (
-      <article class="flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
-        <div class="mb-6 flex min-h-[48px] items-center">
-          <img src={p.logo} alt={p.name} class={`${p.logoClass} w-auto max-w-full`} />
-        </div>
-        <p class="flex-1 text-[15px] leading-relaxed text-muted text-pretty">{p.description}</p>
-        <a
-          href={p.href}
-          rel="noopener"
-          target="_blank"
-          class="mt-6 inline-flex items-center gap-2 self-start font-mono text-[13px] uppercase tracking-wide text-accent-ink transition-colors hover:text-ink"
-        >
-          {p.href.replace('https://', '')} <span aria-hidden="true">↗</span>
-        </a>
-      </article>
-    ))}
-  </div>
-
   <div class="mt-5 grid gap-5 md:grid-cols-3">
-    {smallPartners.map((i) => (
+    {partners.map((i) => (
       <article class="flex flex-col rounded-3xl border border-line bg-surface p-7 sm:p-8">
         <div class="mb-5 flex min-h-[56px] items-center">
           <img src={i.logo} alt={i.name} loading="lazy" class={`${i.logoClass} w-auto max-w-full`} />

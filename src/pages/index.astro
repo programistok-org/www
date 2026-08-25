@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroLogo3D from '../components/HeroLogo3D.astro';
 import Cfp from '../components/Cfp.astro';
+import agenda from '../data/agenda2026.json';
 ---
 
 <BaseLayout
-  title="Programistok 2026 · konferencja IT & Business w Białymstoku"
-  description="Dwudniowa konferencja podlaskiej społeczności IT. 25–26.09.2026, Białystok. Dwie ścieżki: IT i Business."
+  title="Programistok 2026 · konferencja IT i biznes w Białymstoku"
+  description="Dwudniowa konferencja podlaskiej społeczności IT. 25–26.09.2026, Białystok. Dwie ścieżki: IT i Biznes."
 >
   <!-- ===== HERO ===== -->
   <section class="mx-auto grid max-w-[1200px] items-center gap-10 px-5 pb-10 pt-14 sm:px-8 lg:grid-cols-[auto_1fr] lg:gap-16 lg:pt-24" aria-labelledby="hero-title">
@@ -92,7 +93,7 @@ import Cfp from '../components/Cfp.astro';
           <div class="h-1.5 w-16 rounded-full bg-biz"></div>
           <span class="rounded-full bg-biz/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-biz-ink">Nowość 2026</span>
         </div>
-        <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.12em] text-biz-ink">Ścieżka 02 · Business</p>
+        <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.12em] text-biz-ink">Ścieżka 02 · Biznes</p>
         <h3 class="mb-4 text-2xl font-black tracking-[-0.02em]">Dla founderów, liderów i biznesu</h3>
         <p class="text-base leading-relaxed text-muted text-pretty">
           Jak wykorzystywać technologię do rozwoju organizacji, podejmować lepsze decyzje
@@ -103,7 +104,7 @@ import Cfp from '../components/Cfp.astro';
             Poznaj ścieżkę biznesową <span aria-hidden="true">→</span>
           </a>
           <a href="/agenda#biznes" class="inline-flex items-center gap-1.5 font-semibold text-biz-ink transition hover:gap-2.5">
-            Agenda ścieżki Business <span aria-hidden="true">→</span>
+            Agenda ścieżki Biznes <span aria-hidden="true">→</span>
           </a>
         </div>
       </article>
@@ -111,9 +112,11 @@ import Cfp from '../components/Cfp.astro';
   </section>
 
   <!-- ===== CFP ===== -->
-  <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-label="Call for Papers">
-    <Cfp />
-  </section>
+  {agenda.cfp.open && (
+    <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-label="Call for Papers">
+      <Cfp />
+    </section>
+  )}
 
   <!-- ===== O NAS ===== -->
   <section id="o-nas" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="onas-title">
@@ -127,7 +130,7 @@ import Cfp from '../components/Cfp.astro';
           <p>Programistok to jedna z najbardziej rozpoznawalnych konferencji technologicznych organizowanych przez społeczność w Polsce.</p>
           <p>Powstał z inicjatywy lokalnych meetupów, które połączyły siły, aby stworzyć ogólnopolskie wydarzenie na Podlasiu. Od ponad dekady Programistok gromadzi ekspertów z całej Polski i tworzy przestrzeń do rozmów o tym, co w technologii naprawdę ma znaczenie.</p>
           <p>Program konferencji jest technologicznie agnostyczny. Zamiast skupiać się na jednym języku czy frameworku, rozmawiamy o wyzwaniach, które pozostają aktualne niezależnie od wykorzystywanego stosu technologicznego.</p>
-          <p>Od 2026 roku rozwijamy również ścieżkę Business. Tworzymy przestrzeń, w której technologia spotyka się z biznesem, a eksperci i przedsiębiorcy mogą wymieniać wiedzę, doświadczenia i pomysły.</p>
+          <p>Od 2026 roku rozwijamy również ścieżkę Biznes. Tworzymy przestrzeń, w której technologia spotyka się z biznesem, a eksperci i przedsiębiorcy mogą wymieniać wiedzę, doświadczenia i pomysły.</p>
         </div>
       </div>
     </div>
@@ -143,7 +146,7 @@ import Cfp from '../components/Cfp.astro';
       <h2 id="bilety-title" class="max-w-[16ch] text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">
         Zapraszamy na Programistok 2026
       </h2>
-      <p class="mt-6 font-mono text-sm uppercase tracking-wide text-white/85">25–26.09.2026 // Białystok // IT + Business</p>
+      <p class="mt-6 font-mono text-sm uppercase tracking-wide text-white/85">25–26.09.2026 // Białystok // IT + Biznes</p>
 
       <div class="mt-9 flex flex-wrap gap-3">
         <a

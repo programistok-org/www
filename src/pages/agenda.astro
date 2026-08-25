@@ -23,7 +23,7 @@ const prezentacje = (n) => {
 
 <BaseLayout
   title="Agenda 2026 · Programistok"
-  description="Program Programistok 2026: 24 prezentacje w dwa dni, dwie ścieżki (IT i Business). Ogłaszamy stopniowo. 25.09 i 26.09.2026, Białystok."
+  description="Program Programistok 2026: 24 prezentacje w dwa dni, dwie ścieżki (IT i Biznes). Ogłaszamy stopniowo. 25.09 i 26.09.2026, Białystok."
 >
   <!-- ===== HERO ===== -->
   <section class="mx-auto max-w-[1200px] px-5 pb-8 pt-14 sm:px-8 lg:pt-20" aria-labelledby="agenda-title">
@@ -57,7 +57,7 @@ const prezentacje = (n) => {
           {track.name}
         </h2>
         <span class={`rounded-full px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] ${theme[track.id].chip}`}>
-          {track.slots} {prezentacje(track.slots)}
+          {track.speakers.length}/{track.slots} {prezentacje(track.slots)}
         </span>
       </div>
 
@@ -70,29 +70,30 @@ const prezentacje = (n) => {
           <div>
             <p class={`mb-2 font-mono text-[12px] uppercase tracking-[0.12em] ${theme[track.id].label}`}>Wkrótce</p>
             <p class="text-balance text-[17px] font-bold leading-snug text-ink">
-              Kolejne wystąpienia ogłosimy w najbliższych tygodniach
-            </p>
-            <p class="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-muted text-pretty">
-              Kilka miejsc wciąż czeka na zgłoszenia.
+              Kolejne {track.slots - track.speakers.length} {prezentacje(track.slots - track.speakers.length)} ogłosimy w najbliższych tygodniach
             </p>
           </div>
-          <a
-            href={agenda.cfp.forms[track.id]}
-            rel="noopener"
-            target="_blank"
-            class={`inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold text-white transition hover:brightness-110 ${theme[track.id].btn}`}
-          >
-            Zgłoś prelekcję {track.label} <span aria-hidden="true">↗</span>
-          </a>
+          {agenda.cfp.open && (
+            <a
+              href={agenda.cfp.forms[track.id]}
+              rel="noopener"
+              target="_blank"
+              class={`inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold text-white transition hover:brightness-110 ${theme[track.id].btn}`}
+            >
+              Zgłoś prelekcję {track.label} <span aria-hidden="true">↗</span>
+            </a>
+          )}
         </div>
       </div>
     </section>
   ))}
 
   <!-- ===== CFP ===== -->
-  <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-label="Call for Papers">
-    <Cfp tone="dark" />
-  </section>
+  {agenda.cfp.open && (
+    <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-label="Call for Papers">
+      <Cfp tone="dark" />
+    </section>
+  )}
 
   <!-- ===== BILETY ===== -->
   <section class="mx-auto max-w-[1200px] px-5 pb-14 sm:px-8" aria-label="Bilety">

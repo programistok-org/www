@@ -1,0 +1,459 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '@fontsource/montserrat/600.css';
+import '@fontsource/montserrat/700.css';
+import '@fontsource/montserrat/800.css';
+
+const VARIANTS = [
+  { id: 'ink', label: 'Ciemna', bg: '#14130f', text: '#f4f2ec' },
+  { id: 'cream', label: 'Jasna', bg: '#f4f2ec', text: '#14130f' },
+];
+---
+
+<BaseLayout
+  title="Wybieram się na Programistok · generator grafik"
+  description="Zrób sobie grafikę na Instagram i LinkedIn: wgraj zdjęcie, pobierz post 4:5 i story 9:16 z informacją, że wybierasz się na Programistok 2026."
+>
+  <section class="mx-auto max-w-[1200px] px-5 pb-8 pt-14 sm:px-8 lg:pt-20">
+    <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.16em] text-faint">// Generator</p>
+
+    <h1 class="max-w-[18ch] text-balance text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">
+      Wybieram się na <span class="text-accent">Programistok</span>
+    </h1>
+
+    <p class="mt-6 max-w-[58ch] text-[clamp(1.125rem,2vw,1.4375rem)] leading-relaxed text-muted text-pretty">
+      Wgraj swoje zdjęcie, dobierz kadr i pobierz gotowy komplet: post 4:5 na feed oraz story 9:16.
+      Wszystko dzieje się w Twojej przeglądarce, żaden plik nie trafia na nasz serwer.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-[1200px] px-5 pb-16 sm:px-8" aria-label="Generator grafik">
+    <div class="grid gap-6 lg:grid-cols-[360px_1fr] lg:items-start">
+      <div class="flex flex-col gap-6 rounded-3xl border border-line bg-surface p-7 sm:p-8 lg:sticky lg:top-24">
+        <div class="flex flex-col gap-2">
+          <label for="photo" class="font-mono text-[12px] uppercase tracking-[0.12em] text-faint">Twoje zdjęcie</label>
+          <input
+            id="photo"
+            type="file"
+            accept="image/*"
+            class="w-full rounded-xl border border-line bg-bg px-3 py-2.5 text-[14px] file:mr-3 file:rounded-lg file:border-0 file:bg-ink file:px-3 file:py-1.5 file:text-[13px] file:font-semibold file:text-cream"
+          />
+          <p class="text-[13px] leading-relaxed text-faint">Bez zdjęcia grafika też zadziała: zostanie sam kolor i logo.</p>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="name" class="font-mono text-[12px] uppercase tracking-[0.12em] text-faint">Podpis (opcjonalny)</label>
+          <textarea
+            id="name"
+            rows="2"
+            maxlength="80"
+            placeholder="Imię Nazwisko / firma"
+            class="w-full resize-y rounded-xl border border-line bg-bg px-3.5 py-2.5 text-[15px] outline-none focus-visible:border-ink"
+          ></textarea>
+          <p class="text-[13px] leading-relaxed text-faint">Enter łamie linię.</p>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="font-mono text-[12px] uppercase tracking-[0.12em] text-faint">Kolorystyka</span>
+          <div class="flex gap-2.5" id="variants">
+            {VARIANTS.map((v, i) => (
+              <button
+                type="button"
+                data-variant={v.id}
+                data-bg={v.bg}
+                data-text={v.text}
+                aria-pressed={i === 0 ? 'true' : 'false'}
+                class="h-10 w-10 rounded-xl border-2 border-line transition aria-pressed:border-ink"
+                style={`background:${v.bg}`}
+              >
+                <span class="sr-only">{v.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3" data-crop hidden>
+          <div class="flex flex-col gap-1.5">
+            <label for="zoom" class="font-mono text-[12px] uppercase tracking-[0.12em] text-faint">Powiększenie</label>
+            <input id="zoom" type="range" min="1" max="3" step="0.01" value="1" class="accent-accent" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="offx" class="font-mono text-[12px] uppercase tracking-[0.12em] text-faint">Przesuń w poziomie</label>
+            <input id="offx" type="range" min="-0.5" max="0.5" step="0.005" value="0" class="accent-accent" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="offy" class="font-mono text-[12px] uppercase tracking-[0.12em] text-faint">Przesuń w pionie</label>
+            <input id="offy" type="range" min="-0.5" max="0.5" step="0.005" value="0" class="accent-accent" />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2.5 border-t border-line pt-6">
+          <button
+            id="dl-both"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-[15px] font-bold text-white transition hover:brightness-110"
+          >
+            Pobierz komplet 4:5 + 9:16
+          </button>
+          <div class="flex gap-2.5">
+            <button
+              id="dl-45"
+              type="button"
+              class="flex-1 rounded-full border border-line px-4 py-3 text-[14px] font-semibold text-ink transition hover:border-ink"
+            >
+              Tylko 4:5
+            </button>
+            <button
+              id="dl-916"
+              type="button"
+              class="flex-1 rounded-full border border-line px-4 py-3 text-[14px] font-semibold text-ink transition hover:border-ink"
+            >
+              Tylko 9:16
+            </button>
+          </div>
+          <p id="status" class="min-h-[1.25em] font-mono text-[12px] text-faint" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <div class="flex gap-2.5" role="tablist" aria-label="Podgląd formatu">
+          <button
+            type="button"
+            data-preview="1080x1350"
+            aria-pressed="true"
+            class="rounded-full border border-line px-5 py-2 font-mono text-[12px] uppercase tracking-[0.1em] text-faint transition aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-cream"
+          >
+            Post 4:5
+          </button>
+          <button
+            type="button"
+            data-preview="1080x1920"
+            aria-pressed="false"
+            class="rounded-full border border-line px-5 py-2 font-mono text-[12px] uppercase tracking-[0.1em] text-faint transition aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-cream"
+          >
+            Story 9:16
+          </button>
+        </div>
+
+        <div class="flex justify-center rounded-3xl border border-line bg-surface p-5 sm:p-8">
+          <canvas
+            id="canvas"
+            width="1080"
+            height="1350"
+            class="h-auto w-full max-w-[420px] rounded-xl shadow-[0_16px_50px_rgba(20,19,15,0.18)]"
+          ></canvas>
+        </div>
+
+        <p class="text-[14px] leading-relaxed text-muted text-pretty">
+          Wrzucając grafikę na Instagram czy LinkedIn oznacz nas: <strong class="text-ink">@programistok</strong>.
+          Story 9:16 ma zapas na górze i dole, żeby awatar i pole odpowiedzi nie zasłoniły napisu.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const photoEl = document.getElementById('photo');
+    const nameEl = document.getElementById('name');
+    const zoomEl = document.getElementById('zoom');
+    const offxEl = document.getElementById('offx');
+    const offyEl = document.getElementById('offy');
+    const statusEl = document.getElementById('status');
+    const cropBox = document.querySelector('[data-crop]');
+
+    const HEAD = ['WYBIERAM SIĘ NA', 'PROGRAMISTOK'];
+    const DATE = '25-26.09.2026 // BIAŁYSTOK';
+    const BAR = ['#14130f', '#dc1945', '#0296d8', '#f7d33d'];
+    const STORY_TOP = 0.14;
+    const STORY_BOTTOM = 0.2;
+
+    let W = 1080;
+    let H = 1350;
+    let bgColor = '#14130f';
+    let textColor = '#f4f2ec';
+    let photo = null;
+
+    const sygnetDark = new Image();
+    const sygnetLight = new Image();
+    let marksReady = 0;
+
+    // SVG bez atrybutów width/height rasteryzuje się w 300×150, więc wymuszamy rozmiar
+    function svgWithSize(txt, target) {
+      const m = txt.match(/viewBox="\s*([-\d.]+)[\s,]+([-\d.]+)[\s,]+([-\d.]+)[\s,]+([-\d.]+)\s*"/);
+      const ratio = m ? Number(m[4]) / Number(m[3]) : 1;
+      return txt.replace(/<svg([^>]*)>/, (_, attrs) => {
+        const clean = attrs.replace(/\s(width|height)="[^"]*"/g, '');
+        return `<svg${clean} width="${target}" height="${Math.round(target * ratio)}">`;
+      });
+    }
+
+    (async () => {
+      const pairs = [
+        [sygnetDark, '/programistok-sygnet.svg'],
+        [sygnetLight, '/programistok-sygnet-white.svg'],
+      ];
+      for (const [img, url] of pairs) {
+        try {
+          const txt = await fetch(url).then((r) => r.text());
+          img.onload = () => { marksReady++; draw(); };
+          img.src = URL.createObjectURL(new Blob([svgWithSize(txt, 1200)], { type: 'image/svg+xml' }));
+        } catch {
+          /* brak sygnetu nie blokuje generowania */
+        }
+      }
+    })();
+
+    function isDark(hex) {
+      const n = parseInt(hex.slice(1), 16);
+      const r = (n >> 16) & 255;
+      const g = (n >> 8) & 255;
+      const b = n & 255;
+      return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255 < 0.5;
+    }
+
+    function setFormat(size) {
+      [W, H] = size.split('x').map(Number);
+      canvas.width = W;
+      canvas.height = H;
+      canvas.style.maxWidth = H > W * 1.5 ? '320px' : '420px';
+      draw();
+    }
+
+    function drawCover(img, x, y, w, h) {
+      const zoom = parseFloat(zoomEl.value) || 1;
+      const r = Math.max(w / img.width, h / img.height) * zoom;
+      const iw = img.width * r;
+      const ih = img.height * r;
+      const dx = (parseFloat(offxEl.value) || 0) * w;
+      const dy = (parseFloat(offyEl.value) || 0) * h;
+      ctx.drawImage(img, x + (w - iw) / 2 + dx, y + (h - ih) / 2 + dy, iw, ih);
+    }
+
+    function fitLines(lines, maxW, startPx, weight) {
+      let px = startPx;
+      while (px > 16) {
+        ctx.font = `${weight} ${px}px Montserrat, "Helvetica Neue", Arial, sans-serif`;
+        const widest = Math.max(...lines.map((l) => ctx.measureText(l).width));
+        if (widest <= maxW) break;
+        px -= 2;
+      }
+      return px;
+    }
+
+    // kontur sygnetu jako maska na zdjęcie
+    let maskPath = null;
+    let maskVB = [201, 176];
+    fetch('/programistok-kontur.svg')
+      .then((r) => r.text())
+      .then((txt) => {
+        const d = txt.match(/\sd="([^"]+)"/);
+        const vb = txt.match(/viewBox="([-\d.\s]+)"/);
+        if (vb) { const n = vb[1].trim().split(/\s+/).map(Number); maskVB = [n[2], n[3]]; }
+        if (d) { maskPath = new Path2D(d[1]); draw(); }
+      })
+      .catch(() => {});
+
+    function draw() {
+      const story = H / W >= 1.5;
+      const insetTop = story ? H * STORY_TOP : 0;
+      const insetBottom = story ? H * STORY_BOTTOM : 0;
+      const dark = isDark(bgColor);
+      const ink = textColor;
+
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, W, H);
+
+      const m = W * 0.075;
+      const top = insetTop + m;
+      const bottom = H - insetBottom - m;
+      const maxW = W - m * 2;
+
+      const mark = dark ? sygnetLight : sygnetDark;
+      const sygnet = Math.min(W, H) * 0.12;
+      if (mark.complete && mark.naturalWidth) {
+        const r = sygnet / Math.max(mark.naturalWidth, mark.naturalHeight);
+        ctx.drawImage(mark, W - m - mark.naturalWidth * r, top, mark.naturalWidth * r, mark.naturalHeight * r);
+      }
+
+      const labelPx = Math.round(Math.min(W, H) * 0.024);
+      const spacing = Math.round(labelPx * 0.18);
+      const hasSpacing = 'letterSpacing' in ctx;
+
+      if (hasSpacing) ctx.letterSpacing = `${spacing}px`;
+      ctx.font = `600 ${labelPx}px ui-monospace, "SF Mono", Menlo, monospace`;
+      ctx.fillStyle = ink;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.globalAlpha = 0.8;
+      ctx.fillText('// 2026', m, top + sygnet * 0.32);
+      ctx.globalAlpha = 1;
+      if (hasSpacing) ctx.letterSpacing = '0px';
+
+      // blok tekstu liczony od dołu
+      const personLines = nameEl.value.split('\n').map((l) => l.trim()).filter(Boolean);
+      const person = personLines.length > 0;
+      const barH = Math.max(3, Math.round(H * 0.006));
+      const gap = Math.min(W, H) * 0.03;
+
+      const headPx = fitLines(HEAD, maxW, Math.min(W, H) * 0.092, 800);
+      const lineH = headPx * 1.04;
+      const headH = HEAD.length * lineH;
+      const personH = person ? personLines.length * labelPx * 1.7 + labelPx * 0.5 : 0;
+      const dateH = labelPx * 1.8;
+      const blockH = headH + personH + dateH;
+      const blockTop = bottom - blockH;
+
+      // pole na zdjęcie między etykietą a tekstem, w proporcji konturu
+      const photoTop = top + sygnet + gap * 1.2;
+      const photoBottom = blockTop - gap * 1.6 - barH;
+      const availH = photoBottom - photoTop;
+      const ratio = maskVB[1] / maskVB[0];
+      let boxW = maxW;
+      let boxH = boxW * ratio;
+      if (boxH > availH) { boxH = availH; boxW = boxH / ratio; }
+
+      if (boxW > 60 && boxH > 60) {
+        const x0 = m + (maxW - boxW) / 2;
+        const y0 = photoTop + (availH - boxH) / 2;
+        const s = Math.min(boxW / maskVB[0], boxH / maskVB[1]);
+        const dx = x0 + (boxW - maskVB[0] * s) / 2;
+        const dy = y0 + (boxH - maskVB[1] * s) / 2;
+
+        ctx.save();
+        if (maskPath) {
+          ctx.translate(dx, dy);
+          ctx.scale(s, s);
+          ctx.clip(maskPath);
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        ctx.fillStyle = dark ? 'rgba(255,255,255,0.08)' : 'rgba(20,19,15,0.08)';
+        ctx.fillRect(x0, y0, boxW, boxH);
+        if (photo) drawCover(photo, x0, y0, boxW, boxH);
+        ctx.restore();
+
+        if (!photo) {
+          ctx.save();
+          ctx.globalAlpha = 0.3;
+          const big = dark ? sygnetLight : sygnetDark;
+          if (big.complete && big.naturalWidth) {
+            const r = (boxH * 0.4) / Math.max(big.naturalWidth, big.naturalHeight);
+            const bw = big.naturalWidth * r;
+            const bh = big.naturalHeight * r;
+            ctx.drawImage(big, x0 + (boxW - bw) / 2, y0 + (boxH - bh) / 2, bw, bh);
+          }
+          ctx.restore();
+        }
+      }
+
+      const barY = blockTop - gap * 0.8;
+      const barW = Math.min(maxW, W * 0.3);
+      const segW = barW / BAR.length;
+      BAR.forEach((c, k) => {
+        // czarny segment ginie na ciemnym tle
+        ctx.fillStyle = dark && c === '#14130f' ? '#f4f2ec' : c;
+        ctx.fillRect(Math.round(m + k * segW), barY, Math.ceil(segW), barH);
+      });
+
+      let y = blockTop;
+      ctx.font = `800 ${headPx}px Montserrat, "Helvetica Neue", Arial, sans-serif`;
+      ctx.fillStyle = ink;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      for (const l of HEAD) { ctx.fillText(l, m, y); y += lineH; }
+
+      if (person) {
+        y += labelPx * 0.5;
+        ctx.font = `600 ${Math.round(labelPx * 1.3)}px Montserrat, "Helvetica Neue", Arial, sans-serif`;
+        ctx.globalAlpha = 0.9;
+        for (const l of personLines) { ctx.fillText(l, m, y); y += labelPx * 1.7; }
+        ctx.globalAlpha = 1;
+      }
+
+      y += labelPx * 0.4;
+      if (hasSpacing) ctx.letterSpacing = `${spacing}px`;
+      ctx.font = `600 ${labelPx}px ui-monospace, "SF Mono", Menlo, monospace`;
+      ctx.globalAlpha = 0.72;
+      ctx.fillText(DATE, m, y);
+      ctx.globalAlpha = 1;
+      if (hasSpacing) ctx.letterSpacing = '0px';
+    }
+
+    function slug() {
+      const person = nameEl.value.replace(/\s+/g, ' ').trim();
+      const base = person ? `wybieram-sie-na-programistok-${person}` : 'wybieram-sie-na-programistok';
+      return base
+        .toLowerCase()
+        .replace(/ł/g, 'l')
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    function download(size) {
+      const prevW = W;
+      const prevH = H;
+      setFormat(size);
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = `${slug()}-${size}.png`;
+      a.click();
+      setFormat(`${prevW}x${prevH}`);
+      return a.download;
+    }
+
+    document.getElementById('dl-45').addEventListener('click', () => {
+      statusEl.textContent = `pobrano ${download('1080x1350')}`;
+    });
+    document.getElementById('dl-916').addEventListener('click', () => {
+      statusEl.textContent = `pobrano ${download('1080x1920')}`;
+    });
+    document.getElementById('dl-both').addEventListener('click', () => {
+      download('1080x1350');
+      // Safari gubi drugi klik w tej samej klatce
+      setTimeout(() => {
+        download('1080x1920');
+        statusEl.textContent = 'pobrano komplet: 4:5 i 9:16';
+      }, 350);
+    });
+
+    document.querySelectorAll('[data-preview]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-preview]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        setFormat(btn.dataset.preview);
+      });
+    });
+
+    document.getElementById('variants').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-variant]');
+      if (!btn) return;
+      bgColor = btn.dataset.bg;
+      textColor = btn.dataset.text;
+      [...btn.parentElement.children].forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      draw();
+    });
+
+    photoEl.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const img = new Image();
+      img.onload = () => {
+        photo = img;
+        cropBox.hidden = false;
+        zoomEl.value = '1';
+        offxEl.value = '0';
+        offyEl.value = '0';
+        draw();
+      };
+      img.onerror = () => { statusEl.textContent = 'nie udało się wczytać zdjęcia'; };
+      img.src = URL.createObjectURL(file);
+    });
+
+    [nameEl, zoomEl, offxEl, offyEl].forEach((el) => el.addEventListener('input', draw));
+
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+    draw();
+  </script>
+</BaseLayout>

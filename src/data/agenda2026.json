@@ -4,7 +4,8 @@
     "forms": {
       "it": "https://forms.gle/F4gFE2JgFCrj9wJW6",
       "biznes": "https://forms.gle/ZenpMoPgYL6FWptk7"
-    }
+    },
+    "open": false
   },
   "tracks": [
     {
@@ -27,13 +28,41 @@
           "topic": "Quo Vadis IT: odpowiedzialność, ownership i sprawczość, czyli dokąd zmierza rola inżyniera (na przykładzie Staff+)",
           "abstract": "2025 i 2026 to lata ciekawych zmian w naszej branży. Jest intensywnie, chaotycznie i trochę niepewnie. Ciężko jednoznacznie ocenić, jak będzie wyglądał rynek i na co będzie zapotrzebowanie. Mam swoje przewidywania i chcę się nimi podzielić na tej prezentacji, by trochę obniżyć poziom niepewności, ale też zmienić mapy mentalne innym, świeżym punktem widzenia.\n\nGdy wchodziłem na rynek (18 lat temu), bazą w naszym zawodzie była znajomość języka i frameworku, pisanie kodu czy specjalistyczna wiedza techniczna. Na tym budowało się seniority. Dzisiaj jednak coraz częściej mówi się o tym, że wartość inżyniera odsuwa się od pisania kodu w stronę odpowiedzialności za efekt. Ta rewolucja nie jest do końca rewolucją, jest ewolucją procesów, które zachodziły już od lat. LLM-y i AI są tutaj tylko akceleratorem, a nie czymś, co fundamentalnie zmienia zasady gry. Nowym fundamentem inżyniera staje się triada: odpowiedzialność za efekt, ownership problemu i sprawczość, czyli zdolność, żeby realnie coś dowieźć i wygenerować wartość. To one, a nie znajomość narzędzi, zaczynają definiować seniority. Junior/mid/senior przestaje znaczyć „zna framework”, a zaczyna znaczyć „potrafi samodzielnie wziąć problem na siebie i go dowieźć”.\n\nTen chaotyczny galimatias powoduje, że na rynku zaczęły pojawiać się nowe role, takie jak Staff Engineer czy Staff+ Engineer. Na przykładzie tej roli opowiem, jak ewoluowała branża i co dziś ceni.",
           "bio": "Michał Franc to principal engineer z 18-letnim doświadczeniem, który przeszedł całą drogę od juniora aż po principala w firmach produktowych, takich jak JustEat, JustGiving, Form3 i Affirm. Widzi swoją rolę jako architekta na dwóch poziomach: systemów oraz organizacji i sposobu, w jaki pracują ludzie. Budował skalowalne, niezawodne systemy rozproszone o globalnej skali, obsługujące dziesiątki milionów użytkowników i przetwarzające miliardy dolarów (Cloud Native, AWS, Platform Engineering, SRE, DevOps). Przede wszystkim jest jednak zorientowany na generowanie wartości biznesowej.\n\nPo godzinach hobbystycznie pisze gry (mfranc.com/game), dużo w nie gra i jest fanatykiem vima, Dwarf Fortress oraz CDDA."
+        },
+        {
+          "name": "Jakub Sikora",
+          "photo": "/prelegenci/jakub-sikora.webp",
+          "topic": "Przejęliśmy drony i wywaliliśmy je z mapy. To samo mogę zrobić z Twoją zabezpieczoną usługą",
+          "abstract": "System wyświetlał pozycje dronów, obserwacje i dane operacyjne. Komunikacja szyfrowana, profesjonalny panel, operatorzy mieli wszystkie powody, by ufać temu, co widzieli na mapie. Aż my, razem z 11 innymi zespołami, rozebraliśmy firmware i protokół, po czym wysłaliśmy ich drony w pilną misję prosto do wnętrza Ziemi.\n\nMożesz mieć własny format pakietów, stosować AES-ECB, efemeralne klucze z autodestrukcją, ale jeśli w autoryzacji jednego endpointa wprowadzisz głupiego buga, podszyjemy się pod Twoje urządzenie. Wyślemy poprawnie zaszyfrowaną, ale spreparowaną telemetrię, Twój frontend narysuje współrzędne idealnie, a reszta systemu i ludzie uwierzą w 100% w dane, które Ci wstrzyknęliśmy. Ta historia wydarzyła się podczas ćwiczeń Cyberlegionu, ale sam mechanizm jest zupełnie zwyczajny w całej branży. W ten sam sposób aplikacje ufają webhookom tylko dlatego, że przyszły przez HTTPS, tokenom JWT bez sprawdzania odbiorcy, wiadomościom z kolejki bez ochrony przed replay attack, czy danym z urządzeń, których nikt nie weryfikuje w kontekście biznesowym.\n\nPodczas prezentacji przejdziemy od analizy pakietu przez pięć warstw zaufania: tożsamość nadawcy, integralność, świeżość, autoryzacja i sens danych. Uczestnicy wyjdą z prostym modelem przeglądu API i systemów zdarzeniowych, plus trzema testami, które od razu mogą wrzucić do backlogu, bez kosztownej przebudowy całej produkcji. Szyfrowanie powie Ci, że ktoś nie przeczytał wiadomości, ale nie odpowie, kto ją napisał, kiedy powstała i czy system powinien na jej podstawie cokolwiek zrobić.",
+          "bio": "Jakub buduje systemy zaufania dla pieniędzy i rozbiera je dla sportu. Na co dzień jest VP Engineering w fintechu na etapie Series B, czyli w Circit Ltd., które dostarcza globalnym firmom audytorskim i bankom infrastrukturę zgodną z SOC 2 i certyfikowaną przez SWIFT, a kiedy trzeba, także nocą, wciela się w CyberLegionistę.\n\nNa Programistoku pokaże, co się dzieje, gdy bezpieczna komunikacja między usługami okazuje się ani autentyczna, ani prawdziwa, i dlaczego następne w kolejce jest Twoje API. Mówi z niewygodnej przestrzeni między formalną zgodnością z wymogami bezpieczeństwa a realnie sprawdzoną odpornością systemu."
+        },
+        {
+          "name": "Łukasz Kałużny",
+          "photo": "/prelegenci/lukasz-kaluzny.webp",
+          "topic": "Twoja architektura nikogo nie obchodzi!",
+          "abstract": "Twoja architektura nikogo nie obchodzi, dopóki nie zacznie blokować dowożenia, kosztować fortunę albo wybuchnie na produkcji. Ta sesja jest o tym, jak naprawdę zapadają decyzje architektoniczne w firmach i dlaczego zawsze i tak wychodzi z tego problem.\n\nZamiast opowieści o „idealnej” architekturze, rozbierzemy na czynniki pierwsze to, co dzieje się naprawdę: dlaczego craftsmanship jako cel często przegrywa z dostarczaniem wartości, kto ma realne weto w decyzjach i jak projektować architekturę, która wygrywa w praktyce, bo pasuje do organizacji, a nie do diagramu.\n\nNa koniec przesuniemy ciężar na to, co zmienia AI i vibe coding: mniej walki o perfekcyjny kod, więcej projektowania kontroli. Granice, kontrakty, bezpieczeństwo, standardy i guardrails, które pozwalają dowozić szybciej, ale bez chaosu, niekontrolowanego długu i niespodzianek na produkcji.",
+          "bio": "Technology Advisor i Managing Partner w Protopia. Zajmuje się technologią wtedy, kiedy jest jeszcze „za wcześnie”, a nie wtedy, kiedy już każdy ma na to slajd: Azure od 2013, kontenery od 2014 (Docker/Kubernetes), a LLM-y dłubał jeszcze przed erą ChatGPT. Lubi sprawdzać trendy w praktyce: co realnie dowozi wartość, co generuje dług, a co jest tylko ładną ściemą.\n\nW projektach kręci się wokół architektury, platform chmurowych, danych i automatyzacji, a także tego, jak to wszystko poskładać, żeby działało w rzeczywistości, a nie tylko na diagramie. Ma słabość do rozbrajania hype'u i opowieści z LinkedIna: od „AI-szamanii” po modne hasła, które dobrze wyglądają w poście, a gorzej w produkcji. Zwykle interesuje go moment, w którym kończy się magia, a zaczyna koszt, ryzyko i odpowiedzialność. Microsoft MVP nieprzerwanie od 2012. Współtwórca podcastu Patoarchitekci."
+        },
+        {
+          "name": "Oleksandr Lysenko",
+          "photo": "/prelegenci/oleksandr-lysenko.webp",
+          "topic": "The Human vs. the LLM: Measuring AI Efficiency",
+          "abstract": "Ile naprawdę kosztuje, w energii, mocy obliczeniowej i zasobach, zastąpienie ludzkiego zadania przez LLM? Spojrzenie na efektywność AI przez pryzmat energii na jednostkę pracy oraz realnej ekonomii inteligencji ludzkiej i maszynowej.",
+          "bio": "Oleksandr pracuje w R&D, zajmuje się AI i rozwiązywaniem złożonych problemów wokół danych finansowych i audytowych. Ma ponad 10 lat doświadczenia w inżynierii oprogramowania, zdobytego w fintechu, obszarze finansów i ryzyka oraz przy systemach danych dużej skali.\n\nPrzez lata budował platformy integracji bankowej łączące tysiące instytucji finansowych, pracował przy potokach danych o dużej skali i rozwijał rozwiązania oparte na ML oraz LLM. Dziś skupia się głównie na tym, jak zastosować AI do realnych problemów inżynierskich i biznesowych oraz jak zamieniać obiecujące pomysły w systemy produkcyjne."
+        },
+        {
+          "name": "Radek Maziarka",
+          "photo": "/prelegenci/radek-maziarka.webp",
+          "topic": "Context Engineering: architektura wiedzy dla efektywnego dostarczania",
+          "abstract": "Kod piszemy szybciej niż kiedykolwiek, ale czas od zgłoszenia do produkcji prawie się nie zmienił. Raport „The State of DevOps” pokazuje dlaczego: praca stricte deweloperska w całym procesie się kurczy, a żmudna, powtarzalna praca wokół niej rośnie jeszcze szybciej.\n\nTa prezentacja pokazuje, jak zbudować system wiedzy, dzięki któremu przyspieszenie obejmuje cały proces dostarczania. Zobaczysz, jak zmapować proces dostarczania i wiedzę, z jakiej korzysta się na każdym jego etapie, jak przełożyć tę mapę na scenariusze, które prowadzą agenta przez rozwiązanie danego problemu, oraz jak utrzymać system wiedzy zgodny z rzeczywistością, kiedy system produkcyjny się zmienia.",
+          "bio": "Engineering Consultant z ponad 10-letnim doświadczeniem w branży. Pracuje przy pełnym zakresie tworzenia produktów cyfrowych, od budowy zespołów i organizacji, przez definiowanie celów i analizę wymagań, po tworzenie produktu cyfrowego i jego utrzymanie na produkcji. Zwolennik pracy zwinnej i automatyzacji procesów."
         }
       ]
     },
     {
       "id": "biznes",
-      "label": "Business",
-      "name": "Ścieżka Business",
+      "label": "Biznes",
+      "name": "Ścieżka Biznes",
       "lead": "Decyzje technologiczne od strony biznesu: wdrożenia, koszty, efekty i wnioski.",
       "slots": 12,
       "speakers": [

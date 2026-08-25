@@ -2,6 +2,25 @@
 // Dev-only: logo 3D + duży tekst → nagranie do webm (grafiki pod sociale).
 // NIE publikować. Użycie: npm run dev → /capture.
 import '@fontsource-variable/inter';
+import '@fontsource/montserrat/700.css';
+import '@fontsource/montserrat/800.css';
+import agenda from '../data/agenda2026.json';
+
+const SPEAKERS = agenda.tracks.flatMap((t) =>
+  t.speakers.map((s) => ({ name: s.name, topic: s.topic || '', photo: s.photo || '', track: t.label }))
+);
+
+const LOGOS = [
+  { name: 'cronn', file: '/cronn.svg' },
+  { name: 'PLUM', file: '/plum.svg' },
+  { name: 'Fundacja INFOTECH', file: '/infotech.svg' },
+  { name: 'Wydział Informatyki PB', file: '/wi.svg' },
+  { name: 'IPH w Białymstoku', file: '/iph.svg' },
+  { name: 'PFRR', file: '/pfrr.svg' },
+  { name: 'Podlaski Klub Biznesu', file: '/pkb.webp' },
+  { name: 'Evoluma', file: '/evoluma.svg' },
+  { name: 'BPN-T', file: '/bpnt.svg' },
+];
 ---
 
 <!doctype html>
@@ -41,9 +60,53 @@ import '@fontsource-variable/inter';
           <label>Tryb</label>
           <select id="mode">
             <option value="classic">Klasyczny (logo + tekst)</option>
-            <option value="speaker">Prelegent (zdjęcie + logo w rogu)</option>
+            <option value="speaker">Prelegent (PNG + video)</option>
             <option value="static">Statyczna (emoji + tekst, PNG)</option>
+            <option value="sponsor">Sponsor / partner (logo, PNG)</option>
           </select>
+        </div>
+
+        <div class="field" data-only="sponsor">
+          <label>Logo — gotowe</label>
+          <select id="sponsorPreset">
+            {LOGOS.map((l) => <option value={l.file} data-name={l.name}>{l.name}</option>)}
+            <option value="">— własny plik —</option>
+          </select>
+          <input id="sponsorFile" type="file" accept=".svg,.png,.jpg,.jpeg,.webp" style="font-size:12px;margin-top:6px" />
+        </div>
+
+        <div class="field" data-only="sponsor">
+          <label>Nagłówek (Enter = nowa linia)</label>
+          <textarea id="sponsorHead">SPONSOREM
+PROGRAMISTOKU
+JEST</textarea>
+        </div>
+
+        <div class="field" data-only="sponsor">
+          <label>Etykieta u góry</label>
+          <input id="tier" type="text" value="// SPONSOR" />
+        </div>
+
+        <div class="field" data-only="sponsor">
+          <label>Stopka</label>
+          <input id="sponsorFoot" type="text" value="25-26.09.2026 // BIAŁYSTOK" />
+        </div>
+
+        <div class="field" data-only="sponsor speaker">
+          <label>Story 9:16</label>
+          <label style="text-transform:none;letter-spacing:0;color:#ccc;font-weight:400;display:flex;gap:8px;align-items:center">
+            <input id="safe" type="checkbox" checked /> trzymaj treść w strefie bezpiecznej
+          </label>
+          <label style="text-transform:none;letter-spacing:0;color:#ccc;font-weight:400;display:flex;gap:8px;align-items:center">
+            <input id="guides" type="checkbox" /> pokaż strefy (tylko podgląd)
+          </label>
+        </div>
+
+        <div class="field" data-only="sponsor">
+          <label>Kafelek z logo — kolor</label>
+          <input id="cardBg" type="color" value="#ffffff" style="height:38px;padding:2px;background:#111;border:1px solid #444;border-radius:8px" />
+          <label style="margin-top:8px">Logo w kafelku <span id="cardScalev">1.00</span></label>
+          <input id="cardScale" type="range" min="0.4" max="1" step="0.01" value="1" />
         </div>
 
         <div class="field" data-only="classic static">
@@ -86,89 +149,25 @@ import '@fontsource-variable/inter';
           </div>
         </div>
 
-        <div class="field" data-only="static">
+        <div class="field" data-only="static sponsor speaker">
           <label>Kolor tła (dowolny)</label>
           <input id="bgpick" type="color" value="#dc1945" style="height:38px;padding:2px;background:#111;border:1px solid #444;border-radius:8px" />
-        </div>
-
-        <div class="field" data-only="speaker">
-          <label>1. Imię i nazwisko</label>
-          <textarea id="speaker" placeholder="Jan Kowalski">Jan Kowalski</textarea>
-        </div>
-
-        <div class="field" data-only="speaker">
-          <label>2. Tytuł prelekcji</label>
-          <textarea id="talk" placeholder="Tytuł prelekcji"></textarea>
-        </div>
-
-        <div class="field" data-only="speaker">
-          <label>3. Stopka</label>
-          <textarea id="footer">PROGRAMISTOK
-25-26.09.2026, Białystok</textarea>
-        </div>
-
-        <div class="field">
-          <label>Font</label>
-          <select id="font">
-            <option value='800|"Inter Variable", Inter, sans-serif'>Inter (gruby)</option>
-            <option value='700|"Helvetica Neue", Arial, sans-serif'>Helvetica Neue</option>
-            <option value='400|Impact, "Haettenschweiler", sans-serif'>Impact</option>
-            <option value='800|"Futura", "Avenir Next", sans-serif'>Futura</option>
-            <option value='800|"Avenir Next", "Avenir", sans-serif'>Avenir Next</option>
-            <option value='700|Georgia, "Times New Roman", serif'>Georgia (serif)</option>
-            <option value='700|"Courier New", monospace'>Mono</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Google Font</label>
-          <select id="gfont">
-            <option value="">— presety —</option>
-            <option value="Anton|400">Anton</option>
-            <option value="Bebas Neue|400">Bebas Neue</option>
-            <option value="Oswald|700">Oswald</option>
-            <option value="Archivo Black|400">Archivo Black</option>
-            <option value="Montserrat|800">Montserrat</option>
-            <option value="Teko|700">Teko</option>
-            <option value="Bricolage Grotesque|800">Bricolage Grotesque</option>
-            <option value="Space Grotesk|700">Space Grotesk</option>
-          </select>
-          <div class="row" style="margin-top:6px">
-            <input id="gfontName" type="text" placeholder="dowolna nazwa" />
-            <button id="gfontLoad" type="button" style="flex:0 0 auto;padding:0 12px;background:#333;color:#ccc;border:0;border-radius:8px;cursor:pointer">Załaduj</button>
+          <div class="swatches" id="themePresets" style="margin-top:8px" data-only="speaker">
+            <div class="sw" data-theme-bg="#14130f" data-theme-text="#f4f2ec" style="background:#14130f" title="ciemny"></div>
+            <div class="sw" data-theme-bg="#f4f2ec" data-theme-text="#14130f" style="background:#f4f2ec" title="jasny"></div>
           </div>
         </div>
 
-        <div class="field">
-          <label>Własny font (.ttf/.otf/.woff2)</label>
-          <input id="fontfile" type="file" accept=".ttf,.otf,.woff2,.woff" style="font-size:12px" />
-        </div>
-
-        <div class="field" data-only="classic speaker">
-          <label>Format</label>
-          <select id="format">
-            <option value="1080x1080">Kwadrat 1:1 (feed)</option>
-            <option value="1080x1350">Portret 4:5 (feed)</option>
-            <option value="1080x1920">Story / Reels 9:16</option>
+        <div class="field" data-only="speaker">
+          <label>Prelegent — gotowe</label>
+          <select id="speakerPreset">
+            <option value="">— wpisz ręcznie —</option>
+            {SPEAKERS.map((sp, i) => (
+              <option value={String(i)} data-name={sp.name} data-topic={sp.topic} data-photo={sp.photo}>
+                {sp.name} ({sp.track})
+              </option>
+            ))}
           </select>
-        </div>
-
-        <div class="field">
-          <label>Kolor tekstu</label>
-          <div class="swatches" id="swatches">
-            <div class="sw" data-color="#14130f" style="background:#14130f" aria-pressed="true"></div>
-            <div class="sw" data-color="#dc1945" style="background:#dc1945" aria-pressed="false"></div>
-            <div class="sw" data-color="#d9531e" style="background:#d9531e" aria-pressed="false"></div>
-          </div>
-        </div>
-
-        <div class="field" data-only="classic speaker">
-          <label>Tło (kolor)</label>
-          <div class="swatches" id="bgs">
-            <div class="sw" data-bg="#ffffff" style="background:#ffffff" aria-pressed="true"></div>
-            <div class="sw" data-bg="#f4f2ec" style="background:#f4f2ec" aria-pressed="false"></div>
-            <div class="sw" data-bg="#14130f" style="background:#14130f" aria-pressed="false"></div>
-          </div>
         </div>
 
         <div class="field" data-only="classic speaker">
@@ -184,6 +183,82 @@ import '@fontsource-variable/inter';
           <input id="offx" type="range" min="-0.5" max="0.5" step="0.005" value="0" />
           <label>przesuń Y <span id="offyv">0</span></label>
           <input id="offy" type="range" min="-0.5" max="0.5" step="0.005" value="0" />
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>Długość video (s)</label>
+          <input id="duration" type="text" value="30" />
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>Podgląd</label>
+          <label style="text-transform:none;letter-spacing:0;color:#ccc;font-weight:400;display:flex;gap:8px;align-items:center">
+            <input id="animPreview" type="checkbox" /> odtwarzaj animację (jak w video)
+          </label>
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>Etykieta u góry</label>
+          <input id="stillTier" type="text" value="// PRELEGENT" />
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>1. Imię i nazwisko (Enter = nowa linia)</label>
+          <textarea id="speaker" placeholder="Jan Kowalski">Jan Kowalski</textarea>
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>2. Tytuł prelekcji (Enter = nowa linia)</label>
+          <textarea id="talk" placeholder="Tytuł prelekcji"></textarea>
+        </div>
+
+        <div class="field" data-only="speaker">
+          <label>3. Stopka</label>
+          <textarea id="footer">PROGRAMISTOK
+25-26.09.2026, Białystok</textarea>
+        </div>
+
+        <div class="field">
+          <label>Font</label>
+          <select id="font">
+            <option value='800|Montserrat, "Helvetica Neue", Arial, sans-serif'>Montserrat (domyślny)</option>
+            <option value='800|"Inter Variable", Inter, sans-serif'>Inter (gruby)</option>
+            <option value='700|"Helvetica Neue", Arial, sans-serif'>Helvetica Neue</option>
+            <option value='400|Impact, "Haettenschweiler", sans-serif'>Impact</option>
+            <option value='800|"Futura", "Avenir Next", sans-serif'>Futura</option>
+            <option value='800|"Avenir Next", "Avenir", sans-serif'>Avenir Next</option>
+            <option value='700|Georgia, "Times New Roman", serif'>Georgia (serif)</option>
+            <option value='700|"Courier New", monospace'>Mono</option>
+          </select>
+        </div>
+
+
+        <div class="field" data-only="classic speaker sponsor">
+          <label>Format</label>
+          <select id="format">
+            <option value="1080x1350">Portret 4:5 (feed)</option>
+            <option value="1080x1920">Story / Reels 9:16</option>
+            <option value="1080x1080">Kwadrat 1:1 (feed)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Kolor tekstu</label>
+          <div class="swatches" id="swatches">
+            <div class="sw" data-color="#14130f" style="background:#14130f" aria-pressed="true"></div>
+            <div class="sw" data-color="#dc1945" style="background:#dc1945" aria-pressed="false"></div>
+            <div class="sw" data-color="#d9531e" style="background:#d9531e" aria-pressed="false"></div>
+            <div class="sw" data-color="#f4f2ec" style="background:#f4f2ec" aria-pressed="false"></div>
+          </div>
+        </div>
+
+        <div class="field" data-only="classic speaker">
+          <label>Tło (kolor)</label>
+          <div class="swatches" id="bgs">
+            <div class="sw" data-bg="#ffffff" style="background:#ffffff" aria-pressed="true"></div>
+            <div class="sw" data-bg="#f4f2ec" style="background:#f4f2ec" aria-pressed="false"></div>
+            <div class="sw" data-bg="#14130f" style="background:#14130f" aria-pressed="false"></div>
+          </div>
         </div>
 
         <div class="field" data-only="classic speaker">
@@ -208,29 +283,27 @@ import '@fontsource-variable/inter';
           </div>
         </div>
 
-        <div class="row" data-only="speaker">
-          <div class="field">
-            <label>Prędkość (px/s)</label>
-            <input id="speed" type="text" value="130" />
-          </div>
-          <div class="field">
-            <label>Separator</label>
-            <input id="sep" type="text" value="  •  " />
-          </div>
-        </div>
-
-        <div class="field" data-only="speaker static">
+        <div class="field" data-only="speaker static sponsor">
           <label>Logo w rogu — wielkość <span id="logosizev">0.22</span></label>
           <input id="logosize" type="range" min="0.10" max="0.45" step="0.005" value="0.22" />
         </div>
 
         <button class="rec" id="rec">● Nagraj</button>
+        <div class="field" data-only="speaker">
+          <label>Post na LinkedIn / FB</label>
+          <textarea id="postText" readonly style="min-height:150px;font-size:13px;line-height:1.5"></textarea>
+          <button id="copyPost" type="button" style="font-size:13px;padding:8px;margin-top:6px;background:#333;color:#ccc;border:0;border-radius:8px;cursor:pointer">Kopiuj tekst</button>
+        </div>
+
+        <button class="rec" id="rec916" data-only="speaker" style="background:#333">● Nagraj video mp4 (bieżący format)</button>
+        <button class="rec" id="zip" data-only="sponsor static speaker" style="background:#333">⬇ ZIP — wszystkie formaty</button>
+        <button class="rec" id="combo" data-only="speaker" style="background:#333">⬇ Komplet — 4:5 PNG + 9:16 mp4</button>
         <div id="status"></div>
         <small id="hint">Nagrywa kompozyt (logo + tekst) do .webm. Czas = obroty × 5 s (idealna pętla). Potem konwersja ffmpegiem do mp4.</small>
       </div>
 
       <div class="stage">
-        <canvas id="out" width="1080" height="1080"></canvas>
+        <canvas id="out" width="1080" height="1350"></canvas>
         <canvas id="gl" width="900" height="900"></canvas>
       </div>
     </div>
@@ -255,8 +328,6 @@ import '@fontsource-variable/inter';
       const speakerEl = document.getElementById('speaker');
       const talkEl = document.getElementById('talk');
       const footerEl = document.getElementById('footer');
-      const speedEl = document.getElementById('speed');
-      const sepEl = document.getElementById('sep');
       const logoSizeEl = document.getElementById('logosize');
       const zoomEl = document.getElementById('zoom');
       const offxEl = document.getElementById('offx');
@@ -270,12 +341,36 @@ import '@fontsource-variable/inter';
       const emVarEl = document.getElementById('emvar');
       const emSeedEl = document.getElementById('emseed');
       const bgPickEl = document.getElementById('bgpick');
+      const sponsorPresetEl = document.getElementById('sponsorPreset');
+      const sponsorFileEl = document.getElementById('sponsorFile');
+      const sponsorHeadEl = document.getElementById('sponsorHead');
+      const tierEl = document.getElementById('tier');
+      const sponsorFootEl = document.getElementById('sponsorFoot');
+      const cardBgEl = document.getElementById('cardBg');
+      const cardScaleEl = document.getElementById('cardScale');
+      const safeEl = document.getElementById('safe');
+      const speakerPresetEl = document.getElementById('speakerPreset');
+      const stillTierEl = document.getElementById('stillTier');
+      const animPreviewEl = document.getElementById('animPreview');
+      const durationEl = document.getElementById('duration');
+
+      document.getElementById('themePresets').addEventListener('click', (e) => {
+        const t = e.target.closest('.sw'); if (!t) return;
+        bgPickEl.value = t.dataset.themeBg;
+        pickSwatch(t.dataset.themeText);
+        [...e.currentTarget.children].forEach((c) => c.setAttribute('aria-pressed', c === t));
+      });
+      const guideEl = document.getElementById('guides');
 
       const HINTS = {
-        classic: 'Nagrywa kompozyt (logo + tekst) do .webm. Czas = obroty × 5 s (idealna pętla). Potem konwersja ffmpegiem do mp4.',
-        speaker: 'Zdjęcie + kręcące się logo + marquee na dole (nazwisko / tytuł / info). Czas pętli dobierany automatycznie do wielokrotności 5 s, żeby pierwsza i ostatnia klatka były identyczne.',
-        static: 'Kwadrat 1080×1080: emoji ułożone pod kątem na jednolitym tle, tekst na środku, logo w rogu. Zapis do .png.',
+        classic: 'Nagrywa kompozyt (logo + tekst). Czas = obroty × 5 s (idealna pętla). Zapis do .mp4, jeśli przeglądarka potrafi, inaczej .webm.',
+        speaker: 'Ten sam układ co grafika statyczna, tylko elementy wchodzą po kolei: fade in z lekkim podjazdem od dołu. Zapis do .mp4 (H.264), jeśli przeglądarka potrafi, inaczej .webm.',
+        static: 'Emoji ułożone pod kątem na jednolitym tle, tekst na środku, logo w rogu. Zapis do .png.',
+        sponsor: 'Ogłoszenie sponsora / partnera: nagłówek, logo na kafelku, sygnet i data. Logo bierze z /public albo z wgranego pliku (SVG zalecane). Zapis do .png.',
+        speakerStill: 'Zapowiedź prelegenta: zdjęcie na cały kadr, gradient, nazwisko i temat na dole. Preset zaciąga dane i zdjęcie z agendy. Zapis do .png, ZIP daje 1:1, 4:5 i 9:16.',
       };
+
+      const STILL = ['static', 'sponsor', 'speaker'];
 
       function applyMode() {
         const m = modeEl.value;
@@ -283,12 +378,24 @@ import '@fontsource-variable/inter';
           el.style.display = el.dataset.only.split(' ').includes(m) ? '' : 'none';
         });
         hintEl.textContent = HINTS[m];
-        btn.textContent = m === 'static' ? '⬇ Zapisz PNG' : '● Nagraj';
-        if (m === 'static') {
-          formatEl.value = '1080x1080';
-          setFormat();
+        btn.textContent = STILL.includes(m) ? '⬇ Zapisz PNG' : '● Nagraj';
+        if (m === 'speaker' && !stillInit) {
+          stillInit = true;
+          bgPickEl.value = '#14130f';
+          logoSizeEl.value = '0.12';
+          logoSizeEl.dispatchEvent(new Event('input'));
+          pickSwatch('#f4f2ec');
+        }
+        if (m === 'sponsor' && !sponsorInit) {
+          sponsorInit = true;
+          bgPickEl.value = '#1c1b16';
+          logoSizeEl.value = '0.12';
+          logoSizeEl.dispatchEvent(new Event('input'));
+          pickSwatch('#f4f2ec');
         }
       }
+      let sponsorInit = false;
+      let stillInit = false;
       modeEl.addEventListener('change', applyMode);
 
       const readouts = [
@@ -302,6 +409,7 @@ import '@fontsource-variable/inter';
         [emOpEl, 'emopv', 0],
         [emVarEl, 'emvarv', 0],
         [emSeedEl, 'emseedv', 0],
+        [cardScaleEl, 'cardScalev', 2],
       ];
       for (const [el, out, digits] of readouts) {
         const o = document.getElementById(out);
@@ -310,18 +418,14 @@ import '@fontsource-variable/inter';
         sync();
       }
 
-      let W = 1080, H = 1080;
+      let W = 1080, H = 1350;
       let textColor = '#14130f';
       let bgColor = '#ffffff';
       let fontWeight = '800';
-      let fontFamily = '"Inter Variable", Inter, sans-serif';
+      let fontFamily = 'Montserrat, "Helvetica Neue", Arial, sans-serif';
       let bgImg = null;
 
       const fontEl = document.getElementById('font');
-      const gfontEl = document.getElementById('gfont');
-      const gfontName = document.getElementById('gfontName');
-      const gfontLoad = document.getElementById('gfontLoad');
-      const fontfileEl = document.getElementById('fontfile');
       const bgfileEl = document.getElementById('bgfile');
       const bgclearEl = document.getElementById('bgclear');
       const dimEl = document.getElementById('dim');
@@ -337,44 +441,6 @@ import '@fontsource-variable/inter';
         fontWeight = w; fontFamily = fam;
       }
       fontEl.addEventListener('change', setFontFromSelect);
-
-      // Google Fonts – wstrzyknij <link> i użyj po załadowaniu
-      function loadGoogle(name, weight) {
-        if (!name) return;
-        const id = 'gf-' + name.replace(/\s+/g, '-');
-        if (!document.getElementById(id)) {
-          const link = document.createElement('link');
-          link.id = id; link.rel = 'stylesheet';
-          link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(name)}:wght@${weight || 700}&display=swap`;
-          document.head.appendChild(link);
-        }
-        fontWeight = weight || '700';
-        fontFamily = `"${name}", sans-serif`;
-        // dociągnij żeby canvas miał glyphy
-        if (document.fonts && document.fonts.load) {
-          document.fonts.load(`${fontWeight} 100px "${name}"`).catch(() => {});
-        }
-        statusEl.textContent = `font: ${name}`;
-      }
-      gfontEl.addEventListener('change', () => {
-        if (!gfontEl.value) return;
-        const [name, weight] = gfontEl.value.split('|');
-        loadGoogle(name, weight);
-      });
-      gfontLoad.addEventListener('click', () => loadGoogle(gfontName.value.trim(), '700'));
-
-      // Własny plik fontu
-      fontfileEl.addEventListener('change', async (e) => {
-        const file = e.target.files[0]; if (!file) return;
-        const buf = await file.arrayBuffer();
-        const fam = 'CustomFont-' + Date.now();
-        const ff = new FontFace(fam, buf);
-        await ff.load();
-        document.fonts.add(ff);
-        fontFamily = `"${fam}", sans-serif`;
-        fontWeight = '400';
-        statusEl.textContent = `font: ${file.name}`;
-      });
 
       // Tło – obraz
       bgfileEl.addEventListener('change', (e) => {
@@ -432,10 +498,17 @@ import '@fontsource-variable/inter';
       formatEl.addEventListener('change', setFormat);
       applyMode();
 
+      function pickSwatch(color) {
+        const box = document.getElementById('swatches');
+        const t = [...box.children].find((c) => c.dataset.color === color);
+        if (!t) return;
+        textColor = color;
+        [...box.children].forEach((c) => c.setAttribute('aria-pressed', c === t));
+      }
+
       document.getElementById('swatches').addEventListener('click', (e) => {
         const t = e.target.closest('.sw'); if (!t) return;
-        textColor = t.dataset.color;
-        [...e.currentTarget.children].forEach((c) => c.setAttribute('aria-pressed', c === t));
+        pickSwatch(t.dataset.color);
       });
       document.getElementById('bgs').addEventListener('click', (e) => {
         const t = e.target.closest('.sw'); if (!t) return;
@@ -457,83 +530,416 @@ import '@fontsource-variable/inter';
       const LOGO_BAR = ['#14130f', '#dc1945', '#0296d8', '#f7d33d'];
       const ROT_SEC = 5; // pełny obrót logo, patrz OMEGA
 
-      function marqueeFontPx() {
-        const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
-        return Math.round(H * 0.032 * userScale);
-      }
+      // logo sponsora: SVG dostaje wymuszony rozmiar, inaczej Chrome rasteryzuje je w 300×150
+      let sponsorImg = null;
+      let sponsorName = sponsorPresetEl.options[0]?.dataset.name || 'sponsor';
 
-      function marqueeText() {
-        const sep = sepEl.value || '  •  ';
-        const parts = [speakerEl, talkEl, footerEl]
-          .map((el) => el.value.replace(/\s*\n\s*/g, ' ').trim())
-          .filter(Boolean);
-        return parts.length ? parts.join(sep) + sep : '';
-      }
-
-      // szerokość jednej pełnej kopii taśmy – po jej przesunięciu klatka wraca do stanu wyjściowego
-      function marqueeContentW() {
-        const text = marqueeText();
-        if (!text) return 0;
-        ctx.font = `${fontWeight} ${marqueeFontPx()}px ${fontFamily}`;
-        return ctx.measureText(text).width;
-      }
-
-      // pętla = wielokrotność obrotu logo, więc pierwsza i ostatnia klatka są identyczne
-      function loopSec() {
-        const contentW = marqueeContentW();
-        if (!contentW) return ROT_SEC;
-        const target = Math.max(20, parseFloat(speedEl.value) || 130);
-        const turns = Math.max(1, Math.round(contentW / target / ROT_SEC));
-        return turns * ROT_SEC;
-      }
-
-      function drawSpeaker(elapsed) {
-        ctx.fillStyle = bgColor;
-        ctx.fillRect(0, 0, W, H);
-        if (bgImg) drawCover(bgImg, 0, 0, W, H);
-        const dim = Math.max(0, Math.min(100, parseFloat(dimEl.value) || 0)) / 100;
-        if (dim > 0) { ctx.fillStyle = `rgba(${overlayRGB},${dim})`; ctx.fillRect(0, 0, W, H); }
-
-        // logo – prawy górny róg, kręci się bez przerwy
-        const s = Math.min(W, H) * (parseFloat(logoSizeEl.value) || 0.22);
-        const m = W * 0.05;
-        ctx.drawImage(gl, W - m - s, m, s, s);
-
-        const text = marqueeText();
-        if (!text) return;
-
-        const px = marqueeFontPx();
-        const barH = Math.max(3, Math.round(H * 0.0055));
-        const panelH = Math.round(H * 0.105) + barH; // stała wysokość, niezależna od rozmiaru fontu
-        const panelTop = H - panelH;
-
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, panelTop, W, panelH);
-
-        const segW = W / LOGO_BAR.length;
-        LOGO_BAR.forEach((c, k) => {
-          ctx.fillStyle = c;
-          ctx.fillRect(Math.round(k * segW), panelTop, Math.ceil(segW), barH);
+      function svgWithSize(txt, target) {
+        const m = txt.match(/viewBox="\s*([-\d.]+)[\s,]+([-\d.]+)[\s,]+([-\d.]+)[\s,]+([-\d.]+)\s*"/);
+        const ratio = m ? Number(m[4]) / Number(m[3]) : 1;
+        return txt.replace(/<svg([^>]*)>/, (_, attrs) => {
+          const clean = attrs.replace(/\s(width|height)="[^"]*"/g, '');
+          return `<svg${clean} width="${target}" height="${Math.round(target * ratio)}">`;
         });
+      }
 
-        ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
-        const contentW = ctx.measureText(text).width;
-        if (!contentW) return;
+      async function setSponsorFromUrl(url) {
+        if (!url) { sponsorImg = null; return; }
+        const img = new Image();
+        if (url.endsWith('.svg')) {
+          const txt = await fetch(url).then((r) => r.text());
+          const blob = new Blob([svgWithSize(txt, 2400)], { type: 'image/svg+xml' });
+          img.src = URL.createObjectURL(blob);
+        } else {
+          img.src = url;
+        }
+        img.onload = () => { sponsorImg = img; };
+        img.onerror = () => { statusEl.textContent = `nie wczytano ${url}`; };
+      }
 
-        const speed = contentW / loopSec();
-        const offset = (elapsed * speed) % contentW;
-        const copies = Math.ceil((W + contentW) / contentW) + 1;
+      sponsorPresetEl.addEventListener('change', () => {
+        const opt = sponsorPresetEl.selectedOptions[0];
+        sponsorName = opt.dataset.name || 'sponsor';
+        setSponsorFromUrl(sponsorPresetEl.value);
+      });
 
-        ctx.save();
+      speakerPresetEl.addEventListener('change', () => {
+        const opt = speakerPresetEl.selectedOptions[0];
+        if (!opt || !opt.value) return;
+        speakerEl.value = opt.dataset.name || '';
+        talkEl.value = opt.dataset.topic || '';
+        const photo = opt.dataset.photo;
+        if (!photo) return;
+        const img = new Image();
+        img.onload = () => {
+          bgImg = img;
+          zoomEl.value = '1'; zoomEl.dispatchEvent(new Event('input'));
+          offxEl.value = '0'; offxEl.dispatchEvent(new Event('input'));
+          offyEl.value = '0'; offyEl.dispatchEvent(new Event('input'));
+        };
+        img.onerror = () => { statusEl.textContent = `nie wczytano ${photo}`; };
+        img.src = photo;
+      });
+
+      sponsorFileEl.addEventListener('change', async (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        sponsorPresetEl.value = '';
+        sponsorName = file.name.replace(/\.[^.]+$/, '');
+        const img = new Image();
+        if (/\.svg$/i.test(file.name)) {
+          const txt = await file.text();
+          img.src = URL.createObjectURL(new Blob([svgWithSize(txt, 2400)], { type: 'image/svg+xml' }));
+        } else {
+          img.src = URL.createObjectURL(file);
+        }
+        img.onload = () => { sponsorImg = img; };
+      });
+
+      setSponsorFromUrl(sponsorPresetEl.value);
+
+      function drawRounded(x, y, w, h, r) {
         ctx.beginPath();
-        ctx.rect(0, panelTop + barH, W, panelH - barH);
-        ctx.clip();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+      }
+
+      function monoFont(px) {
+        return `600 ${px}px ui-monospace, "SF Mono", Menlo, monospace`;
+      }
+
+      // płaski sygnet zamiast 3D: na ciemnym tle czarny element bryły ginie
+      const sygnetDark = new Image();
+      const sygnetLight = new Image();
+      (async () => {
+        for (const [img, url] of [[sygnetDark, '/programistok-sygnet.svg'], [sygnetLight, '/programistok-sygnet-white.svg']]) {
+          const txt = await fetch(url).then((r) => r.text());
+          img.src = URL.createObjectURL(new Blob([svgWithSize(txt, 1200)], { type: 'image/svg+xml' }));
+        }
+      })();
+
+      function isDark(hex) {
+        const n = parseInt(hex.slice(1), 16);
+        const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+        return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255 < 0.5;
+      }
+
+      // Story: górny pasek IG/FB zjada ~14% kadru (avatar, nick, X), dolny ~20% (pole odpowiedzi,
+      // "Wyślij wiadomość", swipe). Trzymamy w tym treść, tło i tak leci na cały kadr.
+      const STORY_SAFE_TOP = 0.14;
+      const STORY_SAFE_BOTTOM = 0.2;
+      let exporting = false;
+      let recording = false;
+
+      function safeInsets() {
+        const story = safeEl.checked && H / W >= 1.5;
+        return story
+          ? { top: Math.round(H * STORY_SAFE_TOP), bottom: Math.round(H * STORY_SAFE_BOTTOM) }
+          : { top: 0, bottom: 0 };
+      }
+
+      function drawGuides(inset) {
+        if (exporting || !guideEl.checked || (!inset.top && !inset.bottom)) return;
+        ctx.save();
+        ctx.fillStyle = 'rgba(220,25,69,0.22)';
+        if (inset.top) ctx.fillRect(0, 0, W, inset.top);
+        if (inset.bottom) ctx.fillRect(0, H - inset.bottom, W, inset.bottom);
+        ctx.strokeStyle = 'rgba(220,25,69,0.9)';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([18, 14]);
+        ctx.beginPath();
+        if (inset.top) { ctx.moveTo(0, inset.top); ctx.lineTo(W, inset.top); }
+        if (inset.bottom) { ctx.moveTo(0, H - inset.bottom); ctx.lineTo(W, H - inset.bottom); }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function wrapLines(text, maxW) {
+        const words = text.split(/\s+/).filter(Boolean);
+        const lines = [];
+        let line = '';
+        for (const w of words) {
+          const test = line ? `${line} ${w}` : w;
+          if (ctx.measureText(test).width <= maxW || !line) line = test;
+          else { lines.push(line); line = w; }
+        }
+        if (line) lines.push(line);
+        return lines;
+      }
+
+      // ręczne łamanie enterem ma pierwszeństwo, auto-zawijanie łapie tylko za długie linie
+      function layoutLines(text, maxW) {
+        return text
+          .split('\n')
+          .map((l) => l.trim())
+          .filter(Boolean)
+          .flatMap((l) => wrapLines(l, maxW));
+      }
+
+      // dopasowuje rozmiar tak, żeby tekst zmieścił się w zadanym prostokącie
+      function fitWrapped(text, maxW, maxH, startPx, lineRatio) {
+        let px = startPx;
+        while (px > 14) {
+          ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
+          const lines = layoutLines(text, maxW);
+          if (lines.length * px * lineRatio <= maxH) return { px, lines };
+          px -= 2;
+        }
+        ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
+        return { px, lines: layoutLines(text, maxW) };
+      }
+
+      // kontur sygnetu jako maska na zdjęcie
+      let maskPath = null;
+      let maskVB = [201, 176];
+      fetch('/programistok-kontur.svg')
+        .then((r) => r.text())
+        .then((txt) => {
+          const d = txt.match(/\sd="([^"]+)"/);
+          const vb = txt.match(/viewBox="([-\d.\s]+)"/);
+          if (vb) { const n = vb[1].trim().split(/\s+/).map(Number); maskVB = [n[2], n[3]]; }
+          if (d) maskPath = new Path2D(d[1]);
+        })
+        .catch(() => {});
+
+      // wpisuje kontur w zadany prostokąt, zwraca transformację do stroke'a
+      function maskTransform(x, y, w, h) {
+        const s = Math.min(w / maskVB[0], h / maskVB[1]);
+        return { s, dx: x + (w - maskVB[0] * s) / 2, dy: y + (h - maskVB[1] * s) / 2 };
+      }
+
+      const ANIM = { start: 0.25, step: 0.32, dur: 0.75 };
+      const ANIM_STEPS = 6;
+
+      function animIntro() {
+        return ANIM.start + ANIM.step * (ANIM_STEPS - 1) + ANIM.dur;
+      }
+
+      function animTotal() {
+        const wanted = parseFloat(durationEl && durationEl.value) || 30;
+        return Math.max(animIntro() + 0.5, Math.min(120, wanted));
+      }
+
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+      // każdy element wjeżdża z dołu i gaśnie razem z całością na końcu
+      function phase(elapsed, i) {
+        if (elapsed === undefined) return { a: 1, dy: 0 };
+        const t0 = ANIM.start + i * ANIM.step;
+        const inT = Math.max(0, Math.min(1, (elapsed - t0) / ANIM.dur));
+        const e = easeOut(inT);
+        return { a: e, dy: (1 - e) * H * 0.035 };
+      }
+
+      function drawSpeakerStill(elapsed) {
+        const bg = bgPickEl.value;
+        const dark = isDark(bg);
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, W, H);
+
+        const inset = safeInsets();
+        const m = W * 0.075;
+        const top = inset.top + m;
+        const bottom = H - inset.bottom - m;
+
+        // sygnet + etykieta
+        const sygnet = Math.min(W, H) * (parseFloat(logoSizeEl.value) || 0.12);
+        const mark = dark ? sygnetLight : sygnetDark;
+        const p0 = phase(elapsed, 0);
+        ctx.globalAlpha = p0.a;
+        if (mark.complete && mark.naturalWidth) {
+          const r = sygnet / Math.max(mark.naturalWidth, mark.naturalHeight);
+          const mw = mark.naturalWidth * r, mh = mark.naturalHeight * r;
+          ctx.drawImage(mark, W - m - mw, top + (sygnet - mh) / 2 + p0.dy, mw, mh);
+        }
+
+        const labelPx = Math.round(Math.min(W, H) * 0.024);
+        const spacing = Math.round(labelPx * 0.18);
+        const hadSpacing = 'letterSpacing' in ctx;
+        if (hadSpacing) ctx.letterSpacing = `${spacing}px`;
+        ctx.font = monoFont(labelPx);
         ctx.fillStyle = textColor;
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        const ty = panelTop + barH + (panelH - barH) / 2;
-        for (let k = 0; k < copies; k++) ctx.fillText(text, -offset + k * contentW, ty);
-        ctx.restore();
+        ctx.fillText((stillTierEl.value || '').toUpperCase(), m, top + sygnet * 0.42 + p0.dy);
+        if (hadSpacing) ctx.letterSpacing = '0px';
+        ctx.globalAlpha = 1;
+
+        const name = speakerEl.value.trim();
+        const talk = talkEl.value.trim();
+        const footLines = footerEl.value.split('\n').map((l) => l.trim()).filter(Boolean);
+
+        const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
+        const maxW = W - m * 2;
+        const barH = Math.max(3, Math.round(H * 0.006));
+        const gap = Math.min(W, H) * 0.03;
+
+        const nameFit = name ? fitWrapped(name, maxW, H * 0.2, Math.min(W, H) * 0.072 * userScale, 1.06) : null;
+        const talkFit = talk ? fitWrapped(talk, maxW, H * 0.22, Math.min(W, H) * 0.034 * userScale, 1.25) : null;
+
+        const nameH = nameFit ? nameFit.lines.length * nameFit.px * 1.06 : 0;
+        const talkH = talkFit ? talkFit.lines.length * talkFit.px * 1.25 : 0;
+        const footH = footLines.length * labelPx * 1.5;
+        const blockH = nameH + (talkH ? talkH + gap * 0.5 : 0) + (footH ? footH + gap * 0.8 : 0);
+        const blockTop = bottom - blockH;
+
+        // zdjęcie w polu między etykietą a blokiem tekstu
+        const photoTop = top + sygnet + gap * 1.2;
+        const photoBottom = blockTop - gap * 1.6 - barH;
+        const availH = photoBottom - photoTop;
+        const ratio = maskVB[1] / maskVB[0];
+        let boxW = maxW;
+        let boxH = boxW * ratio;
+        if (boxH > availH) { boxH = availH; boxW = boxH / ratio; }
+        if (boxW > 60 && boxH > 60) {
+          const px0 = m + (maxW - boxW) / 2;
+          const py0 = photoTop + (availH - boxH) / 2;
+
+          const p1 = phase(elapsed, 1);
+          const py = py0 + p1.dy;
+          const t = maskTransform(px0, py, boxW, boxH);
+
+          ctx.save();
+          ctx.globalAlpha = p1.a;
+          if (maskPath) {
+            ctx.translate(t.dx, t.dy);
+            ctx.scale(t.s, t.s);
+            ctx.clip(maskPath);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+          }
+          ctx.fillStyle = dark ? 'rgba(255,255,255,0.06)' : 'rgba(20,19,15,0.06)';
+          ctx.fillRect(px0, py, boxW, boxH);
+          if (bgImg) drawCover(bgImg, px0, py, boxW, boxH);
+          const dim = Math.max(0, Math.min(100, parseFloat(dimEl.value) || 0)) / 100;
+          if (dim > 0) { ctx.fillStyle = `rgba(${overlayRGB},${dim})`; ctx.fillRect(px0, py, boxW, boxH); }
+          ctx.restore();
+        }
+
+        // pasek w kolorach logo nad nazwiskiem
+        const p2 = phase(elapsed, 2);
+        const barY = blockTop - gap * 0.8 + p2.dy;
+        const barW = Math.min(maxW, W * 0.3);
+        const segW = barW / LOGO_BAR.length;
+        ctx.globalAlpha = p2.a;
+        LOGO_BAR.forEach((c, k) => {
+          // czarny segment ginie na ciemnym tle
+          ctx.fillStyle = dark && c === '#14130f' ? '#f4f2ec' : c;
+          ctx.fillRect(Math.round(m + k * segW), barY, Math.ceil(segW), barH);
+        });
+        ctx.globalAlpha = 1;
+
+        let y = blockTop;
+        if (nameFit) {
+          const p3 = phase(elapsed, 3);
+          ctx.font = `${fontWeight} ${nameFit.px}px ${fontFamily}`;
+          ctx.fillStyle = textColor;
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'top';
+          ctx.globalAlpha = p3.a;
+          for (const l of nameFit.lines) { ctx.fillText(l, m, y + p3.dy); y += nameFit.px * 1.06; }
+          ctx.globalAlpha = 1;
+        }
+        if (talkFit) {
+          const p4 = phase(elapsed, 4);
+          y += gap * 0.5;
+          ctx.font = `${Math.max(400, Number(fontWeight) - 200)} ${talkFit.px}px ${fontFamily}`;
+          ctx.fillStyle = textColor;
+          ctx.globalAlpha = 0.86 * p4.a;
+          for (const l of talkFit.lines) { ctx.fillText(l, m, y + p4.dy); y += talkFit.px * 1.25; }
+          ctx.globalAlpha = 1;
+        }
+        if (footLines.length) {
+          const p5 = phase(elapsed, 5);
+          y += gap * 0.8;
+          if (hadSpacing) ctx.letterSpacing = `${spacing}px`;
+          ctx.font = monoFont(labelPx);
+          ctx.fillStyle = textColor;
+          ctx.globalAlpha = 0.72 * p5.a;
+          for (const l of footLines) { ctx.fillText(l.toUpperCase(), m, y + p5.dy); y += labelPx * 1.5; }
+          ctx.globalAlpha = 1;
+          if (hadSpacing) ctx.letterSpacing = '0px';
+        }
+
+        drawGuides(inset);
+      }
+
+      function drawSponsor() {
+        ctx.fillStyle = bgPickEl.value;
+        ctx.fillRect(0, 0, W, H);
+
+        const inset = safeInsets();
+        const m = W * 0.075;
+        const top = inset.top + m;
+        const bottom = H - inset.bottom - m;
+        const contentH = bottom - top;
+
+        const sygnet = Math.min(W, H) * (parseFloat(logoSizeEl.value) || 0.12);
+        const mark = isDark(bgPickEl.value) ? sygnetLight : sygnetDark;
+        if (mark.complete && mark.naturalWidth) {
+          const r = sygnet / Math.max(mark.naturalWidth, mark.naturalHeight);
+          const mw = mark.naturalWidth * r, mh = mark.naturalHeight * r;
+          ctx.drawImage(mark, W - m - mw, top + (sygnet - mh) / 2, mw, mh);
+        }
+
+        const labelPx = Math.round(Math.min(W, H) * 0.026);
+        const spacing = Math.round(labelPx * 0.18);
+        const hadSpacing = 'letterSpacing' in ctx;
+        if (hadSpacing) ctx.letterSpacing = `${spacing}px`;
+        ctx.font = monoFont(labelPx);
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(tierEl.value.toUpperCase(), m, top + sygnet * 0.42);
+
+        const foot = sponsorFootEl.value.trim();
+        let footTop = bottom;
+        if (foot) {
+          ctx.font = monoFont(labelPx);
+          ctx.textBaseline = 'alphabetic';
+          ctx.fillText(foot.toUpperCase(), m, bottom);
+          footTop = bottom - labelPx * 1.6;
+        }
+        if (hadSpacing) ctx.letterSpacing = '0px';
+
+        const headLines = sponsorHeadEl.value.split('\n').map((s) => s.trim()).filter(Boolean);
+        let headBottom = top + sygnet + contentH * 0.03;
+        if (headLines.length) {
+          const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
+          const px = fitFont(headLines, W - m * 2, contentH * 0.11 * userScale);
+          ctx.font = `${fontWeight} ${px}px ${fontFamily}`;
+          ctx.fillStyle = textColor;
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'middle';
+          const lineH = px * 1.02;
+          let y = top + sygnet + contentH * 0.05 + lineH / 2;
+          for (const l of headLines) { ctx.fillText(l, m, y); y += lineH; }
+          headBottom = y - lineH / 2 + lineH * 0.5;
+        }
+
+        const areaTop = headBottom + contentH * 0.04;
+        const areaH = footTop - contentH * 0.04 - areaTop;
+        if (areaH < 40) { drawGuides(inset); return; }
+        // kafelek na całą wolną wysokość gubi logo w pustce
+        const cardH = Math.min(areaH, (W - m * 2) * 0.72);
+        const cardTop = areaTop + (areaH - cardH) / 2;
+
+        ctx.fillStyle = cardBgEl.value;
+        drawRounded(m, cardTop, W - m * 2, cardH, W * 0.05);
+        ctx.fill();
+
+        if (sponsorImg) {
+          const pad = Math.min(W - m * 2, cardH) * 0.16;
+          const boxW = (W - m * 2 - pad * 2) * (parseFloat(cardScaleEl.value) || 1);
+          const boxH = (cardH - pad * 2) * (parseFloat(cardScaleEl.value) || 1);
+          const r = Math.min(boxW / sponsorImg.width, boxH / sponsorImg.height);
+          const lw = sponsorImg.width * r, lh = sponsorImg.height * r;
+          ctx.drawImage(sponsorImg, m + (W - m * 2 - lw) / 2, cardTop + (cardH - lh) / 2, lw, lh);
+        }
+
+        drawGuides(inset);
       }
 
       function noise(i, j, salt) {
@@ -615,18 +1021,15 @@ import '@fontsource-variable/inter';
       let t0 = performance.now();
       function draw(now) {
         const elapsed = (now - t0) / 1000;
-        const still = modeEl.value === 'static';
+        const still = STILL.includes(modeEl.value);
         pivot.rotation.y = still ? 0 : elapsed * OMEGA;
         renderer.render(scene, camera);
 
         if (still) {
-          drawStatic();
-          requestAnimationFrame(draw);
-          return;
-        }
-
-        if (modeEl.value === 'speaker') {
-          drawSpeaker(elapsed);
+          if (modeEl.value === 'sponsor') drawSponsor();
+          else if (modeEl.value === 'speaker') {
+            drawSpeakerStill(animPreviewEl.checked || recording ? elapsed % animTotal() : undefined);
+          } else drawStatic();
           requestAnimationFrame(draw);
           return;
         }
@@ -675,38 +1078,255 @@ import '@fontsource-variable/inter';
           .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'logo';
       }
 
+      // ZIP bez kompresji (PNG i tak jest skompresowany) – bez zewnętrznej biblioteki
+      const CRC_TABLE = (() => {
+        const t = new Uint32Array(256);
+        for (let i = 0; i < 256; i++) {
+          let c = i;
+          for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+          t[i] = c >>> 0;
+        }
+        return t;
+      })();
+
+      function crc32(bytes) {
+        let c = 0xffffffff;
+        for (let i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xff] ^ (c >>> 8);
+        return (c ^ 0xffffffff) >>> 0;
+      }
+
+      function zipStore(files) {
+        const enc = new TextEncoder();
+        const parts = [];
+        const central = [];
+        let offset = 0;
+
+        for (const f of files) {
+          const name = enc.encode(f.name);
+          const crc = crc32(f.data);
+
+          const local = new Uint8Array(30 + name.length);
+          const lv = new DataView(local.buffer);
+          lv.setUint32(0, 0x04034b50, true);
+          lv.setUint16(4, 20, true);
+          lv.setUint16(8, 0, true);
+          lv.setUint32(14, crc, true);
+          lv.setUint32(18, f.data.length, true);
+          lv.setUint32(22, f.data.length, true);
+          lv.setUint16(26, name.length, true);
+          local.set(name, 30);
+
+          const cd = new Uint8Array(46 + name.length);
+          const cv = new DataView(cd.buffer);
+          cv.setUint32(0, 0x02014b50, true);
+          cv.setUint16(4, 20, true);
+          cv.setUint16(6, 20, true);
+          cv.setUint16(10, 0, true);
+          cv.setUint32(16, crc, true);
+          cv.setUint32(20, f.data.length, true);
+          cv.setUint32(24, f.data.length, true);
+          cv.setUint16(28, name.length, true);
+          cv.setUint32(42, offset, true);
+          cd.set(name, 46);
+
+          parts.push(local, f.data);
+          central.push(cd);
+          offset += local.length + f.data.length;
+        }
+
+        const cdSize = central.reduce((n, c) => n + c.length, 0);
+        const end = new Uint8Array(22);
+        const ev = new DataView(end.buffer);
+        ev.setUint32(0, 0x06054b50, true);
+        ev.setUint16(8, files.length, true);
+        ev.setUint16(10, files.length, true);
+        ev.setUint32(12, cdSize, true);
+        ev.setUint32(16, offset, true);
+
+        return new Blob([...parts, ...central, end], { type: 'application/zip' });
+      }
+
+      function pngBytes() {
+        const b64 = out.toDataURL('image/png').split(',')[1];
+        const bin = atob(b64);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        return bytes;
+      }
+
+      const ZIP_FORMATS = ['1080x1080', '1080x1350', '1080x1920'];
+
+      function renderStill() {
+        if (modeEl.value === 'sponsor') drawSponsor();
+        else if (modeEl.value === 'speaker') drawSpeakerStill();
+        else drawStatic();
+      }
+
+      function stillSlug() {
+        if (modeEl.value === 'sponsor') return slugify(`sponsor-${sponsorName}`);
+        if (modeEl.value === 'speaker') return slugify(speakerEl.value || 'prelegent');
+        return slugify(textEl.value);
+      }
+
+      document.getElementById('zip').addEventListener('click', () => {
+        const prev = formatEl.value;
+        const slug = stillSlug();
+        const files = [];
+        exporting = true;
+        for (const f of ZIP_FORMATS) {
+          formatEl.value = f;
+          setFormat();
+          renderStill();
+          files.push({ name: `${slug}-${f}.png`, data: pngBytes() });
+        }
+        exporting = false;
+        formatEl.value = prev;
+        setFormat();
+
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(zipStore(files));
+        a.download = `${slug}.zip`;
+        a.click();
+        statusEl.textContent = `pobrano ${a.download} (${files.length} formaty)`;
+      });
+
+      function recordWebm(slug) {
+        return new Promise((resolve) => {
+          recording = true;
+          const speakerMode = modeEl.value === 'speaker';
+          const turns = Math.max(1, Math.round(parseFloat(turnsEl.value) || 2));
+          const durMs = speakerMode ? Math.round(animTotal() * 1000) : turns * 5000;
+          t0 = performance.now();
+          const stream = out.captureStream(60);
+          // iPhone nie przyjmuje webm, więc mp4 wygrywa wszędzie, gdzie przeglądarka je potrafi
+          const candidates = [
+            'video/mp4;codecs=avc1.640028',
+            'video/mp4;codecs=avc1',
+            'video/mp4',
+            'video/webm;codecs=vp9',
+            'video/webm',
+          ];
+          const mimeType = candidates.find((t) => MediaRecorder.isTypeSupported(t)) || '';
+          const ext = mimeType.startsWith('video/mp4') ? 'mp4' : 'webm';
+          const rec = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 16_000_000 });
+          const chunks = [];
+          rec.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+          rec.onstop = () => {
+            const blob = new Blob(chunks, { type: mimeType || 'video/webm' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `${slug}-${W}x${H}.${ext}`;
+            a.click();
+            recording = false;
+            resolve(a.download);
+          };
+          t0 = performance.now();
+          rec.start();
+          statusEl.textContent = `nagrywam ${durMs / 1000}s…`;
+          setTimeout(() => rec.stop(), durMs);
+        });
+      }
+
+      function savePng(slug) {
+        exporting = true;
+        renderStill();
+        const a = document.createElement('a');
+        a.href = out.toDataURL('image/png');
+        exporting = false;
+        a.download = `${slug}-${W}x${H}.png`;
+        a.click();
+        return a.download;
+      }
+
+      const postTextEl = document.getElementById('postText');
+
+      function buildPost() {
+        const name = speakerEl.value.replace(/\s*\n\s*/g, ' ').trim();
+        const talk = talkEl.value.replace(/\s*\n\s*/g, ' ').trim();
+        if (!name) return '';
+        const lead = talk
+          ? `${name} wystąpi na Programistoku z tematem: „${talk}”.`
+          : `${name} wystąpi na Programistoku.`;
+        return [
+          lead,
+          '',
+          'Spotykamy się 25 i 26 września 2026 na Politechnice Białostockiej.',
+          '',
+          'Aktualna agenda: https://programistok.org/agenda',
+          'Bilety: https://programistok2026.konfeo.com',
+          '',
+          '#Programistok #Programistok2026 #Białystok #IT',
+        ].join('\n');
+      }
+
+      function syncPost() {
+        if (!postTextEl) return;
+        postTextEl.value = buildPost();
+      }
+      [speakerEl, talkEl].forEach((el) => el.addEventListener('input', syncPost));
+      speakerPresetEl.addEventListener('change', () => setTimeout(syncPost, 0));
+      syncPost();
+
+      document.getElementById('copyPost').addEventListener('click', async () => {
+        const text = postTextEl.value;
+        if (!text) { statusEl.textContent = 'najpierw uzupełnij prelegenta'; return; }
+        try {
+          await navigator.clipboard.writeText(text);
+          statusEl.textContent = 'skopiowano tekst posta';
+        } catch {
+          postTextEl.select();
+          document.execCommand('copy');
+          statusEl.textContent = 'skopiowano tekst posta';
+        }
+      });
+
+      document.getElementById('rec916').addEventListener('click', () => {
+        const b = document.getElementById('rec916');
+        b.disabled = true;
+        btn.disabled = true;
+        recordWebm(slugify(speakerEl.value || 'prelegent')).then((name) => {
+          b.disabled = false;
+          btn.disabled = false;
+          statusEl.textContent = `pobrano ${name}`;
+        });
+      });
+
+      // komplet: statyczny post 4:5 + animowana story 9:16 z tego samego materiału
+      document.getElementById('combo').addEventListener('click', async () => {
+        const btnCombo = document.getElementById('combo');
+        const prevFormat = formatEl.value;
+        const slug = slugify(speakerEl.value || 'prelegent');
+        btnCombo.disabled = true;
+        btn.disabled = true;
+
+        formatEl.value = '1080x1350';
+        setFormat();
+        const png = savePng(slug);
+        statusEl.textContent = `pobrano ${png}, nagrywam story…`;
+
+        formatEl.value = '1080x1920';
+        setFormat();
+        await new Promise((r) => setTimeout(r, 400));
+        const webm = await recordWebm(slug);
+
+        formatEl.value = prevFormat;
+        setFormat();
+        btnCombo.disabled = false;
+        btn.disabled = false;
+        statusEl.textContent = `komplet gotowy: ${png} + ${webm}`;
+      });
+
       btn.addEventListener('click', () => {
-        if (modeEl.value === 'static') {
-          const a = document.createElement('a');
-          a.href = out.toDataURL('image/png');
-          a.download = `${slugify(textEl.value)}-${W}x${H}.png`;
-          a.click();
-          statusEl.textContent = `pobrano ${a.download}`;
+        if (STILL.includes(modeEl.value)) {
+          statusEl.textContent = `pobrano ${savePng(stillSlug())}`;
           return;
         }
 
-        const speakerMode = modeEl.value === 'speaker';
-        const turns = Math.max(1, Math.round(parseFloat(turnsEl.value) || 2));
-        const durMs = speakerMode ? Math.round(loopSec() * 1000) : turns * 5000;
-        const stream = out.captureStream(60);
-        const rec = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9', videoBitsPerSecond: 16_000_000 });
-        const chunks = [];
-        rec.ondataavailable = (e) => e.data.size && chunks.push(e.data);
-        rec.onstop = () => {
-          const blob = new Blob(chunks, { type: 'video/webm' });
-          const a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          const slug = slugify(speakerMode ? speakerEl.value : textEl.value);
-          a.download = `${slug}-${W}x${H}.webm`;
-          a.click();
-          btn.disabled = false;
-          statusEl.textContent = `pobrano ${a.download}`;
-        };
-        t0 = performance.now(); // sync kąta = 0
-        rec.start();
         btn.disabled = true;
-        statusEl.textContent = `nagrywam ${durMs / 1000}s…`;
-        setTimeout(() => rec.stop(), durMs);
+        recordWebm(slugify(modeEl.value === 'speaker' ? speakerEl.value : textEl.value)).then((name) => {
+          btn.disabled = false;
+          statusEl.textContent = `pobrano ${name}`;
+        });
       });
     </script>
   </body>

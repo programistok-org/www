@@ -1,0 +1,232 @@
+---
+// Dev-only: sygnet 3D bez animacji, front, PNG w wysokiej rozdzielczości (druk).
+// NIE publikować. Użycie: npm run dev → /logo-print.
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>logo print</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; background: #2a2a2a; min-height: 100%; font-family: system-ui, sans-serif; color: #eee; }
+      .app { display: grid; grid-template-columns: 300px 1fr; gap: 24px; padding: 24px; align-items: start; }
+      .panel { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 16px; background: #1c1c1c; padding: 20px; border-radius: 14px; }
+      .field { display: flex; flex-direction: column; gap: 6px; }
+      label { font: 600 12px/1.2 monospace; text-transform: uppercase; letter-spacing: .08em; color: #999; }
+      select, input[type=color] { font: 15px system-ui; padding: 8px 10px; border-radius: 8px; border: 1px solid #444; background: #111; color: #fff; }
+      input[type=range] { width: 100%; }
+      .check { display: flex; align-items: center; gap: 8px; font: 14px system-ui; color: #ccc; }
+      button { font: 600 15px system-ui; padding: 12px 16px; border: 0; border-radius: 10px; background: #dc1945; color: #fff; cursor: pointer; }
+      button:disabled { opacity: .5; cursor: wait; }
+      .status { font: 12px/1.5 monospace; color: #8c8; min-height: 1.5em; }
+      .stage { display: grid; place-items: center; }
+      #preview { max-width: 100%; max-height: calc(100vh - 48px); border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,.4);
+        background-image: linear-gradient(45deg, #3a3a3a 25%, transparent 25%), linear-gradient(-45deg, #3a3a3a 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #3a3a3a 75%), linear-gradient(-45deg, transparent 75%, #3a3a3a 75%);
+        background-size: 24px 24px; background-position: 0 0, 0 12px, 12px -12px, -12px 0; }
+      #gl { display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="panel">
+        <div class="field">
+          <label for="size">rozdzielczość</label>
+          <select id="size">
+            <option value="2048">2048 px</option>
+            <option value="4096" selected>4096 px</option>
+            <option value="6144">6144 px</option>
+            <option value="8192">8192 px</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="rotx">obrót X <span id="rotxv">0°</span></label>
+          <input id="rotx" type="range" min="-45" max="45" step="1" value="0" />
+        </div>
+
+        <div class="field">
+          <label for="roty">obrót Y <span id="rotyv">0°</span></label>
+          <input id="roty" type="range" min="-45" max="45" step="1" value="0" />
+        </div>
+
+        <div class="field">
+          <label for="depth">głębokość <span id="depthv">26</span></label>
+          <input id="depth" type="range" min="0" max="80" step="1" value="26" />
+        </div>
+
+        <div class="field">
+          <label for="margin">margines <span id="marginv">6%</span></label>
+          <input id="margin" type="range" min="0" max="20" step="1" value="6" />
+        </div>
+
+        <label class="check"><input id="ortho" type="checkbox" checked /> rzut prostokątny (bez perspektywy)</label>
+        <label class="check"><input id="bg" type="checkbox" /> tło</label>
+
+        <div class="field">
+          <label for="bgcolor">kolor tła</label>
+          <input id="bgcolor" type="color" value="#ffffff" />
+        </div>
+
+        <button id="save">pobierz PNG</button>
+        <div class="status" id="status"></div>
+      </div>
+
+      <div class="stage">
+        <canvas id="preview" width="900" height="900"></canvas>
+        <canvas id="gl"></canvas>
+      </div>
+    </div>
+
+    <script>
+      import * as THREE from 'three';
+      import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+
+      const glCanvas = document.getElementById('gl');
+      const preview = document.getElementById('preview');
+      const pctx = preview.getContext('2d');
+      const statusEl = document.getElementById('status');
+      const saveBtn = document.getElementById('save');
+
+      const sizeEl = document.getElementById('size');
+      const rotxEl = document.getElementById('rotx');
+      const rotyEl = document.getElementById('roty');
+      const depthEl = document.getElementById('depth');
+      const marginEl = document.getElementById('margin');
+      const orthoEl = document.getElementById('ortho');
+      const bgEl = document.getElementById('bg');
+      const bgColorEl = document.getElementById('bgcolor');
+
+      const renderer = new THREE.WebGLRenderer({ canvas: glCanvas, alpha: true, antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      const gl = renderer.getContext();
+      const MAX_BUF = Math.min(gl.getParameter(gl.MAX_RENDERBUFFER_SIZE), gl.getParameter(gl.MAX_TEXTURE_SIZE));
+
+      const scene = new THREE.Scene();
+      scene.add(new THREE.AmbientLight(0xffffff, 0.65));
+      const key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(-0.6, 1, 0.9); scene.add(key);
+      const rim = new THREE.DirectionalLight(0xffffff, 0.7); rim.position.set(1, -0.4, 0.5); scene.add(rim);
+
+      const pivot = new THREE.Group();
+      scene.add(pivot);
+
+      let svgPaths = null;
+      let group = null;
+
+      function buildGroup(depth) {
+        if (group) {
+          pivot.remove(group);
+          group.traverse((o) => { if (o.isMesh) { o.geometry.dispose(); o.material.dispose(); } });
+        }
+        group = new THREE.Group();
+        for (const path of svgPaths) {
+          const mat = new THREE.MeshStandardMaterial({ color: path.color, metalness: 0.2, roughness: 0.42, side: THREE.DoubleSide });
+          for (const shape of path.toShapes(true)) {
+            const geo = depth > 0
+              ? new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: true, bevelThickness: 4, bevelSize: 2.5, bevelSegments: 6, curveSegments: 64 })
+              : new THREE.ShapeGeometry(shape, 64);
+            group.add(new THREE.Mesh(geo, mat));
+          }
+        }
+        group.scale.y = -1;
+        const box = new THREE.Box3().setFromObject(group);
+        group.position.sub(box.getCenter(new THREE.Vector3()));
+        pivot.add(group);
+      }
+
+      function makeCamera() {
+        pivot.rotation.x = (parseFloat(rotxEl.value) || 0) * Math.PI / 180;
+        pivot.rotation.y = (parseFloat(rotyEl.value) || 0) * Math.PI / 180;
+        pivot.updateMatrixWorld(true);
+
+        const box = new THREE.Box3().setFromObject(pivot);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        const m = 1 + (parseFloat(marginEl.value) || 0) / 50;
+        const half = Math.max(size.x, size.y) * 0.5 * m;
+        const dist = size.z + Math.max(size.x, size.y) * 2;
+
+        let camera;
+        if (orthoEl.checked) {
+          camera = new THREE.OrthographicCamera(-half, half, half, -half, 0.1, dist * 4);
+        } else {
+          const fov = 25;
+          camera = new THREE.PerspectiveCamera(fov, 1, 0.1, dist * 8);
+          const need = half / Math.tan((fov / 2) * Math.PI / 180);
+          camera.position.z = center.z + size.z * 0.5 + need;
+          camera.position.x = center.x;
+          camera.position.y = center.y;
+          camera.lookAt(center);
+          return camera;
+        }
+        camera.position.set(center.x, center.y, center.z + dist);
+        camera.lookAt(center);
+        return camera;
+      }
+
+      function renderAt(px) {
+        const ss = Math.max(1, Math.min(2, Math.floor(MAX_BUF / px)));
+        const buf = px * ss;
+        renderer.setSize(buf, buf, false);
+        renderer.render(scene, makeCamera());
+
+        const outCanvas = document.createElement('canvas');
+        outCanvas.width = px; outCanvas.height = px;
+        const ctx = outCanvas.getContext('2d');
+        if (bgEl.checked) { ctx.fillStyle = bgColorEl.value; ctx.fillRect(0, 0, px, px); }
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(glCanvas, 0, 0, buf, buf, 0, 0, px, px);
+        return { canvas: outCanvas, ss };
+      }
+
+      function drawPreview() {
+        if (!svgPaths) return;
+        const { canvas } = renderAt(900);
+        pctx.clearRect(0, 0, 900, 900);
+        pctx.drawImage(canvas, 0, 0);
+      }
+
+      for (const [el, out, suffix] of [[rotxEl, 'rotxv', '°'], [rotyEl, 'rotyv', '°'], [depthEl, 'depthv', ''], [marginEl, 'marginv', '%']]) {
+        el.addEventListener('input', () => {
+          document.getElementById(out).textContent = el.value + suffix;
+          if (el === depthEl) buildGroup(parseFloat(depthEl.value));
+          drawPreview();
+        });
+      }
+      for (const el of [orthoEl, bgEl, bgColorEl]) el.addEventListener('input', drawPreview);
+
+      saveBtn.addEventListener('click', () => {
+        const px = parseInt(sizeEl.value, 10);
+        saveBtn.disabled = true;
+        statusEl.textContent = `render ${px}×${px}…`;
+        requestAnimationFrame(() => {
+          const { canvas, ss } = renderAt(px);
+          canvas.toBlob((blob) => {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `programistok-sygnet-${px}.png`;
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+            statusEl.textContent = `pobrano ${a.download} (SSAA ×${ss}, ${(blob.size / 1048576).toFixed(1)} MB)`;
+            saveBtn.disabled = false;
+            drawPreview();
+          }, 'image/png');
+        });
+      });
+
+      new SVGLoader().load('/programistok-sygnet.svg', (data) => {
+        svgPaths = data.paths;
+        buildGroup(parseFloat(depthEl.value));
+        drawPreview();
+        statusEl.textContent = `max bufor GPU: ${MAX_BUF} px`;
+      });
+    </script>
+  </body>
+</html>

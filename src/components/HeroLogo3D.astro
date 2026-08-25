@@ -125,13 +125,36 @@ const { class: className = '' } = Astro.props;
       return rafId !== 0;
     }
 
-    const MIN_FPS = 24;
+    const MIN_FPS = 20;
     const WINDOW_MS = 1200;
     let probeFrames = 0;
     let probeTime = 0;
     let badWindows = 0;
     let warmup = true;
     let degraded = false;
+    let quality = 0;
+
+    function downgrade() {
+      quality++;
+      badWindows = 0;
+      probeFrames = 0;
+      probeTime = 0;
+      warmup = true;
+      if (quality === 1) {
+        renderer.setPixelRatio(1);
+        resize();
+        return false;
+      }
+      degraded = true;
+      stop();
+      if (fallback) {
+        fallback.style.display = '';
+        fallback.hidden = false;
+      }
+      canvas.style.display = 'none';
+      renderer.dispose();
+      return true;
+    }
 
     function tick(now) {
       const raw = now - last;
@@ -147,12 +170,7 @@ const { class: className = '' } = Astro.props;
           if (warmup) {
             warmup = false;
           } else if (fps < MIN_FPS) {
-            if (++badWindows >= 2) {
-              degraded = true;
-              stop();
-              renderer.render(scene, camera);
-              return;
-            }
+            if (++badWindows >= 2 && downgrade()) return;
           } else {
             badWindows = 0;
           }

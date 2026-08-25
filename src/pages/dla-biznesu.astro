@@ -61,7 +61,7 @@ const takeaways = [
 ---
 
 <BaseLayout
-  title="Ścieżka Business · Digitalizacja Przemysłu @ Programistok 2026"
+  title="Ścieżka Biznes · Digitalizacja Przemysłu @ Programistok 2026"
   description="Nowa ścieżka biznesowa konferencji Programistok. Dwa dni szczerych rozmów o decyzjach technologicznych, dla founderów, liderów i biznesu. 25–26.09.2026, Białystok."
 >
   <!-- ===== HERO ===== -->
@@ -71,7 +71,7 @@ const takeaways = [
         <span class="h-2 w-2 rounded-full bg-white" aria-hidden="true"></span>
         Nowość 2026
       </span>
-      <span class="font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Ścieżka Business</span>
+      <span class="font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Ścieżka Biznes</span>
     </div>
 
     <h1 id="biz-title" class="max-w-[16ch] text-balance text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">
@@ -222,10 +222,10 @@ const takeaways = [
     <p class="mb-4 font-mono text-[13px] font-bold uppercase tracking-[0.18em] text-biz-ink">// Wystąpienia</p>
     <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
       <h2 id="prelegenci-title" class="text-balance text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.02] tracking-[-0.03em]">
-        Kto wystąpi na ścieżce Business
+        Kto wystąpi na ścieżce Biznes
       </h2>
       <span class="rounded-full bg-biz/10 px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] text-biz-ink">
-        {bizTrack.slots} {prezentacje(bizTrack.slots)}
+        {bizTrack.speakers.length}/{bizTrack.slots} {prezentacje(bizTrack.slots)}
       </span>
     </div>
     <p class="mt-4 max-w-[62ch] text-lg leading-relaxed text-muted text-pretty">
@@ -243,14 +243,16 @@ const takeaways = [
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a
-            href={agenda.cfp.forms.biznes}
-            rel="noopener"
-            target="_blank"
-            class="inline-flex items-center gap-2 rounded-full bg-biz px-6 py-3.5 text-[15px] font-bold text-white transition hover:brightness-110"
-          >
-            Zgłoś prelekcję Business <span aria-hidden="true">↗</span>
-          </a>
+          {agenda.cfp.open && (
+            <a
+              href={agenda.cfp.forms.biznes}
+              rel="noopener"
+              target="_blank"
+              class="inline-flex items-center gap-2 rounded-full bg-biz px-6 py-3.5 text-[15px] font-bold text-white transition hover:brightness-110"
+            >
+              Zgłoś prelekcję Biznes <span aria-hidden="true">↗</span>
+            </a>
+          )}
           <a href="/agenda#biznes" class="inline-flex items-center gap-1.5 font-semibold text-biz-ink transition hover:gap-2.5">
             Pełna agenda <span aria-hidden="true">→</span>
           </a>
@@ -260,9 +262,11 @@ const takeaways = [
   </section>
 
   <!-- ===== CFP BUSINESS ===== -->
-  <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-label="Call for Papers">
-    <Cfp only="biznes" />
-  </section>
+  {agenda.cfp.open && (
+    <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-label="Call for Papers">
+      <Cfp only="biznes" />
+    </section>
+  )}
 
   <!-- ===== JAK ROZMAWIAMY ===== -->
   <section class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby="format-title">
@@ -290,7 +294,7 @@ const takeaways = [
         Jeden bilet, dwa dni, dwie ścieżki
       </h2>
       <p class="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted text-balance">
-        Ścieżka Business jest częścią większego Programistoku. Ten sam bilet wpuszcza Cię też na ścieżkę IT.
+        Ścieżka Biznes jest częścią większego Programistoku. Ten sam bilet wpuszcza Cię też na ścieżkę IT.
         Jeśli zechcesz zobaczyć, jak te same decyzje wyglądają od strony inżynierów, zapraszamy. Przerwy, lunch
         i networking są wspólne dla wszystkich, więc founder siada do stołu z programistą.
       </p>
@@ -334,7 +338,7 @@ const takeaways = [
             Masz pytania o ścieżkę biznesową?
           </h2>
           <p class="mt-6 max-w-[48ch] text-lg leading-relaxed text-muted text-balance">
-            Za ścieżkę Business odpowiada <strong class="text-ink">Karol Wiszowaty</strong>. Napisz lub zadzwoń.
+            Za ścieżkę Biznes odpowiada <strong class="text-ink">Karol Wiszowaty</strong>. Napisz lub zadzwoń.
             Chętnie opowie o programie, formacie i o tym, czy to wydarzenie jest dla Twojej firmy.
           </p>
 
@@ -349,7 +353,7 @@ const takeaways = [
         </div>
 
         <div class="flex flex-col justify-center gap-1 border-t border-line bg-ink px-6 py-10 text-cream sm:px-12 lg:border-l lg:border-t-0">
-          <p class="font-mono text-[12px] uppercase tracking-[0.14em] text-cream-faint">Opiekun ścieżki Business</p>
+          <p class="font-mono text-[12px] uppercase tracking-[0.14em] text-cream-faint">Opiekun ścieżki Biznes</p>
           <p class="mt-2 text-2xl font-black tracking-[-0.02em]">Karol Wiszowaty</p>
           <a href="mailto:karol.wiszowaty@gmail.com" class="mt-4 text-cream-dim underline decoration-white/25 underline-offset-4 transition hover:text-cream">karol.wiszowaty@gmail.com</a>
           <a href="tel:+48668095749" class="text-cream-dim underline decoration-white/25 underline-offset-4 transition hover:text-cream">+48 668 095 749</a>
