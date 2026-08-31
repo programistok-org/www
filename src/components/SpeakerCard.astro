@@ -24,13 +24,14 @@ const bio = paragraphs(speaker.bio);
 ---
 
 <article class="grid overflow-hidden rounded-3xl border border-line bg-surface md:grid-cols-[minmax(0,280px)_1fr]">
-  <div class="aspect-[4/3] bg-ink md:aspect-auto md:min-h-[280px]">
+  <div class="aspect-square bg-ink md:aspect-auto md:min-h-[280px]">
     {speaker.photo ? (
       <img
         src={speaker.photo}
         alt={`${speaker.name}, wystąpienie na Programistoku 2026`}
         loading="lazy"
         class="h-full w-full object-cover object-[50%_22%]"
+        style={speaker.photoPosition ? `object-position:${speaker.photoPosition}` : undefined}
       />
     ) : (
       <div class="flex h-full w-full items-center justify-center text-cream">
