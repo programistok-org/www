@@ -5,25 +5,27 @@ import Cfp from '../components/Cfp.astro';
 import agenda from '../data/agenda2026.json';
 
 const tracks = agenda.tracks;
-const total = tracks.reduce((n, t) => n + t.slots, 0);
 
 const theme = {
   it: { bar: 'bg-accent', label: 'text-accent-ink', chip: 'bg-accent/10 text-accent-ink', btn: 'bg-accent' },
   biznes: { bar: 'bg-biz', label: 'text-biz-ink', chip: 'bg-biz/10 text-biz-ink', btn: 'bg-biz' },
 };
 
-const prezentacje = (n) => {
-  const t = n % 10;
-  const h = n % 100;
-  if (n === 1) return 'prezentacja';
-  if (t >= 2 && t <= 4 && !(h >= 12 && h <= 14)) return 'prezentacje';
-  return 'prezentacji';
-};
+// Ścieżka biznesowa ma dwa formaty wystąpień; IT na razie jeden.
+const formats = [
+  { id: 'prezentacja', label: 'Prezentacje', time: '30 minut' },
+  { id: 'lt', label: 'Case studies', time: '10 minut' },
+];
+
+const groupsFor = (track) =>
+  formats
+    .map((f) => ({ ...f, speakers: track.speakers.filter((s) => (s.format ?? 'prezentacja') === f.id) }))
+    .filter((g) => g.speakers.length > 0);
 ---
 
 <BaseLayout
   title="Agenda 2026 · Programistok"
-  description="Program Programistok 2026: 24 prezentacje w dwa dni, dwie ścieżki (IT i Biznes). Ogłaszamy stopniowo. 25.09 i 26.09.2026, Białystok."
+  description="Program Programistok 2026: dwa dni, dwie ścieżki: IT i biznes. Prezentacje, lightning talki i case studies. Ogłaszamy stopniowo. 25.09 i 26.09.2026, Białystok."
 >
   <!-- ===== HERO ===== -->
   <section class="mx-auto max-w-[1200px] px-5 pb-8 pt-14 sm:px-8 lg:pt-20" aria-labelledby="agenda-title">
@@ -34,9 +36,22 @@ const prezentacje = (n) => {
     </h1>
 
     <p class="mt-6 max-w-[58ch] text-[clamp(1.125rem,2vw,1.4375rem)] leading-relaxed text-muted text-pretty">
-      {total} {prezentacje(total)} w dwa dni, w dwóch ścieżkach po {tracks[0].slots}. Program ogłaszamy
-      stopniowo. Podział na dni i godziny opublikujemy, gdy będzie kompletny.
+      Dwa dni, dwie ścieżki: IT i biznes. W IT prezentacje i lightning talki, w biznesie prezentacje
+      i krótsze case studies. Program ogłaszamy stopniowo. Podział na dni i godziny opublikujemy,
+      gdy będzie kompletny.
     </p>
+
+    <nav class="mt-8 flex flex-wrap gap-3" aria-label="Skocz do ścieżki">
+      {tracks.map((track) => (
+        <a
+          href={`#${track.id}`}
+          class="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-5 py-3 text-[15px] font-bold tracking-[-0.01em] text-ink transition hover:border-ink/25 hover:bg-bg"
+        >
+          <span class={`h-2.5 w-2.5 shrink-0 rounded-[3px] ${theme[track.id].bar}`} aria-hidden="true"></span>
+          Ścieżka {track.label}
+        </a>
+      ))}
+    </nav>
 
     <p class="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-sm uppercase tracking-wide text-faint">
       <span class="inline-flex items-center gap-2 text-ink">
@@ -49,28 +64,45 @@ const prezentacje = (n) => {
 
   <!-- ===== ŚCIEŻKI ===== -->
   {tracks.map((track) => (
-    <section id={track.id} class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-labelledby={`track-${track.id}`}>
+    <section id={track.id} class="mx-auto max-w-[1200px] scroll-mt-24 px-5 py-8 sm:px-8 lg:py-12" aria-labelledby={`track-${track.id}`}>
       <div class={`mb-6 h-1.5 w-16 rounded-full ${theme[track.id].bar}`}></div>
 
       <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
         <h2 id={`track-${track.id}`} class="text-balance text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.02] tracking-[-0.03em]">
           {track.name}
         </h2>
-        <span class={`rounded-full px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] ${theme[track.id].chip}`}>
-          {track.speakers.length}/{track.slots} {prezentacje(track.slots)}
-        </span>
       </div>
 
       <p class="mt-4 max-w-[62ch] text-lg leading-relaxed text-muted text-pretty">{track.lead}</p>
 
       <div class="mt-10 flex flex-col gap-5">
-        {track.speakers.map((s) => <SpeakerCard speaker={s} track={track.id} />)}
+        {groupsFor(track).map((group, gi) => (
+          <div class="flex flex-col gap-5">
+            {groupsFor(track).length > 1 && (
+              <div class={`flex flex-wrap items-baseline gap-x-3 gap-y-1 ${gi > 0 ? 'mt-7' : ''}`}>
+                <h3 class={`font-mono text-[12px] uppercase tracking-[0.12em] ${theme[track.id].label}`}>{group.label}</h3>
+                <span class="font-mono text-[12px] uppercase tracking-[0.12em] text-faint">{group.time}</span>
+              </div>
+            )}
+            {group.speakers.map((s) => <SpeakerCard speaker={s} track={track.id} />)}
+          </div>
+        ))}
+
+        {track.id === 'it' && (
+          <div class="rounded-3xl border border-dashed border-line bg-surface/50 px-7 py-8 sm:px-9">
+            <p class={`mb-2 font-mono text-[12px] uppercase tracking-[0.12em] ${theme[track.id].label}`}>Lightning talks</p>
+            <p class="max-w-[52ch] text-balance text-[17px] font-bold leading-snug text-ink">
+              Poza prezentacjami w ścieżce IT pojawią się też lightning talki. Zgłoszenia klasycznie
+              na miejscu, w trakcie konferencji.
+            </p>
+          </div>
+        )}
 
         <div class="flex flex-wrap items-center justify-between gap-5 rounded-3xl border border-dashed border-line bg-surface/50 px-7 py-8 sm:px-9">
           <div>
             <p class={`mb-2 font-mono text-[12px] uppercase tracking-[0.12em] ${theme[track.id].label}`}>Wkrótce</p>
             <p class="text-balance text-[17px] font-bold leading-snug text-ink">
-              Kolejne {track.slots - track.speakers.length} {prezentacje(track.slots - track.speakers.length)} ogłosimy w najbliższych tygodniach
+              Kolejne prezentacje ogłosimy wkrótce
             </p>
           </div>
           {agenda.cfp.open && (

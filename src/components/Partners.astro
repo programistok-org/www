@@ -77,6 +77,14 @@ const hosts = [
   },
 ];
 
+const strategic = {
+  name: 'Województwo Podlaskie',
+  logo: '/wojewodztwo-podlaskie.svg',
+  href: 'https://www.facebook.com/wojpodlaskie',
+  description:
+    'Programistok powstaje przy wsparciu Województwa Podlaskiego, partnera strategicznego tegorocznej edycji.',
+};
+
 const partners = [
   {
     name: 'Google for Education',
@@ -85,7 +93,7 @@ const partners = [
     href: 'https://zpe.gov.pl/b/google-for-education/P62PEER9D',
     linkLabel: 'Google for Education',
     description:
-      'Google for Education to kompleksowy program wsparcia transformacji cyfrowej szkół, skoncentrowany na dostarczeniu narzędzi i technologii, które ułatwiają nauczanie, usprawniają komunikację i zapewniają bezpieczeństwo danych. To coś więcej niż tylko oprogramowanie — to ekosystem stworzony z myślą o efektywności pracy nauczycieli i nowoczesnym podejściu do edukacji.',
+      'Google for Education wspiera transformację cyfrową edukacji od szkół podstawowych po uczelnie wyższe. Dostarcza materiały, szkolenia i warsztaty dla nauczycielek i nauczycieli oraz buduje społeczność aktywnych innowacyjnych edukatorów i szkół z całej Polski.',
   },
   {
     name: 'Izba Przemysłowo-Handlowa w Białymstoku',
@@ -153,6 +161,26 @@ const partners = [
         </a>
       </article>
     ))}
+  </div>
+
+  <p class="mt-12 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Partner strategiczny</p>
+  <div class="mt-5">
+    <article class="grid items-center gap-8 rounded-3xl border border-line bg-surface p-8 sm:p-10 md:grid-cols-[minmax(0,300px)_1fr] md:gap-12">
+      <div class="flex justify-center md:justify-start">
+        <img src={strategic.logo} alt={strategic.name} class="h-28 w-auto max-w-full sm:h-36" />
+      </div>
+      <div class="flex flex-col">
+        <p class="text-[15px] leading-relaxed text-muted text-pretty">{strategic.description}</p>
+        <a
+          href={strategic.href}
+          rel="noopener"
+          target="_blank"
+          class="mt-6 inline-flex items-center gap-2 self-start font-mono text-[13px] uppercase tracking-wide text-accent-ink transition-colors hover:text-ink"
+        >
+          {strategic.name} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
   </div>
 
   <p class="mt-12 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Sponsorzy</p>

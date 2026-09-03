@@ -93,10 +93,11 @@
       "label": "Biznes",
       "name": "Ścieżka Biznes",
       "lead": "Decyzje technologiczne od strony biznesu: wdrożenia, koszty, efekty i wnioski.",
-      "slots": 12,
+      "slots": 18,
       "speakers": [
         {
           "name": "Michał Matejczyk",
+          "format": "prezentacja",
           "photo": "/prelegenci/michal-matejczyk.webp",
           "topic": "Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.",
           "abstract": "Spojrzenie od strony konsultanta operacyjnego: jak jego klienci poradzili sobie z wdrożeniem systemu albo nie poradzili sobie wcale. Dlaczego jedni po 7 latach wciąż nie skończyli wdrożenia ERP, a inni dali radę.",
@@ -104,6 +105,7 @@
         },
         {
           "name": "Piotr Werner",
+          "format": "prezentacja",
           "photo": "/prelegenci/piotr-werner.webp",
           "topic": "Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?",
           "abstract": "W sezonie urlopowym 2026 r. nie ma już chyba na świecie szanującej się organizacji, która nie wdraża AI. Jak wiemy z materiałów reklamowych, to ekscytujący proces, prowadzący do zwielokrotnienia wartości firmy, przyśpieszenia procesów i uwolnienia ogromnych zasobów czasu. Armia agentów tylko czeka, by czuwać nad naszym sukcesem.\n\nMateriały reklamowe nie zawsze są jednak pisane przez ludzi (tu można by już postawić kropkę) zaangażowanych operacyjnie. Może się zdarzyć, że nie pokazują całej rzeczywistości. Może też być tak, że jeśli składniki, z których próbujemy wyczarować AI-ową zupkę nie są pierwszej jakości, potrawa może nie dostać gwiazdki Michelin.\n\nPiotrek podzieli się z nami doświadczeniem płynącym z bardziej i mniej udanych prób zastosowania AI w zespole marketingu Kuchni Vikinga. Będzie smacznie.",
@@ -111,6 +113,7 @@
         },
         {
           "name": "Norbert Pawluczuk",
+          "format": "prezentacja",
           "photo": "/prelegenci/norbert-pawluczuk.webp",
           "topic": "Transformacja cyfrowa w branży produkcyjnej bez budżetu z kosmosu. Lekcje z wdrożenia Showroomu 3D i aplikacji myINTERTECH.",
           "abstract": "Praktyczne studium przypadku efektywnej cyfryzacji w branży produkcyjnej bez przepalania budżetu. Na przykładzie Showroomu 3D i aplikacji myINTERTECH prelegent omówi przechodzenie od celów biznesowych do działających narzędzi B2B. Dowiesz się, jak oceniać ROI, unikać nierentownych wdrożeń, optymalizować koszty IT oraz skutecznie wykorzystywać dofinansowania na rozwój oprogramowania. Konkretne lekcje ze styku biznesu, inżynierii i technologii.",
@@ -118,6 +121,7 @@
         },
         {
           "name": "Przemysław Józwiakowski",
+          "format": "prezentacja",
           "photo": "/prelegenci/przemyslaw-jozwiakowski.webp",
           "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
           "abstract": "Wszyscy mówią o AI, ale w dużych firmach wdrożenia wciąż grzęzną — i wcale nie dlatego, że technologia zawodzi. Na tej prezentacji pokażę, gdzie naprawdę pękają transformacje AI: w ludziach sparaliżowanych strachem i przeciążeniem, w przestarzałych systemach zamkniętych na integracje, i w starym sposobie myślenia, w którym wciąż „ja robię zadanie”, zamiast pozwolić agentowi pracować za mnie.\n\nW 30 minut rozłożę te przeszkody na czynniki pierwsze i pokażę, dlaczego atakowanie tylko jednej z nich to strata czasu. Wyjdziesz z konkretną mapą tego, co blokuje Twoją organizację — i wiedzą, od czego zacząć, żeby ruszyć z miejsca. Jeśli odpowiadasz za wdrażanie AI albo po prostu masz dość slajdów pełnych obietnic bez pokrycia, to jest prezentacja dla Ciebie.",
@@ -125,31 +129,39 @@
         },
         {
           "name": "Maciej Lotkowski",
+          "format": "prezentacja",
           "photo": "/prelegenci/maciej-lotkowski.webp",
           "topic": "95% wdrożeń to zmarnowane pieniądze. Konsultanci i tak wystawią fakturę.",
           "abstract": "W firmie transportowej jest jeden człowiek, który wie, ile naprawdę kosztuje kurs do Hamburga. W produkcyjnej — jeden technolog, który umie wycenić zapytanie. W spedycji — jedna osoba, która pamięta, że ten klient zawsze płaci po 60 dniach. Ta wiedza to największy majątek firmy i nigdzie nie jest zapisana. Kiedy pan Zbyszek odchodzi na emeryturę, majątek wychodzi razem z nim.\n\nBadanie MIT na ponad 300 firmach pokazało, że 95% projektów z nowymi technologiami nie dało żadnego mierzalnego efektu finansowego, a w 2025 roku 42% firm porzuciło takie inicjatywy — rok wcześniej było to 17%. To nie technologia zawodzi, tylko podejście: wielki system, wdrażany latami, przebudowa całej firmy naraz. Czyli burzenie domu, w którym się mieszka.\n\nPokażę drogę na skróty, która działa: spisz jeden proces, uporządkuj dane w jednym miejscu i postaw obok pierwszego cyfrowego pomocnika. Dwutorowo — obok istniejących systemów, nie zamiast nich, więc niczego nie trzeba wyłączać. Będą konkretne przykłady z finansów, magazynu, spedycji, transportu i produkcji: oferta frachtu w 5 minut zamiast 40, rozliczenie miesiąca w godzinę zamiast trzech dni, wycena w 24 godziny zamiast trzech dni.\n\nBędzie też ostrzeżenie z praktyki: jeśli przyspieszysz ofertowanie trzykrotnie, a produkcja nie nadąży, zrobisz zator w sąsiednim pokoju. Dlatego mierzy się cały przepływ, od zapytania do zapłaconej faktury, a nie jeden punkt. Wyjdziesz z sali z jednym konkretnym krokiem do zrobienia w przyszłym tygodniu."
         },
         {
           "name": "Gabriela Załoga",
+          "format": "prezentacja",
           "photo": "/prelegenci/gabriela-zaloga.webp",
           "topic": "Czy ludzie naprawdę nie lubią zmian? O cyfryzacji z ludzką twarzą",
           "abstract": "Technologia to zaledwie 20% sukcesu wdrożenia. Pozostałe 80% to ludzie, którzy na co dzień będą z niej korzystać.\n\nWyobraź sobie, że wchodzisz do ulubionego sklepu pięć minut przed zamknięciem, a wszystkie produkty nagle leżą na zupełnie innych półkach. Frustracja? Chaos? Dokładnie tak samo reagują pracownicy na hali produkcyjnej, gdy z dnia na dzień obdarowujemy ich nowym systemem IT.\n\nInwestujemy w zaawansowane narzędzia klasy MES czy ERP, jednak wdrożenie rzadko rozbija się o samą technologię. Najczęściej zawodzi brak fundamentów, robienie rewolucji na siłę oraz opór zespołu. Pokutuje przekonanie, że wystarczy ogłosić zakup systemu, a reszta wydarzy się sama — tymczasem budowanie domu na słabych fundamentach zawsze kończy się tak samo.\n\nBazując na doświadczeniach z wdrożeń w sektorze produkcyjnym MŚP, przyjrzymy się temu procesowi bez marketingowego lukru. Przeanalizujemy, dlaczego potrzeba zmiany u managera nie oznacza automatycznie potrzeby w zespole oraz co zrobić, by cyfryzacja przestała być narzuconą z góry rewolucją, a stała się procesem, który ludzie po prostu zaakceptują."
         },
         {
           "name": "Katarzyna Onoszko",
+          "format": "lt",
           "photo": "/prelegenci/katarzyna-onoszko.webp",
           "topic": "Zakup i wdrożenie oprogramowania okiem klienta — case study Panorama Druk",
           "abstract": "Spojrzenie z drugiej strony stołu: nie dostawcy, tylko firmy, która kupuje i wdraża system u siebie.\n\nOpowiem o tym, co skłoniło naszą firmę do zakupu oprogramowania, jak poszło nam samo wdrożenie, co moglibyśmy zrobić lepiej, żeby przebiegło sprawniej, oraz co mógłby zrobić dostawca oprogramowania, żeby było szybsze i łatwiejsze."
         },
         {
           "name": "Bożena Datczuk",
+          "format": "lt",
           "photo": "/prelegenci/bozena-datczuk.webp",
           "topic": "Cyfryzacja w produkcji mebli — case study TOBO",
           "abstract": "",
           "bio": "Prezes firmy TOBO Sp. z o.o. z siedzibą w Kurianach koło Białegostoku. Absolwentka Wydziału Ekonomii Uniwersytetu w Białymstoku z ponad 30-letnim doświadczeniem biznesowym. Od 1998 roku wraz z mężem Tomaszem prowadzi TOBO — producenta mebli biurowych, gabinetowych, recepcyjnych, hotelowych i edukacyjnych, w tym nagradzanej linii 4SENIOR dla stref senioralnych. Firma stawia na ergonomię, akustykę i prozdrowotne rozwiązania przestrzeni pracy, a jej produkty wyróżniano m.in. Złotym Medalem Grupy MTP, Diamentem Meblarstwa, Dobrym Wzorem, Must Have i Podlaską Marką.\n\nWiceprezes Zarządu Fundacji Technotalenty, organizacji promującej kulturę innowacji poprzez wsparcie firm w pozyskiwaniu talentów i budowanie relacji biznes–nauka. Członkini Rady Izby Przemysłowo-Handlowej w Białymstoku (od 2019, druga kadencja jako sekretarz), Podlaskiej Rady Przedsiębiorczości przy Marszałku Województwa Podlaskiego, Grupy Roboczej ds. specjalizacji regionalnej gospodarki przy Departamencie Innowacji i Przedsiębiorczości Urzędu Marszałkowskiego oraz Rady Rozwoju Obszaru Gospodarczego Suwalskiej Specjalnej Strefy Ekonomicznej. Zasiada też w Radzie Rozwoju Wydziału Architektury i Radzie Przedsiębiorców Wydziału Inżynierii Zarządzania Politechniki Białostockiej. Współorganizatorka cyklicznych bali charytatywnych.",
           "photoPosition": "50% 18%"
         }
-      ]
+      ],
+      "formatSlots": {
+        "prezentacja": 10,
+        "lt": 8
+      }
     }
   ]
 }
