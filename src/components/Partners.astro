@@ -83,6 +83,7 @@ const partners = [
     logo: '/google-for-education.svg',
     logoClass: 'h-7',
     href: 'https://zpe.gov.pl/b/google-for-education/P62PEER9D',
+    linkLabel: 'Google for Education',
     description:
       'Google for Education to kompleksowy program wsparcia transformacji cyfrowej szkół, skoncentrowany na dostarczeniu narzędzi i technologii, które ułatwiają nauczanie, usprawniają komunikację i zapewniają bezpieczeństwo danych. To coś więcej niż tylko oprogramowanie — to ekosystem stworzony z myślą o efektywności pracy nauczycieli i nowoczesnym podejściu do edukacji.',
   },
@@ -188,7 +189,7 @@ const partners = [
           target="_blank"
           class="mt-5 inline-flex items-center gap-2 self-start font-mono text-[12px] uppercase tracking-wide text-accent-ink transition-colors hover:text-ink"
         >
-          {i.href.replace('https://', '')} <span aria-hidden="true">↗</span>
+          {i.linkLabel ?? i.href.replace('https://', '')} <span aria-hidden="true">↗</span>
         </a>
       </article>
     ))}
