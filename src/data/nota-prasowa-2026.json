@@ -1,0 +1,119 @@
+{
+  "title": "Programistok po raz pierwszy potrwa dwa dni. Ponad 500 osób spotka się na konferencji IT i biznesu na Politechnice Białostockiej",
+  "date": "2026-09-09",
+  "video": "https://www.youtube.com/watch?v=a2vtAt5nNzA",
+  "blocks": [
+    {
+      "type": "lead",
+      "text": "25 i 26 września na Politechnice Białostockiej odbędzie się Programistok 2026. Tegoroczna edycja po raz pierwszy potrwa dwa dni i wprowadzi nową ścieżkę Biznes dla osób, które chcą skuteczniej wykorzystywać technologię w swoich firmach i organizacjach. Ponad 500 uczestników będzie mogło wybierać spośród ponad 24 prezentacji oraz dodatkowych case studies i lightning talków."
+    },
+    {
+      "type": "p",
+      "text": "Programistok powstał ponad dekadę temu z inicjatywy białostockich meetupów technologicznych. Od początku jego założeniem było stworzenie wspólnego wydarzenia niezależnego od języków programowania, frameworków i konkretnych technologii. Z lokalnej inicjatywy wyrósł w konferencję, która przyciąga do Białegostoku uczestników i prelegentów z całej Polski."
+    },
+    {
+      "type": "p",
+      "text": "W tym roku organizatorzy rozszerzają tę formułę poza samo IT. Nowa ścieżka Biznes ma odpowiadać na problemy firm związane między innymi z cyfryzacją, automatyzacją, budowaniem produktów i wdrażaniem sztucznej inteligencji."
+    },
+    {
+      "type": "quote",
+      "text": "Pomysł na ścieżkę Biznes wziął się z rozmów z ludźmi, którzy prowadzą firmy i mierzą się z bardzo konkretnymi problemami. Chcą digitalizować biznes, automatyzować procesy czy wdrażać bardziej złożone systemy, ale często największym wyzwaniem jest znalezienie właściwych, zaufanych osób, które mogą im w tym pomóc. My takich ludzi znamy. To eksperci, którym ufamy i którzy przyjeżdżają na Programistok przede wszystkim po to, żeby dzielić się wiedzą, a nie sprzedawać swoje usługi."
+    },
+    {
+      "type": "quote",
+      "text": "Nie chcieliśmy przy tym tworzyć kolejnego osobnego wydarzenia tylko dla biznesu. Od dziesięciu lat istotą Programistoku jest dla nas łączenie ludzi i środowisk, więc naturalnym krokiem było połączenie technologii z biznesem w ramach jednej konferencji. Wierzymy, że właśnie na styku tych dwóch światów mogą wydarzyć się najciekawsze rzeczy."
+    },
+    { "type": "attr", "text": "Adam Piotrowski, jeden z organizatorów Programistoku" },
+
+    { "type": "h2", "text": "Znaleźli sposób, żeby za bilet zapłacić tylko raz" },
+    {
+      "type": "p",
+      "text": "Nową formułę konferencji organizatorzy postanowili przedstawić z przymrużeniem oka. Programistok 2026 promuje film stylizowany na kultowe telezakupy. Punktem wyjścia jest problem osób zainteresowanych zarówno technologią, jak i biznesem. Żeby uczestniczyć w konferencjach poświęconych obu tematom, zazwyczaj trzeba wybrać się na dwa osobne wydarzenia i dwukrotnie zapłacić za bilet."
+    },
+    {
+      "type": "p",
+      "text": "Programistok proponuje rozwiązanie rodem z telezakupów: za bilet płacisz tylko raz."
+    },
+    {
+      "type": "p",
+      "text": "Jeden bilet daje dostęp do obu równoległych ścieżek, pomiędzy którymi uczestnicy mogą swobodnie się przemieszczać. W charakterystyczne role znane z kultowych reklam telezakupowych wcielili się sami organizatorzy Programistoku."
+    },
+    {
+      "type": "link",
+      "label": "Film promujący Programistok 2026",
+      "href": "https://www.youtube.com/watch?v=a2vtAt5nNzA"
+    },
+
+    { "type": "h2", "text": "Od architektury systemów do realnych wdrożeń w firmach" },
+    {
+      "type": "p",
+      "text": "Program ścieżki Biznes skupia się na praktycznych doświadczeniach firm z wykorzystaniem technologii."
+    },
+    {
+      "type": "p",
+      "text": "Piotr Werner z Kuchni Vikinga opowie o bardziej i mniej udanych próbach wykorzystania AI w zespole marketingowym i skonfrontuje oczekiwania wobec tej technologii z rzeczywistymi efektami wdrożeń. Norbert Pawluczuk przedstawi cyfryzację firmy produkcyjnej na przykładzie Showroomu 3D i aplikacji myINTERTECH."
+    },
+    {
+      "type": "p",
+      "text": "Michał Matejczyk przyjrzy się temu, dlaczego jedne duże transformacje technologiczne dochodzą do skutku, podczas gdy inne organizacje przez lata pozostają w połowie drogi. Przemysław Józwiakowski pokaże z kolei bariery pojawiające się podczas wdrażania AI w dużych organizacjach, od ludzi i sposobu organizacji pracy po ograniczenia istniejących systemów."
+    },
+    {
+      "type": "p",
+      "text": "Prezentacje uzupełnią case studies konkretnych wdrożeń. Ich autorzy pokażą problem, wybrane rozwiązanie, przebieg realizacji, rezultaty oraz wnioski, również wtedy, gdy nie wszystko poszło zgodnie z planem."
+    },
+    {
+      "type": "p",
+      "text": "Ścieżka IT pozostaje technologicznie agnostyczna. W jej programie znalazły się między innymi architektura oprogramowania, bezpieczeństwo, AI, Context Engineering, zmieniająca się rola inżyniera oraz programowanie kwantowe."
+    },
+    {
+      "type": "p",
+      "text": "Wojciech Kasa, zwycięzca O'Reilly Architectural Kata, pokaże praktyczne wykorzystanie Residuality Theory do przewidywania słabych punktów systemów jeszcze przed ich wdrożeniem. Michał Franc opowie o tym, jak rozwój AI zmienia rolę inżyniera, a Łukasz Kałużny spojrzy na architekturę przez pryzmat kosztów, tempa dostarczania oprogramowania i ryzyka produkcyjnego."
+    },
+    {
+      "type": "p",
+      "text": "Marcin Iwanowski podczas prezentacji „Kiedy AI to za mało: Quantum” pokaże podstawy programowania kwantowego oraz uruchomi program na prawdziwym komputerze kwantowym."
+    },
+    {
+      "type": "p",
+      "text": "Ogłoszone dotychczas wystąpienia nie zamykają programu. Do agendy dołączą kolejne prezentacje i case studies, a ścieżkę IT uzupełnią lightning talki, czyli krótkie wystąpienia poświęcone konkretnym rozwiązaniom, doświadczeniom i pomysłom."
+    },
+
+    { "type": "h2", "text": "Ponad 500 osób na jednej konferencji" },
+    {
+      "type": "p",
+      "text": "Na Programistoku spotka się ponad 500 osób związanych z technologią i biznesem. Dwudniowa formuła ma dać uczestnikom więcej czasu nie tylko na prezentacje, ale też na rozmowy, wymianę doświadczeń, szukanie inspiracji, kontaktów i potencjalnych współprac."
+    },
+    {
+      "type": "p",
+      "text": "Networking będzie odbywał się pomiędzy wystąpieniami i po zakończeniu programu. Nie zabraknie również afterparty."
+    },
+
+    { "type": "h2", "text": "Od podlaskiego biznesu po globalne firmy technologiczne" },
+    {
+      "type": "p",
+      "text": "Wokół tegorocznego Programistoku udało się zgromadzić firmy i organizacje reprezentujące różne części środowiska technologicznego i biznesowego. Wśród partnerów znalazły się zarówno organizacje silnie związane z regionem, między innymi Izba Przemysłowo-Handlowa w Białymstoku, Podlaska Fundacja Rozwoju Regionalnego, Podlaski Klub Biznesu, klaster Evoluma i Białostocki Park Naukowo-Technologiczny, jak również globalna marka Google for Education."
+    },
+    {
+      "type": "p",
+      "text": "Programistok powstaje we współpracy i dzięki wsparciu Fundacji INFOTECH oraz Wydziału Informatyki Politechniki Białostockiej."
+    },
+    {
+      "type": "p",
+      "text": "Partnerem Strategicznym Programistoku 2026 jest Województwo Podlaskie."
+    },
+    {
+      "type": "p",
+      "text": "Patronat Honorowy nad konferencją objęła Jej Magnificencja Rektor Politechniki Białostockiej dr hab. inż. Marta Kosior-Kazberuk, prof. PB."
+    },
+
+    { "type": "h2", "text": "Programistok 2026" },
+    {
+      "type": "p",
+      "text": "Konferencja odbędzie się 25 i 26 września 2026 roku na Politechnice Białostockiej w Białymstoku."
+    },
+    {
+      "type": "p",
+      "text": "Pełna i na bieżąco aktualizowana agenda, informacje o prelegentach oraz bilety dostępne są na https://programistok.org."
+    }
+  ]
+}
