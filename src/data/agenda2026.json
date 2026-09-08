@@ -181,6 +181,32 @@
           "photo": "/prelegenci/piotr-janiak.webp",
           "topic": "Zanim zbudujesz agenta AI, uporządkuj wiedzę. Lekcje z chaosu w organizacji",
           "abstract": "Pracując z klientami BIM Ally, wielokrotnie spotykaliśmy się z problemem, który początkowo wydawał się czysto organizacyjny: wiedza potrzebna do obsługi klientów, sprzedaży czy rozwoju produktu była rozproszona pomiędzy dokumentami, mailami, prezentacjami, systemami i — przede wszystkim — ludźmi.\n\nZ czasem zauważyliśmy, że problem nie polega tylko na tym, że trudno znaleźć informację. Trudniejsze jest ustalenie, która informacja jest aktualna, skąd pochodzi, kto może jej zaufać i co zrobić, gdy różne źródła mówią coś innego.\n\nOpowiem o tym, czego nauczyliśmy się, próbując wykorzystać AI w realnej organizacji — o miejscach, w których pojawia się chaos w firmowej wiedzy, o problemach, których nie widać na demonstracjach AI, oraz o tym, jak zmienia się podejście do sztucznej inteligencji, gdy przestajemy zakładać, że można jej bezgranicznie zaufać."
+        },
+        {
+          "name": "Adam Piotrowski",
+          "topic": "Biznes nam nie ufa — i wcale im się nie dziwię",
+          "format": "prezentacja",
+          "photo": "/prelegenci/adam-piotrowski.webp",
+          "photoPosition": "50% 25%",
+          "abstract": "",
+          "bio": ""
+        },
+        {
+          "name": "Michał Szumski",
+          "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
+          "format": "prezentacja",
+          "photo": "",
+          "abstract": "Od bycia zalewanym wymaganiami klientów i działu handlowego oraz prób zadowolenia wszystkich, co kończyło się jedną wielką frustracją, do pipeline'u, który mamy dziś. Opowiem, jak go zbudowaliśmy, jak wciąż go ulepszamy i jak pilnujemy pewnych fundamentów — choćby tego, że Product Owner jest kluczowym decydentem.",
+          "bio": "Pięć lat w Anglii: liceum i inżynier z matematyki na Loughborough University, potem trzy lata magisterki z automatyki i robotyki na Politechnice Warszawskiej. W Plum pracuje od 15 lat — zaczynał jako handlowiec, pracował w marketingu, na produkcji, jako programista, Scrum Master, Product Owner i kierownik sekcji programistów, a od ponad dwóch lat jest Prezesem Zarządu. Prywatnie siłownia, bieganie, książki i gry planszowe z dziećmi.\n\nPlum specjalizuje się we wdrażaniu i produkcji elektroniki NB-IoT w branżach HVAC, gaz i woda. R&D, jakość i rozwój produktu firma ma wpisane w DNA."
+        },
+        {
+          "name": "Bartosz Awruk",
+          "topic": "",
+          "format": "lt",
+          "photo": "/prelegenci/bartosz-awruk.webp",
+          "photoPosition": "50% 28%",
+          "abstract": "",
+          "bio": ""
         }
       ],
       "formatSlots": {
