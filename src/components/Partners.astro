@@ -101,6 +101,13 @@ const strategic = {
     'Programistok powstaje przy wsparciu Województwa Podlaskiego, partnera strategicznego tegorocznej edycji.',
 };
 
+const patronage = {
+  name: 'Patronat Rektora Politechniki Białostockiej',
+  logo: '/patronat-rektora-pb.webp',
+  description:
+    'Patronat Honorowy nad konferencją objęła Jej Magnificencja Rektor Politechniki Białostockiej dr hab. inż. Marta Kosior-Kazberuk, prof. PB.',
+};
+
 const partners = [
   {
     name: 'Google for Education',
@@ -204,6 +211,16 @@ const partners = [
           {strategic.name} <span aria-hidden="true">↗</span>
         </a>
       </div>
+    </article>
+  </div>
+
+  <p class="mt-12 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Patronat honorowy</p>
+  <div class="mt-5">
+    <article class="grid items-center gap-8 rounded-3xl border border-line bg-surface p-8 sm:p-10 md:grid-cols-[minmax(0,300px)_1fr] md:gap-12">
+      <div class="flex justify-center md:justify-start">
+        <img src={patronage.logo} alt={patronage.name} loading="lazy" class="h-20 w-auto max-w-full sm:h-24" />
+      </div>
+      <p class="text-[15px] leading-relaxed text-muted text-pretty">{patronage.description}</p>
     </article>
   </div>
 
