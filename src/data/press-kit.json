@@ -1,0 +1,282 @@
+{
+  "generated": "2026-09-08",
+  "zip": {
+    "href": "/press/programistok-2026-press-kit.zip",
+    "size": "5.2 MB"
+  },
+  "nota": {
+    "pdf": "/press/nota-prasowa/programistok-2026-nota-prasowa.pdf",
+    "docx": "/press/nota-prasowa/programistok-2026-nota-prasowa.docx",
+    "txt": "/press/nota-prasowa/programistok-2026-nota-prasowa.txt"
+  },
+  "grafiki": [
+    {
+      "file": "key-visual-1080x1080.png",
+      "href": "/press/grafiki/key-visual-1080x1080.png",
+      "label": "Key visual",
+      "size": "1080×1080 px"
+    },
+    {
+      "file": "key-visual-1080x1350.png",
+      "href": "/press/grafiki/key-visual-1080x1350.png",
+      "label": "Key visual",
+      "size": "1080×1350 px"
+    },
+    {
+      "file": "key-visual-1200x630.png",
+      "href": "/press/grafiki/key-visual-1200x630.png",
+      "label": "Key visual",
+      "size": "1200×630 px"
+    },
+    {
+      "file": "key-visual-1920x1080.png",
+      "href": "/press/grafiki/key-visual-1920x1080.png",
+      "label": "Key visual",
+      "size": "1920×1080 px"
+    },
+    {
+      "file": "key-visual-jasny-1920x1080.png",
+      "href": "/press/grafiki/key-visual-jasny-1920x1080.png",
+      "label": "Key visual — wersja jasna",
+      "size": "1920×1080 px"
+    },
+    {
+      "file": "w-liczbach-1080x1080.png",
+      "href": "/press/grafiki/w-liczbach-1080x1080.png",
+      "label": "Konferencja w liczbach",
+      "size": "1080×1080 px"
+    },
+    {
+      "file": "w-liczbach-1920x1080.png",
+      "href": "/press/grafiki/w-liczbach-1920x1080.png",
+      "label": "Konferencja w liczbach",
+      "size": "1920×1080 px"
+    }
+  ],
+  "logotypy": [
+    {
+      "name": "programistok-kontur-bialy",
+      "svg": "/press/logotypy/svg/programistok-kontur-bialy.svg",
+      "png": "/press/logotypy/png/programistok-kontur-bialy-4096.png"
+    },
+    {
+      "name": "programistok-kontur-czarny",
+      "svg": "/press/logotypy/svg/programistok-kontur-czarny.svg",
+      "png": "/press/logotypy/png/programistok-kontur-czarny-4096.png"
+    },
+    {
+      "name": "programistok-sygnet-kolor",
+      "svg": "/press/logotypy/svg/programistok-sygnet-kolor.svg",
+      "png": "/press/logotypy/png/programistok-sygnet-kolor-4096.png"
+    },
+    {
+      "name": "programistok-sygnet-na-ciemnym",
+      "svg": "/press/logotypy/svg/programistok-sygnet-na-ciemnym.svg",
+      "png": "/press/logotypy/png/programistok-sygnet-na-ciemnym-4096.png"
+    }
+  ],
+  "prelegenci": {
+    "liczba": 28,
+    "zdjecia": 24,
+    "bioMd": "/press/prelegenci/prelegenci-bio.md",
+    "csv": "/press/prelegenci/prelegenci.csv",
+    "osoby": [
+      {
+        "name": "Wojciech Kasa",
+        "photo": "/press/prelegenci/zdjecia/wojciech-kasa.jpg",
+        "photoPosition": null,
+        "topic": "Residuality Theory na produkcji. Jak przewidzieć awarię, zanim wydarzy się naprawdę.",
+        "track": "IT"
+      },
+      {
+        "name": "Michał Franc",
+        "photo": "/press/prelegenci/zdjecia/michal-franc.jpg",
+        "photoPosition": null,
+        "topic": "Rola developera w czasach AI",
+        "track": "IT"
+      },
+      {
+        "name": "Jakub Sikora",
+        "photo": "/press/prelegenci/zdjecia/jakub-sikora.jpg",
+        "photoPosition": null,
+        "topic": "Przejęliśmy drony i wywaliliśmy je z mapy. To samo mogę zrobić z Twoją zabezpieczoną usługą",
+        "track": "IT"
+      },
+      {
+        "name": "Łukasz Kałużny",
+        "photo": "/press/prelegenci/zdjecia/lukasz-kaluzny.jpg",
+        "photoPosition": null,
+        "topic": "AI bez szamanów — reality check",
+        "track": "Biznes"
+      },
+      {
+        "name": "Oleksandr Lysenko",
+        "photo": "/press/prelegenci/zdjecia/oleksandr-lysenko.jpg",
+        "photoPosition": null,
+        "topic": "The Human vs. the LLM: Measuring AI Efficiency",
+        "track": "IT"
+      },
+      {
+        "name": "Radek Maziarka",
+        "photo": "/press/prelegenci/zdjecia/radek-maziarka.jpg",
+        "photoPosition": null,
+        "topic": "Context Engineering: architektura wiedzy dla efektywnego dostarczania",
+        "track": "IT"
+      },
+      {
+        "name": "Kamil Kiełbasa",
+        "photo": "/press/prelegenci/zdjecia/kamil-kielbasa.jpg",
+        "photoPosition": null,
+        "topic": "Czy potrzebujemy jeszcze architektów?",
+        "track": "IT"
+      },
+      {
+        "name": "Hubert Łępicki",
+        "photo": "/press/prelegenci/zdjecia/hubert-lepicki.jpg",
+        "photoPosition": "50% 5%",
+        "topic": "Inżynieria oprogramowania w dobie agentów AI",
+        "track": "IT"
+      },
+      {
+        "name": "Grzegorz Wilczura",
+        "photo": "/press/prelegenci/zdjecia/grzegorz-wilczura.jpg",
+        "photoPosition": null,
+        "topic": "Czy potrzebujemy jeszcze architektów?",
+        "track": "IT"
+      },
+      {
+        "name": "Marcin Iwanowski",
+        "photo": "/press/prelegenci/zdjecia/marcin-iwanowski.jpg",
+        "photoPosition": null,
+        "topic": "Kiedy AI to za mało: Quantum",
+        "track": "IT"
+      },
+      {
+        "name": "Michał Matejczyk",
+        "photo": "/press/prelegenci/zdjecia/michal-matejczyk.jpg",
+        "photoPosition": null,
+        "topic": "Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.",
+        "track": "Biznes"
+      },
+      {
+        "name": "Piotr Werner",
+        "photo": "/press/prelegenci/zdjecia/piotr-werner.jpg",
+        "photoPosition": null,
+        "topic": "Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?",
+        "track": "Biznes"
+      },
+      {
+        "name": "Norbert Pawluczuk",
+        "photo": "/press/prelegenci/zdjecia/norbert-pawluczuk.jpg",
+        "photoPosition": null,
+        "topic": "Transformacja cyfrowa w branży produkcyjnej bez budżetu z kosmosu. Lekcje z wdrożenia Showroomu 3D i aplikacji myINTERTECH.",
+        "track": "Biznes"
+      },
+      {
+        "name": "Przemysław Józwiakowski",
+        "photo": "/press/prelegenci/zdjecia/przemyslaw-jozwiakowski.jpg",
+        "photoPosition": null,
+        "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
+        "track": "Biznes"
+      },
+      {
+        "name": "Maciej Lotkowski",
+        "photo": "/press/prelegenci/zdjecia/maciej-lotkowski.jpg",
+        "photoPosition": null,
+        "topic": "95% wdrożeń to zmarnowane pieniądze. Konsultanci i tak wystawią fakturę.",
+        "track": "Biznes"
+      },
+      {
+        "name": "Gabriela Załoga",
+        "photo": "/press/prelegenci/zdjecia/gabriela-zaloga.jpg",
+        "photoPosition": null,
+        "topic": "Czy ludzie naprawdę nie lubią zmian? O cyfryzacji z ludzką twarzą",
+        "track": "Biznes"
+      },
+      {
+        "name": "Katarzyna Onoszko",
+        "photo": "/press/prelegenci/zdjecia/katarzyna-onoszko.jpg",
+        "photoPosition": null,
+        "topic": "Zakup i wdrożenie oprogramowania okiem klienta — case study Panorama Druk",
+        "track": "Biznes"
+      },
+      {
+        "name": "Bożena Datczuk",
+        "photo": "/press/prelegenci/zdjecia/bozena-datczuk.jpg",
+        "photoPosition": "50% 18%",
+        "topic": "Cyfryzacja w produkcji mebli — case study TOBO",
+        "track": "Biznes"
+      },
+      {
+        "name": "Piotr Krych",
+        "photo": "/press/prelegenci/zdjecia/piotr-krych.jpg",
+        "photoPosition": "50% 8%",
+        "topic": "Możliwości narzędzi AI w codziennej pracy",
+        "track": "Biznes"
+      },
+      {
+        "name": "Piotr Jurewicz",
+        "photo": "/press/prelegenci/zdjecia/piotr-jurewicz.jpg",
+        "photoPosition": "50% 10%",
+        "topic": "Wiedza organizacji w grafie, nie w głowach",
+        "track": "Biznes"
+      },
+      {
+        "name": "Piotr Janiak",
+        "photo": "/press/prelegenci/zdjecia/piotr-janiak.jpg",
+        "photoPosition": null,
+        "topic": "Zanim zbudujesz agenta AI, uporządkuj wiedzę. Lekcje z chaosu w organizacji",
+        "track": "Biznes"
+      },
+      {
+        "name": "Adam Piotrowski",
+        "photo": "/press/prelegenci/zdjecia/adam-piotrowski.jpg",
+        "photoPosition": "50% 25%",
+        "topic": "Biznes nam nie ufa — i wcale im się nie dziwię",
+        "track": "Biznes"
+      },
+      {
+        "name": "Michał Szumski",
+        "photo": "/press/prelegenci/zdjecia/michal-szumski.jpg",
+        "photoPosition": "50% 18%",
+        "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
+        "track": "Biznes"
+      },
+      {
+        "name": "Bartosz Awruk",
+        "photo": "/press/prelegenci/zdjecia/bartosz-awruk.jpg",
+        "photoPosition": "50% 28%",
+        "topic": "Case study LumoSteel",
+        "track": "Biznes"
+      },
+      {
+        "name": "Grzegorz Sienkiewicz",
+        "photo": null,
+        "photoPosition": null,
+        "topic": "Case study 4szpaki",
+        "track": "Biznes"
+      },
+      {
+        "name": "Konrad Zawistowski",
+        "photo": null,
+        "photoPosition": null,
+        "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.pl",
+        "track": "Biznes"
+      },
+      {
+        "name": "Krzysztof Kozłowski",
+        "photo": null,
+        "photoPosition": null,
+        "topic": "Aplikacja self-made do prowadzenia produkcji — case study Inwestprodukt",
+        "track": "Biznes"
+      },
+      {
+        "name": "Marek Ziemba",
+        "photo": null,
+        "photoPosition": null,
+        "topic": "Jak zepsuć marketing i sprzedaż B2B technologią",
+        "track": "Biznes"
+      }
+    ]
+  }
+}

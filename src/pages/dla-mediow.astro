@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import nota from '../data/nota-prasowa-2026.json';
+import kit from '../data/press-kit.json';
+
+const liczby = [
+  { n: '2', label: 'dni konferencji', color: 'text-accent-ink' },
+  { n: '500+', label: 'uczestników', color: 'text-ink' },
+  { n: '24+', label: 'prezentacji', color: 'text-biz-ink' },
+  { n: '2', label: 'ścieżki tematyczne', color: 'text-ink' },
+];
+
+const fakty = [
+  ['Termin', '25–26 września 2026'],
+  ['Miejsce', 'Politechnika Białostocka, Białystok'],
+  ['Formuła', 'dwie równoległe ścieżki: IT i Biznes, jeden bilet do obu'],
+  ['Partner Strategiczny', 'Województwo Podlaskie'],
+  ['Patronat Honorowy', 'JM Rektor Politechniki Białostockiej dr hab. inż. Marta Kosior-Kazberuk, prof. PB'],
+  ['Współpraca', 'Fundacja INFOTECH, Wydział Informatyki Politechniki Białostockiej'],
+];
+
+const zeZdjeciem = kit.prelegenci.osoby.filter((o) => o.photo);
+---
+
+<BaseLayout
+  title="Dla mediów · Programistok 2026"
+  description="Materiały prasowe Programistok 2026: nota prasowa (PDF, DOCX, TXT), logotypy, zdjęcia prelegentów i gotowe grafiki. Paczka do pobrania w jednym ZIP-ie."
+  image="/press/grafiki/key-visual-1200x630.png"
+>
+  <!-- ===== HERO ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 pb-10 pt-14 sm:px-8 lg:pt-20" aria-labelledby="media-title">
+    <p class="mb-6 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Dla mediów</p>
+
+    <h1 id="media-title" class="max-w-[18ch] text-balance text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">
+      Materiały <span class="text-accent-ink">prasowe</span>
+    </h1>
+
+    <p class="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted">
+      Wszystko, czego potrzeba do napisania o Programistoku 2026: nota prasowa w trzech formatach, logotypy,
+      zdjęcia prelegentów z biogramami i gotowe grafiki. Do pobrania pojedynczo albo w jednej paczce.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a
+        href={kit.zip.href}
+        download
+        class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+      >
+        Pobierz całą paczkę
+        <span class="font-mono text-xs opacity-80">ZIP · {kit.zip.size}</span>
+      </a>
+      <a
+        href={kit.nota.pdf}
+        class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold transition hover:border-ink"
+      >
+        Nota prasowa (PDF)
+      </a>
+      <a
+        href={nota.video}
+        rel="noopener"
+        target="_blank"
+        class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold transition hover:border-ink"
+      >
+        Film promocyjny <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== LICZBY + FAKTY ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-10 sm:px-8" aria-labelledby="fakty-title">
+    <h2 id="fakty-title" class="sr-only">Konferencja w skrócie</h2>
+
+    <dl class="grid grid-cols-2 gap-6 border-y border-line py-8 sm:grid-cols-4">
+      {liczby.map((l) => (
+        <div>
+          <dt class="sr-only">{l.label}</dt>
+          <dd>
+            <span class={`block text-[clamp(2.5rem,6vw,4rem)] font-black leading-none tracking-[-0.04em] ${l.color}`}>{l.n}</span>
+            <span class="mt-2 block text-sm text-muted">{l.label}</span>
+          </dd>
+        </div>
+      ))}
+    </dl>
+
+    <dl class="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+      {fakty.map(([k, v]) => (
+        <div class="flex flex-col gap-1 border-l-2 border-line pl-4">
+          <dt class="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-faint">{k}</dt>
+          <dd class="text-[15px] leading-snug">{v}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <!-- ===== NOTA PRASOWA ===== -->
+  <section class="bg-dark py-16 text-cream lg:py-20" aria-labelledby="nota-title">
+    <div class="mx-auto max-w-[1200px] px-5 sm:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p class="mb-3 font-mono text-[13px] uppercase tracking-[0.14em] text-cream-faint">// Nota prasowa</p>
+          <h2 id="nota-title" class="max-w-[24ch] text-balance text-[clamp(1.6rem,3.2vw,2.5rem)] font-black leading-tight tracking-[-0.03em]">
+            {nota.title}
+          </h2>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href={kit.nota.pdf} class="rounded-full border border-white/20 px-4 py-2 font-mono text-xs uppercase tracking-wide transition hover:border-white/60">PDF</a>
+          <a href={kit.nota.docx} class="rounded-full border border-white/20 px-4 py-2 font-mono text-xs uppercase tracking-wide transition hover:border-white/60">DOCX</a>
+          <a href={kit.nota.txt} class="rounded-full border border-white/20 px-4 py-2 font-mono text-xs uppercase tracking-wide transition hover:border-white/60">TXT</a>
+        </div>
+      </div>
+
+      <div class="mt-10 max-w-[70ch] space-y-5">
+        {nota.blocks.map((b) => {
+          if (b.type === 'h2')
+            return <h3 class="pt-6 text-xl font-bold tracking-[-0.02em] text-cream">{b.text}</h3>;
+          if (b.type === 'lead')
+            return <p class="text-lg font-semibold leading-relaxed text-cream">{b.text}</p>;
+          if (b.type === 'quote')
+            return <p class="border-l-2 border-accent pl-5 italic leading-relaxed text-cream-dim">„{b.text}”</p>;
+          if (b.type === 'attr')
+            return <p class="text-sm font-bold text-cream">{b.text}</p>;
+          if (b.type === 'link')
+            return (
+              <p>
+                <a href={b.href} rel="noopener" target="_blank" class="font-semibold text-cream underline decoration-accent decoration-2 underline-offset-4">
+                  {b.label} ↗
+                </a>
+              </p>
+            );
+          return <p class="leading-relaxed text-cream-dim">{b.text}</p>;
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GRAFIKI ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 lg:py-20" aria-labelledby="grafiki-title">
+    <p class="mb-3 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Grafiki</p>
+    <h2 id="grafiki-title" class="text-[clamp(1.6rem,3.2vw,2.5rem)] font-black tracking-[-0.03em]">Gotowe do publikacji</h2>
+    <p class="mt-4 max-w-[62ch] text-muted">
+      PNG w rozdzielczości 2× — nadają się zarówno do sieci, jak i do druku. Formaty poziome, kwadratowe i pionowe.
+    </p>
+
+    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {kit.grafiki.map((g) => (
+        <li class="overflow-hidden rounded-xl border border-line bg-surface">
+          <div class="flex aspect-[4/3] items-center justify-center bg-dark p-3">
+            <img src={g.href} alt={`${g.label}, ${g.size}`} width="1200" height="675" loading="lazy" class="max-h-full w-auto max-w-full object-contain" />
+          </div>
+          <div class="flex items-center justify-between gap-3 px-4 py-3">
+            <div class="min-w-0">
+              <p class="truncate text-sm font-semibold">{g.label}</p>
+              <p class="font-mono text-[11px] text-faint">{g.size}</p>
+            </div>
+            <a href={g.href} download class="shrink-0 rounded-full border border-line px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wide transition hover:border-ink">
+              Pobierz
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ===== LOGOTYPY ===== -->
+  <section class="border-y border-line bg-surface py-16 lg:py-20" aria-labelledby="logo-title">
+    <div class="mx-auto max-w-[1200px] px-5 sm:px-8">
+      <p class="mb-3 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Logotypy</p>
+      <h2 id="logo-title" class="text-[clamp(1.6rem,3.2vw,2.5rem)] font-black tracking-[-0.03em]">Sygnet i kontur</h2>
+      <p class="mt-4 max-w-[62ch] text-muted">
+        SVG oraz PNG (1024 i 4096 px) z przezroczystym tłem. Prosimy nie zmieniać proporcji, kolorów
+        ani nie dodawać do znaku własnych elementów.
+      </p>
+
+      <ul class="mt-10 grid gap-6 sm:grid-cols-3">
+        {kit.logotypy.map((l) => (
+          <li class="rounded-xl border border-line bg-bg p-6">
+            <div class={`flex h-32 items-center justify-center rounded-lg ${/ciemnym|bialy/.test(l.name) ? 'bg-dark' : 'bg-surface'}`}>
+              <img src={l.svg} alt={l.name} width="120" height="105" class="h-20 w-auto" />
+            </div>
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.1em] text-faint">{l.name}</p>
+            <div class="mt-3 flex gap-2">
+              <a href={l.svg} download class="rounded-full border border-line px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wide transition hover:border-ink">SVG</a>
+              <a href={l.png} download class="rounded-full border border-line px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wide transition hover:border-ink">PNG 4096</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== PRELEGENCI ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 lg:py-20" aria-labelledby="prelegenci-title">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="mb-3 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Prelegenci</p>
+        <h2 id="prelegenci-title" class="text-[clamp(1.6rem,3.2vw,2.5rem)] font-black tracking-[-0.03em]">
+          Zdjęcia i biogramy
+        </h2>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href={kit.prelegenci.bioMd} class="rounded-full border border-line px-4 py-2 font-mono text-xs uppercase tracking-wide transition hover:border-ink">Biogramy (MD)</a>
+        <a href={kit.prelegenci.csv} download class="rounded-full border border-line px-4 py-2 font-mono text-xs uppercase tracking-wide transition hover:border-ink">Biogramy (CSV)</a>
+      </div>
+    </div>
+
+    <p class="mt-4 max-w-[62ch] text-muted">
+      {kit.prelegenci.zdjecia} zdjęć w JPG i {kit.prelegenci.liczba} biogramów wraz z tematami wystąpień.
+      Agenda jest uzupełniana na bieżąco — najnowsza wersja zawsze na <a href="/agenda" class="font-semibold text-accent-ink underline underline-offset-4">stronie agendy</a>.
+    </p>
+
+    <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+      {zeZdjeciem.map((o) => (
+        <li>
+          <a href={o.photo} download class="group block">
+            <img
+              src={o.photo}
+              alt={o.name}
+              width="400"
+              height="400"
+              loading="lazy"
+              class="aspect-square w-full rounded-xl bg-ink object-cover object-[50%_22%] transition group-hover:brightness-105"
+              style={o.photoPosition ? `object-position:${o.photoPosition}` : undefined}
+            />
+            <p class="mt-3 text-sm font-semibold leading-snug">{o.name}</p>
+            {o.track && <p class="font-mono text-[11px] uppercase tracking-wide text-faint">Ścieżka {o.track}</p>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ===== KONTAKT ===== -->
+  <section class="bg-dark py-16 text-cream lg:py-20" aria-labelledby="kontakt-title">
+    <div class="mx-auto max-w-[1200px] px-5 sm:px-8">
+      <p class="mb-3 font-mono text-[13px] uppercase tracking-[0.14em] text-cream-faint">// Kontakt</p>
+      <h2 id="kontakt-title" class="max-w-[20ch] text-balance text-[clamp(1.6rem,3.2vw,2.5rem)] font-black tracking-[-0.03em]">
+        Potrzebujesz czegoś, czego tu nie ma?
+      </h2>
+      <p class="mt-4 max-w-[62ch] text-cream-dim">
+        Na pytania mediów chętnie odpowie Adam Piotrowski, jeden z organizatorów Programistoku.
+        Możemy podesłać dodatkowe zdjęcia, umówić rozmowę z organizatorami albo z konkretnym prelegentem.
+      </p>
+
+      <div class="mt-8 inline-flex flex-col gap-1 border-l-2 border-accent pl-5">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-cream-faint">Kontakt dla mediów</p>
+        <p class="text-lg font-bold text-cream">Adam Piotrowski</p>
+        <a href="tel:+48668842999" class="text-lg font-semibold text-cream underline decoration-accent decoration-2 underline-offset-4">
+          668 842 999
+        </a>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="https://www.facebook.com/programistok" rel="noopener" target="_blank" class="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold transition hover:border-white/60">Facebook ↗</a>
+        <a href="https://www.linkedin.com/company/programistok-conference" rel="noopener" target="_blank" class="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold transition hover:border-white/60">LinkedIn ↗</a>
+        <a href="https://www.youtube.com/@programistok" rel="noopener" target="_blank" class="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold transition hover:border-white/60">YouTube ↗</a>
+      </div>
+      <p class="mt-10 font-mono text-[11px] uppercase tracking-[0.12em] text-cream-faint">
+        Paczka zaktualizowana: {kit.generated}
+      </p>
+    </div>
+  </section>
+</BaseLayout>

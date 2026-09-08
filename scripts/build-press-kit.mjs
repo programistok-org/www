@@ -107,18 +107,24 @@ const LOGO_DIR = dir(`${PRESS}/logotypy`);
 dir(`${LOGO_DIR}/svg`);
 dir(`${LOGO_DIR}/png`);
 
+// źródłowy kontur jest żółty — dla mediów potrzebne są też wersje jednobarwne
+const recolor = (svg, color) => svg.replace(/fill="(?!none)[^"]*"/g, `fill="${color}"`);
+const konturSrc = readFileSync(`${REPO}/public/programistok-kontur.svg`, 'utf8');
+
 const LOGOS = [
-  ['programistok-sygnet.svg', 'programistok-sygnet-kolor'],
-  ['programistok-sygnet-white.svg', 'programistok-sygnet-na-ciemnym'],
-  ['programistok-kontur.svg', 'programistok-kontur'],
+  ['programistok-sygnet-kolor', readFileSync(`${REPO}/public/programistok-sygnet.svg`, 'utf8')],
+  ['programistok-sygnet-na-ciemnym', readFileSync(`${REPO}/public/programistok-sygnet-white.svg`, 'utf8')],
+  ['programistok-kontur-czarny', recolor(konturSrc, '#14130F')],
+  ['programistok-kontur-bialy', recolor(konturSrc, '#F4F2EC')],
 ];
-for (const [file, name] of LOGOS) {
-  copyFileSync(`${REPO}/public/${file}`, `${LOGO_DIR}/svg/${name}.svg`);
+for (const [name, svg] of LOGOS) {
+  const file = `${LOGO_DIR}/svg/${name}.svg`;
+  writeFileSync(file, svg);
   for (const w of [1024, 4096]) {
-    sh('rsvg-convert', ['-w', String(w), '-o', `${LOGO_DIR}/png/${name}-${w}.png`, `${REPO}/public/${file}`]);
+    sh('rsvg-convert', ['-w', String(w), '-o', `${LOGO_DIR}/png/${name}-${w}.png`, file]);
   }
 }
-console.log('✓ logotypy: 3 × svg + 6 × png (przezroczyste tło)');
+console.log(`✓ logotypy: ${LOGOS.length} × svg + ${LOGOS.length * 2} × png (przezroczyste tło)`);
 
 // ——————————————————————————————— 3. prelegenci ———————————————————————————————
 const SPK_DIR = dir(`${PRESS}/prelegenci`);
@@ -132,12 +138,11 @@ const talkOf = Object.fromEntries(
 );
 
 const speakers = agenda.speakers.filter((s) => speaking.has(s.id));
-for (const s of speakers) {
+// część prelegentów nie ma jeszcze zdjęcia — w paczce są tylko biogramy
+const withPhoto = speakers.filter((s) => s.photo && existsSync(`${REPO}/public${s.photo}`));
+const noPhoto = speakers.filter((s) => !withPhoto.includes(s));
+for (const s of withPhoto) {
   const src = `${REPO}/public${s.photo}`;
-  if (!existsSync(src)) {
-    console.warn(`! brak zdjęcia: ${s.photo}`);
-    continue;
-  }
   const png = `${REPO}/.astro/${s.id}.png`;
   sh('dwebp', [src, '-o', png]);
   sh('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '90', png, '--out', `${SPK_DIR}/zdjecia/${s.id}.jpg`]);
@@ -158,7 +163,7 @@ const bioMd = [
       '',
       (s.bio || '').trim(),
       '',
-      `Zdjęcie: \`zdjecia/${s.id}.jpg\``,
+      s.photo ? `Zdjęcie: \`zdjecia/${s.id}.jpg\`` : '_Brak zdjęcia w paczce._',
       '',
     ].filter((x) => x !== '');
   }),
@@ -170,11 +175,14 @@ const csv = [
   ['imie_i_nazwisko', 'sciezka', 'dzien', 'temat', 'bio', 'plik_zdjecia'].join(','),
   ...speakers.map((s) => {
     const t = talkOf[s.id] || {};
-    return [s.name, t.track, t.day, t.topic, s.bio, `zdjecia/${s.id}.jpg`].map(csvCell).join(',');
+    return [s.name, t.track, t.day, t.topic, s.bio, s.photo ? `zdjecia/${s.id}.jpg` : ''].map(csvCell).join(',');
   }),
 ].join('\n');
 writeFileSync(`${SPK_DIR}/prelegenci.csv`, '﻿' + csv + '\n'); // BOM — Excel czyta polskie znaki
-console.log(`✓ prelegenci: ${speakers.length} zdjęć + bio (md/csv)`);
+console.log(
+  `✓ prelegenci: ${withPhoto.length} zdjęć + ${speakers.length} biogramów (md/csv)` +
+    (noPhoto.length ? ` — bez zdjęcia: ${noPhoto.map((s) => s.name).join(', ')}` : '')
+);
 
 // ——————————————————————————————— 4. grafiki ———————————————————————————————
 execFileSync('node', [`${HERE}/press-graphics.mjs`], { stdio: 'inherit' });
@@ -217,9 +225,12 @@ Materiały można wykorzystywać w publikacjach dotyczących Programistoku 2026.
 Prosimy nie modyfikować logotypów (proporcje, kolory, dodatkowe elementy).
 Zdjęcia prelegentów — wyłącznie w kontekście konferencji.
 
-Kontakt
--------
-https://programistok.org/dla-mediow
+Kontakt dla mediów
+------------------
+Adam Piotrowski, jeden z organizatorów Programistoku
+tel. 668 842 999
+
+Materiały online: https://programistok.org/dla-mediow
 Facebook:  https://www.facebook.com/programistok
 LinkedIn:  https://www.linkedin.com/company/programistok-conference
 YouTube:   https://www.youtube.com/@programistok
@@ -233,3 +244,50 @@ rmSync(ZIP, { force: true });
 sh('zip', ['-r', '-q', ZIP, 'README.txt', 'nota-prasowa', 'logotypy', 'prelegenci', 'grafiki'], { cwd: PRESS });
 const zipMb = (readFileSync(ZIP).length / 1024 / 1024).toFixed(1);
 console.log(`✓ ZIP: public/press/programistok-2026-press-kit.zip (${zipMb} MB)`);
+
+// ——————————————————————————————— 6. manifest dla strony ———————————————————————————————
+// Strona /dla-mediow czyta ten plik zamiast skanować public/ w czasie builda.
+const px = (f) => {
+  const m = f.match(/(\d+)x(\d+)/);
+  return m ? `${m[1]}×${m[2]} px` : '';
+};
+const label = (f) =>
+  f.startsWith('w-liczbach') ? 'Konferencja w liczbach' : f.includes('jasny') ? 'Key visual — wersja jasna' : 'Key visual';
+writeFileSync(
+  `${REPO}/src/data/press-kit.json`,
+  JSON.stringify(
+    {
+      generated: new Date().toISOString().slice(0, 10),
+      zip: { href: '/press/programistok-2026-press-kit.zip', size: `${zipMb} MB` },
+      nota: {
+        pdf: `/press/nota-prasowa/${NOTA_BASE}.pdf`,
+        docx: `/press/nota-prasowa/${NOTA_BASE}.docx`,
+        txt: `/press/nota-prasowa/${NOTA_BASE}.txt`,
+      },
+      grafiki: grafiki.map((f) => ({ file: f, href: `/press/grafiki/${f}`, label: label(f), size: px(f) })),
+      logotypy: readdirSync(`${LOGO_DIR}/svg`)
+        .sort()
+        .map((f) => ({
+          name: basename(f, '.svg'),
+          svg: `/press/logotypy/svg/${f}`,
+          png: `/press/logotypy/png/${basename(f, '.svg')}-4096.png`,
+        })),
+      prelegenci: {
+        liczba: speakers.length,
+        zdjecia: withPhoto.length,
+        bioMd: '/press/prelegenci/prelegenci-bio.md',
+        csv: '/press/prelegenci/prelegenci.csv',
+        osoby: speakers.map((s) => ({
+          name: s.name,
+          photo: s.photo ? `/press/prelegenci/zdjecia/${s.id}.jpg` : null,
+          photoPosition: s.photoPosition || null,
+          topic: (talkOf[s.id] || {}).topic || '',
+          track: (talkOf[s.id] || {}).track || '',
+        })),
+      },
+    },
+    null,
+    2
+  ) + '\n'
+);
+console.log('✓ manifest: src/data/press-kit.json');
