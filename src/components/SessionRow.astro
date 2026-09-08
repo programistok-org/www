@@ -1,0 +1,118 @@
+---
+import { peopleOf } from '../lib/agenda.js';
+
+const { session, track = 'it' } = Astro.props;
+
+const theme = {
+  it: { label: 'text-accent-ink', chip: 'bg-accent/10 text-accent-ink' },
+  biznes: { label: 'text-biz-ink', chip: 'bg-biz/10 text-biz-ink' },
+}[track];
+
+const kindLabel = {
+  lt: 'Case study',
+  panel: 'Panel',
+  lightning: 'Lightning talks',
+  networking: 'Networking',
+}[session.kind];
+
+const paragraphs = (text) =>
+  (text || '')
+    .split(/\n{2,}/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+const people = peopleOf(session);
+const abstract = paragraphs(session.abstract);
+const bios = people.filter((p) => p.bio).map((p) => ({ name: p.name, text: paragraphs(p.bio) }));
+const expandable = abstract.length > 0 || bios.length > 0;
+
+const initials = (name) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((p) => p[0].toUpperCase())
+    .join('');
+
+// prelekcja: nazwisko prowadzi, temat pod spodem. Panel czy networking: tytuł prowadzi.
+const isTalk = session.kind === 'talk' || session.kind === 'lt';
+const lead = isTalk ? people.map((p) => p.name).join(', ') : session.topic || 'Temat wkrótce';
+const sub = isTalk ? session.topic || 'Temat wkrótce' : people.map((p) => p.name).join(', ') || session.note;
+const [photoPerson] = people;
+
+// etykieta powtarzająca tytuł (Lightning talks) nic nie wnosi
+const chip = kindLabel && kindLabel.toLowerCase() !== lead.toLowerCase() ? kindLabel : null;
+const note = session.note && session.note !== sub ? session.note : null;
+---
+
+<details
+  class="group overflow-hidden rounded-2xl border border-line bg-surface"
+  data-expandable={expandable ? 'true' : undefined}
+>
+  <summary
+    class={`flex list-none items-start gap-4 p-4 sm:p-5 ${expandable ? 'cursor-pointer' : 'cursor-default'} [&::-webkit-details-marker]:hidden`}
+  >
+    <div class="logo-mask h-14 w-16 shrink-0 bg-ink">
+      {isTalk && photoPerson?.photo ? (
+        <img
+          src={photoPerson.photo}
+          alt=""
+          loading="lazy"
+          class="h-full w-full object-cover object-[50%_22%]"
+          style={photoPerson.photoPosition ? `object-position:${photoPerson.photoPosition}` : undefined}
+        />
+      ) : (
+        <div class="flex h-full w-full items-center justify-center font-mono text-[13px] font-bold tracking-tight text-cream">
+          {isTalk && photoPerson ? initials(photoPerson.name) : '//'}
+        </div>
+      )}
+    </div>
+
+    <div class="min-w-0 flex-1">
+      <p class="text-pretty text-[17px] font-black leading-tight tracking-[-0.02em]">
+        {lead}
+        {chip && (
+          <span class={`ml-2 inline-flex whitespace-nowrap rounded-full px-2 py-0.5 align-[0.15em] font-mono text-[10px] font-bold uppercase tracking-[0.1em] ${theme.chip}`}>
+            {chip}
+          </span>
+        )}
+      </p>
+
+      {sub && <p class="mt-1.5 text-pretty text-[15px] leading-snug text-muted">{sub}</p>}
+
+      {note && <p class="mt-1.5 text-pretty text-[14px] leading-snug text-faint">{note}</p>}
+
+      {expandable && (
+        <p class={`mt-2.5 font-mono text-[11px] uppercase tracking-[0.12em] ${theme.label}`}>
+          <span class="group-open:hidden">Szczegóły +</span>
+          <span class="hidden group-open:inline">Zwiń −</span>
+        </p>
+      )}
+    </div>
+  </summary>
+
+  {expandable && (
+    <div class="border-t border-line px-4 pb-5 pt-4 sm:px-5">
+      {abstract.length > 0 && (
+        <div class="flex flex-col gap-3">
+          {abstract.map((p) => (
+            <p class="text-[15px] leading-relaxed text-muted text-pretty">{p}</p>
+          ))}
+        </div>
+      )}
+
+      {bios.map((bio) => (
+        <div class={abstract.length > 0 ? 'mt-5 border-t border-line pt-4' : ''}>
+          <p class={`mb-2 font-mono text-[11px] uppercase tracking-[0.12em] ${theme.label}`}>
+            {bios.length > 1 ? `Bio — ${bio.name}` : 'Bio'}
+          </p>
+          <div class="flex flex-col gap-2.5">
+            {bio.text.map((p) => (
+              <p class="text-[14px] leading-relaxed text-muted text-pretty">{p}</p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</details>

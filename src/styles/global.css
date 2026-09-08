@@ -65,3 +65,15 @@
     }
   }
 }
+
+/* zdjęcie w kształcie sygnetu — ta sama maska, której używa generator grafik */
+@layer components {
+  .logo-mask {
+    -webkit-mask-image: url('/mask-sygnet.svg');
+    mask-image: url('/mask-sygnet.svg');
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}
