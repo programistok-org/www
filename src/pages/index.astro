@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroLogo3D from '../components/HeroLogo3D.astro';
 import Cfp from '../components/Cfp.astro';
 import agenda from '../data/agenda2026.json';
+import { youtubeEmbedUrl } from '../lib/youtube.js';
+
+const heroVideo = youtubeEmbedUrl('https://www.youtube.com/watch?v=a2vtAt5nNzA');
 ---
 
 <BaseLayout
@@ -47,18 +50,26 @@ import agenda from '../data/agenda2026.json';
         <a href="#o-nas" class="inline-flex items-center rounded-full border border-line bg-surface px-7 py-4 text-base font-semibold text-ink transition hover:border-ink">
           O nas
         </a>
+        <a href="/wybieram-sie" class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-7 py-4 text-base font-semibold text-ink transition hover:border-ink">
+          Wybieram się <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOTO SPOŁECZNOŚCI ===== -->
-  <section class="mx-auto max-w-[1200px] px-5 pb-16 sm:px-8" aria-label="Społeczność Programistok">
+  <!-- ===== WIDEO ===== -->
+  <section class="mx-auto max-w-[1200px] px-5 pb-16 sm:px-8" aria-label="Wideo Programistok">
     <figure class="overflow-hidden rounded-3xl border border-line bg-ink">
-      <img
-        src="/grupa.jpg"
-        alt="Społeczność Programistok podczas konferencji"
-        class="aspect-[16/8] w-full object-cover"
-      />
+      <div class="aspect-video">
+        <iframe
+          src={heroVideo}
+          title="Programistok 2026"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          class="h-full w-full"
+        ></iframe>
+      </div>
     </figure>
   </section>
 
@@ -156,6 +167,12 @@ import agenda from '../data/agenda2026.json';
           class="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-ink transition hover:brightness-95"
         >
           Kup bilety <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          href="/wybieram-sie"
+          class="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-4 text-base font-semibold text-white transition hover:border-white"
+        >
+          Zrób grafikę „Wybieram się" <span aria-hidden="true">→</span>
         </a>
         <a
           href="https://discord.gg/eHSv6rC8tt"
