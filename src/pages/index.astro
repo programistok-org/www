@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroLogo3D from '../components/HeroLogo3D.astro';
 import Cfp from '../components/Cfp.astro';
 import agenda from '../data/agenda2026.json';
-import TalksMarquee from '../components/TalksMarquee.astro';
+import SpeakerStrip from '../components/SpeakerStrip.astro';
 import { youtubeEmbedUrl } from '../lib/youtube.js';
 
 const heroVideo = youtubeEmbedUrl('https://www.youtube.com/watch?v=a2vtAt5nNzA');
@@ -85,7 +85,7 @@ const heroVideo = youtubeEmbedUrl('https://www.youtube.com/watch?v=a2vtAt5nNzA')
       i lightning talki.
     </p>
 
-    <TalksMarquee />
+    <SpeakerStrip />
 
     <div class="mt-10 grid gap-5 md:grid-cols-2">
       <article class="group flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">

@@ -1,0 +1,86 @@
+---
+import { days, tracks, sessionsFor, cardFor } from '../lib/agenda.js';
+
+const isTalk = (s) => s.kind === 'talk' || s.kind === 'lt';
+
+// przeplatamy ścieżki w obrębie dnia, żeby taśma nie szła blokami jednego koloru
+const interleave = (lists) => {
+  const out = [];
+  for (let i = 0; i < Math.max(...lists.map((l) => l.length)); i++) {
+    for (const list of lists) if (list[i]) out.push(list[i]);
+  }
+  return out;
+};
+
+const cards = days.flatMap((day) =>
+  interleave(
+    tracks.map((track) =>
+      sessionsFor(track.id, day.id)
+        .filter(isTalk)
+        .map((session) => ({ ...cardFor(session), track: track.id, day }))
+    )
+  )
+).filter((c) => c.topic);
+
+const theme = {
+  it: { dot: 'bg-accent', label: 'text-accent-ink' },
+  biznes: { dot: 'bg-biz', label: 'text-biz-ink' },
+};
+
+const initials = (name) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((p) => p[0].toUpperCase())
+    .join('');
+---
+
+<div class="mt-10">
+  <div class="flex flex-wrap items-center justify-between gap-4">
+    <p class="font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Kto wystąpi</p>
+    <a href="/agenda" class="group inline-flex items-center gap-1.5 font-semibold text-accent-ink transition hover:gap-2.5">
+      Zobacz cały program <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <div class="no-scrollbar -mx-1 mt-5 snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth px-1">
+    <ul class="flex w-max gap-4 py-1">
+      {cards.map((card) => (
+        <li class="snap-start">
+          <a
+            href={`/agenda#dzien-${card.day.id}`}
+            class="flex h-full w-[248px] flex-col rounded-2xl border border-line bg-surface p-5 transition hover:border-ink/25 hover:bg-bg"
+          >
+            <div class="logo-mask h-20 w-[92px] bg-ink">
+              {card.photo ? (
+                <img
+                  src={card.photo}
+                  alt=""
+                  loading="lazy"
+                  class="h-full w-full object-cover object-[50%_22%]"
+                  style={card.photoPosition ? `object-position:${card.photoPosition}` : undefined}
+                />
+              ) : (
+                <div class="flex h-full w-full items-center justify-center font-mono text-[15px] font-bold text-cream">
+                  {initials(card.name)}
+                </div>
+              )}
+            </div>
+
+            <div class="mt-4 flex items-center gap-2">
+              <span class={`h-2 w-2 shrink-0 rounded-[2px] ${theme[card.track].dot}`} aria-hidden="true"></span>
+              <p class="truncate text-[15px] font-black tracking-[-0.02em]">{card.name}</p>
+            </div>
+
+            <p class="mt-1.5 line-clamp-3 text-[14px] leading-snug text-muted text-pretty">{card.topic}</p>
+
+            <p class={`mt-auto pt-4 font-mono text-[11px] uppercase tracking-[0.12em] ${theme[card.track].label}`}>
+              {card.day.label} · {card.track === 'it' ? 'IT' : 'Biznes'}
+            </p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
