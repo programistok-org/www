@@ -7,213 +7,589 @@
     },
     "open": false
   },
+  "days": [
+    {
+      "id": 1,
+      "label": "Dzień I",
+      "date": "2026-09-25",
+      "dateLabel": "25.09.2026"
+    },
+    {
+      "id": 2,
+      "label": "Dzień II",
+      "date": "2026-09-26",
+      "dateLabel": "26.09.2026"
+    }
+  ],
   "tracks": [
     {
       "id": "it",
       "label": "IT",
       "name": "Ścieżka IT",
       "lead": "Architektura, jakość, skalowanie i praktyka inżynierska. Technologicznie agnostycznie.",
-      "slots": 12,
-      "speakers": [
-        {
-          "name": "Wojciech Kasa",
-          "photo": "/prelegenci/wojciech-kasa.webp",
-          "topic": "Residuality Theory na produkcji. Jak przewidzieć awarię, zanim wydarzy się naprawdę.",
-          "abstract": "Residuality Theory Barry'ego O'Reilly'ego to jedna z ciekawszych rzeczy, jaka wydarzyła się ostatnio w architekturze oprogramowania. Jest też jednocześnie często kwitowana zdaniem: „brzmi świetnie, ale jak to zastosować?”. Na tej prelekcji postaram się odpowiedzieć na to pytanie. Pokażę, jak użyliśmy Residuality Theory do przetestowania granic modularnego monolitu. Na warsztat weźmiemy krytyczną część produkcyjnej platformy dla branży insuretech: sprzedaż, rozliczenia i prowizje, czyli miejsce, gdzie płyną pieniądze i błędy kosztują najwięcej.\n\nNajpierw przejdziemy przez projektowanie stresorów, czyli to, jak realnie zdefiniować zagrożenia dla systemu (od tąpnięć biznesowych po nagłe zmiany regulacyjne KNF). Następnie omówię pracę z macierzą incydencji i to, jak namierzyć kruche miejsca w architekturze. Analiza wskazała u nas zupełnie inny komponent, niż podpowiadała intuicja zespołu. Pokażę też przełożenie teorii na kod, czyli jak z wyników tej symulacji wyciągnęliśmy konkretne decyzje architektoniczne (ADR) i przebudowaliśmy system przed wdrożeniem.",
-          "bio": "Wojtek od ponad 20 lat pracuje w branży IT. Uważa, że większość błędów architektonicznych nie wynika ze złych decyzji technicznych, ale z pytań, których nikt nie zadał wystarczająco wcześnie. Dlatego, zanim zaproponuje jakiekolwiek rozwiązanie, stara się zrozumieć, co tak naprawdę boli i czy w ogóle warto to budować.\n\nNa co dzień Lead Architect w MAK IT i współzałożyciel Arpeggia Studio, butikowej firmy konsultingowej działającej pod hasłem „compose before you code”. Arpeggia pomaga organizacjom myśleć architektonicznie, optymalizować procesy wytwarzania oprogramowania oraz prowadzi szkolenia dla architektów i zespołów deweloperskich.\n\nZwycięzca O'Reilly Architectural Kata (edycja Winter 2024)."
-        },
-        {
-          "name": "Michał Franc",
-          "photo": "/prelegenci/michal-franc.webp",
-          "topic": "Quo Vadis IT: odpowiedzialność, ownership i sprawczość, czyli dokąd zmierza rola inżyniera (na przykładzie Staff+)",
-          "abstract": "2025 i 2026 to lata ciekawych zmian w naszej branży. Jest intensywnie, chaotycznie i trochę niepewnie. Ciężko jednoznacznie ocenić, jak będzie wyglądał rynek i na co będzie zapotrzebowanie. Mam swoje przewidywania i chcę się nimi podzielić na tej prezentacji, by trochę obniżyć poziom niepewności, ale też zmienić mapy mentalne innym, świeżym punktem widzenia.\n\nGdy wchodziłem na rynek (18 lat temu), bazą w naszym zawodzie była znajomość języka i frameworku, pisanie kodu czy specjalistyczna wiedza techniczna. Na tym budowało się seniority. Dzisiaj jednak coraz częściej mówi się o tym, że wartość inżyniera odsuwa się od pisania kodu w stronę odpowiedzialności za efekt. Ta rewolucja nie jest do końca rewolucją, jest ewolucją procesów, które zachodziły już od lat. LLM-y i AI są tutaj tylko akceleratorem, a nie czymś, co fundamentalnie zmienia zasady gry. Nowym fundamentem inżyniera staje się triada: odpowiedzialność za efekt, ownership problemu i sprawczość, czyli zdolność, żeby realnie coś dowieźć i wygenerować wartość. To one, a nie znajomość narzędzi, zaczynają definiować seniority. Junior/mid/senior przestaje znaczyć „zna framework”, a zaczyna znaczyć „potrafi samodzielnie wziąć problem na siebie i go dowieźć”.\n\nTen chaotyczny galimatias powoduje, że na rynku zaczęły pojawiać się nowe role, takie jak Staff Engineer czy Staff+ Engineer. Na przykładzie tej roli opowiem, jak ewoluowała branża i co dziś ceni.",
-          "bio": "Michał Franc to principal engineer z 18-letnim doświadczeniem, który przeszedł całą drogę od juniora aż po principala w firmach produktowych, takich jak JustEat, JustGiving, Form3 i Affirm. Widzi swoją rolę jako architekta na dwóch poziomach: systemów oraz organizacji i sposobu, w jaki pracują ludzie. Budował skalowalne, niezawodne systemy rozproszone o globalnej skali, obsługujące dziesiątki milionów użytkowników i przetwarzające miliardy dolarów (Cloud Native, AWS, Platform Engineering, SRE, DevOps). Przede wszystkim jest jednak zorientowany na generowanie wartości biznesowej.\n\nPo godzinach hobbystycznie pisze gry (mfranc.com/game), dużo w nie gra i jest fanatykiem vima, Dwarf Fortress oraz CDDA."
-        },
-        {
-          "name": "Jakub Sikora",
-          "photo": "/prelegenci/jakub-sikora.webp",
-          "topic": "Przejęliśmy drony i wywaliliśmy je z mapy. To samo mogę zrobić z Twoją zabezpieczoną usługą",
-          "abstract": "System wyświetlał pozycje dronów, obserwacje i dane operacyjne. Komunikacja szyfrowana, profesjonalny panel, operatorzy mieli wszystkie powody, by ufać temu, co widzieli na mapie. Aż my, razem z 11 innymi zespołami, rozebraliśmy firmware i protokół, po czym wysłaliśmy ich drony w pilną misję prosto do wnętrza Ziemi.\n\nMożesz mieć własny format pakietów, stosować AES-ECB, efemeralne klucze z autodestrukcją, ale jeśli w autoryzacji jednego endpointa wprowadzisz głupiego buga, podszyjemy się pod Twoje urządzenie. Wyślemy poprawnie zaszyfrowaną, ale spreparowaną telemetrię, Twój frontend narysuje współrzędne idealnie, a reszta systemu i ludzie uwierzą w 100% w dane, które Ci wstrzyknęliśmy. Ta historia wydarzyła się podczas ćwiczeń Cyberlegionu, ale sam mechanizm jest zupełnie zwyczajny w całej branży. W ten sam sposób aplikacje ufają webhookom tylko dlatego, że przyszły przez HTTPS, tokenom JWT bez sprawdzania odbiorcy, wiadomościom z kolejki bez ochrony przed replay attack, czy danym z urządzeń, których nikt nie weryfikuje w kontekście biznesowym.\n\nPodczas prezentacji przejdziemy od analizy pakietu przez pięć warstw zaufania: tożsamość nadawcy, integralność, świeżość, autoryzacja i sens danych. Uczestnicy wyjdą z prostym modelem przeglądu API i systemów zdarzeniowych, plus trzema testami, które od razu mogą wrzucić do backlogu, bez kosztownej przebudowy całej produkcji. Szyfrowanie powie Ci, że ktoś nie przeczytał wiadomości, ale nie odpowie, kto ją napisał, kiedy powstała i czy system powinien na jej podstawie cokolwiek zrobić.",
-          "bio": "Jakub buduje systemy zaufania dla pieniędzy i rozbiera je dla sportu. Na co dzień jest VP Engineering w fintechu na etapie Series B, czyli w Circit Ltd., które dostarcza globalnym firmom audytorskim i bankom infrastrukturę zgodną z SOC 2 i certyfikowaną przez SWIFT, a kiedy trzeba, także nocą, wciela się w CyberLegionistę.\n\nNa Programistoku pokaże, co się dzieje, gdy bezpieczna komunikacja między usługami okazuje się ani autentyczna, ani prawdziwa, i dlaczego następne w kolejce jest Twoje API. Mówi z niewygodnej przestrzeni między formalną zgodnością z wymogami bezpieczeństwa a realnie sprawdzoną odpornością systemu."
-        },
-        {
-          "name": "Łukasz Kałużny",
-          "photo": "/prelegenci/lukasz-kaluzny.webp",
-          "topic": "Twoja architektura nikogo nie obchodzi!",
-          "abstract": "Twoja architektura nikogo nie obchodzi, dopóki nie zacznie blokować dowożenia, kosztować fortunę albo wybuchnie na produkcji. Ta sesja jest o tym, jak naprawdę zapadają decyzje architektoniczne w firmach i dlaczego zawsze i tak wychodzi z tego problem.\n\nZamiast opowieści o „idealnej” architekturze, rozbierzemy na czynniki pierwsze to, co dzieje się naprawdę: dlaczego craftsmanship jako cel często przegrywa z dostarczaniem wartości, kto ma realne weto w decyzjach i jak projektować architekturę, która wygrywa w praktyce, bo pasuje do organizacji, a nie do diagramu.\n\nNa koniec przesuniemy ciężar na to, co zmienia AI i vibe coding: mniej walki o perfekcyjny kod, więcej projektowania kontroli. Granice, kontrakty, bezpieczeństwo, standardy i guardrails, które pozwalają dowozić szybciej, ale bez chaosu, niekontrolowanego długu i niespodzianek na produkcji.",
-          "bio": "Technology Advisor i Managing Partner w Protopia. Zajmuje się technologią wtedy, kiedy jest jeszcze „za wcześnie”, a nie wtedy, kiedy już każdy ma na to slajd: Azure od 2013, kontenery od 2014 (Docker/Kubernetes), a LLM-y dłubał jeszcze przed erą ChatGPT. Lubi sprawdzać trendy w praktyce: co realnie dowozi wartość, co generuje dług, a co jest tylko ładną ściemą.\n\nW projektach kręci się wokół architektury, platform chmurowych, danych i automatyzacji, a także tego, jak to wszystko poskładać, żeby działało w rzeczywistości, a nie tylko na diagramie. Ma słabość do rozbrajania hype'u i opowieści z LinkedIna: od „AI-szamanii” po modne hasła, które dobrze wyglądają w poście, a gorzej w produkcji. Zwykle interesuje go moment, w którym kończy się magia, a zaczyna koszt, ryzyko i odpowiedzialność. Microsoft MVP nieprzerwanie od 2012. Współtwórca podcastu Patoarchitekci."
-        },
-        {
-          "name": "Oleksandr Lysenko",
-          "photo": "/prelegenci/oleksandr-lysenko.webp",
-          "topic": "The Human vs. the LLM: Measuring AI Efficiency",
-          "abstract": "Ile naprawdę kosztuje, w energii, mocy obliczeniowej i zasobach, zastąpienie ludzkiego zadania przez LLM? Spojrzenie na efektywność AI przez pryzmat energii na jednostkę pracy oraz realnej ekonomii inteligencji ludzkiej i maszynowej.",
-          "bio": "Oleksandr pracuje w R&D, zajmuje się AI i rozwiązywaniem złożonych problemów wokół danych finansowych i audytowych. Ma ponad 10 lat doświadczenia w inżynierii oprogramowania, zdobytego w fintechu, obszarze finansów i ryzyka oraz przy systemach danych dużej skali.\n\nPrzez lata budował platformy integracji bankowej łączące tysiące instytucji finansowych, pracował przy potokach danych o dużej skali i rozwijał rozwiązania oparte na ML oraz LLM. Dziś skupia się głównie na tym, jak zastosować AI do realnych problemów inżynierskich i biznesowych oraz jak zamieniać obiecujące pomysły w systemy produkcyjne."
-        },
-        {
-          "name": "Radek Maziarka",
-          "photo": "/prelegenci/radek-maziarka.webp",
-          "topic": "Context Engineering: architektura wiedzy dla efektywnego dostarczania",
-          "abstract": "Kod piszemy szybciej niż kiedykolwiek, ale czas od zgłoszenia do produkcji prawie się nie zmienił. Raport „The State of DevOps” pokazuje dlaczego: praca stricte deweloperska w całym procesie się kurczy, a żmudna, powtarzalna praca wokół niej rośnie jeszcze szybciej.\n\nTa prezentacja pokazuje, jak zbudować system wiedzy, dzięki któremu przyspieszenie obejmuje cały proces dostarczania. Zobaczysz, jak zmapować proces dostarczania i wiedzę, z jakiej korzysta się na każdym jego etapie, jak przełożyć tę mapę na scenariusze, które prowadzą agenta przez rozwiązanie danego problemu, oraz jak utrzymać system wiedzy zgodny z rzeczywistością, kiedy system produkcyjny się zmienia.",
-          "bio": "Engineering Consultant z ponad 10-letnim doświadczeniem w branży. Pracuje przy pełnym zakresie tworzenia produktów cyfrowych, od budowy zespołów i organizacji, przez definiowanie celów i analizę wymagań, po tworzenie produktu cyfrowego i jego utrzymanie na produkcji. Zwolennik pracy zwinnej i automatyzacji procesów."
-        },
-        {
-          "name": "Kamil Kiełbasa",
-          "photo": "/prelegenci/kamil-kielbasa.webp",
-          "topic": "Mapy kontekstów — narzędzie decyzyjne architekta",
-          "abstract": "Prawie każdy zespół ma jakiś diagram architektury. Kwadraty, beczki, strzałki. Widać, co gdzie stoi i co się z czym łączy. Problem zaczyna się wtedy, gdy ktoś pyta, gdzie właściwie kończy się odpowiedzialność jednego zespołu, a zaczyna drugiego. Wtedy diagram milczy, bo pokazuje technikę, a pytanie dotyczy podziału domeny.\n\nMapa kontekstów odpowiada dokładnie na tę drugą warstwę. Dobra wiadomość jest taka, że nie trzeba jej rysować od zera, bo w dużej części siedzi już w tym, co macie na ścianie.\n\nPokażę, jak przełożyć diagram architektury na mapę kontekstów, a potem jak dołożyć do niej trzy rzeczy, dzięki którym zaczyna odpowiadać na konkretne pytania. Gdzie przebiega granica, kiedy każdy zespół uważa, że dana funkcjonalność należy do niego. Dlaczego zmiana w jednym miejscu wysypuje coś, co teoretycznie nie ma z nią nic wspólnego. Gdzie warto zainwestować czas dobrego zespołu, a co spokojnie można kupić.",
-          "bio": "Kamil od piętnastu lat ogląda systemy od środka, zwykle w momencie, w którym coś już poszło nie tak. Twierdzi, że większość długu architektonicznego to nie zły kod, tylko granice postawione w miejscu, które wtedy wydawało się oczywiste.\n\nArchitekt i konsultant, Technical Lead w Jit Team. Budował hurtownie danych, rozbierał monolity, skalował zespoły od zera do kilkunastu osób i wprowadzał Event Storming tam, gdzie wcześniej istniały wyłącznie specyfikacje. DDD, systemy rozproszone, .NET, AWS, Kubernetes, ale najchętniej rozmawia o tym, dlaczego zespoły podejmują decyzje, które później same przeklinają.\n\nProwadzi bd90.pl i newsletter „The Architect's Edge”, współorganizuje Warsaw Software Architecture Group. Kolekcjonuje certyfikaty chmurowe, choć sam przyznaje, że żaden nie uchronił go przed nieudanym wdrożeniem. Gra na gitarze, ma słabość do doom metalu."
-        },
-        {
-          "name": "Hubert Łępicki",
-          "photo": "/prelegenci/hubert-lepicki.webp",
-          "topic": "Inżynieria oprogramowania w dobie agentów AI",
-          "abstract": "Od 1 stycznia 2026 roku nie napisałem ręcznie ani jednej linii kodu. Na razie się udaje — choć droga od pierwszych eksperymentów z vibe codingiem do skutecznej pracy z agentami okazała się znacznie bardziej stroma, niż sugerują internetowe demonstracje.\n\nNajczęstszy błąd? Usiąść przed komputerem, wpisać jeden prompt i oczekiwać gotowego, poprawnego i łatwego w utrzymaniu systemu. Kiedy rezultat okazuje się „AI slopem”, łatwo obwinić model. Tymczasem agent, podobnie jak człowiek, potrzebuje jasnych wymagań, informacji zwrotnej, odpowiednich narzędzi oraz procesu, który wymusza jakość.\n\nPokażę, jak przenieść do pracy z agentami praktyki, które od lat znamy z inżynierii oprogramowania: dopracowywanie ticketów, iteracyjne planowanie, TDD, testy jednostkowe i integracyjne, małe kroki, pull requesty oraz niezależne code review wykonywane przez innego agenta. Opowiem o błędach, które popełniłem, i o tym, jak zmienia się rola programisty: zamiast pisać każdą linię kodu, projektujemy środowisko, procedury i mechanizmy kontroli, dzięki którym agenci mogą dowozić oprogramowanie naprawdę nadające się do produkcji.\n\nNiezależnie od tego, czy delegujesz agentom już cały proces tworzenia kodu, czy dopiero zaczynasz, wyjdziesz z konkretnym modelem pracy — a nie kolejnym zbiorem magicznych promptów.",
-          "bio": "Hubert jest programistą z blisko dwudziestoletnim doświadczeniem. W swojej pracy zaczynał od PHP i Ruby on Rails, tworzył systemy w języku Elixir, a od początku roku 2026 programuje wyłącznie przy użyciu agentów AI.",
-          "photoPosition": "50% 5%"
-        },
-        {
-          "name": "Grzegorz Wilczura",
-          "photo": "/prelegenci/grzegorz-wilczura.webp",
-          "topic": "Just in Time Architecture — architektura jako kod z użyciem Backstage",
-          "abstract": "Czytelna, przejrzysta i kompletna, a przede wszystkim aktualna! Zapraszam wszystkich, którzy mieliby problem, żeby opisać w ten sposób swoją dokumentację architektoniczną.\n\nW środowisku, w którym wiele zespołów równolegle wprowadza zmiany, a system jest rozproszony, często niełatwo jest się odnaleźć. I to nie tylko nowym pracownikom. Na prezentacji pokażę, jak można stworzyć „żywy” diagram architektury całego systemu, nawet gdy używa się multi-repo. Zademonstruję architekturę jako integralną część kodu, a jej zmiany jako element PR i Code Review.\n\nJęzyk programowania nie ma tu znaczenia, a znajomość Backstage nie jest potrzebna. Udokumentujemy nasz system z użyciem YAML-a, a Backstage nam go zwizualizuje.",
-          "bio": "Inżynier oprogramowania z zamiłowania. Pracował jako programista, architekt, lider zespołu, kierownik działu technologicznego, a teraz ponownie jako programista.\n\nPrzez większość kariery zawodowej związany z obszarem finansowo-bankowym, ale miał też okazję pracować w sektorze transportu, turystyki, telekomunikacji i e-commerce.\n\nObecnie skoncentrowany na projektowaniu wydajnego i trwałego oprogramowania niezależnie od architektury czy infrastruktury."
-        },
-        {
-          "name": "Marcin Iwanowski",
-          "photo": "/prelegenci/marcin-iwanowski.webp",
-          "topic": "Kiedy AI to za mało: Quantum",
-          "abstract": "W świecie zdominowanym trendem AI nie powinniśmy zapominać o innej rewolucji, która dzieje się na naszych oczach – Quantum. Programowanie kwantowe brzmi jak coś z laboratorium fizyków, ale dzięki Azure Quantum coraz częściej trafia w ręce specjalistów IT.\n\nW tej sesji pokażę, jak wygląda pierwsze spotkanie ze światem kubitów, superpozycji i algorytmów kwantowych. Porozmawiamy o tym: czym naprawdę jest programowanie kwantowe, jakie problemy może rozwiązywać, czy to przyszłość IT, czy raczej odległa ciekawostka. Na koniec przejdziemy do praktyki: napiszemy prosty program w Q# i uruchomimy go na prawdziwym komputerze kwantowym dostępnym przez Azure Quantum.\n\nJeśli po wielu sesjach o AI chcesz zobaczyć technologię, którą już dziś powinieneś się zainteresować – zapraszam!",
-          "bio": "Microsoft MVP w kategorii Azure Application PaaS, współwłaściciel 4BEARS Sp. z o.o. dostarczającej ekspertów w swojej dziedzinie zachodnim rynkom IT, konsultant w SoftwareONE AG. Wcześniej programista, team leader, project manager, kierownik działów w organizacjach różnej wielkości, od kilkunastu do ponad stu tysięcy pracowników.\n\nAktywny trener współpracujący z największymi ośrodkami edukacyjnymi w Polsce. Wykładowca Warszawskiej Wyższej Szkoły Informatyki. Lider społeczności bstok.ms i lublin.ms, prelegent wielu wydarzeń ogólnopolskich. Od 2010 roku magister inżynier informatyki, absolwent Politechniki Białostockiej."
-        }
-      ]
+      "slots": 12
     },
     {
       "id": "biznes",
       "label": "Biznes",
       "name": "Ścieżka Biznes",
       "lead": "Decyzje technologiczne od strony biznesu: wdrożenia, koszty, efekty i wnioski.",
-      "slots": 18,
+      "slots": 18
+    }
+  ],
+  "speakers": [
+    {
+      "id": "wojciech-kasa",
+      "name": "Wojciech Kasa",
+      "photo": "/prelegenci/wojciech-kasa.webp",
+      "bio": "Wojtek od ponad 20 lat pracuje w branży IT. Uważa, że większość błędów architektonicznych nie wynika ze złych decyzji technicznych, ale z pytań, których nikt nie zadał wystarczająco wcześnie. Dlatego, zanim zaproponuje jakiekolwiek rozwiązanie, stara się zrozumieć, co tak naprawdę boli i czy w ogóle warto to budować.\n\nNa co dzień Lead Architect w MAK IT i współzałożyciel Arpeggia Studio, butikowej firmy konsultingowej działającej pod hasłem „compose before you code”. Arpeggia pomaga organizacjom myśleć architektonicznie, optymalizować procesy wytwarzania oprogramowania oraz prowadzi szkolenia dla architektów i zespołów deweloperskich.\n\nZwycięzca O'Reilly Architectural Kata (edycja Winter 2024)."
+    },
+    {
+      "id": "michal-franc",
+      "name": "Michał Franc",
+      "photo": "/prelegenci/michal-franc.webp",
+      "bio": "Michał Franc to principal engineer z 18-letnim doświadczeniem, który przeszedł całą drogę od juniora aż po principala w firmach produktowych, takich jak JustEat, JustGiving, Form3 i Affirm. Widzi swoją rolę jako architekta na dwóch poziomach: systemów oraz organizacji i sposobu, w jaki pracują ludzie. Budował skalowalne, niezawodne systemy rozproszone o globalnej skali, obsługujące dziesiątki milionów użytkowników i przetwarzające miliardy dolarów (Cloud Native, AWS, Platform Engineering, SRE, DevOps). Przede wszystkim jest jednak zorientowany na generowanie wartości biznesowej.\n\nPo godzinach hobbystycznie pisze gry (mfranc.com/game), dużo w nie gra i jest fanatykiem vima, Dwarf Fortress oraz CDDA."
+    },
+    {
+      "id": "jakub-sikora",
+      "name": "Jakub Sikora",
+      "photo": "/prelegenci/jakub-sikora.webp",
+      "bio": "Jakub buduje systemy zaufania dla pieniędzy i rozbiera je dla sportu. Na co dzień jest VP Engineering w fintechu na etapie Series B, czyli w Circit Ltd., które dostarcza globalnym firmom audytorskim i bankom infrastrukturę zgodną z SOC 2 i certyfikowaną przez SWIFT, a kiedy trzeba, także nocą, wciela się w CyberLegionistę.\n\nNa Programistoku pokaże, co się dzieje, gdy bezpieczna komunikacja między usługami okazuje się ani autentyczna, ani prawdziwa, i dlaczego następne w kolejce jest Twoje API. Mówi z niewygodnej przestrzeni między formalną zgodnością z wymogami bezpieczeństwa a realnie sprawdzoną odpornością systemu."
+    },
+    {
+      "id": "lukasz-kaluzny",
+      "name": "Łukasz Kałużny",
+      "photo": "/prelegenci/lukasz-kaluzny.webp",
+      "bio": "Technology Advisor i Managing Partner w Protopia. Zajmuje się technologią wtedy, kiedy jest jeszcze „za wcześnie”, a nie wtedy, kiedy już każdy ma na to slajd: Azure od 2013, kontenery od 2014 (Docker/Kubernetes), a LLM-y dłubał jeszcze przed erą ChatGPT. Lubi sprawdzać trendy w praktyce: co realnie dowozi wartość, co generuje dług, a co jest tylko ładną ściemą.\n\nW projektach kręci się wokół architektury, platform chmurowych, danych i automatyzacji, a także tego, jak to wszystko poskładać, żeby działało w rzeczywistości, a nie tylko na diagramie. Ma słabość do rozbrajania hype'u i opowieści z LinkedIna: od „AI-szamanii” po modne hasła, które dobrze wyglądają w poście, a gorzej w produkcji. Zwykle interesuje go moment, w którym kończy się magia, a zaczyna koszt, ryzyko i odpowiedzialność. Microsoft MVP nieprzerwanie od 2012. Współtwórca podcastu Patoarchitekci."
+    },
+    {
+      "id": "oleksandr-lysenko",
+      "name": "Oleksandr Lysenko",
+      "photo": "/prelegenci/oleksandr-lysenko.webp",
+      "bio": "Oleksandr pracuje w R&D, zajmuje się AI i rozwiązywaniem złożonych problemów wokół danych finansowych i audytowych. Ma ponad 10 lat doświadczenia w inżynierii oprogramowania, zdobytego w fintechu, obszarze finansów i ryzyka oraz przy systemach danych dużej skali.\n\nPrzez lata budował platformy integracji bankowej łączące tysiące instytucji finansowych, pracował przy potokach danych o dużej skali i rozwijał rozwiązania oparte na ML oraz LLM. Dziś skupia się głównie na tym, jak zastosować AI do realnych problemów inżynierskich i biznesowych oraz jak zamieniać obiecujące pomysły w systemy produkcyjne."
+    },
+    {
+      "id": "radek-maziarka",
+      "name": "Radek Maziarka",
+      "photo": "/prelegenci/radek-maziarka.webp",
+      "bio": "Engineering Consultant z ponad 10-letnim doświadczeniem w branży. Pracuje przy pełnym zakresie tworzenia produktów cyfrowych, od budowy zespołów i organizacji, przez definiowanie celów i analizę wymagań, po tworzenie produktu cyfrowego i jego utrzymanie na produkcji. Zwolennik pracy zwinnej i automatyzacji procesów."
+    },
+    {
+      "id": "kamil-kielbasa",
+      "name": "Kamil Kiełbasa",
+      "photo": "/prelegenci/kamil-kielbasa.webp",
+      "bio": "Kamil od piętnastu lat ogląda systemy od środka, zwykle w momencie, w którym coś już poszło nie tak. Twierdzi, że większość długu architektonicznego to nie zły kod, tylko granice postawione w miejscu, które wtedy wydawało się oczywiste.\n\nArchitekt i konsultant, Technical Lead w Jit Team. Budował hurtownie danych, rozbierał monolity, skalował zespoły od zera do kilkunastu osób i wprowadzał Event Storming tam, gdzie wcześniej istniały wyłącznie specyfikacje. DDD, systemy rozproszone, .NET, AWS, Kubernetes, ale najchętniej rozmawia o tym, dlaczego zespoły podejmują decyzje, które później same przeklinają.\n\nProwadzi bd90.pl i newsletter „The Architect's Edge”, współorganizuje Warsaw Software Architecture Group. Kolekcjonuje certyfikaty chmurowe, choć sam przyznaje, że żaden nie uchronił go przed nieudanym wdrożeniem. Gra na gitarze, ma słabość do doom metalu."
+    },
+    {
+      "id": "hubert-lepicki",
+      "name": "Hubert Łępicki",
+      "photo": "/prelegenci/hubert-lepicki.webp",
+      "photoPosition": "50% 5%",
+      "bio": "Hubert jest programistą z blisko dwudziestoletnim doświadczeniem. W swojej pracy zaczynał od PHP i Ruby on Rails, tworzył systemy w języku Elixir, a od początku roku 2026 programuje wyłącznie przy użyciu agentów AI."
+    },
+    {
+      "id": "grzegorz-wilczura",
+      "name": "Grzegorz Wilczura",
+      "photo": "/prelegenci/grzegorz-wilczura.webp",
+      "bio": "Inżynier oprogramowania z zamiłowania. Pracował jako programista, architekt, lider zespołu, kierownik działu technologicznego, a teraz ponownie jako programista.\n\nPrzez większość kariery zawodowej związany z obszarem finansowo-bankowym, ale miał też okazję pracować w sektorze transportu, turystyki, telekomunikacji i e-commerce.\n\nObecnie skoncentrowany na projektowaniu wydajnego i trwałego oprogramowania niezależnie od architektury czy infrastruktury."
+    },
+    {
+      "id": "marcin-iwanowski",
+      "name": "Marcin Iwanowski",
+      "photo": "/prelegenci/marcin-iwanowski.webp",
+      "bio": "Microsoft MVP w kategorii Azure Application PaaS, współwłaściciel 4BEARS Sp. z o.o. dostarczającej ekspertów w swojej dziedzinie zachodnim rynkom IT, konsultant w SoftwareONE AG. Wcześniej programista, team leader, project manager, kierownik działów w organizacjach różnej wielkości, od kilkunastu do ponad stu tysięcy pracowników.\n\nAktywny trener współpracujący z największymi ośrodkami edukacyjnymi w Polsce. Wykładowca Warszawskiej Wyższej Szkoły Informatyki. Lider społeczności bstok.ms i lublin.ms, prelegent wielu wydarzeń ogólnopolskich. Od 2010 roku magister inżynier informatyki, absolwent Politechniki Białostockiej."
+    },
+    {
+      "id": "michal-matejczyk",
+      "name": "Michał Matejczyk",
+      "photo": "/prelegenci/michal-matejczyk.webp",
+      "bio": "Wiceprezes Zarządu i Dyrektor ds. Rozwoju w Entra Group. Ekspert z ponad 20-letnim doświadczeniem w obszarze produkcji, utrzymania ruchu, wdrażania projektów WCM w operacjach i zarządzania zmianą. Specjalizuje się w zmianach systemowych i procesowych w działach operacyjnych firm (produkcja, utrzymanie ruchu, jakość), angażowaniu i motywowaniu pracowników oraz zarządzaniu zmianą w oparciu o koncepcje Produkcji Klasy Światowej (WCM), TPM oraz Lean. Wypracowuje rozwiązania z zakresu zarządzania organizacją z wykorzystaniem wskaźników efektywności i wspiera firmy w transformacji oraz rozwoju kompetencji cyfrowych.\n\nDoświadczenie zdobywał w Polsce i za granicą, pracując dla kluczowych branż, m.in. przemysłu spożywczego, farmaceutycznego, ciężkiego, maszynowego, meblowego, chemicznego i wydobywczego. W Entra Group odpowiada przede wszystkim za realizację projektów w obszarach Produkcji i Utrzymania Ruchu oraz doskonalenie umiejętności miękkich pracowników w działach operacyjnych.\n\nMaster Trener WCM, członek SIM (Stowarzyszenie Interim Managerów), autor publikacji naukowych z zakresu transformacji organizacji i korzyści z wdrażania modelu WCM. Absolwent kierunku Automatyka i Robotyka na Wydziale Elektrotechniki i Automatyki Politechniki Gdańskiej."
+    },
+    {
+      "id": "piotr-werner",
+      "name": "Piotr Werner",
+      "photo": "/prelegenci/piotr-werner.webp",
+      "bio": "Mąż, ojciec, Head of Digital Analytics and Performance Marketing w Kuchni Vikinga. W codziennej pracy stara się tłumaczyć język techniczny na biznesowy (w obie strony) oraz odpowiadać na pytania: co, jak i dlaczego? Czasem również: kiedy?\n\nW e-commerce od 2014 r. Pracował głównie w in-house'owych zespołach, ma za sobą także epizod agencyjny. Zbudował od podstaw zespół analityki internetowej w Orange Polska, który pozostawił w dobrych rękach i przeniósł się do podlaskiej Kuchni Vikinga.\n\nSpecjalizuje się w analityce, ale jako że ta trudno sobie radzi bez uporządkowanych procesów, dobrych definicji celów biznesowych i KPI, a także rozsądnie zarządzanych zespołów, to również w tych obszarach ma pewne doświadczenie."
+    },
+    {
+      "id": "norbert-pawluczuk",
+      "name": "Norbert Pawluczuk",
+      "photo": "/prelegenci/norbert-pawluczuk.webp",
+      "bio": "Dyrektor Marketingu / CMO w Intertech Sp. z o.o., z wieloletnim doświadczeniem w budowaniu strategii marketingowej, rebrandingu oraz cyfryzacji procesów w branży maszynowej i produkcyjnej (wcześniej związany m.in. z SaMASZ Sp. z o.o. i Pronar Sp. z o.o.). W swojej pracy łączy klasyczny marketing B2B z nowoczesnymi narzędziami cyfrowego wsparcia sprzedaży (sales enablement), stawiając na rozwiązania, które przynoszą mierzalny zwrot i realną wartość biznesową bez zbędnego przepalania budżetu.\n\nW Intertech odpowiada za całościową transformację wizerunkową marki oraz strategiczne projektowanie i wdrożenie cyfrowego ekosystemu klienta. Jest pomysłodawcą i inicjatorem projektu wirtualnego showroomu (3D/VR) oraz autorskiej aplikacji mobilnej myINTERTECH. Zwolennik praktycznego podejścia do technologii: traktuje ją nie jako marketingowy gadżet, lecz jako wieloetapowy proces skracający dystans do klienta. W ramach tworzonego środowiska digitalowego rozwija m.in. moduł „Mój Garaż” (dający użytkownikom maszyn natychmiastowy dostęp do dokumentacji i instrukcji), cyfrowy kanał zamówień części zamiennych, zdalne moduły szkoleniowe oraz narzędzia do budowania długofalowej bazy i relacji z użytkownikami końcowymi."
+    },
+    {
+      "id": "przemyslaw-jozwiakowski",
+      "name": "Przemysław Józwiakowski",
+      "photo": "/prelegenci/przemyslaw-jozwiakowski.webp",
+      "bio": "Zaczynał poza technologią, w budownictwie. Przejście do IT nauczyło go rzeczy, która została z nim na lata: najciekawsze rozwiązania powstają na styku dziedzin, a nie w ich środku. Przez 15 lat budował, skalował i uczył technologii — prowadził Akademię Programowania, przez którą przeszło 500 programistów, zarządzał 50-osobowym zespołem technicznym, stworzył metodologię „Metawarstwy” używaną dziś przez ponad 10 000 osób.\n\nDziś prowadzi Localhost Group — firmę, która robi coś celowo niepopularnego w branży. Zamiast sprzedawać firmom automatyzacje, buduje w nich wewnętrzne działy AI, które po dwunastu miesiącach działają samodzielnie. „Nie sprzedajemy narzędzi. Budujemy kompetencję, żeby je mieć na własność” — to zdanie kosztuje Localhost Group przychód z wiecznych retainerów i jest świadomym wyborem.\n\nPracował m.in. z Wealthon, Velo Leasing, Esotiq & Henderson, Group One Media, Exact Forestall, Automation Trader, Dr Optima i by.vet — fintech, leasing, retail, media, SaaS, przemysł, farmacja, weterynaria. Efekty liczone są w setkach tysięcy dolarów rocznych oszczędności, w procesach skróconych z godzin do minut i w kosztach obsługi spadających o rzędy wielkości. 97% automatyzacji wdrożonych w 2025 roku nadal działa w produkcji — przy rynkowej średniej, w której mniej niż 10% use case'ów AI w ogóle do produkcji dociera.\n\nUczy tego, co robi. Jest autorem kursów, w których osoby bez wykształcenia technicznego budują własne narzędzia AI — m.in. sześciotygodniowego programu „VibeCoding dla każdego”, zrealizowanego z CampusAI, gdzie wcześniej odpowiadał za technologię jako współzałożyciel i CTO platformy z 35 tysiącami użytkowników. Doradza funduszom venture capital i kadrze zarządzającej."
+    },
+    {
+      "id": "maciej-lotkowski",
+      "name": "Maciej Lotkowski",
+      "photo": "/prelegenci/maciej-lotkowski.webp"
+    },
+    {
+      "id": "gabriela-zaloga",
+      "name": "Gabriela Załoga",
+      "photo": "/prelegenci/gabriela-zaloga.webp"
+    },
+    {
+      "id": "katarzyna-onoszko",
+      "name": "Katarzyna Onoszko",
+      "photo": "/prelegenci/katarzyna-onoszko.webp"
+    },
+    {
+      "id": "bozena-datczuk",
+      "name": "Bożena Datczuk",
+      "photo": "/prelegenci/bozena-datczuk.webp",
+      "photoPosition": "50% 18%",
+      "bio": "Prezes firmy TOBO Sp. z o.o. z siedzibą w Kurianach koło Białegostoku. Absolwentka Wydziału Ekonomii Uniwersytetu w Białymstoku z ponad 30-letnim doświadczeniem biznesowym. Od 1998 roku wraz z mężem Tomaszem prowadzi TOBO — producenta mebli biurowych, gabinetowych, recepcyjnych, hotelowych i edukacyjnych, w tym nagradzanej linii 4SENIOR dla stref senioralnych. Firma stawia na ergonomię, akustykę i prozdrowotne rozwiązania przestrzeni pracy, a jej produkty wyróżniano m.in. Złotym Medalem Grupy MTP, Diamentem Meblarstwa, Dobrym Wzorem, Must Have i Podlaską Marką.\n\nWiceprezes Zarządu Fundacji Technotalenty, organizacji promującej kulturę innowacji poprzez wsparcie firm w pozyskiwaniu talentów i budowanie relacji biznes–nauka. Członkini Rady Izby Przemysłowo-Handlowej w Białymstoku (od 2019, druga kadencja jako sekretarz), Podlaskiej Rady Przedsiębiorczości przy Marszałku Województwa Podlaskiego, Grupy Roboczej ds. specjalizacji regionalnej gospodarki przy Departamencie Innowacji i Przedsiębiorczości Urzędu Marszałkowskiego oraz Rady Rozwoju Obszaru Gospodarczego Suwalskiej Specjalnej Strefy Ekonomicznej. Zasiada też w Radzie Rozwoju Wydziału Architektury i Radzie Przedsiębiorców Wydziału Inżynierii Zarządzania Politechniki Białostockiej. Współorganizatorka cyklicznych bali charytatywnych."
+    },
+    {
+      "id": "piotr-krych",
+      "name": "Piotr Krych",
+      "photo": "/prelegenci/piotr-krych.webp",
+      "photoPosition": "50% 8%",
+      "bio": "W branży IT od 18 lat i przez cały ten czas czynny developer, choć po drodze przeszedł większość ról w wytwarzaniu oprogramowania. Właściciel Monolynx.\n\nDziś specjalizuje się w praktycznym zastosowaniu sztucznej inteligencji w firmach: Claude AI (Chat, Cowork, Code), technologiczne wsparcie pracy i transformacja cyfrowa organizacji. Prowadzi szkolenia z narzędzi AI dla MŚP i wdraża asystentów AI u klientów. Wystąpił m.in. na BRAVE AI Meetup w Białymstoku. Nie mówi o AI z perspektywy prezentacji — pokazuje to, czego sam używa w codziennej pracy."
+    },
+    {
+      "id": "piotr-jurewicz",
+      "name": "Piotr Jurewicz",
+      "photo": "/prelegenci/piotr-jurewicz.webp",
+      "photoPosition": "50% 10%",
+      "bio": "Piotr zakochał się w języku Ruby 12 lat temu i ten związek trwa do dziś. Kiedyś jako one-man army wdrażał platformę e-commerce. Dziś, jako konsultant w Arkency, wchodzi w duże systemy legacy i pomaga biznesom operować tam, gdzie niejeden już by załamał ręce. Dzięki temu poznał od podszewki branżę ubezpieczeniową i fintech.\n\nJego nieoficjalna misja w Arkency: utrwalać wiedzę organizacji poza ulotną pamięcią jej pracowników. Tak zaczęła się jego przygoda ze sztuczną inteligencją."
+    },
+    {
+      "id": "piotr-janiak",
+      "name": "Piotr Janiak",
+      "photo": "/prelegenci/piotr-janiak.webp"
+    },
+    {
+      "id": "adam-piotrowski",
+      "name": "Adam Piotrowski",
+      "photo": "/prelegenci/adam-piotrowski.webp",
+      "photoPosition": "50% 25%"
+    },
+    {
+      "id": "michal-szumski",
+      "name": "Michał Szumski",
+      "photo": "/prelegenci/michal-szumski.webp",
+      "photoPosition": "50% 18%",
+      "bio": "Pięć lat w Anglii: liceum i inżynier z matematyki na Loughborough University, potem trzy lata magisterki z automatyki i robotyki na Politechnice Warszawskiej. W Plum pracuje od 15 lat — zaczynał jako handlowiec, pracował w marketingu, na produkcji, jako programista, Scrum Master, Product Owner i kierownik sekcji programistów, a od ponad dwóch lat jest Prezesem Zarządu. Prywatnie siłownia, bieganie, książki i gry planszowe z dziećmi.\n\nPlum specjalizuje się we wdrażaniu i produkcji elektroniki NB-IoT w branżach HVAC, gaz i woda. R&D, jakość i rozwój produktu firma ma wpisane w DNA."
+    },
+    {
+      "id": "bartosz-awruk",
+      "name": "Bartosz Awruk",
+      "photo": "/prelegenci/bartosz-awruk.webp",
+      "photoPosition": "50% 28%"
+    },
+    {
+      "id": "grzegorz-sienkiewicz",
+      "name": "Grzegorz Sienkiewicz"
+    },
+    {
+      "id": "konrad-zawistowski",
+      "name": "Konrad Zawistowski"
+    },
+    {
+      "id": "krzysztof-kozlowski",
+      "name": "Krzysztof Kozłowski"
+    },
+    {
+      "id": "marek-ziemba",
+      "name": "Marek Ziemba"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "it-d1-michal-franc",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Quo Vadis IT: odpowiedzialność, ownership i sprawczość, czyli dokąd zmierza rola inżyniera (na przykładzie Staff+)",
+      "abstract": "2025 i 2026 to lata ciekawych zmian w naszej branży. Jest intensywnie, chaotycznie i trochę niepewnie. Ciężko jednoznacznie ocenić, jak będzie wyglądał rynek i na co będzie zapotrzebowanie. Mam swoje przewidywania i chcę się nimi podzielić na tej prezentacji, by trochę obniżyć poziom niepewności, ale też zmienić mapy mentalne innym, świeżym punktem widzenia.\n\nGdy wchodziłem na rynek (18 lat temu), bazą w naszym zawodzie była znajomość języka i frameworku, pisanie kodu czy specjalistyczna wiedza techniczna. Na tym budowało się seniority. Dzisiaj jednak coraz częściej mówi się o tym, że wartość inżyniera odsuwa się od pisania kodu w stronę odpowiedzialności za efekt. Ta rewolucja nie jest do końca rewolucją, jest ewolucją procesów, które zachodziły już od lat. LLM-y i AI są tutaj tylko akceleratorem, a nie czymś, co fundamentalnie zmienia zasady gry. Nowym fundamentem inżyniera staje się triada: odpowiedzialność za efekt, ownership problemu i sprawczość, czyli zdolność, żeby realnie coś dowieźć i wygenerować wartość. To one, a nie znajomość narzędzi, zaczynają definiować seniority. Junior/mid/senior przestaje znaczyć „zna framework”, a zaczyna znaczyć „potrafi samodzielnie wziąć problem na siebie i go dowieźć”.\n\nTen chaotyczny galimatias powoduje, że na rynku zaczęły pojawiać się nowe role, takie jak Staff Engineer czy Staff+ Engineer. Na przykładzie tej roli opowiem, jak ewoluowała branża i co dziś ceni.",
       "speakers": [
-        {
-          "name": "Michał Matejczyk",
-          "format": "prezentacja",
-          "photo": "/prelegenci/michal-matejczyk.webp",
-          "topic": "Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.",
-          "abstract": "Spojrzenie od strony konsultanta operacyjnego: jak jego klienci poradzili sobie z wdrożeniem systemu albo nie poradzili sobie wcale. Dlaczego jedni po 7 latach wciąż nie skończyli wdrożenia ERP, a inni dali radę.",
-          "bio": "Wiceprezes Zarządu i Dyrektor ds. Rozwoju w Entra Group. Ekspert z ponad 20-letnim doświadczeniem w obszarze produkcji, utrzymania ruchu, wdrażania projektów WCM w operacjach i zarządzania zmianą. Specjalizuje się w zmianach systemowych i procesowych w działach operacyjnych firm (produkcja, utrzymanie ruchu, jakość), angażowaniu i motywowaniu pracowników oraz zarządzaniu zmianą w oparciu o koncepcje Produkcji Klasy Światowej (WCM), TPM oraz Lean. Wypracowuje rozwiązania z zakresu zarządzania organizacją z wykorzystaniem wskaźników efektywności i wspiera firmy w transformacji oraz rozwoju kompetencji cyfrowych.\n\nDoświadczenie zdobywał w Polsce i za granicą, pracując dla kluczowych branż, m.in. przemysłu spożywczego, farmaceutycznego, ciężkiego, maszynowego, meblowego, chemicznego i wydobywczego. W Entra Group odpowiada przede wszystkim za realizację projektów w obszarach Produkcji i Utrzymania Ruchu oraz doskonalenie umiejętności miękkich pracowników w działach operacyjnych.\n\nMaster Trener WCM, członek SIM (Stowarzyszenie Interim Managerów), autor publikacji naukowych z zakresu transformacji organizacji i korzyści z wdrażania modelu WCM. Absolwent kierunku Automatyka i Robotyka na Wydziale Elektrotechniki i Automatyki Politechniki Gdańskiej."
-        },
-        {
-          "name": "Piotr Werner",
-          "format": "prezentacja",
-          "photo": "/prelegenci/piotr-werner.webp",
-          "topic": "Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?",
-          "abstract": "W sezonie urlopowym 2026 r. nie ma już chyba na świecie szanującej się organizacji, która nie wdraża AI. Jak wiemy z materiałów reklamowych, to ekscytujący proces, prowadzący do zwielokrotnienia wartości firmy, przyśpieszenia procesów i uwolnienia ogromnych zasobów czasu. Armia agentów tylko czeka, by czuwać nad naszym sukcesem.\n\nMateriały reklamowe nie zawsze są jednak pisane przez ludzi (tu można by już postawić kropkę) zaangażowanych operacyjnie. Może się zdarzyć, że nie pokazują całej rzeczywistości. Może też być tak, że jeśli składniki, z których próbujemy wyczarować AI-ową zupkę nie są pierwszej jakości, potrawa może nie dostać gwiazdki Michelin.\n\nPiotrek podzieli się z nami doświadczeniem płynącym z bardziej i mniej udanych prób zastosowania AI w zespole marketingu Kuchni Vikinga. Będzie smacznie.",
-          "bio": "Mąż, ojciec, Head of Digital Analytics and Performance Marketing w Kuchni Vikinga. W codziennej pracy stara się tłumaczyć język techniczny na biznesowy (w obie strony) oraz odpowiadać na pytania: co, jak i dlaczego? Czasem również: kiedy?\n\nW e-commerce od 2014 r. Pracował głównie w in-house'owych zespołach, ma za sobą także epizod agencyjny. Zbudował od podstaw zespół analityki internetowej w Orange Polska, który pozostawił w dobrych rękach i przeniósł się do podlaskiej Kuchni Vikinga.\n\nSpecjalizuje się w analityce, ale jako że ta trudno sobie radzi bez uporządkowanych procesów, dobrych definicji celów biznesowych i KPI, a także rozsądnie zarządzanych zespołów, to również w tych obszarach ma pewne doświadczenie."
-        },
-        {
-          "name": "Norbert Pawluczuk",
-          "format": "prezentacja",
-          "photo": "/prelegenci/norbert-pawluczuk.webp",
-          "topic": "Transformacja cyfrowa w branży produkcyjnej bez budżetu z kosmosu. Lekcje z wdrożenia Showroomu 3D i aplikacji myINTERTECH.",
-          "abstract": "Praktyczne studium przypadku efektywnej cyfryzacji w branży produkcyjnej bez przepalania budżetu. Na przykładzie Showroomu 3D i aplikacji myINTERTECH prelegent omówi przechodzenie od celów biznesowych do działających narzędzi B2B. Dowiesz się, jak oceniać ROI, unikać nierentownych wdrożeń, optymalizować koszty IT oraz skutecznie wykorzystywać dofinansowania na rozwój oprogramowania. Konkretne lekcje ze styku biznesu, inżynierii i technologii.",
-          "bio": "Dyrektor Marketingu / CMO w Intertech Sp. z o.o., z wieloletnim doświadczeniem w budowaniu strategii marketingowej, rebrandingu oraz cyfryzacji procesów w branży maszynowej i produkcyjnej (wcześniej związany m.in. z SaMASZ Sp. z o.o. i Pronar Sp. z o.o.). W swojej pracy łączy klasyczny marketing B2B z nowoczesnymi narzędziami cyfrowego wsparcia sprzedaży (sales enablement), stawiając na rozwiązania, które przynoszą mierzalny zwrot i realną wartość biznesową bez zbędnego przepalania budżetu.\n\nW Intertech odpowiada za całościową transformację wizerunkową marki oraz strategiczne projektowanie i wdrożenie cyfrowego ekosystemu klienta. Jest pomysłodawcą i inicjatorem projektu wirtualnego showroomu (3D/VR) oraz autorskiej aplikacji mobilnej myINTERTECH. Zwolennik praktycznego podejścia do technologii: traktuje ją nie jako marketingowy gadżet, lecz jako wieloetapowy proces skracający dystans do klienta. W ramach tworzonego środowiska digitalowego rozwija m.in. moduł „Mój Garaż” (dający użytkownikom maszyn natychmiastowy dostęp do dokumentacji i instrukcji), cyfrowy kanał zamówień części zamiennych, zdalne moduły szkoleniowe oraz narzędzia do budowania długofalowej bazy i relacji z użytkownikami końcowymi."
-        },
-        {
-          "name": "Przemysław Józwiakowski",
-          "format": "prezentacja",
-          "photo": "/prelegenci/przemyslaw-jozwiakowski.webp",
-          "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
-          "abstract": "Wszyscy mówią o AI, ale w dużych firmach wdrożenia wciąż grzęzną — i wcale nie dlatego, że technologia zawodzi. Na tej prezentacji pokażę, gdzie naprawdę pękają transformacje AI: w ludziach sparaliżowanych strachem i przeciążeniem, w przestarzałych systemach zamkniętych na integracje, i w starym sposobie myślenia, w którym wciąż „ja robię zadanie”, zamiast pozwolić agentowi pracować za mnie.\n\nW 30 minut rozłożę te przeszkody na czynniki pierwsze i pokażę, dlaczego atakowanie tylko jednej z nich to strata czasu. Wyjdziesz z konkretną mapą tego, co blokuje Twoją organizację — i wiedzą, od czego zacząć, żeby ruszyć z miejsca. Jeśli odpowiadasz za wdrażanie AI albo po prostu masz dość slajdów pełnych obietnic bez pokrycia, to jest prezentacja dla Ciebie.",
-          "bio": "Zaczynał poza technologią, w budownictwie. Przejście do IT nauczyło go rzeczy, która została z nim na lata: najciekawsze rozwiązania powstają na styku dziedzin, a nie w ich środku. Przez 15 lat budował, skalował i uczył technologii — prowadził Akademię Programowania, przez którą przeszło 500 programistów, zarządzał 50-osobowym zespołem technicznym, stworzył metodologię „Metawarstwy” używaną dziś przez ponad 10 000 osób.\n\nDziś prowadzi Localhost Group — firmę, która robi coś celowo niepopularnego w branży. Zamiast sprzedawać firmom automatyzacje, buduje w nich wewnętrzne działy AI, które po dwunastu miesiącach działają samodzielnie. „Nie sprzedajemy narzędzi. Budujemy kompetencję, żeby je mieć na własność” — to zdanie kosztuje Localhost Group przychód z wiecznych retainerów i jest świadomym wyborem.\n\nPracował m.in. z Wealthon, Velo Leasing, Esotiq & Henderson, Group One Media, Exact Forestall, Automation Trader, Dr Optima i by.vet — fintech, leasing, retail, media, SaaS, przemysł, farmacja, weterynaria. Efekty liczone są w setkach tysięcy dolarów rocznych oszczędności, w procesach skróconych z godzin do minut i w kosztach obsługi spadających o rzędy wielkości. 97% automatyzacji wdrożonych w 2025 roku nadal działa w produkcji — przy rynkowej średniej, w której mniej niż 10% use case'ów AI w ogóle do produkcji dociera.\n\nUczy tego, co robi. Jest autorem kursów, w których osoby bez wykształcenia technicznego budują własne narzędzia AI — m.in. sześciotygodniowego programu „VibeCoding dla każdego”, zrealizowanego z CampusAI, gdzie wcześniej odpowiadał za technologię jako współzałożyciel i CTO platformy z 35 tysiącami użytkowników. Doradza funduszom venture capital i kadrze zarządzającej."
-        },
-        {
-          "name": "Maciej Lotkowski",
-          "format": "prezentacja",
-          "photo": "/prelegenci/maciej-lotkowski.webp",
-          "topic": "95% wdrożeń to zmarnowane pieniądze. Konsultanci i tak wystawią fakturę.",
-          "abstract": "W firmie transportowej jest jeden człowiek, który wie, ile naprawdę kosztuje kurs do Hamburga. W produkcyjnej — jeden technolog, który umie wycenić zapytanie. W spedycji — jedna osoba, która pamięta, że ten klient zawsze płaci po 60 dniach. Ta wiedza to największy majątek firmy i nigdzie nie jest zapisana. Kiedy pan Zbyszek odchodzi na emeryturę, majątek wychodzi razem z nim.\n\nBadanie MIT na ponad 300 firmach pokazało, że 95% projektów z nowymi technologiami nie dało żadnego mierzalnego efektu finansowego, a w 2025 roku 42% firm porzuciło takie inicjatywy — rok wcześniej było to 17%. To nie technologia zawodzi, tylko podejście: wielki system, wdrażany latami, przebudowa całej firmy naraz. Czyli burzenie domu, w którym się mieszka.\n\nPokażę drogę na skróty, która działa: spisz jeden proces, uporządkuj dane w jednym miejscu i postaw obok pierwszego cyfrowego pomocnika. Dwutorowo — obok istniejących systemów, nie zamiast nich, więc niczego nie trzeba wyłączać. Będą konkretne przykłady z finansów, magazynu, spedycji, transportu i produkcji: oferta frachtu w 5 minut zamiast 40, rozliczenie miesiąca w godzinę zamiast trzech dni, wycena w 24 godziny zamiast trzech dni.\n\nBędzie też ostrzeżenie z praktyki: jeśli przyspieszysz ofertowanie trzykrotnie, a produkcja nie nadąży, zrobisz zator w sąsiednim pokoju. Dlatego mierzy się cały przepływ, od zapytania do zapłaconej faktury, a nie jeden punkt. Wyjdziesz z sali z jednym konkretnym krokiem do zrobienia w przyszłym tygodniu."
-        },
-        {
-          "name": "Gabriela Załoga",
-          "format": "prezentacja",
-          "photo": "/prelegenci/gabriela-zaloga.webp",
-          "topic": "Czy ludzie naprawdę nie lubią zmian? O cyfryzacji z ludzką twarzą",
-          "abstract": "Technologia to zaledwie 20% sukcesu wdrożenia. Pozostałe 80% to ludzie, którzy na co dzień będą z niej korzystać.\n\nWyobraź sobie, że wchodzisz do ulubionego sklepu pięć minut przed zamknięciem, a wszystkie produkty nagle leżą na zupełnie innych półkach. Frustracja? Chaos? Dokładnie tak samo reagują pracownicy na hali produkcyjnej, gdy z dnia na dzień obdarowujemy ich nowym systemem IT.\n\nInwestujemy w zaawansowane narzędzia klasy MES czy ERP, jednak wdrożenie rzadko rozbija się o samą technologię. Najczęściej zawodzi brak fundamentów, robienie rewolucji na siłę oraz opór zespołu. Pokutuje przekonanie, że wystarczy ogłosić zakup systemu, a reszta wydarzy się sama — tymczasem budowanie domu na słabych fundamentach zawsze kończy się tak samo.\n\nBazując na doświadczeniach z wdrożeń w sektorze produkcyjnym MŚP, przyjrzymy się temu procesowi bez marketingowego lukru. Przeanalizujemy, dlaczego potrzeba zmiany u managera nie oznacza automatycznie potrzeby w zespole oraz co zrobić, by cyfryzacja przestała być narzuconą z góry rewolucją, a stała się procesem, który ludzie po prostu zaakceptują."
-        },
-        {
-          "name": "Katarzyna Onoszko",
-          "format": "lt",
-          "photo": "/prelegenci/katarzyna-onoszko.webp",
-          "topic": "Zakup i wdrożenie oprogramowania okiem klienta — case study Panorama Druk",
-          "abstract": "Spojrzenie z drugiej strony stołu: nie dostawcy, tylko firmy, która kupuje i wdraża system u siebie.\n\nOpowiem o tym, co skłoniło naszą firmę do zakupu oprogramowania, jak poszło nam samo wdrożenie, co moglibyśmy zrobić lepiej, żeby przebiegło sprawniej, oraz co mógłby zrobić dostawca oprogramowania, żeby było szybsze i łatwiejsze."
-        },
-        {
-          "name": "Bożena Datczuk",
-          "format": "lt",
-          "photo": "/prelegenci/bozena-datczuk.webp",
-          "topic": "Cyfryzacja w produkcji mebli — case study TOBO",
-          "abstract": "",
-          "bio": "Prezes firmy TOBO Sp. z o.o. z siedzibą w Kurianach koło Białegostoku. Absolwentka Wydziału Ekonomii Uniwersytetu w Białymstoku z ponad 30-letnim doświadczeniem biznesowym. Od 1998 roku wraz z mężem Tomaszem prowadzi TOBO — producenta mebli biurowych, gabinetowych, recepcyjnych, hotelowych i edukacyjnych, w tym nagradzanej linii 4SENIOR dla stref senioralnych. Firma stawia na ergonomię, akustykę i prozdrowotne rozwiązania przestrzeni pracy, a jej produkty wyróżniano m.in. Złotym Medalem Grupy MTP, Diamentem Meblarstwa, Dobrym Wzorem, Must Have i Podlaską Marką.\n\nWiceprezes Zarządu Fundacji Technotalenty, organizacji promującej kulturę innowacji poprzez wsparcie firm w pozyskiwaniu talentów i budowanie relacji biznes–nauka. Członkini Rady Izby Przemysłowo-Handlowej w Białymstoku (od 2019, druga kadencja jako sekretarz), Podlaskiej Rady Przedsiębiorczości przy Marszałku Województwa Podlaskiego, Grupy Roboczej ds. specjalizacji regionalnej gospodarki przy Departamencie Innowacji i Przedsiębiorczości Urzędu Marszałkowskiego oraz Rady Rozwoju Obszaru Gospodarczego Suwalskiej Specjalnej Strefy Ekonomicznej. Zasiada też w Radzie Rozwoju Wydziału Architektury i Radzie Przedsiębiorców Wydziału Inżynierii Zarządzania Politechniki Białostockiej. Współorganizatorka cyklicznych bali charytatywnych.",
-          "photoPosition": "50% 18%"
-        },
-        {
-          "name": "Piotr Krych",
-          "format": "prezentacja",
-          "photo": "/prelegenci/piotr-krych.webp",
-          "topic": "Możliwości narzędzi AI w codziennej pracy",
-          "abstract": "O AI w pracy mówi się dużo, ale większość osób nietechnicznych kończy na tym samym: okno czatu, „napisz maila” i lekkie rozczarowanie. Gołe AI jest do niczego — model bez dostępu do niczego zna świat, ale nie zna Twojej firmy. Cała moc jest w podłączeniu: Microsoft 365, Google Docs, Calendar, Drive, SharePoint, a do tego warstwa własna, czyli baza wiedzy firmy i connectory do systemów sprzedażowo-księgowych.\n\nPokażę na żywo, jak od zera zbudować takiego asystenta: czym są connectory (demo na Google Calendar i KSeF MCP), czym jest skill, czyli rozpisana procedura zamiast pojedynczego zdania, oraz jak spiąć całość w Projects. Osobny blok poświęcę RODO i planowi Teams: brak trenowania modelu na danych firmy, administrator zarządzający connectorami, wymuszone konta firmowe i dashboard adopcji dla zarządu.\n\nWszystko na przykładach z mojej praktyki i ze szkoleń dla firm MŚP. Wyjdziesz z konkretnymi krokami na pierwszy tydzień wdrożenia — co kliknąć w poniedziałek rano.",
-          "bio": "W branży IT od 18 lat i przez cały ten czas czynny developer, choć po drodze przeszedł większość ról w wytwarzaniu oprogramowania. Właściciel Monolynx.\n\nDziś specjalizuje się w praktycznym zastosowaniu sztucznej inteligencji w firmach: Claude AI (Chat, Cowork, Code), technologiczne wsparcie pracy i transformacja cyfrowa organizacji. Prowadzi szkolenia z narzędzi AI dla MŚP i wdraża asystentów AI u klientów. Wystąpił m.in. na BRAVE AI Meetup w Białymstoku. Nie mówi o AI z perspektywy prezentacji — pokazuje to, czego sam używa w codziennej pracy.",
-          "photoPosition": "50% 8%"
-        },
-        {
-          "name": "Piotr Jurewicz",
-          "format": "prezentacja",
-          "photo": "/prelegenci/piotr-jurewicz.webp",
-          "topic": "Wiedza organizacji w grafie, nie w głowach",
-          "abstract": "Decyzje zapadają na spotkaniach. Ustalenia giną w wątkach na Slacku. Pół roku później nikt nie pamięta, dlaczego coś zrobiliście tak, a nie inaczej. Wiki miała to rozwiązać, ale dokumentowanie to osobna praca, której nikt nie robi. Nagrywanie wszystkiego też nie pomaga — macie „wszystko”, tylko trzeba wiedzieć, czego szukać.\n\nW Arkency zbudowaliśmy pamięć organizacji: graf wiedzy zasilany tym, co i tak codziennie wytwarzamy — transkryptami spotkań, wątkami ze Slacka, notatkami. AI wyciąga z nich ludzi, projekty, decyzje, ryzyka i zobowiązania. Nie robi tego na oko, tylko kieruje się ontologią: zamkniętą listą tego, co w naszej firmie uznajemy za wiedzę. Potem proponuje zmiany w grafie.\n\nSystem działa u nas na produkcji od kilku miesięcy. W grafie jest kilka tysięcy węzłów i krawędzi zbudowanych na podstawie kilkuset źródeł. Opowiem, jak to działa od środka i jakie decyzje okazały się najważniejsze. Porównam graf wiedzy z prostszymi i alternatywnymi podejściami — od wiki, przez RAG nad transkryptami, po GraphRAG od Microsoftu — i pokażę, gdzie każde z nich się kończy. Będzie o roli człowieka w całym procesie, o śledzeniu pochodzenia każdego faktu i o tym, gdzie graf się u nas nie sprawdził.\n\nTo prelekcja na ścieżkę biznesową, bez wchodzenia w implementację.",
-          "bio": "Piotr zakochał się w języku Ruby 12 lat temu i ten związek trwa do dziś. Kiedyś jako one-man army wdrażał platformę e-commerce. Dziś, jako konsultant w Arkency, wchodzi w duże systemy legacy i pomaga biznesom operować tam, gdzie niejeden już by załamał ręce. Dzięki temu poznał od podszewki branżę ubezpieczeniową i fintech.\n\nJego nieoficjalna misja w Arkency: utrwalać wiedzę organizacji poza ulotną pamięcią jej pracowników. Tak zaczęła się jego przygoda ze sztuczną inteligencją.",
-          "photoPosition": "50% 10%"
-        },
-        {
-          "name": "Piotr Janiak",
-          "format": "lt",
-          "photo": "/prelegenci/piotr-janiak.webp",
-          "topic": "Zanim zbudujesz agenta AI, uporządkuj wiedzę. Lekcje z chaosu w organizacji",
-          "abstract": "Pracując z klientami BIM Ally, wielokrotnie spotykaliśmy się z problemem, który początkowo wydawał się czysto organizacyjny: wiedza potrzebna do obsługi klientów, sprzedaży czy rozwoju produktu była rozproszona pomiędzy dokumentami, mailami, prezentacjami, systemami i — przede wszystkim — ludźmi.\n\nZ czasem zauważyliśmy, że problem nie polega tylko na tym, że trudno znaleźć informację. Trudniejsze jest ustalenie, która informacja jest aktualna, skąd pochodzi, kto może jej zaufać i co zrobić, gdy różne źródła mówią coś innego.\n\nOpowiem o tym, czego nauczyliśmy się, próbując wykorzystać AI w realnej organizacji — o miejscach, w których pojawia się chaos w firmowej wiedzy, o problemach, których nie widać na demonstracjach AI, oraz o tym, jak zmienia się podejście do sztucznej inteligencji, gdy przestajemy zakładać, że można jej bezgranicznie zaufać."
-        },
-        {
-          "name": "Adam Piotrowski",
-          "topic": "Biznes nam nie ufa — i wcale im się nie dziwię",
-          "format": "prezentacja",
-          "photo": "/prelegenci/adam-piotrowski.webp",
-          "photoPosition": "50% 25%",
-          "abstract": "",
-          "bio": ""
-        },
-        {
-          "name": "Michał Szumski",
-          "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
-          "format": "prezentacja",
-          "photo": "/prelegenci/michal-szumski.webp",
-          "abstract": "Od bycia zalewanym wymaganiami klientów i działu handlowego oraz prób zadowolenia wszystkich, co kończyło się jedną wielką frustracją, do pipeline'u, który mamy dziś. Opowiem, jak go zbudowaliśmy, jak wciąż go ulepszamy i jak pilnujemy pewnych fundamentów — choćby tego, że Product Owner jest kluczowym decydentem.",
-          "bio": "Pięć lat w Anglii: liceum i inżynier z matematyki na Loughborough University, potem trzy lata magisterki z automatyki i robotyki na Politechnice Warszawskiej. W Plum pracuje od 15 lat — zaczynał jako handlowiec, pracował w marketingu, na produkcji, jako programista, Scrum Master, Product Owner i kierownik sekcji programistów, a od ponad dwóch lat jest Prezesem Zarządu. Prywatnie siłownia, bieganie, książki i gry planszowe z dziećmi.\n\nPlum specjalizuje się we wdrażaniu i produkcji elektroniki NB-IoT w branżach HVAC, gaz i woda. R&D, jakość i rozwój produktu firma ma wpisane w DNA.",
-          "photoPosition": "50% 18%"
-        },
-        {
-          "name": "Bartosz Awruk",
-          "topic": "Case study LumoSteel",
-          "format": "lt",
-          "photo": "/prelegenci/bartosz-awruk.webp",
-          "photoPosition": "50% 28%",
-          "abstract": "",
-          "bio": ""
-        }
-      ],
-      "formatSlots": {
-        "prezentacja": 10,
-        "lt": 8
-      }
+        "michal-franc"
+      ]
+    },
+    {
+      "id": "it-d1-kamil-kielbasa",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Mapy kontekstów — narzędzie decyzyjne architekta",
+      "abstract": "Prawie każdy zespół ma jakiś diagram architektury. Kwadraty, beczki, strzałki. Widać, co gdzie stoi i co się z czym łączy. Problem zaczyna się wtedy, gdy ktoś pyta, gdzie właściwie kończy się odpowiedzialność jednego zespołu, a zaczyna drugiego. Wtedy diagram milczy, bo pokazuje technikę, a pytanie dotyczy podziału domeny.\n\nMapa kontekstów odpowiada dokładnie na tę drugą warstwę. Dobra wiadomość jest taka, że nie trzeba jej rysować od zera, bo w dużej części siedzi już w tym, co macie na ścianie.\n\nPokażę, jak przełożyć diagram architektury na mapę kontekstów, a potem jak dołożyć do niej trzy rzeczy, dzięki którym zaczyna odpowiadać na konkretne pytania. Gdzie przebiega granica, kiedy każdy zespół uważa, że dana funkcjonalność należy do niego. Dlaczego zmiana w jednym miejscu wysypuje coś, co teoretycznie nie ma z nią nic wspólnego. Gdzie warto zainwestować czas dobrego zespołu, a co spokojnie można kupić.",
+      "speakers": [
+        "kamil-kielbasa"
+      ]
+    },
+    {
+      "id": "it-d1-grzegorz-wilczura",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Just in Time Architecture — architektura jako kod z użyciem Backstage",
+      "abstract": "Czytelna, przejrzysta i kompletna, a przede wszystkim aktualna! Zapraszam wszystkich, którzy mieliby problem, żeby opisać w ten sposób swoją dokumentację architektoniczną.\n\nW środowisku, w którym wiele zespołów równolegle wprowadza zmiany, a system jest rozproszony, często niełatwo jest się odnaleźć. I to nie tylko nowym pracownikom. Na prezentacji pokażę, jak można stworzyć „żywy” diagram architektury całego systemu, nawet gdy używa się multi-repo. Zademonstruję architekturę jako integralną część kodu, a jej zmiany jako element PR i Code Review.\n\nJęzyk programowania nie ma tu znaczenia, a znajomość Backstage nie jest potrzebna. Udokumentujemy nasz system z użyciem YAML-a, a Backstage nam go zwizualizuje.",
+      "speakers": [
+        "grzegorz-wilczura"
+      ]
+    },
+    {
+      "id": "it-d1-lightning",
+      "track": "it",
+      "day": 1,
+      "kind": "lightning",
+      "topic": "Lightning talks",
+      "abstract": "",
+      "speakers": [],
+      "note": "Zgłoszenia klasycznie na miejscu, w trakcie konferencji."
+    },
+    {
+      "id": "it-d1-panel",
+      "track": "it",
+      "day": 1,
+      "kind": "panel",
+      "topic": "Rola developera w czasach AI",
+      "abstract": "",
+      "speakers": [
+        "lukasz-kaluzny",
+        "michal-franc"
+      ]
+    },
+    {
+      "id": "it-d1-marcin-iwanowski",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Kiedy AI to za mało: Quantum",
+      "abstract": "W świecie zdominowanym trendem AI nie powinniśmy zapominać o innej rewolucji, która dzieje się na naszych oczach – Quantum. Programowanie kwantowe brzmi jak coś z laboratorium fizyków, ale dzięki Azure Quantum coraz częściej trafia w ręce specjalistów IT.\n\nW tej sesji pokażę, jak wygląda pierwsze spotkanie ze światem kubitów, superpozycji i algorytmów kwantowych. Porozmawiamy o tym: czym naprawdę jest programowanie kwantowe, jakie problemy może rozwiązywać, czy to przyszłość IT, czy raczej odległa ciekawostka. Na koniec przejdziemy do praktyki: napiszemy prosty program w Q# i uruchomimy go na prawdziwym komputerze kwantowym dostępnym przez Azure Quantum.\n\nJeśli po wielu sesjach o AI chcesz zobaczyć technologię, którą już dziś powinieneś się zainteresować – zapraszam!",
+      "speakers": [
+        "marcin-iwanowski"
+      ]
+    },
+    {
+      "id": "it-d1-radek-maziarka",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Context Engineering: architektura wiedzy dla efektywnego dostarczania",
+      "abstract": "Kod piszemy szybciej niż kiedykolwiek, ale czas od zgłoszenia do produkcji prawie się nie zmienił. Raport „The State of DevOps” pokazuje dlaczego: praca stricte deweloperska w całym procesie się kurczy, a żmudna, powtarzalna praca wokół niej rośnie jeszcze szybciej.\n\nTa prezentacja pokazuje, jak zbudować system wiedzy, dzięki któremu przyspieszenie obejmuje cały proces dostarczania. Zobaczysz, jak zmapować proces dostarczania i wiedzę, z jakiej korzysta się na każdym jego etapie, jak przełożyć tę mapę na scenariusze, które prowadzą agenta przez rozwiązanie danego problemu, oraz jak utrzymać system wiedzy zgodny z rzeczywistością, kiedy system produkcyjny się zmienia.",
+      "speakers": [
+        "radek-maziarka"
+      ]
+    },
+    {
+      "id": "it-d2-lukasz-kaluzny",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Twoja architektura nikogo nie obchodzi!",
+      "abstract": "Twoja architektura nikogo nie obchodzi, dopóki nie zacznie blokować dowożenia, kosztować fortunę albo wybuchnie na produkcji. Ta sesja jest o tym, jak naprawdę zapadają decyzje architektoniczne w firmach i dlaczego zawsze i tak wychodzi z tego problem.\n\nZamiast opowieści o „idealnej” architekturze, rozbierzemy na czynniki pierwsze to, co dzieje się naprawdę: dlaczego craftsmanship jako cel często przegrywa z dostarczaniem wartości, kto ma realne weto w decyzjach i jak projektować architekturę, która wygrywa w praktyce, bo pasuje do organizacji, a nie do diagramu.\n\nNa koniec przesuniemy ciężar na to, co zmienia AI i vibe coding: mniej walki o perfekcyjny kod, więcej projektowania kontroli. Granice, kontrakty, bezpieczeństwo, standardy i guardrails, które pozwalają dowozić szybciej, ale bez chaosu, niekontrolowanego długu i niespodzianek na produkcji.",
+      "speakers": [
+        "lukasz-kaluzny"
+      ]
+    },
+    {
+      "id": "it-d2-oleksandr-lysenko",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "topic": "The Human vs. the LLM: Measuring AI Efficiency",
+      "abstract": "Ile naprawdę kosztuje, w energii, mocy obliczeniowej i zasobach, zastąpienie ludzkiego zadania przez LLM? Spojrzenie na efektywność AI przez pryzmat energii na jednostkę pracy oraz realnej ekonomii inteligencji ludzkiej i maszynowej.",
+      "speakers": [
+        "oleksandr-lysenko"
+      ]
+    },
+    {
+      "id": "it-d2-wojciech-kasa",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Residuality Theory na produkcji. Jak przewidzieć awarię, zanim wydarzy się naprawdę.",
+      "abstract": "Residuality Theory Barry'ego O'Reilly'ego to jedna z ciekawszych rzeczy, jaka wydarzyła się ostatnio w architekturze oprogramowania. Jest też jednocześnie często kwitowana zdaniem: „brzmi świetnie, ale jak to zastosować?”. Na tej prelekcji postaram się odpowiedzieć na to pytanie. Pokażę, jak użyliśmy Residuality Theory do przetestowania granic modularnego monolitu. Na warsztat weźmiemy krytyczną część produkcyjnej platformy dla branży insuretech: sprzedaż, rozliczenia i prowizje, czyli miejsce, gdzie płyną pieniądze i błędy kosztują najwięcej.\n\nNajpierw przejdziemy przez projektowanie stresorów, czyli to, jak realnie zdefiniować zagrożenia dla systemu (od tąpnięć biznesowych po nagłe zmiany regulacyjne KNF). Następnie omówię pracę z macierzą incydencji i to, jak namierzyć kruche miejsca w architekturze. Analiza wskazała u nas zupełnie inny komponent, niż podpowiadała intuicja zespołu. Pokażę też przełożenie teorii na kod, czyli jak z wyników tej symulacji wyciągnęliśmy konkretne decyzje architektoniczne (ADR) i przebudowaliśmy system przed wdrożeniem.",
+      "speakers": [
+        "wojciech-kasa"
+      ]
+    },
+    {
+      "id": "it-d2-lightning",
+      "track": "it",
+      "day": 2,
+      "kind": "lightning",
+      "topic": "Lightning talks",
+      "abstract": "",
+      "speakers": [],
+      "note": "Zgłoszenia klasycznie na miejscu, w trakcie konferencji."
+    },
+    {
+      "id": "it-d2-panel",
+      "track": "it",
+      "day": 2,
+      "kind": "panel",
+      "topic": "Czy potrzebujemy jeszcze architektów?",
+      "abstract": "",
+      "speakers": [
+        "grzegorz-wilczura",
+        "kamil-kielbasa"
+      ]
+    },
+    {
+      "id": "it-d2-hubert-lepicki",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Inżynieria oprogramowania w dobie agentów AI",
+      "abstract": "Od 1 stycznia 2026 roku nie napisałem ręcznie ani jednej linii kodu. Na razie się udaje — choć droga od pierwszych eksperymentów z vibe codingiem do skutecznej pracy z agentami okazała się znacznie bardziej stroma, niż sugerują internetowe demonstracje.\n\nNajczęstszy błąd? Usiąść przed komputerem, wpisać jeden prompt i oczekiwać gotowego, poprawnego i łatwego w utrzymaniu systemu. Kiedy rezultat okazuje się „AI slopem”, łatwo obwinić model. Tymczasem agent, podobnie jak człowiek, potrzebuje jasnych wymagań, informacji zwrotnej, odpowiednich narzędzi oraz procesu, który wymusza jakość.\n\nPokażę, jak przenieść do pracy z agentami praktyki, które od lat znamy z inżynierii oprogramowania: dopracowywanie ticketów, iteracyjne planowanie, TDD, testy jednostkowe i integracyjne, małe kroki, pull requesty oraz niezależne code review wykonywane przez innego agenta. Opowiem o błędach, które popełniłem, i o tym, jak zmienia się rola programisty: zamiast pisać każdą linię kodu, projektujemy środowisko, procedury i mechanizmy kontroli, dzięki którym agenci mogą dowozić oprogramowanie naprawdę nadające się do produkcji.\n\nNiezależnie od tego, czy delegujesz agentom już cały proces tworzenia kodu, czy dopiero zaczynasz, wyjdziesz z konkretnym modelem pracy — a nie kolejnym zbiorem magicznych promptów.",
+      "speakers": [
+        "hubert-lepicki"
+      ]
+    },
+    {
+      "id": "it-d2-jakub-sikora",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Przejęliśmy drony i wywaliliśmy je z mapy. To samo mogę zrobić z Twoją zabezpieczoną usługą",
+      "abstract": "System wyświetlał pozycje dronów, obserwacje i dane operacyjne. Komunikacja szyfrowana, profesjonalny panel, operatorzy mieli wszystkie powody, by ufać temu, co widzieli na mapie. Aż my, razem z 11 innymi zespołami, rozebraliśmy firmware i protokół, po czym wysłaliśmy ich drony w pilną misję prosto do wnętrza Ziemi.\n\nMożesz mieć własny format pakietów, stosować AES-ECB, efemeralne klucze z autodestrukcją, ale jeśli w autoryzacji jednego endpointa wprowadzisz głupiego buga, podszyjemy się pod Twoje urządzenie. Wyślemy poprawnie zaszyfrowaną, ale spreparowaną telemetrię, Twój frontend narysuje współrzędne idealnie, a reszta systemu i ludzie uwierzą w 100% w dane, które Ci wstrzyknęliśmy. Ta historia wydarzyła się podczas ćwiczeń Cyberlegionu, ale sam mechanizm jest zupełnie zwyczajny w całej branży. W ten sam sposób aplikacje ufają webhookom tylko dlatego, że przyszły przez HTTPS, tokenom JWT bez sprawdzania odbiorcy, wiadomościom z kolejki bez ochrony przed replay attack, czy danym z urządzeń, których nikt nie weryfikuje w kontekście biznesowym.\n\nPodczas prezentacji przejdziemy od analizy pakietu przez pięć warstw zaufania: tożsamość nadawcy, integralność, świeżość, autoryzacja i sens danych. Uczestnicy wyjdą z prostym modelem przeglądu API i systemów zdarzeniowych, plus trzema testami, które od razu mogą wrzucić do backlogu, bez kosztownej przebudowy całej produkcji. Szyfrowanie powie Ci, że ktoś nie przeczytał wiadomości, ale nie odpowie, kto ją napisał, kiedy powstała i czy system powinien na jej podstawie cokolwiek zrobić.",
+      "speakers": [
+        "jakub-sikora"
+      ]
+    },
+    {
+      "id": "biznes-d1-adam-piotrowski",
+      "track": "biznes",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Biznes nam nie ufa — i wcale im się nie dziwię",
+      "abstract": "",
+      "speakers": [
+        "adam-piotrowski"
+      ]
+    },
+    {
+      "id": "biznes-d1-bartosz-awruk",
+      "track": "biznes",
+      "day": 1,
+      "kind": "lt",
+      "topic": "Case study LumoSteel",
+      "abstract": "",
+      "speakers": [
+        "bartosz-awruk"
+      ]
+    },
+    {
+      "id": "biznes-d1-piotr-werner",
+      "track": "biznes",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?",
+      "abstract": "W sezonie urlopowym 2026 r. nie ma już chyba na świecie szanującej się organizacji, która nie wdraża AI. Jak wiemy z materiałów reklamowych, to ekscytujący proces, prowadzący do zwielokrotnienia wartości firmy, przyśpieszenia procesów i uwolnienia ogromnych zasobów czasu. Armia agentów tylko czeka, by czuwać nad naszym sukcesem.\n\nMateriały reklamowe nie zawsze są jednak pisane przez ludzi (tu można by już postawić kropkę) zaangażowanych operacyjnie. Może się zdarzyć, że nie pokazują całej rzeczywistości. Może też być tak, że jeśli składniki, z których próbujemy wyczarować AI-ową zupkę nie są pierwszej jakości, potrawa może nie dostać gwiazdki Michelin.\n\nPiotrek podzieli się z nami doświadczeniem płynącym z bardziej i mniej udanych prób zastosowania AI w zespole marketingu Kuchni Vikinga. Będzie smacznie.",
+      "speakers": [
+        "piotr-werner"
+      ]
+    },
+    {
+      "id": "biznes-d1-piotr-janiak",
+      "track": "biznes",
+      "day": 1,
+      "kind": "lt",
+      "topic": "Zanim zbudujesz agenta AI, uporządkuj wiedzę. Lekcje z chaosu w organizacji",
+      "abstract": "Pracując z klientami BIM Ally, wielokrotnie spotykaliśmy się z problemem, który początkowo wydawał się czysto organizacyjny: wiedza potrzebna do obsługi klientów, sprzedaży czy rozwoju produktu była rozproszona pomiędzy dokumentami, mailami, prezentacjami, systemami i — przede wszystkim — ludźmi.\n\nZ czasem zauważyliśmy, że problem nie polega tylko na tym, że trudno znaleźć informację. Trudniejsze jest ustalenie, która informacja jest aktualna, skąd pochodzi, kto może jej zaufać i co zrobić, gdy różne źródła mówią coś innego.\n\nOpowiem o tym, czego nauczyliśmy się, próbując wykorzystać AI w realnej organizacji — o miejscach, w których pojawia się chaos w firmowej wiedzy, o problemach, których nie widać na demonstracjach AI, oraz o tym, jak zmienia się podejście do sztucznej inteligencji, gdy przestajemy zakładać, że można jej bezgranicznie zaufać.",
+      "speakers": [
+        "piotr-janiak"
+      ]
+    },
+    {
+      "id": "biznes-d1-norbert-pawluczuk",
+      "track": "biznes",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Transformacja cyfrowa w branży produkcyjnej bez budżetu z kosmosu. Lekcje z wdrożenia Showroomu 3D i aplikacji myINTERTECH.",
+      "abstract": "Praktyczne studium przypadku efektywnej cyfryzacji w branży produkcyjnej bez przepalania budżetu. Na przykładzie Showroomu 3D i aplikacji myINTERTECH prelegent omówi przechodzenie od celów biznesowych do działających narzędzi B2B. Dowiesz się, jak oceniać ROI, unikać nierentownych wdrożeń, optymalizować koszty IT oraz skutecznie wykorzystywać dofinansowania na rozwój oprogramowania. Konkretne lekcje ze styku biznesu, inżynierii i technologii.",
+      "speakers": [
+        "norbert-pawluczuk"
+      ]
+    },
+    {
+      "id": "biznes-d1-panel",
+      "track": "biznes",
+      "day": 1,
+      "kind": "panel",
+      "topic": "O oporze zespołu przed zmianą i problemach z wdrożeniem procesów",
+      "abstract": "",
+      "speakers": []
+    },
+    {
+      "id": "biznes-d1-michal-matejczyk",
+      "track": "biznes",
+      "day": 1,
+      "kind": "talk",
+      "topic": "Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.",
+      "abstract": "Spojrzenie od strony konsultanta operacyjnego: jak jego klienci poradzili sobie z wdrożeniem systemu albo nie poradzili sobie wcale. Dlaczego jedni po 7 latach wciąż nie skończyli wdrożenia ERP, a inni dali radę.",
+      "speakers": [
+        "michal-matejczyk"
+      ]
+    },
+    {
+      "id": "biznes-d1-grzegorz-sienkiewicz",
+      "track": "biznes",
+      "day": 1,
+      "kind": "lt",
+      "topic": "Case study 4szpaki",
+      "abstract": "",
+      "speakers": [
+        "grzegorz-sienkiewicz"
+      ]
+    },
+    {
+      "id": "biznes-d1-networking",
+      "track": "biznes",
+      "day": 1,
+      "kind": "networking",
+      "topic": "Networking strukturyzowany (stoliki tematyczne)",
+      "abstract": "",
+      "speakers": []
+    },
+    {
+      "id": "biznes-d1-lukasz-kaluzny",
+      "track": "biznes",
+      "day": 1,
+      "kind": "talk",
+      "topic": "AI bez szamanów — reality check",
+      "abstract": "",
+      "speakers": [
+        "lukasz-kaluzny"
+      ]
+    },
+    {
+      "id": "biznes-d2-michal-szumski",
+      "track": "biznes",
+      "day": 2,
+      "kind": "talk",
+      "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
+      "abstract": "Od bycia zalewanym wymaganiami klientów i działu handlowego oraz prób zadowolenia wszystkich, co kończyło się jedną wielką frustracją, do pipeline'u, który mamy dziś. Opowiem, jak go zbudowaliśmy, jak wciąż go ulepszamy i jak pilnujemy pewnych fundamentów — choćby tego, że Product Owner jest kluczowym decydentem.",
+      "speakers": [
+        "michal-szumski"
+      ]
+    },
+    {
+      "id": "biznes-d2-konrad-zawistowski",
+      "track": "biznes",
+      "day": 2,
+      "kind": "lt",
+      "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.pl",
+      "abstract": "",
+      "speakers": [
+        "konrad-zawistowski"
+      ]
+    },
+    {
+      "id": "biznes-d2-maciej-lotkowski",
+      "track": "biznes",
+      "day": 2,
+      "kind": "talk",
+      "topic": "95% wdrożeń to zmarnowane pieniądze. Konsultanci i tak wystawią fakturę.",
+      "abstract": "W firmie transportowej jest jeden człowiek, który wie, ile naprawdę kosztuje kurs do Hamburga. W produkcyjnej — jeden technolog, który umie wycenić zapytanie. W spedycji — jedna osoba, która pamięta, że ten klient zawsze płaci po 60 dniach. Ta wiedza to największy majątek firmy i nigdzie nie jest zapisana. Kiedy pan Zbyszek odchodzi na emeryturę, majątek wychodzi razem z nim.\n\nBadanie MIT na ponad 300 firmach pokazało, że 95% projektów z nowymi technologiami nie dało żadnego mierzalnego efektu finansowego, a w 2025 roku 42% firm porzuciło takie inicjatywy — rok wcześniej było to 17%. To nie technologia zawodzi, tylko podejście: wielki system, wdrażany latami, przebudowa całej firmy naraz. Czyli burzenie domu, w którym się mieszka.\n\nPokażę drogę na skróty, która działa: spisz jeden proces, uporządkuj dane w jednym miejscu i postaw obok pierwszego cyfrowego pomocnika. Dwutorowo — obok istniejących systemów, nie zamiast nich, więc niczego nie trzeba wyłączać. Będą konkretne przykłady z finansów, magazynu, spedycji, transportu i produkcji: oferta frachtu w 5 minut zamiast 40, rozliczenie miesiąca w godzinę zamiast trzech dni, wycena w 24 godziny zamiast trzech dni.\n\nBędzie też ostrzeżenie z praktyki: jeśli przyspieszysz ofertowanie trzykrotnie, a produkcja nie nadąży, zrobisz zator w sąsiednim pokoju. Dlatego mierzy się cały przepływ, od zapytania do zapłaconej faktury, a nie jeden punkt. Wyjdziesz z sali z jednym konkretnym krokiem do zrobienia w przyszłym tygodniu.",
+      "speakers": [
+        "maciej-lotkowski"
+      ]
+    },
+    {
+      "id": "biznes-d2-bozena-datczuk",
+      "track": "biznes",
+      "day": 2,
+      "kind": "lt",
+      "topic": "Cyfryzacja w produkcji mebli — case study TOBO",
+      "abstract": "",
+      "speakers": [
+        "bozena-datczuk"
+      ]
+    },
+    {
+      "id": "biznes-d2-gabriela-zaloga",
+      "track": "biznes",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Czy ludzie naprawdę nie lubią zmian? O cyfryzacji z ludzką twarzą",
+      "abstract": "Technologia to zaledwie 20% sukcesu wdrożenia. Pozostałe 80% to ludzie, którzy na co dzień będą z niej korzystać.\n\nWyobraź sobie, że wchodzisz do ulubionego sklepu pięć minut przed zamknięciem, a wszystkie produkty nagle leżą na zupełnie innych półkach. Frustracja? Chaos? Dokładnie tak samo reagują pracownicy na hali produkcyjnej, gdy z dnia na dzień obdarowujemy ich nowym systemem IT.\n\nInwestujemy w zaawansowane narzędzia klasy MES czy ERP, jednak wdrożenie rzadko rozbija się o samą technologię. Najczęściej zawodzi brak fundamentów, robienie rewolucji na siłę oraz opór zespołu. Pokutuje przekonanie, że wystarczy ogłosić zakup systemu, a reszta wydarzy się sama — tymczasem budowanie domu na słabych fundamentach zawsze kończy się tak samo.\n\nBazując na doświadczeniach z wdrożeń w sektorze produkcyjnym MŚP, przyjrzymy się temu procesowi bez marketingowego lukru. Przeanalizujemy, dlaczego potrzeba zmiany u managera nie oznacza automatycznie potrzeby w zespole oraz co zrobić, by cyfryzacja przestała być narzuconą z góry rewolucją, a stała się procesem, który ludzie po prostu zaakceptują.",
+      "speakers": [
+        "gabriela-zaloga"
+      ]
+    },
+    {
+      "id": "biznes-d2-krzysztof-kozlowski",
+      "track": "biznes",
+      "day": 2,
+      "kind": "lt",
+      "topic": "Aplikacja self-made do prowadzenia produkcji — case study Inwestprodukt",
+      "abstract": "",
+      "speakers": [
+        "krzysztof-kozlowski"
+      ]
+    },
+    {
+      "id": "biznes-d2-panel",
+      "track": "biznes",
+      "day": 2,
+      "kind": "panel",
+      "topic": "",
+      "abstract": "",
+      "speakers": []
+    },
+    {
+      "id": "biznes-d2-przemyslaw-jozwiakowski",
+      "track": "biznes",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
+      "abstract": "Wszyscy mówią o AI, ale w dużych firmach wdrożenia wciąż grzęzną — i wcale nie dlatego, że technologia zawodzi. Na tej prezentacji pokażę, gdzie naprawdę pękają transformacje AI: w ludziach sparaliżowanych strachem i przeciążeniem, w przestarzałych systemach zamkniętych na integracje, i w starym sposobie myślenia, w którym wciąż „ja robię zadanie”, zamiast pozwolić agentowi pracować za mnie.\n\nW 30 minut rozłożę te przeszkody na czynniki pierwsze i pokażę, dlaczego atakowanie tylko jednej z nich to strata czasu. Wyjdziesz z konkretną mapą tego, co blokuje Twoją organizację — i wiedzą, od czego zacząć, żeby ruszyć z miejsca. Jeśli odpowiadasz za wdrażanie AI albo po prostu masz dość slajdów pełnych obietnic bez pokrycia, to jest prezentacja dla Ciebie.",
+      "speakers": [
+        "przemyslaw-jozwiakowski"
+      ]
+    },
+    {
+      "id": "biznes-d2-katarzyna-onoszko",
+      "track": "biznes",
+      "day": 2,
+      "kind": "lt",
+      "topic": "Zakup i wdrożenie oprogramowania okiem klienta — case study Panorama Druk",
+      "abstract": "Spojrzenie z drugiej strony stołu: nie dostawcy, tylko firmy, która kupuje i wdraża system u siebie.\n\nOpowiem o tym, co skłoniło naszą firmę do zakupu oprogramowania, jak poszło nam samo wdrożenie, co moglibyśmy zrobić lepiej, żeby przebiegło sprawniej, oraz co mógłby zrobić dostawca oprogramowania, żeby było szybsze i łatwiejsze.",
+      "speakers": [
+        "katarzyna-onoszko"
+      ]
+    },
+    {
+      "id": "biznes-d2-marek-ziemba",
+      "track": "biznes",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Jak zepsuć marketing i sprzedaż B2B technologią",
+      "abstract": "",
+      "speakers": [
+        "marek-ziemba"
+      ]
+    },
+    {
+      "id": "biznes-d2-piotr-jurewicz",
+      "track": "biznes",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Wiedza organizacji w grafie, nie w głowach",
+      "abstract": "Decyzje zapadają na spotkaniach. Ustalenia giną w wątkach na Slacku. Pół roku później nikt nie pamięta, dlaczego coś zrobiliście tak, a nie inaczej. Wiki miała to rozwiązać, ale dokumentowanie to osobna praca, której nikt nie robi. Nagrywanie wszystkiego też nie pomaga — macie „wszystko”, tylko trzeba wiedzieć, czego szukać.\n\nW Arkency zbudowaliśmy pamięć organizacji: graf wiedzy zasilany tym, co i tak codziennie wytwarzamy — transkryptami spotkań, wątkami ze Slacka, notatkami. AI wyciąga z nich ludzi, projekty, decyzje, ryzyka i zobowiązania. Nie robi tego na oko, tylko kieruje się ontologią: zamkniętą listą tego, co w naszej firmie uznajemy za wiedzę. Potem proponuje zmiany w grafie.\n\nSystem działa u nas na produkcji od kilku miesięcy. W grafie jest kilka tysięcy węzłów i krawędzi zbudowanych na podstawie kilkuset źródeł. Opowiem, jak to działa od środka i jakie decyzje okazały się najważniejsze. Porównam graf wiedzy z prostszymi i alternatywnymi podejściami — od wiki, przez RAG nad transkryptami, po GraphRAG od Microsoftu — i pokażę, gdzie każde z nich się kończy. Będzie o roli człowieka w całym procesie, o śledzeniu pochodzenia każdego faktu i o tym, gdzie graf się u nas nie sprawdził.\n\nTo prelekcja na ścieżkę biznesową, bez wchodzenia w implementację.",
+      "speakers": [
+        "piotr-jurewicz"
+      ]
+    },
+    {
+      "id": "biznes-d2-piotr-krych",
+      "track": "biznes",
+      "day": 2,
+      "kind": "talk",
+      "topic": "Możliwości narzędzi AI w codziennej pracy",
+      "abstract": "O AI w pracy mówi się dużo, ale większość osób nietechnicznych kończy na tym samym: okno czatu, „napisz maila” i lekkie rozczarowanie. Gołe AI jest do niczego — model bez dostępu do niczego zna świat, ale nie zna Twojej firmy. Cała moc jest w podłączeniu: Microsoft 365, Google Docs, Calendar, Drive, SharePoint, a do tego warstwa własna, czyli baza wiedzy firmy i connectory do systemów sprzedażowo-księgowych.\n\nPokażę na żywo, jak od zera zbudować takiego asystenta: czym są connectory (demo na Google Calendar i KSeF MCP), czym jest skill, czyli rozpisana procedura zamiast pojedynczego zdania, oraz jak spiąć całość w Projects. Osobny blok poświęcę RODO i planowi Teams: brak trenowania modelu na danych firmy, administrator zarządzający connectorami, wymuszone konta firmowe i dashboard adopcji dla zarządu.\n\nWszystko na przykładach z mojej praktyki i ze szkoleń dla firm MŚP. Wyjdziesz z konkretnymi krokami na pierwszy tydzień wdrożenia — co kliknąć w poniedziałek rano.",
+      "speakers": [
+        "piotr-krych"
+      ]
     }
   ]
 }

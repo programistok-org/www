@@ -4,10 +4,12 @@
 import '@fontsource-variable/inter';
 import '@fontsource/montserrat/700.css';
 import '@fontsource/montserrat/800.css';
-import agenda from '../data/agenda2026.json';
+import { tracks, talksFor, cardFor } from '../lib/agenda.js';
 
-const SPEAKERS = agenda.tracks.flatMap((t) =>
-  t.speakers.map((s) => ({ name: s.name, topic: s.topic || '', photo: s.photo || '', track: t.label }))
+const SPEAKERS = tracks.flatMap((t) =>
+  talksFor(t.id)
+    .map(cardFor)
+    .map((s) => ({ name: s.name, topic: s.topic || '', photo: s.photo || '', track: t.label }))
 );
 
 const LOGOS = [

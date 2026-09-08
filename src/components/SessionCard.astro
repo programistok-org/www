@@ -1,0 +1,37 @@
+---
+import { peopleOf } from '../lib/agenda.js';
+
+const { session, track = 'it' } = Astro.props;
+
+const theme = {
+  it: { dot: 'bg-accent', label: 'text-accent-ink' },
+  biznes: { dot: 'bg-biz', label: 'text-biz-ink' },
+}[track];
+
+const label = {
+  panel: 'Panel dyskusyjny',
+  lightning: 'Lightning talks',
+  networking: 'Networking',
+}[session.kind];
+
+const people = peopleOf(session);
+---
+
+<article class="rounded-3xl border border-dashed border-line bg-surface/50 px-7 py-8 sm:px-9">
+  <div class="flex items-center gap-2.5">
+    <span class={`h-2.5 w-2.5 shrink-0 rounded-[3px] ${theme.dot}`} aria-hidden="true"></span>
+    <p class={`font-mono text-[12px] uppercase tracking-[0.12em] ${theme.label}`}>{label}</p>
+  </div>
+
+  <p class="mt-3 max-w-[52ch] text-balance text-[17px] font-bold leading-snug text-ink">
+    {session.topic || 'Temat wkrótce'}
+  </p>
+
+  {people.length > 0 && (
+    <p class="mt-3 text-[15px] leading-relaxed text-muted">
+      {people.map((p) => p.name).join(', ')}
+    </p>
+  )}
+
+  {session.note && <p class="mt-3 max-w-[52ch] text-[14px] leading-relaxed text-muted text-pretty">{session.note}</p>}
+</article>

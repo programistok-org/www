@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SpeakerCard from '../components/SpeakerCard.astro';
 import Cfp from '../components/Cfp.astro';
-import agenda from '../data/agenda2026.json';
+import { cfp, trackById, talksFor, cardFor } from '../lib/agenda.js';
 
-const bizTrack = agenda.tracks.find((t) => t.id === 'biznes');
-const bizFree = bizTrack.slots - bizTrack.speakers.length;
+const bizTrack = trackById('biznes');
+const bizTalks = talksFor('biznes');
+const bizFree = Math.max(0, bizTrack.slots - bizTalks.length);
 
 const prezentacje = (n) => {
   const t = n % 10;
@@ -225,7 +226,7 @@ const takeaways = [
         Kto wystąpi na ścieżce Biznes
       </h2>
       <span class="rounded-full bg-biz/10 px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] text-biz-ink">
-        {bizTrack.speakers.length}/{bizTrack.slots} {prezentacje(bizTrack.slots)}
+        {bizTalks.length}/{bizTrack.slots} {prezentacje(bizTrack.slots)}
       </span>
     </div>
     <p class="mt-4 max-w-[62ch] text-lg leading-relaxed text-muted text-pretty">
@@ -233,7 +234,7 @@ const takeaways = [
     </p>
 
     <div class="mt-10 flex flex-col gap-5">
-      {bizTrack.speakers.map((s) => <SpeakerCard speaker={s} track="biznes" />)}
+      {bizTalks.map((s) => <SpeakerCard speaker={cardFor(s)} track="biznes" label={s.kind === 'lt' ? 'Case study' : undefined} />)}
 
       <div class="flex flex-wrap items-center justify-between gap-5 rounded-3xl border border-dashed border-line bg-surface/50 px-7 py-8 sm:px-9">
         <div>
@@ -243,9 +244,9 @@ const takeaways = [
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-          {agenda.cfp.open && (
+          {cfp.open && (
             <a
-              href={agenda.cfp.forms.biznes}
+              href={cfp.forms.biznes}
               rel="noopener"
               target="_blank"
               class="inline-flex items-center gap-2 rounded-full bg-biz px-6 py-3.5 text-[15px] font-bold text-white transition hover:brightness-110"
@@ -262,7 +263,7 @@ const takeaways = [
   </section>
 
   <!-- ===== CFP BUSINESS ===== -->
-  {agenda.cfp.open && (
+  {cfp.open && (
     <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12" aria-label="Call for Papers">
       <Cfp only="biznes" />
     </section>
