@@ -195,9 +195,10 @@
           "name": "Michał Szumski",
           "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
           "format": "prezentacja",
-          "photo": "",
+          "photo": "/prelegenci/michal-szumski.webp",
           "abstract": "Od bycia zalewanym wymaganiami klientów i działu handlowego oraz prób zadowolenia wszystkich, co kończyło się jedną wielką frustracją, do pipeline'u, który mamy dziś. Opowiem, jak go zbudowaliśmy, jak wciąż go ulepszamy i jak pilnujemy pewnych fundamentów — choćby tego, że Product Owner jest kluczowym decydentem.",
-          "bio": "Pięć lat w Anglii: liceum i inżynier z matematyki na Loughborough University, potem trzy lata magisterki z automatyki i robotyki na Politechnice Warszawskiej. W Plum pracuje od 15 lat — zaczynał jako handlowiec, pracował w marketingu, na produkcji, jako programista, Scrum Master, Product Owner i kierownik sekcji programistów, a od ponad dwóch lat jest Prezesem Zarządu. Prywatnie siłownia, bieganie, książki i gry planszowe z dziećmi.\n\nPlum specjalizuje się we wdrażaniu i produkcji elektroniki NB-IoT w branżach HVAC, gaz i woda. R&D, jakość i rozwój produktu firma ma wpisane w DNA."
+          "bio": "Pięć lat w Anglii: liceum i inżynier z matematyki na Loughborough University, potem trzy lata magisterki z automatyki i robotyki na Politechnice Warszawskiej. W Plum pracuje od 15 lat — zaczynał jako handlowiec, pracował w marketingu, na produkcji, jako programista, Scrum Master, Product Owner i kierownik sekcji programistów, a od ponad dwóch lat jest Prezesem Zarządu. Prywatnie siłownia, bieganie, książki i gry planszowe z dziećmi.\n\nPlum specjalizuje się we wdrażaniu i produkcji elektroniki NB-IoT w branżach HVAC, gaz i woda. R&D, jakość i rozwój produktu firma ma wpisane w DNA.",
+          "photoPosition": "50% 18%"
         },
         {
           "name": "Bartosz Awruk",
