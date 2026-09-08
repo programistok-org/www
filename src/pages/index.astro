@@ -4,14 +4,9 @@ import HeroLogo3D from '../components/HeroLogo3D.astro';
 import Cfp from '../components/Cfp.astro';
 import agenda from '../data/agenda2026.json';
 import TalksMarquee from '../components/TalksMarquee.astro';
-import { talksFor } from '../lib/agenda.js';
 import { youtubeEmbedUrl } from '../lib/youtube.js';
 
 const heroVideo = youtubeEmbedUrl('https://www.youtube.com/watch?v=a2vtAt5nNzA');
-
-const itTalks = talksFor('it').length;
-const bizTalks = talksFor('biznes').length;
-const allTalks = itTalks + bizTalks;
 ---
 
 <BaseLayout
@@ -86,8 +81,8 @@ const allTalks = itTalks + bizTalks;
       Dwie ścieżki, jedna społeczność
     </h2>
     <p class="mt-5 max-w-[56ch] text-lg leading-relaxed text-muted text-pretty">
-      {allTalks} wystąpień w dwa dni: {itTalks} w ścieżce IT i {bizTalks} w biznesowej,
-      do tego panele dyskusyjne i lightning talki.
+      Dwa dni wystąpień na dwóch równoległych ścieżkach, do tego panele dyskusyjne
+      i lightning talki.
     </p>
 
     <TalksMarquee />

@@ -4,17 +4,7 @@ import SpeakerCard from '../components/SpeakerCard.astro';
 import Cfp from '../components/Cfp.astro';
 import { cfp, trackById, talksFor, cardFor } from '../lib/agenda.js';
 
-const bizTrack = trackById('biznes');
 const bizTalks = talksFor('biznes');
-const bizFree = Math.max(0, bizTrack.slots - bizTalks.length);
-
-const prezentacje = (n) => {
-  const t = n % 10;
-  const h = n % 100;
-  if (n === 1) return 'prezentacja';
-  if (t >= 2 && t <= 4 && !(h >= 12 && h <= 14)) return 'prezentacje';
-  return 'prezentacji';
-};
 
 const audience = [
   { role: 'CEO i COO', desc: 'szukających odpowiedzi, w co inwestować i jak nie przepalić budżetu.' },
@@ -225,9 +215,6 @@ const takeaways = [
       <h2 id="prelegenci-title" class="text-balance text-[clamp(2rem,5vw,3.25rem)] font-black leading-[1.02] tracking-[-0.03em]">
         Kto wystąpi na ścieżce Biznes
       </h2>
-      <span class="rounded-full bg-biz/10 px-3 py-1 font-mono text-[12px] uppercase tracking-[0.1em] text-biz-ink">
-        {bizTalks.length}/{bizTrack.slots} {prezentacje(bizTrack.slots)}
-      </span>
     </div>
     <p class="mt-4 max-w-[62ch] text-lg leading-relaxed text-muted text-pretty">
       Program ogłaszamy stopniowo. Poniżej wystąpienia potwierdzone do tej pory.
@@ -240,7 +227,7 @@ const takeaways = [
         <div>
           <p class="mb-2 font-mono text-[12px] uppercase tracking-[0.12em] text-biz-ink">Wkrótce</p>
           <p class="text-balance text-[17px] font-bold leading-snug text-ink">
-            Kolejne {bizFree} {prezentacje(bizFree)} ogłosimy w najbliższych tygodniach
+            Kolejne wystąpienia ogłosimy w najbliższych tygodniach
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3">

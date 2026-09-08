@@ -89,7 +89,7 @@
   .marquee__track {
     display: flex;
     width: max-content;
-    animation: marquee-scroll 70s linear infinite;
+    animation: marquee-scroll 220s linear infinite;
   }
 
   .marquee--reverse .marquee__track {
