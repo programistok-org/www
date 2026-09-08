@@ -1,0 +1,34 @@
+---
+import { tracks, talksFor, cardFor } from '../lib/agenda.js';
+
+// dwa pasy jadące w przeciwne strony: IT nad biznesem
+const rows = tracks.map((track) => ({
+  id: track.id,
+  items: talksFor(track.id)
+    .map(cardFor)
+    .filter((s) => s.topic)
+    .map((s) => ({ topic: s.topic, name: s.name })),
+}));
+
+const dot = { it: 'bg-accent', biznes: 'bg-biz' };
+---
+
+<div class="relative left-1/2 mt-9 w-screen -translate-x-1/2 overflow-hidden py-1" aria-hidden="true">
+  {rows.map((row, i) => (
+    <div class={`marquee ${i % 2 === 1 ? 'marquee--reverse' : ''} py-2`}>
+      <div class="marquee__track">
+        {[0, 1].map(() => (
+          <ul class="flex shrink-0 items-center gap-8 pr-8">
+            {row.items.map((item) => (
+              <li class="flex shrink-0 items-center gap-3">
+                <span class={`h-2 w-2 shrink-0 rounded-[2px] ${dot[row.id]}`}></span>
+                <span class="whitespace-nowrap text-[15px] font-bold tracking-[-0.01em] text-ink">{item.topic}</span>
+                <span class="whitespace-nowrap font-mono text-[12px] uppercase tracking-[0.1em] text-faint">{item.name}</span>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
