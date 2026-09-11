@@ -43,6 +43,13 @@ const ogImage = new URL(image, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- Plausible — analityka bez ciasteczek -->
+    <script is:inline async src="https://plausible.io/js/pa-BdF1g3bFUj4LoA3_g57ki.js"></script>
+    <script is:inline>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+
     <!-- Microsoft Clarity -->
     <script is:inline type="text/javascript">
       (function(c,l,a,r,i,t,y){
