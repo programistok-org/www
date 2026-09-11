@@ -37,7 +37,10 @@ const OUT = resolve(flag('out', `${REPO}/public/social/sponsor-${slug}-${W}x${H}
 
 // wartości przeniesione 1:1 z drawSponsor() w src/pages/capture.astro
 const BG = '#1c1b16';
-const CARD_BG = '#ffffff';
+// logotypy przygotowane pod ciemne tło (białe kontry) kładziemy bez kafelka: --card none
+const CARD_BG = flag('card', '#ffffff');
+// albo na ciemnej płytce w środku białego kafelka: --inner "#14130f"
+const INNER_BG = flag('inner', 'none');
 const TEXT = '#f4f2ec';
 const SYGNET_RATIO = 0.12;
 
@@ -140,16 +143,25 @@ async function draw() {
   const cardH = Math.min(areaH, (W - m * 2) * 0.72);
   const cardTop = areaTop + (areaH - cardH) / 2;
 
-  ctx.fillStyle = ${JSON.stringify(CARD_BG)};
-  drawRounded(m, cardTop, W - m * 2, cardH, W * 0.05);
-  ctx.fill();
+  if (${JSON.stringify(CARD_BG)} !== 'none') {
+    ctx.fillStyle = ${JSON.stringify(CARD_BG)};
+    drawRounded(m, cardTop, W - m * 2, cardH, W * 0.05);
+    ctx.fill();
+  }
 
   const pad = Math.min(W - m * 2, cardH) * 0.16;
   const boxW = W - m * 2 - pad * 2;
   const boxH = cardH - pad * 2;
   const r1 = Math.min(boxW / logoImg.naturalWidth, boxH / logoImg.naturalHeight);
   const lw = logoImg.naturalWidth * r1, lh = logoImg.naturalHeight * r1;
-  ctx.drawImage(logoImg, m + (W - m * 2 - lw) / 2, cardTop + (cardH - lh) / 2, lw, lh);
+  const lx = m + (W - m * 2 - lw) / 2, ly = cardTop + (cardH - lh) / 2;
+  if (${JSON.stringify(INNER_BG)} !== 'none') {
+    const ip = pad * 0.55;
+    ctx.fillStyle = ${JSON.stringify(INNER_BG)};
+    drawRounded(lx - ip, ly - ip, lw + ip * 2, lh + ip * 2, W * 0.02);
+    ctx.fill();
+  }
+  ctx.drawImage(logoImg, lx, ly, lw, lh);
 
   document.title = 'done';
 }
