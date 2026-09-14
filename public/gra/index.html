@@ -5,7 +5,70 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/pk.css" />
+    <style>
+      /* programistok.org/gra - key legend for keyboard players */
+      #legend {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 72px;
+        box-sizing: border-box;
+        padding: 0 16px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px 40px;
+        background: #071821;
+        border-top: 1px solid #1f3a44;
+        color: #e0f8cf;
+        font: 15px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+      html.no-touch #legend {
+        display: flex;
+      }
+      /* The screen ends where the legend begins - it never covers the game. */
+      html.no-touch #game {
+        height: auto;
+        bottom: 72px;
+      }
+      #legend .key {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        white-space: nowrap;
+      }
+      #legend .caps {
+        display: flex;
+        gap: 4px;
+      }
+      #legend kbd {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        padding: 0 8px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        background: linear-gradient(#ffffff, #e4e4e4);
+        border: 1px solid #b4b4b4;
+        border-bottom: 3px solid #8e8e8e;
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+        color: #222;
+        font: 600 15px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+      #legend .caps kbd {
+        min-width: 32px;
+        height: 32px;
+        padding: 0;
+        font-size: 14px;
+      }
+      #legend .does {
+        color: #e0f8cf;
+      }
+    </style>
     <title>Programistok '26 – gra</title>
     <meta name="author" content="korsi" />
     
@@ -29,24 +92,21 @@
     </div>      
     
     <div id="legend">
-      <div class="group">
-        <div class="arrows">
-          <kbd>&uarr;</kbd>
-          <div><kbd>&larr;</kbd><kbd>&darr;</kbd><kbd>&rarr;</kbd></div>
-        </div>
-        <div class="what"><b>Chodzenie</b><small>albo W S A D</small></div>
+      <div class="key">
+        <span class="caps"><kbd>&larr;</kbd><kbd>&uarr;</kbd><kbd>&darr;</kbd><kbd>&rarr;</kbd></span>
+        <span class="does">ruch</span>
       </div>
-      <div class="group">
-        <kbd class="big">Z</kbd>
-        <div class="what"><b>A</b> – potwierdź, rozmawiaj<small>też J lub Alt</small></div>
+      <div class="key">
+        <kbd>Z</kbd>
+        <span class="does">potwierdź / rozmawiaj</span>
       </div>
-      <div class="group">
-        <kbd class="big">X</kbd>
-        <div class="what"><b>B</b> – wstecz, zamknij<small>też K lub Ctrl</small></div>
+      <div class="key">
+        <kbd>X</kbd>
+        <span class="does">wstecz / zamknij</span>
       </div>
-      <div class="group">
-        <kbd class="big wide">Enter</kbd>
-        <div class="what"><b>Start</b> – menu, potwierdź<small>Shift – Select</small></div>
+      <div class="key">
+        <kbd class="wide">Enter</kbd>
+        <span class="does">start</span>
       </div>
     </div>
     <script>
