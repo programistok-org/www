@@ -1,0 +1,26 @@
+/* programistok.org/gra - added on top of the GB Studio export */
+#legend {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #9fcf8f;
+  background: rgba(3, 25, 33, 0.9);
+}
+#legend span {
+  display: inline-block;
+  margin: 0 0.7em;
+  white-space: nowrap;
+}
+html.no-touch #legend {
+  display: block;
+}
+html.no-touch #game {
+  padding-bottom: 2.8rem;
+  box-sizing: border-box;
+}
