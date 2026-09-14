@@ -5,22 +5,78 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 0.6rem 1rem;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #9fcf8f;
-  background: rgba(3, 25, 33, 0.9);
-}
-#legend span {
-  display: inline-block;
-  margin: 0 0.7em;
-  white-space: nowrap;
+  padding: 10px 12px 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 34px;
+  font-size: 13px;
+  line-height: 1.25;
+  color: #cfe8c4;
+  background: rgba(3, 25, 33, 0.94);
+  border-top: 1px solid rgba(159, 207, 143, 0.25);
 }
 html.no-touch #legend {
-  display: block;
+  display: flex;
 }
 html.no-touch #game {
-  padding-bottom: 2.8rem;
+  padding-bottom: 92px;
   box-sizing: border-box;
+}
+#legend .group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#legend kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #9fcf8f;
+  border-bottom-width: 3px;
+  background: #0f3a2f;
+  color: #e0f8cf;
+  font: 600 13px/1 ui-monospace, Menlo, Consolas, monospace;
+}
+#legend kbd.big {
+  min-width: 34px;
+  height: 34px;
+  font-size: 16px;
+}
+#legend kbd.wide {
+  padding: 0 10px;
+}
+#legend .arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+#legend .arrows div {
+  display: flex;
+  gap: 3px;
+}
+#legend .arrows kbd {
+  min-width: 22px;
+  height: 22px;
+  padding: 0;
+  font-size: 12px;
+}
+#legend .what {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+#legend .what b {
+  color: #e0f8cf;
+  font-weight: 600;
+}
+#legend .what small {
+  color: #86c06c;
+  font-size: 11px;
 }

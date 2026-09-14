@@ -29,11 +29,25 @@
     </div>      
     
     <div id="legend">
-      <span>Strzałki / WASD – ruch</span>
-      <span>Z, J lub Alt – A</span>
-      <span>X, K lub Ctrl – B</span>
-      <span>Enter – Start</span>
-      <span>Shift – Select</span>
+      <div class="group">
+        <div class="arrows">
+          <kbd>&uarr;</kbd>
+          <div><kbd>&larr;</kbd><kbd>&darr;</kbd><kbd>&rarr;</kbd></div>
+        </div>
+        <div class="what"><b>Chodzenie</b><small>albo W S A D</small></div>
+      </div>
+      <div class="group">
+        <kbd class="big">Z</kbd>
+        <div class="what"><b>A</b> – potwierdź, rozmawiaj<small>też J lub Alt</small></div>
+      </div>
+      <div class="group">
+        <kbd class="big">X</kbd>
+        <div class="what"><b>B</b> – wstecz, zamknij<small>też K lub Ctrl</small></div>
+      </div>
+      <div class="group">
+        <kbd class="big wide">Enter</kbd>
+        <div class="what"><b>Start</b> – menu, potwierdź<small>Shift – Select</small></div>
+      </div>
     </div>
     <script>
       // Desktop gets the key legend; touch devices get the on-screen pad.
