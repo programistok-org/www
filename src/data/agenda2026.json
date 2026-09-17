@@ -185,7 +185,9 @@
     },
     {
       "id": "grzegorz-sienkiewicz",
-      "name": "Grzegorz Sienkiewicz"
+      "name": "Grzegorz Sienkiewicz",
+      "photo": "/prelegenci/grzegorz-sienkiewicz.webp",
+      "photoPosition": "50% 20%"
     },
     {
       "id": "konrad-zawistowski",
@@ -435,7 +437,7 @@
       "track": "biznes",
       "day": 1,
       "kind": "lt",
-      "topic": "Case study 4szpaki",
+      "topic": "Rzemiosło kontra AI. Case study 4szpaki",
       "abstract": "",
       "speakers": [
         "grzegorz-sienkiewicz"
@@ -477,7 +479,7 @@
       "track": "biznes",
       "day": 2,
       "kind": "lt",
-      "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.pl",
+      "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.eu",
       "abstract": "",
       "speakers": [
         "konrad-zawistowski"

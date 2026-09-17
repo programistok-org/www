@@ -139,10 +139,10 @@ Zdjęcie: `zdjecia/michal-szumski.jpg`
 **Ścieżka Biznes, dzień 1:** Case study LumoSteel
 Zdjęcie: `zdjecia/bartosz-awruk.jpg`
 ## Grzegorz Sienkiewicz
-**Ścieżka Biznes, dzień 1:** Case study 4szpaki
-_Brak zdjęcia w paczce._
+**Ścieżka Biznes, dzień 1:** Rzemiosło kontra AI. Case study 4szpaki
+Zdjęcie: `zdjecia/grzegorz-sienkiewicz.jpg`
 ## Konrad Zawistowski
-**Ścieżka Biznes, dzień 2:** Migracja z ERP-a do ERP-a — case study Ikonka.pl
+**Ścieżka Biznes, dzień 2:** Migracja z ERP-a do ERP-a — case study Ikonka.eu
 _Brak zdjęcia w paczce._
 ## Krzysztof Kozłowski
 **Ścieżka Biznes, dzień 2:** Aplikacja self-made do prowadzenia produkcji — case study Inwestprodukt

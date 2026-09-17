@@ -251,16 +251,16 @@
       },
       {
         "name": "Grzegorz Sienkiewicz",
-        "photo": null,
-        "photoPosition": null,
-        "topic": "Case study 4szpaki",
+        "photo": "/press/prelegenci/zdjecia/grzegorz-sienkiewicz.jpg",
+        "photoPosition": "50% 20%",
+        "topic": "Rzemiosło kontra AI. Case study 4szpaki",
         "track": "Biznes"
       },
       {
         "name": "Konrad Zawistowski",
         "photo": null,
         "photoPosition": null,
-        "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.pl",
+        "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.eu",
         "track": "Biznes"
       },
       {
