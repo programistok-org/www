@@ -58,8 +58,40 @@ const heroVideo = youtubeEmbedUrl('https://www.youtube.com/watch?v=a2vtAt5nNzA')
     </div>
   </section>
 
-  <!-- ===== WIDEO ===== -->
-  <section class="mx-auto max-w-[1200px] px-5 pb-16 sm:px-8" aria-label="Wideo Programistok">
+  <!-- ===== GRA + WIDEO ===== -->
+  <section class="mx-auto grid max-w-[1200px] gap-5 px-5 pb-16 sm:px-8 lg:grid-cols-2 lg:items-stretch" aria-label="Gra i wideo Programistok">
+    <a
+      href="/gra"
+      class="group relative isolate flex min-h-[320px] overflow-hidden rounded-3xl border border-line bg-[#071821] lg:order-last lg:min-h-0"
+      aria-label="Zagraj w grę Programistok w przeglądarce"
+    >
+      <img
+        src="/thegame.png"
+        alt=""
+        width="945"
+        height="836"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 -z-10 h-full w-full object-cover [image-rendering:pixelated] transition duration-500 group-hover:scale-[1.04]"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#071821] via-[#071821]/75 to-[#071821]/15" aria-hidden="true"></div>
+
+      <div class="mt-auto flex w-full flex-wrap items-end justify-between gap-4 p-7 sm:p-8">
+        <div>
+          <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.16em] text-[#9ad07f]">// Gra</p>
+          <p class="text-[clamp(1.5rem,2.6vw,2rem)] font-black leading-[1.02] tracking-[-0.03em] text-[#e0f8cf]">
+            Zagraj w Programistok
+          </p>
+          <p class="mt-2 max-w-[30ch] text-base leading-relaxed text-[#e0f8cf]/80 text-pretty">
+            Przejdź się po miasteczku i poznaj prelegentów, sponsorów i partnerów. Prosto w przeglądarce.
+          </p>
+        </div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-bold text-white transition group-hover:brightness-110">
+          Zagraj <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </a>
+
     <figure class="overflow-hidden rounded-3xl border border-line bg-ink">
       <div class="aspect-video">
         <iframe
