@@ -25,8 +25,48 @@ dir(PRESS);
 const NOTA_DIR = dir(`${PRESS}/nota-prasowa`);
 const NOTA_BASE = 'programistok-2026-nota-prasowa';
 
-if (existsSync(NOTA_PDF)) copyFileSync(NOTA_PDF, `${NOTA_DIR}/${NOTA_BASE}.pdf`);
-else console.warn('! brak PDF-a noty w src/assets — pomijam');
+// PDF: nota z JSON-a przez headless Chrome (A4, ten sam układ co ręczny
+// eksport z Docsa), więc nie rozjeżdża się z tekstem. Bez Chrome'a zostaje
+// statyczny plik z src/assets, jeśli jest.
+const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const htmlEsc = (s) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const notaHtml = `<!doctype html><html lang="pl"><meta charset="utf-8"><title>${htmlEsc(nota.title)}</title>
+<style>
+  @page { size: A4; margin: 22mm 20mm; }
+  body { margin: 0; font: 11pt/1.5 Arial, Helvetica, sans-serif; color: #111; }
+  h1 { font-size: 21pt; line-height: 1.25; margin: 0 0 14pt; }
+  h2 { font-size: 15pt; line-height: 1.3; margin: 18pt 0 8pt; break-after: avoid; }
+  p { margin: 0 0 10pt; }
+  .lead, .attr, .link { font-weight: bold; }
+  .quote { font-style: italic; }
+  .link a { color: #1155cc; }
+  .foot { margin-top: 24pt; font-size: 9pt; color: #595959; }
+</style>
+<body>
+<h1>${htmlEsc(nota.title)}</h1>
+${nota.blocks
+  .map((b) => {
+    if (b.type === 'h2') return `<h2>${htmlEsc(b.text)}</h2>`;
+    if (b.type === 'quote') return `<p class="quote">„${htmlEsc(b.text)}”</p>`;
+    if (b.type === 'link') return `<p class="link">${htmlEsc(b.label)}: <a href="${htmlEsc(b.href)}">${htmlEsc(b.href)}</a></p>`;
+    return `<p class="${b.type}">${htmlEsc(b.text)}</p>`;
+  })
+  .join('\n')}
+<p class="foot">Programistok 2026 · 25–26.09.2026 · Politechnika Białostocka, Białystok<br>Materiały dla mediów: https://programistok.org/dla-mediow</p>
+</body></html>`;
+if (existsSync(CHROME)) {
+  const NOTA_TMP = dir(`${REPO}/.astro/nota`);
+  writeFileSync(`${NOTA_TMP}/nota.html`, notaHtml);
+  sh(CHROME, [
+    '--headless=new',
+    '--disable-gpu',
+    '--no-pdf-header-footer',
+    `--print-to-pdf=${NOTA_DIR}/${NOTA_BASE}.pdf`,
+    `file://${NOTA_TMP}/nota.html`,
+  ]);
+} else if (existsSync(NOTA_PDF)) copyFileSync(NOTA_PDF, `${NOTA_DIR}/${NOTA_BASE}.pdf`);
+else console.warn('! brak Chrome i brak PDF-a noty w src/assets — pomijam');
 
 // TXT: wersja do wklejenia, bez łamania wierszy w akapicie
 const txt = [

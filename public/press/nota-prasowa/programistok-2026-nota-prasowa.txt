@@ -4,6 +4,8 @@ Programistok po raz pierwszy potrwa dwa dni. Ponad 500 osób spotka się na konf
 
 Programistok powstał ponad dekadę temu z inicjatywy białostockich meetupów technologicznych. Od początku jego założeniem było stworzenie wspólnego wydarzenia niezależnego od języków programowania, frameworków i konkretnych technologii. Z lokalnej inicjatywy wyrósł w konferencję, która przyciąga do Białegostoku uczestników i prelegentów z całej Polski.
 
+Programistok jest konferencją not-for-profit, organizowaną przez społeczność i dla społeczności. Tworzą go ludzie z podlaskiego środowiska IT, którzy na co dzień pracują w branży, a nie firma eventowa. Wydarzenie nie jest nastawione na zysk: wpływy z biletów i wsparcie partnerów idą na organizację konferencji, a ewentualna nadwyżka wraca do kolejnej edycji. Program układają praktycy, a prelegenci przyjeżdżają przede wszystkim po to, żeby dzielić się wiedzą. To także dlatego wiedza z konferencji nie zostaje wyłącznie na sali.
+
 W tym roku organizatorzy rozszerzają tę formułę poza samo IT. Nowa ścieżka Biznes ma odpowiadać na problemy firm związane między innymi z cyfryzacją, automatyzacją, budowaniem produktów i wdrażaniem sztucznej inteligencji.
 
 „Pomysł na ścieżkę Biznes wziął się z rozmów z ludźmi, którzy prowadzą firmy i mierzą się z bardzo konkretnymi problemami. Chcą digitalizować biznes, automatyzować procesy czy wdrażać bardziej złożone systemy, ale często największym wyzwaniem jest znalezienie właściwych, zaufanych osób, które mogą im w tym pomóc. My takich ludzi znamy. To eksperci, którym ufamy i którzy przyjeżdżają na Programistok przede wszystkim po to, żeby dzielić się wiedzą, a nie sprzedawać swoje usługi.”
@@ -59,6 +61,13 @@ Programistok powstaje we współpracy i dzięki wsparciu Fundacji INFOTECH oraz 
 Partnerem Strategicznym Programistoku 2026 jest Województwo Podlaskie.
 
 Patronat Honorowy nad konferencją objęła Jej Magnificencja Rektor Politechniki Białostockiej dr hab. inż. Marta Kosior-Kazberuk, prof. PB.
+
+
+NAGRANIA DLA TYCH, KTÓRZY NIE DOTRĄ DO BIAŁEGOSTOKU
+
+Programistok od lat oddaje społeczności nagrania wystąpień. Tak będzie i w tym roku: jakiś czas po konferencji nagrania prezentacji trafią bezpłatnie na kanał Programistoku na YouTube, tak jak po poprzednich edycjach. Z wiedzy prelegentów skorzystają dzięki temu również osoby, które nie mogą być na miejscu w Białymstoku.
+
+Kanał Programistoku na YouTube: https://www.youtube.com/@programistok
 
 
 PROGRAMISTOK 2026
