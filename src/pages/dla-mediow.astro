@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import nota from '../data/nota-prasowa-2026.json';
 import kit from '../data/press-kit.json';
+import { venue } from '../lib/venue.js';
 
 const liczby = [
   { n: '2', label: 'dni konferencji', color: 'text-accent-ink' },
@@ -12,7 +13,7 @@ const liczby = [
 
 const fakty = [
   ['Termin', '25–26 września 2026'],
-  ['Miejsce', 'Politechnika Białostocka, Białystok'],
+  ['Miejsce', `${venue.name}, ${venue.street}, ${venue.city}`],
   ['Formuła', 'dwie równoległe ścieżki: IT i Biznes, jeden bilet do obu'],
   ['Partner Strategiczny', 'Województwo Podlaskie'],
   ['Patronat Honorowy', 'JM Rektor Politechniki Białostockiej dr hab. inż. Marta Kosior-Kazberuk, prof. PB'],
