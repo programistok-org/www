@@ -1,0 +1,14 @@
+---
+// Blok wspólny dla obu ścieżek: rejestracja, otwarcie, przerwa. Jeden wiersz
+// na całą szerokość, godzina z przodu, bez rozwijania.
+const { session } = Astro.props;
+---
+
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-dashed border-ink/20 px-4 py-3.5 sm:px-5">
+  {session.time && (
+    <time datetime={session.time} class="font-mono text-[15px] font-bold tabular-nums tracking-tight">{session.time}</time>
+  )}
+  {session.time && <span class="hidden h-4 w-px bg-line sm:block" aria-hidden="true"></span>}
+  <p class="text-[17px] font-black leading-tight tracking-[-0.02em]">{session.topic}</p>
+  {session.note && <p class="text-[15px] leading-snug text-muted">{session.note}</p>}
+</div>

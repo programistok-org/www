@@ -11,6 +11,11 @@ export const trackById = (id) => tracks.find((t) => t.id === id);
 export const sessionsFor = (trackId, day) =>
   agenda.sessions.filter((s) => s.track === trackId && s.day === day);
 
+// bloki wspólne dla obu ścieżek (rejestracja, otwarcie, przerwy) — track "all"
+export const ALL_TRACKS = 'all';
+export const commonFor = (day) =>
+  agenda.sessions.filter((s) => s.track === ALL_TRACKS && s.day === day);
+
 // prelekcje i case studies danej ścieżki, bez paneli i przerw w programie
 export const talksFor = (trackId) =>
   agenda.sessions.filter((s) => s.track === trackId && (s.kind === 'talk' || s.kind === 'lt'));

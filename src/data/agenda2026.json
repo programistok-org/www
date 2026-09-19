@@ -204,6 +204,25 @@
   ],
   "sessions": [
     {
+      "id": "d1-rejestracja",
+      "track": "all",
+      "day": 1,
+      "kind": "registration",
+      "time": "08:00",
+      "topic": "Rejestracja",
+      "speakers": [],
+      "note": "Odbiór identyfikatorów i kawa na start."
+    },
+    {
+      "id": "d1-otwarcie",
+      "track": "all",
+      "day": 1,
+      "kind": "opening",
+      "time": "09:00",
+      "topic": "Otwarcie konferencji",
+      "speakers": []
+    },
+    {
       "id": "it-d1-michal-franc",
       "track": "it",
       "day": 1,
