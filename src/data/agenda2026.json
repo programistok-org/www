@@ -202,6 +202,10 @@
       "name": "Marek Ziemba"
     },
     {
+      "id": "mateusz-zalewski",
+      "name": "Mateusz Zalewski"
+    },
+    {
       "id": "daniel-kaszynski",
       "name": "Daniel Kaszyński",
       "photo": "/prelegenci/daniel-kaszynski.webp",
@@ -398,7 +402,7 @@
       "track": "biznes",
       "day": 1,
       "kind": "lt",
-      "topic": "Case study LumoSteel",
+      "topic": "Własny system czy gotowy produkt? Case study LumoSteel",
       "abstract": "",
       "speakers": [
         "bartosz-awruk"
@@ -438,11 +442,22 @@
       ]
     },
     {
+      "id": "biznes-d1-mateusz-zalewski",
+      "track": "biznes",
+      "day": 1,
+      "kind": "lt",
+      "topic": "Kupić czy zbudować? Jak podejść do wyboru platformy e-commerce — case study Commerce Weavers",
+      "abstract": "",
+      "speakers": [
+        "mateusz-zalewski"
+      ]
+    },
+    {
       "id": "biznes-d1-panel",
       "track": "biznes",
       "day": 1,
       "kind": "panel",
-      "topic": "O oporze zespołu przed zmianą i problemach z wdrożeniem procesów",
+      "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
       "abstract": "",
       "speakers": [
         "daniel-kaszynski"
@@ -475,7 +490,7 @@
       "track": "biznes",
       "day": 1,
       "kind": "networking",
-      "topic": "Networking strukturyzowany (stoliki tematyczne)",
+      "topic": "Networking strukturyzowany (speed dating)",
       "abstract": "",
       "speakers": []
     },
@@ -561,7 +576,7 @@
       "track": "biznes",
       "day": 2,
       "kind": "panel",
-      "topic": "",
+      "topic": "AI w optymalizacji i automatyzacji procesów",
       "abstract": "",
       "speakers": []
     },
