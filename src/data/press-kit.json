@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-19",
+  "generated": "2026-09-21",
   "zip": {
     "href": "/press/programistok-2026-press-kit.zip",
     "size": "5.4 MB"
@@ -76,8 +76,8 @@
     }
   ],
   "prelegenci": {
-    "liczba": 28,
-    "zdjecia": 25,
+    "liczba": 30,
+    "zdjecia": 26,
     "bioMd": "/press/prelegenci/prelegenci-bio.md",
     "csv": "/press/prelegenci/prelegenci.csv",
     "osoby": [
@@ -246,7 +246,7 @@
         "name": "Bartosz Awruk",
         "photo": "/press/prelegenci/zdjecia/bartosz-awruk.jpg",
         "photoPosition": "50% 28%",
-        "topic": "Case study LumoSteel",
+        "topic": "Własny system czy gotowy produkt? Case study LumoSteel",
         "track": "Biznes"
       },
       {
@@ -275,6 +275,20 @@
         "photo": null,
         "photoPosition": null,
         "topic": "Jak zepsuć marketing i sprzedaż B2B technologią",
+        "track": "Biznes"
+      },
+      {
+        "name": "Mateusz Zalewski",
+        "photo": null,
+        "photoPosition": null,
+        "topic": "Kupić czy zbudować? Jak podejść do wyboru platformy e-commerce — case study Commerce Weavers",
+        "track": "Biznes"
+      },
+      {
+        "name": "Daniel Kaszyński",
+        "photo": "/press/prelegenci/zdjecia/daniel-kaszynski.jpg",
+        "photoPosition": null,
+        "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
         "track": "Biznes"
       }
     ]
