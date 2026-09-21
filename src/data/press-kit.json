@@ -2,7 +2,7 @@
   "generated": "2026-09-21",
   "zip": {
     "href": "/press/programistok-2026-press-kit.zip",
-    "size": "5.4 MB"
+    "size": "5.7 MB"
   },
   "nota": {
     "pdf": "/press/nota-prasowa/programistok-2026-nota-prasowa.pdf",
@@ -76,8 +76,8 @@
     }
   ],
   "prelegenci": {
-    "liczba": 30,
-    "zdjecia": 26,
+    "liczba": 31,
+    "zdjecia": 29,
     "bioMd": "/press/prelegenci/prelegenci-bio.md",
     "csv": "/press/prelegenci/prelegenci.csv",
     "osoby": [
@@ -106,8 +106,8 @@
         "name": "Łukasz Kałużny",
         "photo": "/press/prelegenci/zdjecia/lukasz-kaluzny.jpg",
         "photoPosition": null,
-        "topic": "AI bez szamanów — reality check",
-        "track": "Biznes"
+        "topic": "Twoja architektura nikogo nie obchodzi!",
+        "track": "IT"
       },
       {
         "name": "Oleksandr Lysenko",
@@ -258,23 +258,23 @@
       },
       {
         "name": "Konrad Zawistowski",
-        "photo": null,
+        "photo": "/press/prelegenci/zdjecia/konrad-zawistowski.jpg",
         "photoPosition": null,
-        "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.eu",
+        "topic": "Kiedy porażka projektu staje się sukcesem. Migracja z ERP-a do ERP-a — case study Ikonka.eu",
         "track": "Biznes"
       },
       {
         "name": "Krzysztof Kozłowski",
-        "photo": null,
+        "photo": "/press/prelegenci/zdjecia/krzysztof-kozlowski.jpg",
         "photoPosition": null,
         "topic": "Aplikacja self-made do prowadzenia produkcji — case study Inwestprodukt",
         "track": "Biznes"
       },
       {
         "name": "Marek Ziemba",
-        "photo": null,
+        "photo": "/press/prelegenci/zdjecia/marek-ziemba.jpg",
         "photoPosition": null,
-        "topic": "Jak zepsuć marketing i sprzedaż B2B technologią",
+        "topic": "Jak zepsuć marketing i sprzedaż B2B technologią — dramat w 5 aktach. O błędach w budowaniu revenue engine, które kosztują dużo więcej niż koszt narzędzi",
         "track": "Biznes"
       },
       {
@@ -287,6 +287,13 @@
       {
         "name": "Daniel Kaszyński",
         "photo": "/press/prelegenci/zdjecia/daniel-kaszynski.jpg",
+        "photoPosition": null,
+        "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
+        "track": "Biznes"
+      },
+      {
+        "name": "Dominika Wiśniewska",
+        "photo": null,
         "photoPosition": null,
         "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
         "track": "Biznes"

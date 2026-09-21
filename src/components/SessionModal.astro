@@ -1,7 +1,7 @@
 ---
 // Szczegóły sesji na pełnym ekranie: natywny <dialog>, więc Esc, focus trap
 // i warstwa nad stroną są za darmo. Otwiera go przycisk z data-open w siatce.
-import { peopleOf, timeRange } from '../lib/agenda.js';
+import { peopleOf, tbaLabel, timeRange } from '../lib/agenda.js';
 
 const { session, day, trackLabel } = Astro.props;
 
@@ -98,6 +98,7 @@ const initials = (name) =>
               </div>
               <div class="min-w-0">
                 <p class="text-2xl font-black tracking-[-0.02em]">{p.name}</p>
+                {p.org && <p class="mt-1 font-mono text-[13px] uppercase tracking-[0.12em] text-faint">{p.org}</p>}
                 <div class="mt-3 flex max-w-[64ch] flex-col gap-3">
                   {paragraphs(p.bio).map((t) => (
                     <p class="text-[15px] leading-relaxed text-muted text-pretty">{t}</p>
@@ -107,6 +108,7 @@ const initials = (name) =>
             </div>
           ))}
         </div>
+        {session.tba && <p class="mt-10 text-[15px] font-bold text-muted">{tbaLabel(session)}</p>}
       </div>
     )}
   </div>

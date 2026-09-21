@@ -2,7 +2,7 @@
 // Jeden blok na osi czasu. Wysokość wynika z czasu trwania, więc treść dopasowuje
 // się do miejsca; układ jest wszędzie ten sam: zdjęcie, godzina z nazwiskiem, temat.
 // Sesja ze szczegółami jest przyciskiem, który otwiera jej modal.
-import { peopleOf, hasDetails, ALL_TRACKS } from '../lib/agenda.js';
+import { peopleOf, namesOf, hasDetails, ALL_TRACKS } from '../lib/agenda.js';
 
 const { session } = Astro.props;
 
@@ -16,7 +16,7 @@ const kindLabel = { lt: 'Case study', panel: 'Panel', networking: 'Networking' }
 const people = peopleOf(session);
 const isTalk = session.kind === 'talk' || session.kind === 'lt';
 const lead = isTalk ? people.map((p) => p.name).join(', ') : session.topic || 'Temat wkrótce';
-const sub = isTalk ? session.topic || 'Temat wkrótce' : people.map((p) => p.name).join(', ') || session.note;
+const sub = isTalk ? session.topic || 'Temat wkrótce' : namesOf(session) || session.note;
 const [photoPerson] = people;
 
 // krótki slot (case study, 10–20 min): wszystko w dwóch linijkach

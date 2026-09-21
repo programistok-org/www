@@ -23,7 +23,7 @@ Jakub buduje systemy zaufania dla pieniędzy i rozbiera je dla sportu. Na co dzi
 Na Programistoku pokaże, co się dzieje, gdy bezpieczna komunikacja między usługami okazuje się ani autentyczna, ani prawdziwa, i dlaczego następne w kolejce jest Twoje API. Mówi z niewygodnej przestrzeni między formalną zgodnością z wymogami bezpieczeństwa a realnie sprawdzoną odpornością systemu.
 Zdjęcie: `zdjecia/jakub-sikora.jpg`
 ## Łukasz Kałużny
-**Ścieżka Biznes, dzień 1:** AI bez szamanów — reality check
+**Ścieżka IT, dzień 2:** Twoja architektura nikogo nie obchodzi!
 Technology Advisor i Managing Partner w Protopia. Zajmuje się technologią wtedy, kiedy jest jeszcze „za wcześnie”, a nie wtedy, kiedy już każdy ma na to slajd: Azure od 2013, kontenery od 2014 (Docker/Kubernetes), a LLM-y dłubał jeszcze przed erą ChatGPT. Lubi sprawdzać trendy w praktyce: co realnie dowozi wartość, co generuje dług, a co jest tylko ładną ściemą.
 
 W projektach kręci się wokół architektury, platform chmurowych, danych i automatyzacji, a także tego, jak to wszystko poskładać, żeby działało w rzeczywistości, a nie tylko na diagramie. Ma słabość do rozbrajania hype'u i opowieści z LinkedIna: od „AI-szamanii” po modne hasła, które dobrze wyglądają w poście, a gorzej w produkcji. Zwykle interesuje go moment, w którym kończy się magia, a zaczyna koszt, ryzyko i odpowiedzialność. Microsoft MVP nieprzerwanie od 2012. Współtwórca podcastu Patoarchitekci.
@@ -142,14 +142,22 @@ Zdjęcie: `zdjecia/bartosz-awruk.jpg`
 **Ścieżka Biznes, dzień 1:** Rzemiosło kontra AI. Case study 4szpaki
 Zdjęcie: `zdjecia/grzegorz-sienkiewicz.jpg`
 ## Konrad Zawistowski
-**Ścieżka Biznes, dzień 2:** Migracja z ERP-a do ERP-a — case study Ikonka.eu
-_Brak zdjęcia w paczce._
+**Ścieżka Biznes, dzień 2:** Kiedy porażka projektu staje się sukcesem. Migracja z ERP-a do ERP-a — case study Ikonka.eu
+Zdjęcie: `zdjecia/konrad-zawistowski.jpg`
 ## Krzysztof Kozłowski
 **Ścieżka Biznes, dzień 2:** Aplikacja self-made do prowadzenia produkcji — case study Inwestprodukt
-_Brak zdjęcia w paczce._
+Absolwent Wydziału Mechanicznego Politechniki Białostockiej, od kilkunastu lat odpowiedzialny za produkcję w firmie INWEST-PRODUKT w Białymstoku — producencie kanałów i kształtek wentylacyjnych, osprzętu wentylacyjnego oraz systemów wentylacji rozdzielaczowej.
+
+Inżynier mechanik, nie programista z wykształcenia. Jest autorem KRKOsynpro — systemu MES pisanego od zera w Django i PostgreSQL, wyłącznie na potrzeby własnego zakładu. System rozbudowywany modułami, wraz z kolejnymi problemami na hali. Zbiera dane bezpośrednio ze stanowisk produkcyjnych i daje bieżący podgląd produkcji zza biurka. Mniej pytań „na jakim to jest etapie", mniej decyzji podejmowanych na wyczucie.
+Zdjęcie: `zdjecia/krzysztof-kozlowski.jpg`
 ## Marek Ziemba
-**Ścieżka Biznes, dzień 2:** Jak zepsuć marketing i sprzedaż B2B technologią
-_Brak zdjęcia w paczce._
+**Ścieżka Biznes, dzień 2:** Jak zepsuć marketing i sprzedaż B2B technologią — dramat w 5 aktach. O błędach w budowaniu revenue engine, które kosztują dużo więcej niż koszt narzędzi
+Manager z 18-letnim doświadczeniem w pracy z podmiotami z sektora publicznego, biznesowego i pozarządowego. Fractional CMO. Od kilkunastu lat wspiera firmy zajmując się komunikacją marketingową ze szczególnym naciskiem na marketing B2B. Ma doświadczenie we wsparciu sprzedaży oraz budowie procesów marketingowo-sprzedażowych dla firm produktowych, w tym startupów i MŚP, oraz firm usługowych.
+
+Tworzy strategie go-to-market dla produktów i usług na rynku polskim i rynkach zagranicznych. Dużą część swojej drogi zawodowej poświęcił branży IT, gdzie od podstaw budował marketing w jednej z największych polskich firm będącej wówczas w procesie internacjonalizacji. Zajmował się także marketingiem i sprzedażą produktów software oraz łączących software i hardware w modelu SaaS. Współpracuje również z klientami z branży produkcyjnej. Zarządza zespołami, buduje procesy, wdraża produkty na rynki międzynarodowe.
+
+Z zamiłowania radiowiec i lektor z 20-letnim doświadczeniem w pracy z mikrofonem i wystąpieniach publicznych. TEDx Speaker. Posiada wykształcenie z zakresu public relations (Instytutu Stosowanych Nauk Społecznych Uniwersytetu Warszawskiego i Polska Akademia Nauk) oraz dyplomy i certyfikaty z zakresu strategii marketingu B2B (m.in. Columbia Business School).
+Zdjęcie: `zdjecia/marek-ziemba.jpg`
 ## Mateusz Zalewski
 **Ścieżka Biznes, dzień 1:** Kupić czy zbudować? Jak podejść do wyboru platformy e-commerce — case study Commerce Weavers
 _Brak zdjęcia w paczce._
@@ -157,3 +165,6 @@ _Brak zdjęcia w paczce._
 **Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
 Dr Daniel Kaszyński jest wykładowcą Szkoły Głównej Handlowej w Warszawie oraz partnerem zarządzającym w DS360, odpowiedzialnym za jakość rozwiązań wdrażających modele AI i uczenia maszynowego u klientów spółki. Był dwukrotnym laureatem studenckiego plebiscytu „Inspiracje Roku” na najlepszego wykładowcę SGH. Odpowiadał za przygotowanie wniosków badawczych o łącznym przyznanym budżecie ponad 60 mln PLN. W latach 2015–2022 pracował w Ernst & Young Consulting, a w dotychczasowej karierze zawodowej uczestniczył w ponad pięćdziesięciu projektach realizowanych dla klientów z sektora publicznego i prywatnego, m.in. Ministerstwa Zdrowia, Urzędu Komunikacji Elektronicznej, PGNiG, PKO BP oraz Google.
 Zdjęcie: `zdjecia/daniel-kaszynski.jpg`
+## Dominika Wiśniewska
+**Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
+_Brak zdjęcia w paczce._

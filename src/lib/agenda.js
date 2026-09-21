@@ -64,6 +64,13 @@ export const talksFor = (trackId) =>
 
 export const peopleOf = (session) => session.speakers.map((id) => byId[id]).filter(Boolean);
 
+// osoby jeszcze nieogłoszone (np. w panelu): liczba w polu tba sesji
+export const tbaLabel = (session) =>
+  session.tba ? `+ ${session.tba} ${session.tba === 1 ? 'osoba' : session.tba < 5 ? 'osoby' : 'osób'} wkrótce` : '';
+
+export const namesOf = (session) =>
+  [peopleOf(session).map((p) => p.name).join(', '), tbaLabel(session)].filter(Boolean).join(' ');
+
 // sesja + prelegent w kształcie, którego oczekuje SpeakerCard
 export const cardFor = (session) => {
   const [person] = peopleOf(session);
