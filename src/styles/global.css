@@ -117,3 +117,114 @@
     pointer-events: none;
   }
 }
+
+/* agenda: siatka czasu — px na minutę, linie co pół godziny, mocniejsze co godzinę */
+@layer components {
+  .timetable {
+    --ppm: 6.4px;
+  }
+
+  .tt-lines {
+    background-image:
+      linear-gradient(to bottom, rgb(20 19 15 / 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(20 19 15 / 0.05) 1px, transparent 1px);
+    background-size:
+      100% calc(var(--ppm) * 60),
+      100% calc(var(--ppm) * 30);
+    background-position:
+      0 calc(var(--ppm) * var(--offset-hour, 0)),
+      0 calc(var(--ppm) * var(--offset-half, 0));
+  }
+
+  /* telefon: widać jedną ścieżkę, wybraną zakładką */
+  @media (max-width: 63.999rem) {
+    .timetable[data-active='it'] [data-track='biznes'],
+    .timetable[data-active='biznes'] [data-track='it'] {
+      display: none;
+    }
+  }
+
+  .session-modal {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    outline: none;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+      overlay 0.25s allow-discrete,
+      display 0.25s allow-discrete;
+  }
+
+  .session-modal[open] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @starting-style {
+    .session-modal[open] {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+
+  .session-modal::backdrop {
+    background: transparent;
+  }
+
+  /* temat, który nie mieści się w krótkiej karcie, przewija się tam i z powrotem;
+     długość przesunięcia i czas liczy skrypt na stronie agendy */
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .marquee > span {
+    display: inline-block;
+  }
+
+  .marquee[data-overflow] {
+    text-overflow: clip;
+  }
+
+  .marquee[data-overflow] > span {
+    animation: marquee var(--marquee-duration, 6s) ease-in-out infinite alternate;
+  }
+
+  @keyframes marquee {
+    0%,
+    15% {
+      transform: translateX(0);
+    }
+    85%,
+    100% {
+      transform: translateX(var(--marquee-shift, 0));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee[data-overflow] {
+      text-overflow: ellipsis;
+    }
+
+    .marquee[data-overflow] > span {
+      display: inline;
+      animation: none !important;
+    }
+  }
+
+  html:has(.session-modal[open]) {
+    overflow: hidden;
+  }
+}

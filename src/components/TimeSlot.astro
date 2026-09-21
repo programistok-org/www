@@ -1,0 +1,97 @@
+---
+// Jeden blok na osi czasu. Wysokość wynika z czasu trwania, więc treść dopasowuje
+// się do miejsca; układ jest wszędzie ten sam: zdjęcie, godzina z nazwiskiem, temat.
+// Sesja ze szczegółami jest przyciskiem, który otwiera jej modal.
+import { peopleOf, hasDetails, ALL_TRACKS } from '../lib/agenda.js';
+
+const { session } = Astro.props;
+
+const track = {
+  it: { bar: 'border-l-accent', label: 'text-accent-ink', chip: 'bg-accent/10 text-accent-ink', hover: 'hover:border-accent/40 hover:bg-[#fdf2f4]' },
+  biznes: { bar: 'border-l-biz', label: 'text-biz-ink', chip: 'bg-biz/10 text-biz-ink', hover: 'hover:border-biz/40 hover:bg-[#fdf4ef]' },
+}[session.track];
+
+const kindLabel = { lt: 'Case study', panel: 'Panel', networking: 'Networking' }[session.kind];
+
+const people = peopleOf(session);
+const isTalk = session.kind === 'talk' || session.kind === 'lt';
+const lead = isTalk ? people.map((p) => p.name).join(', ') : session.topic || 'Temat wkrótce';
+const sub = isTalk ? session.topic || 'Temat wkrótce' : people.map((p) => p.name).join(', ') || session.note;
+const [photoPerson] = people;
+
+// krótki slot (case study, 10–20 min): wszystko w dwóch linijkach
+const short = session.length <= 25;
+const details = session.track !== ALL_TRACKS && hasDetails(session);
+const Tag = details ? 'button' : 'div';
+
+const initials = (name) =>
+  name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((p) => p[0].toUpperCase())
+    .join('');
+
+// bloki bez prelegenta: przerwy, lunch i wspólne punkty dnia
+const plain = {
+  break: 'bg-[#dcd7cd] text-ink/70',
+  lunch: 'bg-[#d2cbbe] text-ink',
+  registration: 'border border-dashed border-ink/25 bg-surface/60',
+  start: 'border border-dashed border-ink/25 bg-surface/60',
+  closing: 'border border-dashed border-ink/25 bg-surface/60',
+  opening: 'bg-ink text-cream',
+}[session.kind];
+---
+
+{plain ? (
+  <div class={`flex h-full flex-wrap content-start items-baseline gap-x-3 gap-y-0.5 overflow-hidden rounded-xl px-3.5 py-2 ${plain}`}>
+    <time datetime={session.time} class="font-mono text-[12px] tabular-nums tracking-tight opacity-80">{session.time}</time>
+    <p class={session.kind === 'break' ? 'text-[14px] font-bold' : 'text-[15px] font-black tracking-[-0.01em]'}>{session.topic}</p>
+    {session.note && <p class="w-full text-[13px] leading-snug opacity-75">{session.note}</p>}
+  </div>
+) : (
+  <Tag
+    type={details ? 'button' : undefined}
+    data-open={details ? `sesja-${session.id}` : undefined}
+    aria-haspopup={details ? 'dialog' : undefined}
+    class={`group flex h-full w-full overflow-hidden rounded-xl border border-l-[3px] border-line bg-surface text-left ${track.bar} ${
+      details ? `cursor-pointer transition ${track.hover} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink` : ''
+    } items-start gap-3 px-3 py-2`}
+  >
+    <div class="logo-mask h-10 w-11 shrink-0 bg-ink">
+      {isTalk && photoPerson?.photo ? (
+        <img
+          src={photoPerson.photo}
+          alt=""
+          loading="lazy"
+          class="h-full w-full object-cover object-[50%_22%]"
+          style={photoPerson.photoPosition ? `object-position:${photoPerson.photoPosition}` : undefined}
+        />
+      ) : (
+        <div class="flex h-full w-full items-center justify-center font-mono text-[11px] font-bold text-cream">
+          {isTalk && photoPerson ? initials(photoPerson.name) : '//'}
+        </div>
+      )}
+    </div>
+
+    <div class="min-w-0 flex-1">
+      <p class={`text-[15px] leading-tight ${short ? 'truncate' : 'line-clamp-2'}`}>
+        <time datetime={session.time} class={`mr-1.5 font-mono text-[12px] font-bold tabular-nums ${track.label}`}>{session.time}</time>
+        <span class="font-black tracking-[-0.02em]">{lead}</span>
+        {kindLabel && !short && (
+          <span class={`ml-1.5 inline-flex rounded-full px-1.5 py-px align-[0.15em] font-mono text-[9px] font-bold uppercase tracking-[0.1em] ${track.chip}`}>{kindLabel}</span>
+        )}
+      </p>
+      {sub && short && (
+        <p class="marquee mt-1 text-[13px] leading-snug text-muted" data-marquee><span>{sub}</span></p>
+      )}
+      {sub && !short && <p class="mt-1 line-clamp-3 text-[13px] leading-snug text-muted">{sub}</p>}
+    </div>
+
+    {details && (
+      <span
+        class={`ml-auto shrink-0 self-start font-mono text-[15px] leading-none opacity-40 transition group-hover:opacity-100 ${track.label}`}
+        aria-hidden="true"
+      >↗</span>
+    )}
+  </Tag>
+)}

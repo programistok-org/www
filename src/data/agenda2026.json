@@ -219,6 +219,7 @@
       "day": 1,
       "kind": "registration",
       "time": "08:00",
+      "end": "09:00",
       "topic": "Rejestracja",
       "speakers": [],
       "note": "Odbiór identyfikatorów i kawa na start."
@@ -229,14 +230,18 @@
       "day": 1,
       "kind": "opening",
       "time": "09:00",
+      "end": "09:30",
       "topic": "Otwarcie konferencji",
-      "speakers": []
+      "speakers": [],
+      "note": "W sali IT."
     },
     {
       "id": "it-d1-michal-franc",
       "track": "it",
       "day": 1,
       "kind": "talk",
+      "time": "09:40",
+      "end": "10:10",
       "topic": "Quo Vadis IT: odpowiedzialność, ownership i sprawczość, czyli dokąd zmierza rola inżyniera (na przykładzie Staff+)",
       "abstract": "2025 i 2026 to lata ciekawych zmian w naszej branży. Jest intensywnie, chaotycznie i trochę niepewnie. Ciężko jednoznacznie ocenić, jak będzie wyglądał rynek i na co będzie zapotrzebowanie. Mam swoje przewidywania i chcę się nimi podzielić na tej prezentacji, by trochę obniżyć poziom niepewności, ale też zmienić mapy mentalne innym, świeżym punktem widzenia.\n\nGdy wchodziłem na rynek (18 lat temu), bazą w naszym zawodzie była znajomość języka i frameworku, pisanie kodu czy specjalistyczna wiedza techniczna. Na tym budowało się seniority. Dzisiaj jednak coraz częściej mówi się o tym, że wartość inżyniera odsuwa się od pisania kodu w stronę odpowiedzialności za efekt. Ta rewolucja nie jest do końca rewolucją, jest ewolucją procesów, które zachodziły już od lat. LLM-y i AI są tutaj tylko akceleratorem, a nie czymś, co fundamentalnie zmienia zasady gry. Nowym fundamentem inżyniera staje się triada: odpowiedzialność za efekt, ownership problemu i sprawczość, czyli zdolność, żeby realnie coś dowieźć i wygenerować wartość. To one, a nie znajomość narzędzi, zaczynają definiować seniority. Junior/mid/senior przestaje znaczyć „zna framework”, a zaczyna znaczyć „potrafi samodzielnie wziąć problem na siebie i go dowieźć”.\n\nTen chaotyczny galimatias powoduje, że na rynku zaczęły pojawiać się nowe role, takie jak Staff Engineer czy Staff+ Engineer. Na przykładzie tej roli opowiem, jak ewoluowała branża i co dziś ceni.",
       "speakers": [
@@ -244,153 +249,12 @@
       ]
     },
     {
-      "id": "it-d1-kamil-kielbasa",
-      "track": "it",
-      "day": 1,
-      "kind": "talk",
-      "topic": "Mapy kontekstów — narzędzie decyzyjne architekta",
-      "abstract": "Prawie każdy zespół ma jakiś diagram architektury. Kwadraty, beczki, strzałki. Widać, co gdzie stoi i co się z czym łączy. Problem zaczyna się wtedy, gdy ktoś pyta, gdzie właściwie kończy się odpowiedzialność jednego zespołu, a zaczyna drugiego. Wtedy diagram milczy, bo pokazuje technikę, a pytanie dotyczy podziału domeny.\n\nMapa kontekstów odpowiada dokładnie na tę drugą warstwę. Dobra wiadomość jest taka, że nie trzeba jej rysować od zera, bo w dużej części siedzi już w tym, co macie na ścianie.\n\nPokażę, jak przełożyć diagram architektury na mapę kontekstów, a potem jak dołożyć do niej trzy rzeczy, dzięki którym zaczyna odpowiadać na konkretne pytania. Gdzie przebiega granica, kiedy każdy zespół uważa, że dana funkcjonalność należy do niego. Dlaczego zmiana w jednym miejscu wysypuje coś, co teoretycznie nie ma z nią nic wspólnego. Gdzie warto zainwestować czas dobrego zespołu, a co spokojnie można kupić.",
-      "speakers": [
-        "kamil-kielbasa"
-      ]
-    },
-    {
-      "id": "it-d1-grzegorz-wilczura",
-      "track": "it",
-      "day": 1,
-      "kind": "talk",
-      "topic": "Just in Time Architecture — architektura jako kod z użyciem Backstage",
-      "abstract": "Czytelna, przejrzysta i kompletna, a przede wszystkim aktualna! Zapraszam wszystkich, którzy mieliby problem, żeby opisać w ten sposób swoją dokumentację architektoniczną.\n\nW środowisku, w którym wiele zespołów równolegle wprowadza zmiany, a system jest rozproszony, często niełatwo jest się odnaleźć. I to nie tylko nowym pracownikom. Na prezentacji pokażę, jak można stworzyć „żywy” diagram architektury całego systemu, nawet gdy używa się multi-repo. Zademonstruję architekturę jako integralną część kodu, a jej zmiany jako element PR i Code Review.\n\nJęzyk programowania nie ma tu znaczenia, a znajomość Backstage nie jest potrzebna. Udokumentujemy nasz system z użyciem YAML-a, a Backstage nam go zwizualizuje.",
-      "speakers": [
-        "grzegorz-wilczura"
-      ]
-    },
-    {
-      "id": "it-d1-lightning",
-      "track": "it",
-      "day": 1,
-      "kind": "lightning",
-      "topic": "Lightning talks",
-      "abstract": "",
-      "speakers": [],
-      "note": "Zgłoszenia klasycznie na miejscu, w trakcie konferencji."
-    },
-    {
-      "id": "it-d1-panel",
-      "track": "it",
-      "day": 1,
-      "kind": "panel",
-      "topic": "Rola developera w czasach AI",
-      "abstract": "",
-      "speakers": [
-        "lukasz-kaluzny",
-        "michal-franc"
-      ]
-    },
-    {
-      "id": "it-d1-marcin-iwanowski",
-      "track": "it",
-      "day": 1,
-      "kind": "talk",
-      "topic": "Kiedy AI to za mało: Quantum",
-      "abstract": "W świecie zdominowanym trendem AI nie powinniśmy zapominać o innej rewolucji, która dzieje się na naszych oczach – Quantum. Programowanie kwantowe brzmi jak coś z laboratorium fizyków, ale dzięki Azure Quantum coraz częściej trafia w ręce specjalistów IT.\n\nW tej sesji pokażę, jak wygląda pierwsze spotkanie ze światem kubitów, superpozycji i algorytmów kwantowych. Porozmawiamy o tym: czym naprawdę jest programowanie kwantowe, jakie problemy może rozwiązywać, czy to przyszłość IT, czy raczej odległa ciekawostka. Na koniec przejdziemy do praktyki: napiszemy prosty program w Q# i uruchomimy go na prawdziwym komputerze kwantowym dostępnym przez Azure Quantum.\n\nJeśli po wielu sesjach o AI chcesz zobaczyć technologię, którą już dziś powinieneś się zainteresować – zapraszam!",
-      "speakers": [
-        "marcin-iwanowski"
-      ]
-    },
-    {
-      "id": "it-d1-radek-maziarka",
-      "track": "it",
-      "day": 1,
-      "kind": "talk",
-      "topic": "Context Engineering: architektura wiedzy dla efektywnego dostarczania",
-      "abstract": "Kod piszemy szybciej niż kiedykolwiek, ale czas od zgłoszenia do produkcji prawie się nie zmienił. Raport „The State of DevOps” pokazuje dlaczego: praca stricte deweloperska w całym procesie się kurczy, a żmudna, powtarzalna praca wokół niej rośnie jeszcze szybciej.\n\nTa prezentacja pokazuje, jak zbudować system wiedzy, dzięki któremu przyspieszenie obejmuje cały proces dostarczania. Zobaczysz, jak zmapować proces dostarczania i wiedzę, z jakiej korzysta się na każdym jego etapie, jak przełożyć tę mapę na scenariusze, które prowadzą agenta przez rozwiązanie danego problemu, oraz jak utrzymać system wiedzy zgodny z rzeczywistością, kiedy system produkcyjny się zmienia.",
-      "speakers": [
-        "radek-maziarka"
-      ]
-    },
-    {
-      "id": "it-d2-lukasz-kaluzny",
-      "track": "it",
-      "day": 2,
-      "kind": "talk",
-      "topic": "Twoja architektura nikogo nie obchodzi!",
-      "abstract": "Twoja architektura nikogo nie obchodzi, dopóki nie zacznie blokować dowożenia, kosztować fortunę albo wybuchnie na produkcji. Ta sesja jest o tym, jak naprawdę zapadają decyzje architektoniczne w firmach i dlaczego zawsze i tak wychodzi z tego problem.\n\nZamiast opowieści o „idealnej” architekturze, rozbierzemy na czynniki pierwsze to, co dzieje się naprawdę: dlaczego craftsmanship jako cel często przegrywa z dostarczaniem wartości, kto ma realne weto w decyzjach i jak projektować architekturę, która wygrywa w praktyce, bo pasuje do organizacji, a nie do diagramu.\n\nNa koniec przesuniemy ciężar na to, co zmienia AI i vibe coding: mniej walki o perfekcyjny kod, więcej projektowania kontroli. Granice, kontrakty, bezpieczeństwo, standardy i guardrails, które pozwalają dowozić szybciej, ale bez chaosu, niekontrolowanego długu i niespodzianek na produkcji.",
-      "speakers": [
-        "lukasz-kaluzny"
-      ]
-    },
-    {
-      "id": "it-d2-oleksandr-lysenko",
-      "track": "it",
-      "day": 2,
-      "kind": "talk",
-      "topic": "The Human vs. the LLM: Measuring AI Efficiency",
-      "abstract": "Ile naprawdę kosztuje, w energii, mocy obliczeniowej i zasobach, zastąpienie ludzkiego zadania przez LLM? Spojrzenie na efektywność AI przez pryzmat energii na jednostkę pracy oraz realnej ekonomii inteligencji ludzkiej i maszynowej.",
-      "speakers": [
-        "oleksandr-lysenko"
-      ]
-    },
-    {
-      "id": "it-d2-wojciech-kasa",
-      "track": "it",
-      "day": 2,
-      "kind": "talk",
-      "topic": "Residuality Theory na produkcji. Jak przewidzieć awarię, zanim wydarzy się naprawdę.",
-      "abstract": "Residuality Theory Barry'ego O'Reilly'ego to jedna z ciekawszych rzeczy, jaka wydarzyła się ostatnio w architekturze oprogramowania. Jest też jednocześnie często kwitowana zdaniem: „brzmi świetnie, ale jak to zastosować?”. Na tej prelekcji postaram się odpowiedzieć na to pytanie. Pokażę, jak użyliśmy Residuality Theory do przetestowania granic modularnego monolitu. Na warsztat weźmiemy krytyczną część produkcyjnej platformy dla branży insuretech: sprzedaż, rozliczenia i prowizje, czyli miejsce, gdzie płyną pieniądze i błędy kosztują najwięcej.\n\nNajpierw przejdziemy przez projektowanie stresorów, czyli to, jak realnie zdefiniować zagrożenia dla systemu (od tąpnięć biznesowych po nagłe zmiany regulacyjne KNF). Następnie omówię pracę z macierzą incydencji i to, jak namierzyć kruche miejsca w architekturze. Analiza wskazała u nas zupełnie inny komponent, niż podpowiadała intuicja zespołu. Pokażę też przełożenie teorii na kod, czyli jak z wyników tej symulacji wyciągnęliśmy konkretne decyzje architektoniczne (ADR) i przebudowaliśmy system przed wdrożeniem.",
-      "speakers": [
-        "wojciech-kasa"
-      ]
-    },
-    {
-      "id": "it-d2-lightning",
-      "track": "it",
-      "day": 2,
-      "kind": "lightning",
-      "topic": "Lightning talks",
-      "abstract": "",
-      "speakers": [],
-      "note": "Zgłoszenia klasycznie na miejscu, w trakcie konferencji."
-    },
-    {
-      "id": "it-d2-panel",
-      "track": "it",
-      "day": 2,
-      "kind": "panel",
-      "topic": "Czy potrzebujemy jeszcze architektów?",
-      "abstract": "",
-      "speakers": [
-        "grzegorz-wilczura",
-        "kamil-kielbasa"
-      ]
-    },
-    {
-      "id": "it-d2-hubert-lepicki",
-      "track": "it",
-      "day": 2,
-      "kind": "talk",
-      "topic": "Inżynieria oprogramowania w dobie agentów AI",
-      "abstract": "Od 1 stycznia 2026 roku nie napisałem ręcznie ani jednej linii kodu. Na razie się udaje — choć droga od pierwszych eksperymentów z vibe codingiem do skutecznej pracy z agentami okazała się znacznie bardziej stroma, niż sugerują internetowe demonstracje.\n\nNajczęstszy błąd? Usiąść przed komputerem, wpisać jeden prompt i oczekiwać gotowego, poprawnego i łatwego w utrzymaniu systemu. Kiedy rezultat okazuje się „AI slopem”, łatwo obwinić model. Tymczasem agent, podobnie jak człowiek, potrzebuje jasnych wymagań, informacji zwrotnej, odpowiednich narzędzi oraz procesu, który wymusza jakość.\n\nPokażę, jak przenieść do pracy z agentami praktyki, które od lat znamy z inżynierii oprogramowania: dopracowywanie ticketów, iteracyjne planowanie, TDD, testy jednostkowe i integracyjne, małe kroki, pull requesty oraz niezależne code review wykonywane przez innego agenta. Opowiem o błędach, które popełniłem, i o tym, jak zmienia się rola programisty: zamiast pisać każdą linię kodu, projektujemy środowisko, procedury i mechanizmy kontroli, dzięki którym agenci mogą dowozić oprogramowanie naprawdę nadające się do produkcji.\n\nNiezależnie od tego, czy delegujesz agentom już cały proces tworzenia kodu, czy dopiero zaczynasz, wyjdziesz z konkretnym modelem pracy — a nie kolejnym zbiorem magicznych promptów.",
-      "speakers": [
-        "hubert-lepicki"
-      ]
-    },
-    {
-      "id": "it-d2-jakub-sikora",
-      "track": "it",
-      "day": 2,
-      "kind": "talk",
-      "topic": "Przejęliśmy drony i wywaliliśmy je z mapy. To samo mogę zrobić z Twoją zabezpieczoną usługą",
-      "abstract": "System wyświetlał pozycje dronów, obserwacje i dane operacyjne. Komunikacja szyfrowana, profesjonalny panel, operatorzy mieli wszystkie powody, by ufać temu, co widzieli na mapie. Aż my, razem z 11 innymi zespołami, rozebraliśmy firmware i protokół, po czym wysłaliśmy ich drony w pilną misję prosto do wnętrza Ziemi.\n\nMożesz mieć własny format pakietów, stosować AES-ECB, efemeralne klucze z autodestrukcją, ale jeśli w autoryzacji jednego endpointa wprowadzisz głupiego buga, podszyjemy się pod Twoje urządzenie. Wyślemy poprawnie zaszyfrowaną, ale spreparowaną telemetrię, Twój frontend narysuje współrzędne idealnie, a reszta systemu i ludzie uwierzą w 100% w dane, które Ci wstrzyknęliśmy. Ta historia wydarzyła się podczas ćwiczeń Cyberlegionu, ale sam mechanizm jest zupełnie zwyczajny w całej branży. W ten sam sposób aplikacje ufają webhookom tylko dlatego, że przyszły przez HTTPS, tokenom JWT bez sprawdzania odbiorcy, wiadomościom z kolejki bez ochrony przed replay attack, czy danym z urządzeń, których nikt nie weryfikuje w kontekście biznesowym.\n\nPodczas prezentacji przejdziemy od analizy pakietu przez pięć warstw zaufania: tożsamość nadawcy, integralność, świeżość, autoryzacja i sens danych. Uczestnicy wyjdą z prostym modelem przeglądu API i systemów zdarzeniowych, plus trzema testami, które od razu mogą wrzucić do backlogu, bez kosztownej przebudowy całej produkcji. Szyfrowanie powie Ci, że ktoś nie przeczytał wiadomości, ale nie odpowie, kto ją napisał, kiedy powstała i czy system powinien na jej podstawie cokolwiek zrobić.",
-      "speakers": [
-        "jakub-sikora"
-      ]
-    },
-    {
       "id": "biznes-d1-adam-piotrowski",
       "track": "biznes",
       "day": 1,
       "kind": "talk",
+      "time": "09:40",
+      "end": "10:10",
       "topic": "Biznes nam nie ufa — i wcale im się nie dziwię",
       "abstract": "",
       "speakers": [
@@ -398,10 +262,22 @@
       ]
     },
     {
+      "id": "it-d1-przerwa-1010",
+      "track": "it",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "10:10",
+      "end": "10:45"
+    },
+    {
       "id": "biznes-d1-bartosz-awruk",
       "track": "biznes",
       "day": 1,
       "kind": "lt",
+      "time": "10:15",
+      "end": "10:25",
       "topic": "Własny system czy gotowy produkt? Case study LumoSteel",
       "abstract": "",
       "speakers": [
@@ -409,10 +285,35 @@
       ]
     },
     {
+      "id": "biznes-d1-przerwa-1025",
+      "track": "biznes",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "10:25",
+      "end": "10:45"
+    },
+    {
+      "id": "it-d1-kamil-kielbasa",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "time": "10:45",
+      "end": "11:15",
+      "topic": "Mapy kontekstów — narzędzie decyzyjne architekta",
+      "abstract": "Prawie każdy zespół ma jakiś diagram architektury. Kwadraty, beczki, strzałki. Widać, co gdzie stoi i co się z czym łączy. Problem zaczyna się wtedy, gdy ktoś pyta, gdzie właściwie kończy się odpowiedzialność jednego zespołu, a zaczyna drugiego. Wtedy diagram milczy, bo pokazuje technikę, a pytanie dotyczy podziału domeny.\n\nMapa kontekstów odpowiada dokładnie na tę drugą warstwę. Dobra wiadomość jest taka, że nie trzeba jej rysować od zera, bo w dużej części siedzi już w tym, co macie na ścianie.\n\nPokażę, jak przełożyć diagram architektury na mapę kontekstów, a potem jak dołożyć do niej trzy rzeczy, dzięki którym zaczyna odpowiadać na konkretne pytania. Gdzie przebiega granica, kiedy każdy zespół uważa, że dana funkcjonalność należy do niego. Dlaczego zmiana w jednym miejscu wysypuje coś, co teoretycznie nie ma z nią nic wspólnego. Gdzie warto zainwestować czas dobrego zespołu, a co spokojnie można kupić.",
+      "speakers": [
+        "kamil-kielbasa"
+      ]
+    },
+    {
       "id": "biznes-d1-piotr-werner",
       "track": "biznes",
       "day": 1,
       "kind": "talk",
+      "time": "10:45",
+      "end": "11:15",
       "topic": "Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?",
       "abstract": "W sezonie urlopowym 2026 r. nie ma już chyba na świecie szanującej się organizacji, która nie wdraża AI. Jak wiemy z materiałów reklamowych, to ekscytujący proces, prowadzący do zwielokrotnienia wartości firmy, przyśpieszenia procesów i uwolnienia ogromnych zasobów czasu. Armia agentów tylko czeka, by czuwać nad naszym sukcesem.\n\nMateriały reklamowe nie zawsze są jednak pisane przez ludzi (tu można by już postawić kropkę) zaangażowanych operacyjnie. Może się zdarzyć, że nie pokazują całej rzeczywistości. Może też być tak, że jeśli składniki, z których próbujemy wyczarować AI-ową zupkę nie są pierwszej jakości, potrawa może nie dostać gwiazdki Michelin.\n\nPiotrek podzieli się z nami doświadczeniem płynącym z bardziej i mniej udanych prób zastosowania AI w zespole marketingu Kuchni Vikinga. Będzie smacznie.",
       "speakers": [
@@ -420,10 +321,22 @@
       ]
     },
     {
+      "id": "it-d1-przerwa-1115",
+      "track": "it",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "11:15",
+      "end": "11:45"
+    },
+    {
       "id": "biznes-d1-piotr-janiak",
       "track": "biznes",
       "day": 1,
       "kind": "lt",
+      "time": "11:20",
+      "end": "11:30",
       "topic": "Zanim zbudujesz agenta AI, uporządkuj wiedzę. Lekcje z chaosu w organizacji",
       "abstract": "Pracując z klientami BIM Ally, wielokrotnie spotykaliśmy się z problemem, który początkowo wydawał się czysto organizacyjny: wiedza potrzebna do obsługi klientów, sprzedaży czy rozwoju produktu była rozproszona pomiędzy dokumentami, mailami, prezentacjami, systemami i — przede wszystkim — ludźmi.\n\nZ czasem zauważyliśmy, że problem nie polega tylko na tym, że trudno znaleźć informację. Trudniejsze jest ustalenie, która informacja jest aktualna, skąd pochodzi, kto może jej zaufać i co zrobić, gdy różne źródła mówią coś innego.\n\nOpowiem o tym, czego nauczyliśmy się, próbując wykorzystać AI w realnej organizacji — o miejscach, w których pojawia się chaos w firmowej wiedzy, o problemach, których nie widać na demonstracjach AI, oraz o tym, jak zmienia się podejście do sztucznej inteligencji, gdy przestajemy zakładać, że można jej bezgranicznie zaufać.",
       "speakers": [
@@ -431,10 +344,35 @@
       ]
     },
     {
+      "id": "biznes-d1-przerwa-1130",
+      "track": "biznes",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "11:30",
+      "end": "11:45"
+    },
+    {
+      "id": "it-d1-grzegorz-wilczura",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "time": "11:45",
+      "end": "12:15",
+      "topic": "Just in Time Architecture — architektura jako kod z użyciem Backstage",
+      "abstract": "Czytelna, przejrzysta i kompletna, a przede wszystkim aktualna! Zapraszam wszystkich, którzy mieliby problem, żeby opisać w ten sposób swoją dokumentację architektoniczną.\n\nW środowisku, w którym wiele zespołów równolegle wprowadza zmiany, a system jest rozproszony, często niełatwo jest się odnaleźć. I to nie tylko nowym pracownikom. Na prezentacji pokażę, jak można stworzyć „żywy” diagram architektury całego systemu, nawet gdy używa się multi-repo. Zademonstruję architekturę jako integralną część kodu, a jej zmiany jako element PR i Code Review.\n\nJęzyk programowania nie ma tu znaczenia, a znajomość Backstage nie jest potrzebna. Udokumentujemy nasz system z użyciem YAML-a, a Backstage nam go zwizualizuje.",
+      "speakers": [
+        "grzegorz-wilczura"
+      ]
+    },
+    {
       "id": "biznes-d1-norbert-pawluczuk",
       "track": "biznes",
       "day": 1,
       "kind": "talk",
+      "time": "11:45",
+      "end": "12:15",
       "topic": "Transformacja cyfrowa w branży produkcyjnej bez budżetu z kosmosu. Lekcje z wdrożenia Showroomu 3D i aplikacji myINTERTECH.",
       "abstract": "Praktyczne studium przypadku efektywnej cyfryzacji w branży produkcyjnej bez przepalania budżetu. Na przykładzie Showroomu 3D i aplikacji myINTERTECH prelegent omówi przechodzenie od celów biznesowych do działających narzędzi B2B. Dowiesz się, jak oceniać ROI, unikać nierentownych wdrożeń, optymalizować koszty IT oraz skutecznie wykorzystywać dofinansowania na rozwój oprogramowania. Konkretne lekcje ze styku biznesu, inżynierii i technologii.",
       "speakers": [
@@ -446,6 +384,8 @@
       "track": "biznes",
       "day": 1,
       "kind": "lt",
+      "time": "12:15",
+      "end": "12:30",
       "topic": "Kupić czy zbudować? Jak podejść do wyboru platformy e-commerce — case study Commerce Weavers",
       "abstract": "",
       "speakers": [
@@ -453,10 +393,44 @@
       ]
     },
     {
+      "id": "it-d1-lunch",
+      "track": "it",
+      "day": 1,
+      "kind": "lunch",
+      "topic": "Przerwa obiadowa",
+      "speakers": [],
+      "time": "12:15",
+      "end": "13:45"
+    },
+    {
+      "id": "biznes-d1-lunch",
+      "track": "biznes",
+      "day": 1,
+      "kind": "lunch",
+      "topic": "Przerwa obiadowa",
+      "speakers": [],
+      "time": "12:30",
+      "end": "14:00"
+    },
+    {
+      "id": "it-d1-lightning",
+      "track": "it",
+      "day": 1,
+      "kind": "lightning",
+      "time": "13:45",
+      "end": "14:45",
+      "topic": "Lightning talks",
+      "abstract": "",
+      "speakers": [],
+      "note": "Zgłoszenia klasycznie na miejscu, w trakcie konferencji."
+    },
+    {
       "id": "biznes-d1-panel",
       "track": "biznes",
       "day": 1,
       "kind": "panel",
+      "time": "14:00",
+      "end": "14:45",
       "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
       "abstract": "",
       "speakers": [
@@ -464,10 +438,26 @@
       ]
     },
     {
+      "id": "it-d1-panel",
+      "track": "it",
+      "day": 1,
+      "kind": "panel",
+      "time": "14:50",
+      "end": "15:20",
+      "topic": "Rola developera w czasach AI",
+      "abstract": "",
+      "speakers": [
+        "lukasz-kaluzny",
+        "michal-franc"
+      ]
+    },
+    {
       "id": "biznes-d1-michal-matejczyk",
       "track": "biznes",
       "day": 1,
       "kind": "talk",
+      "time": "14:50",
+      "end": "15:20",
       "topic": "Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.",
       "abstract": "Spojrzenie od strony konsultanta operacyjnego: jak jego klienci poradzili sobie z wdrożeniem systemu albo nie poradzili sobie wcale. Dlaczego jedni po 7 latach wciąż nie skończyli wdrożenia ERP, a inni dali radę.",
       "speakers": [
@@ -479,6 +469,8 @@
       "track": "biznes",
       "day": 1,
       "kind": "lt",
+      "time": "15:20",
+      "end": "15:30",
       "topic": "Rzemiosło kontra AI. Case study 4szpaki",
       "abstract": "Za dwa lata każdy konkurent będzie miał to samo AI, więc przewagą przestaje być narzędzie, a zostaje to, czego nie da się skopiować promptem. Pokażę, jak 4szpaki dzielą firmę na dwie prędkości: zaplecze automatyzujemy bez sentymentu, a produkt, identyfikację i miejsce budujemy ręcznie.",
       "speakers": [
@@ -486,21 +478,147 @@
       ]
     },
     {
+      "id": "it-d1-przerwa-1520",
+      "track": "it",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "15:20",
+      "end": "15:50"
+    },
+    {
+      "id": "biznes-d1-przerwa-1530",
+      "track": "biznes",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "15:30",
+      "end": "15:50"
+    },
+    {
+      "id": "it-d1-marcin-iwanowski",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "time": "15:50",
+      "end": "16:20",
+      "topic": "Kiedy AI to za mało: Quantum",
+      "abstract": "W świecie zdominowanym trendem AI nie powinniśmy zapominać o innej rewolucji, która dzieje się na naszych oczach – Quantum. Programowanie kwantowe brzmi jak coś z laboratorium fizyków, ale dzięki Azure Quantum coraz częściej trafia w ręce specjalistów IT.\n\nW tej sesji pokażę, jak wygląda pierwsze spotkanie ze światem kubitów, superpozycji i algorytmów kwantowych. Porozmawiamy o tym: czym naprawdę jest programowanie kwantowe, jakie problemy może rozwiązywać, czy to przyszłość IT, czy raczej odległa ciekawostka. Na koniec przejdziemy do praktyki: napiszemy prosty program w Q# i uruchomimy go na prawdziwym komputerze kwantowym dostępnym przez Azure Quantum.\n\nJeśli po wielu sesjach o AI chcesz zobaczyć technologię, którą już dziś powinieneś się zainteresować – zapraszam!",
+      "speakers": [
+        "marcin-iwanowski"
+      ]
+    },
+    {
       "id": "biznes-d1-networking",
       "track": "biznes",
       "day": 1,
       "kind": "networking",
+      "time": "15:50",
+      "end": "16:30",
       "topic": "Networking strukturyzowany (speed dating)",
       "abstract": "",
       "speakers": []
+    },
+    {
+      "id": "it-d1-przerwa-1620",
+      "track": "it",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "16:20",
+      "end": "16:45"
+    },
+    {
+      "id": "biznes-d1-przerwa-1630",
+      "track": "biznes",
+      "day": 1,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "16:30",
+      "end": "16:45"
+    },
+    {
+      "id": "it-d1-radek-maziarka",
+      "track": "it",
+      "day": 1,
+      "kind": "talk",
+      "time": "16:45",
+      "end": "17:15",
+      "topic": "Context Engineering: architektura wiedzy dla efektywnego dostarczania",
+      "abstract": "Kod piszemy szybciej niż kiedykolwiek, ale czas od zgłoszenia do produkcji prawie się nie zmienił. Raport „The State of DevOps” pokazuje dlaczego: praca stricte deweloperska w całym procesie się kurczy, a żmudna, powtarzalna praca wokół niej rośnie jeszcze szybciej.\n\nTa prezentacja pokazuje, jak zbudować system wiedzy, dzięki któremu przyspieszenie obejmuje cały proces dostarczania. Zobaczysz, jak zmapować proces dostarczania i wiedzę, z jakiej korzysta się na każdym jego etapie, jak przełożyć tę mapę na scenariusze, które prowadzą agenta przez rozwiązanie danego problemu, oraz jak utrzymać system wiedzy zgodny z rzeczywistością, kiedy system produkcyjny się zmienia.",
+      "speakers": [
+        "radek-maziarka"
+      ]
     },
     {
       "id": "biznes-d1-lukasz-kaluzny",
       "track": "biznes",
       "day": 1,
       "kind": "talk",
+      "time": "16:45",
+      "end": "17:15",
       "topic": "AI bez szamanów — reality check",
       "abstract": "",
+      "speakers": [
+        "lukasz-kaluzny"
+      ]
+    },
+    {
+      "id": "d1-zakonczenie",
+      "track": "all",
+      "day": 1,
+      "kind": "closing",
+      "topic": "Zakończenie dnia",
+      "speakers": [],
+      "time": "17:15",
+      "end": "17:25",
+      "hidden": true
+    },
+    {
+      "id": "d1-afterparty",
+      "track": "all",
+      "day": 1,
+      "kind": "afterparty",
+      "topic": "Afterparty",
+      "speakers": [],
+      "time": "20:00",
+      "end": "24:00",
+      "hidden": true
+    },
+    {
+      "id": "d2-rejestracja",
+      "track": "all",
+      "day": 2,
+      "kind": "registration",
+      "topic": "Rejestracja",
+      "speakers": [],
+      "time": "08:00",
+      "end": "09:30",
+      "note": "Odbiór identyfikatorów i poranna kawa."
+    },
+    {
+      "id": "d2-start",
+      "track": "all",
+      "day": 2,
+      "kind": "start",
+      "topic": "Rozpoczęcie dnia",
+      "speakers": [],
+      "time": "09:30",
+      "end": "09:40"
+    },
+    {
+      "id": "it-d2-lukasz-kaluzny",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "time": "09:40",
+      "end": "10:10",
+      "topic": "Twoja architektura nikogo nie obchodzi!",
+      "abstract": "Twoja architektura nikogo nie obchodzi, dopóki nie zacznie blokować dowożenia, kosztować fortunę albo wybuchnie na produkcji. Ta sesja jest o tym, jak naprawdę zapadają decyzje architektoniczne w firmach i dlaczego zawsze i tak wychodzi z tego problem.\n\nZamiast opowieści o „idealnej” architekturze, rozbierzemy na czynniki pierwsze to, co dzieje się naprawdę: dlaczego craftsmanship jako cel często przegrywa z dostarczaniem wartości, kto ma realne weto w decyzjach i jak projektować architekturę, która wygrywa w praktyce, bo pasuje do organizacji, a nie do diagramu.\n\nNa koniec przesuniemy ciężar na to, co zmienia AI i vibe coding: mniej walki o perfekcyjny kod, więcej projektowania kontroli. Granice, kontrakty, bezpieczeństwo, standardy i guardrails, które pozwalają dowozić szybciej, ale bez chaosu, niekontrolowanego długu i niespodzianek na produkcji.",
       "speakers": [
         "lukasz-kaluzny"
       ]
@@ -510,6 +628,8 @@
       "track": "biznes",
       "day": 2,
       "kind": "talk",
+      "time": "09:40",
+      "end": "10:10",
       "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
       "abstract": "Od bycia zalewanym wymaganiami klientów i działu handlowego oraz prób zadowolenia wszystkich, co kończyło się jedną wielką frustracją, do pipeline'u, który mamy dziś. Opowiem, jak go zbudowaliśmy, jak wciąż go ulepszamy i jak pilnujemy pewnych fundamentów — choćby tego, że Product Owner jest kluczowym decydentem.",
       "speakers": [
@@ -521,6 +641,8 @@
       "track": "biznes",
       "day": 2,
       "kind": "lt",
+      "time": "10:10",
+      "end": "10:20",
       "topic": "Migracja z ERP-a do ERP-a — case study Ikonka.eu",
       "abstract": "",
       "speakers": [
@@ -528,10 +650,45 @@
       ]
     },
     {
+      "id": "it-d2-przerwa-1010",
+      "track": "it",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "10:10",
+      "end": "10:45"
+    },
+    {
+      "id": "biznes-d2-przerwa-1020",
+      "track": "biznes",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "10:20",
+      "end": "10:45"
+    },
+    {
+      "id": "it-d2-oleksandr-lysenko",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "time": "10:45",
+      "end": "11:15",
+      "topic": "The Human vs. the LLM: Measuring AI Efficiency",
+      "abstract": "Ile naprawdę kosztuje, w energii, mocy obliczeniowej i zasobach, zastąpienie ludzkiego zadania przez LLM? Spojrzenie na efektywność AI przez pryzmat energii na jednostkę pracy oraz realnej ekonomii inteligencji ludzkiej i maszynowej.",
+      "speakers": [
+        "oleksandr-lysenko"
+      ]
+    },
+    {
       "id": "biznes-d2-maciej-lotkowski",
       "track": "biznes",
       "day": 2,
       "kind": "talk",
+      "time": "10:45",
+      "end": "11:15",
       "topic": "95% wdrożeń to zmarnowane pieniądze. Konsultanci i tak wystawią fakturę.",
       "abstract": "W firmie transportowej jest jeden człowiek, który wie, ile naprawdę kosztuje kurs do Hamburga. W produkcyjnej — jeden technolog, który umie wycenić zapytanie. W spedycji — jedna osoba, która pamięta, że ten klient zawsze płaci po 60 dniach. Ta wiedza to największy majątek firmy i nigdzie nie jest zapisana. Kiedy pan Zbyszek odchodzi na emeryturę, majątek wychodzi razem z nim.\n\nBadanie MIT na ponad 300 firmach pokazało, że 95% projektów z nowymi technologiami nie dało żadnego mierzalnego efektu finansowego, a w 2025 roku 42% firm porzuciło takie inicjatywy — rok wcześniej było to 17%. To nie technologia zawodzi, tylko podejście: wielki system, wdrażany latami, przebudowa całej firmy naraz. Czyli burzenie domu, w którym się mieszka.\n\nPokażę drogę na skróty, która działa: spisz jeden proces, uporządkuj dane w jednym miejscu i postaw obok pierwszego cyfrowego pomocnika. Dwutorowo — obok istniejących systemów, nie zamiast nich, więc niczego nie trzeba wyłączać. Będą konkretne przykłady z finansów, magazynu, spedycji, transportu i produkcji: oferta frachtu w 5 minut zamiast 40, rozliczenie miesiąca w godzinę zamiast trzech dni, wycena w 24 godziny zamiast trzech dni.\n\nBędzie też ostrzeżenie z praktyki: jeśli przyspieszysz ofertowanie trzykrotnie, a produkcja nie nadąży, zrobisz zator w sąsiednim pokoju. Dlatego mierzy się cały przepływ, od zapytania do zapłaconej faktury, a nie jeden punkt. Wyjdziesz z sali z jednym konkretnym krokiem do zrobienia w przyszłym tygodniu.",
       "speakers": [
@@ -543,6 +700,8 @@
       "track": "biznes",
       "day": 2,
       "kind": "lt",
+      "time": "11:15",
+      "end": "11:25",
       "topic": "Cyfryzacja w produkcji mebli — case study TOBO",
       "abstract": "",
       "speakers": [
@@ -550,10 +709,45 @@
       ]
     },
     {
+      "id": "it-d2-przerwa-1115",
+      "track": "it",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "11:15",
+      "end": "11:45"
+    },
+    {
+      "id": "biznes-d2-przerwa-1125",
+      "track": "biznes",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "11:25",
+      "end": "11:45"
+    },
+    {
+      "id": "it-d2-wojciech-kasa",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "time": "11:45",
+      "end": "12:15",
+      "topic": "Residuality Theory na produkcji. Jak przewidzieć awarię, zanim wydarzy się naprawdę.",
+      "abstract": "Residuality Theory Barry'ego O'Reilly'ego to jedna z ciekawszych rzeczy, jaka wydarzyła się ostatnio w architekturze oprogramowania. Jest też jednocześnie często kwitowana zdaniem: „brzmi świetnie, ale jak to zastosować?”. Na tej prelekcji postaram się odpowiedzieć na to pytanie. Pokażę, jak użyliśmy Residuality Theory do przetestowania granic modularnego monolitu. Na warsztat weźmiemy krytyczną część produkcyjnej platformy dla branży insuretech: sprzedaż, rozliczenia i prowizje, czyli miejsce, gdzie płyną pieniądze i błędy kosztują najwięcej.\n\nNajpierw przejdziemy przez projektowanie stresorów, czyli to, jak realnie zdefiniować zagrożenia dla systemu (od tąpnięć biznesowych po nagłe zmiany regulacyjne KNF). Następnie omówię pracę z macierzą incydencji i to, jak namierzyć kruche miejsca w architekturze. Analiza wskazała u nas zupełnie inny komponent, niż podpowiadała intuicja zespołu. Pokażę też przełożenie teorii na kod, czyli jak z wyników tej symulacji wyciągnęliśmy konkretne decyzje architektoniczne (ADR) i przebudowaliśmy system przed wdrożeniem.",
+      "speakers": [
+        "wojciech-kasa"
+      ]
+    },
+    {
       "id": "biznes-d2-gabriela-zaloga",
       "track": "biznes",
       "day": 2,
       "kind": "talk",
+      "time": "11:45",
+      "end": "12:15",
       "topic": "Czy ludzie naprawdę nie lubią zmian? O cyfryzacji z ludzką twarzą",
       "abstract": "Technologia to zaledwie 20% sukcesu wdrożenia. Pozostałe 80% to ludzie, którzy na co dzień będą z niej korzystać.\n\nWyobraź sobie, że wchodzisz do ulubionego sklepu pięć minut przed zamknięciem, a wszystkie produkty nagle leżą na zupełnie innych półkach. Frustracja? Chaos? Dokładnie tak samo reagują pracownicy na hali produkcyjnej, gdy z dnia na dzień obdarowujemy ich nowym systemem IT.\n\nInwestujemy w zaawansowane narzędzia klasy MES czy ERP, jednak wdrożenie rzadko rozbija się o samą technologię. Najczęściej zawodzi brak fundamentów, robienie rewolucji na siłę oraz opór zespołu. Pokutuje przekonanie, że wystarczy ogłosić zakup systemu, a reszta wydarzy się sama — tymczasem budowanie domu na słabych fundamentach zawsze kończy się tak samo.\n\nBazując na doświadczeniach z wdrożeń w sektorze produkcyjnym MŚP, przyjrzymy się temu procesowi bez marketingowego lukru. Przeanalizujemy, dlaczego potrzeba zmiany u managera nie oznacza automatycznie potrzeby w zespole oraz co zrobić, by cyfryzacja przestała być narzuconą z góry rewolucją, a stała się procesem, który ludzie po prostu zaakceptują.",
       "speakers": [
@@ -565,6 +759,8 @@
       "track": "biznes",
       "day": 2,
       "kind": "lt",
+      "time": "12:15",
+      "end": "12:30",
       "topic": "Aplikacja self-made do prowadzenia produkcji — case study Inwestprodukt",
       "abstract": "",
       "speakers": [
@@ -572,19 +768,69 @@
       ]
     },
     {
+      "id": "it-d2-lunch",
+      "track": "it",
+      "day": 2,
+      "kind": "lunch",
+      "topic": "Przerwa obiadowa",
+      "speakers": [],
+      "time": "12:15",
+      "end": "13:45"
+    },
+    {
+      "id": "biznes-d2-lunch",
+      "track": "biznes",
+      "day": 2,
+      "kind": "lunch",
+      "topic": "Przerwa obiadowa",
+      "speakers": [],
+      "time": "12:30",
+      "end": "14:00"
+    },
+    {
+      "id": "it-d2-lightning",
+      "track": "it",
+      "day": 2,
+      "kind": "lightning",
+      "time": "13:45",
+      "end": "14:45",
+      "topic": "Lightning talks",
+      "abstract": "",
+      "speakers": [],
+      "note": "Zgłoszenia klasycznie na miejscu, w trakcie konferencji."
+    },
+    {
       "id": "biznes-d2-panel",
       "track": "biznes",
       "day": 2,
       "kind": "panel",
+      "time": "14:00",
+      "end": "14:45",
       "topic": "AI w optymalizacji i automatyzacji procesów",
       "abstract": "",
       "speakers": []
+    },
+    {
+      "id": "it-d2-panel",
+      "track": "it",
+      "day": 2,
+      "kind": "panel",
+      "time": "14:50",
+      "end": "15:20",
+      "topic": "Czy potrzebujemy jeszcze architektów?",
+      "abstract": "",
+      "speakers": [
+        "grzegorz-wilczura",
+        "kamil-kielbasa"
+      ]
     },
     {
       "id": "biznes-d2-przemyslaw-jozwiakowski",
       "track": "biznes",
       "day": 2,
       "kind": "talk",
+      "time": "14:50",
+      "end": "15:20",
       "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
       "abstract": "Wszyscy mówią o AI, ale w dużych firmach wdrożenia wciąż grzęzną — i wcale nie dlatego, że technologia zawodzi. Na tej prezentacji pokażę, gdzie naprawdę pękają transformacje AI: w ludziach sparaliżowanych strachem i przeciążeniem, w przestarzałych systemach zamkniętych na integracje, i w starym sposobie myślenia, w którym wciąż „ja robię zadanie”, zamiast pozwolić agentowi pracować za mnie.\n\nW 30 minut rozłożę te przeszkody na czynniki pierwsze i pokażę, dlaczego atakowanie tylko jednej z nich to strata czasu. Wyjdziesz z konkretną mapą tego, co blokuje Twoją organizację — i wiedzą, od czego zacząć, żeby ruszyć z miejsca. Jeśli odpowiadasz za wdrażanie AI albo po prostu masz dość slajdów pełnych obietnic bez pokrycia, to jest prezentacja dla Ciebie.",
       "speakers": [
@@ -596,6 +842,8 @@
       "track": "biznes",
       "day": 2,
       "kind": "lt",
+      "time": "15:20",
+      "end": "15:30",
       "topic": "Zakup i wdrożenie oprogramowania okiem klienta — case study Panorama Druk",
       "abstract": "Spojrzenie z drugiej strony stołu: nie dostawcy, tylko firmy, która kupuje i wdraża system u siebie.\n\nOpowiem o tym, co skłoniło naszą firmę do zakupu oprogramowania, jak poszło nam samo wdrożenie, co moglibyśmy zrobić lepiej, żeby przebiegło sprawniej, oraz co mógłby zrobić dostawca oprogramowania, żeby było szybsze i łatwiejsze.",
       "speakers": [
@@ -603,10 +851,45 @@
       ]
     },
     {
+      "id": "it-d2-przerwa-1520",
+      "track": "it",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "15:20",
+      "end": "15:50"
+    },
+    {
+      "id": "biznes-d2-przerwa-1530",
+      "track": "biznes",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "15:30",
+      "end": "15:50"
+    },
+    {
+      "id": "it-d2-hubert-lepicki",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "time": "15:50",
+      "end": "16:20",
+      "topic": "Inżynieria oprogramowania w dobie agentów AI",
+      "abstract": "Od 1 stycznia 2026 roku nie napisałem ręcznie ani jednej linii kodu. Na razie się udaje — choć droga od pierwszych eksperymentów z vibe codingiem do skutecznej pracy z agentami okazała się znacznie bardziej stroma, niż sugerują internetowe demonstracje.\n\nNajczęstszy błąd? Usiąść przed komputerem, wpisać jeden prompt i oczekiwać gotowego, poprawnego i łatwego w utrzymaniu systemu. Kiedy rezultat okazuje się „AI slopem”, łatwo obwinić model. Tymczasem agent, podobnie jak człowiek, potrzebuje jasnych wymagań, informacji zwrotnej, odpowiednich narzędzi oraz procesu, który wymusza jakość.\n\nPokażę, jak przenieść do pracy z agentami praktyki, które od lat znamy z inżynierii oprogramowania: dopracowywanie ticketów, iteracyjne planowanie, TDD, testy jednostkowe i integracyjne, małe kroki, pull requesty oraz niezależne code review wykonywane przez innego agenta. Opowiem o błędach, które popełniłem, i o tym, jak zmienia się rola programisty: zamiast pisać każdą linię kodu, projektujemy środowisko, procedury i mechanizmy kontroli, dzięki którym agenci mogą dowozić oprogramowanie naprawdę nadające się do produkcji.\n\nNiezależnie od tego, czy delegujesz agentom już cały proces tworzenia kodu, czy dopiero zaczynasz, wyjdziesz z konkretnym modelem pracy — a nie kolejnym zbiorem magicznych promptów.",
+      "speakers": [
+        "hubert-lepicki"
+      ]
+    },
+    {
       "id": "biznes-d2-marek-ziemba",
       "track": "biznes",
       "day": 2,
       "kind": "talk",
+      "time": "15:50",
+      "end": "16:10",
       "topic": "Jak zepsuć marketing i sprzedaż B2B technologią",
       "abstract": "",
       "speakers": [
@@ -618,6 +901,8 @@
       "track": "biznes",
       "day": 2,
       "kind": "talk",
+      "time": "16:10",
+      "end": "16:30",
       "topic": "Wiedza organizacji w grafie, nie w głowach",
       "abstract": "Decyzje zapadają na spotkaniach. Ustalenia giną w wątkach na Slacku. Pół roku później nikt nie pamięta, dlaczego coś zrobiliście tak, a nie inaczej. Wiki miała to rozwiązać, ale dokumentowanie to osobna praca, której nikt nie robi. Nagrywanie wszystkiego też nie pomaga — macie „wszystko”, tylko trzeba wiedzieć, czego szukać.\n\nW Arkency zbudowaliśmy pamięć organizacji: graf wiedzy zasilany tym, co i tak codziennie wytwarzamy — transkryptami spotkań, wątkami ze Slacka, notatkami. AI wyciąga z nich ludzi, projekty, decyzje, ryzyka i zobowiązania. Nie robi tego na oko, tylko kieruje się ontologią: zamkniętą listą tego, co w naszej firmie uznajemy za wiedzę. Potem proponuje zmiany w grafie.\n\nSystem działa u nas na produkcji od kilku miesięcy. W grafie jest kilka tysięcy węzłów i krawędzi zbudowanych na podstawie kilkuset źródeł. Opowiem, jak to działa od środka i jakie decyzje okazały się najważniejsze. Porównam graf wiedzy z prostszymi i alternatywnymi podejściami — od wiki, przez RAG nad transkryptami, po GraphRAG od Microsoftu — i pokażę, gdzie każde z nich się kończy. Będzie o roli człowieka w całym procesie, o śledzeniu pochodzenia każdego faktu i o tym, gdzie graf się u nas nie sprawdził.\n\nTo prelekcja na ścieżkę biznesową, bez wchodzenia w implementację.",
       "speakers": [
@@ -625,15 +910,73 @@
       ]
     },
     {
+      "id": "it-d2-przerwa-1620",
+      "track": "it",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "16:20",
+      "end": "16:45"
+    },
+    {
+      "id": "biznes-d2-przerwa-1630",
+      "track": "biznes",
+      "day": 2,
+      "kind": "break",
+      "topic": "Przerwa kawowa",
+      "speakers": [],
+      "time": "16:30",
+      "end": "16:45"
+    },
+    {
+      "id": "it-d2-jakub-sikora",
+      "track": "it",
+      "day": 2,
+      "kind": "talk",
+      "time": "16:45",
+      "end": "17:15",
+      "topic": "Przejęliśmy drony i wywaliliśmy je z mapy. To samo mogę zrobić z Twoją zabezpieczoną usługą",
+      "abstract": "System wyświetlał pozycje dronów, obserwacje i dane operacyjne. Komunikacja szyfrowana, profesjonalny panel, operatorzy mieli wszystkie powody, by ufać temu, co widzieli na mapie. Aż my, razem z 11 innymi zespołami, rozebraliśmy firmware i protokół, po czym wysłaliśmy ich drony w pilną misję prosto do wnętrza Ziemi.\n\nMożesz mieć własny format pakietów, stosować AES-ECB, efemeralne klucze z autodestrukcją, ale jeśli w autoryzacji jednego endpointa wprowadzisz głupiego buga, podszyjemy się pod Twoje urządzenie. Wyślemy poprawnie zaszyfrowaną, ale spreparowaną telemetrię, Twój frontend narysuje współrzędne idealnie, a reszta systemu i ludzie uwierzą w 100% w dane, które Ci wstrzyknęliśmy. Ta historia wydarzyła się podczas ćwiczeń Cyberlegionu, ale sam mechanizm jest zupełnie zwyczajny w całej branży. W ten sam sposób aplikacje ufają webhookom tylko dlatego, że przyszły przez HTTPS, tokenom JWT bez sprawdzania odbiorcy, wiadomościom z kolejki bez ochrony przed replay attack, czy danym z urządzeń, których nikt nie weryfikuje w kontekście biznesowym.\n\nPodczas prezentacji przejdziemy od analizy pakietu przez pięć warstw zaufania: tożsamość nadawcy, integralność, świeżość, autoryzacja i sens danych. Uczestnicy wyjdą z prostym modelem przeglądu API i systemów zdarzeniowych, plus trzema testami, które od razu mogą wrzucić do backlogu, bez kosztownej przebudowy całej produkcji. Szyfrowanie powie Ci, że ktoś nie przeczytał wiadomości, ale nie odpowie, kto ją napisał, kiedy powstała i czy system powinien na jej podstawie cokolwiek zrobić.",
+      "speakers": [
+        "jakub-sikora"
+      ]
+    },
+    {
       "id": "biznes-d2-piotr-krych",
       "track": "biznes",
       "day": 2,
       "kind": "talk",
+      "time": "16:45",
+      "end": "17:15",
       "topic": "Możliwości narzędzi AI w codziennej pracy",
       "abstract": "O AI w pracy mówi się dużo, ale większość osób nietechnicznych kończy na tym samym: okno czatu, „napisz maila” i lekkie rozczarowanie. Gołe AI jest do niczego — model bez dostępu do niczego zna świat, ale nie zna Twojej firmy. Cała moc jest w podłączeniu: Microsoft 365, Google Docs, Calendar, Drive, SharePoint, a do tego warstwa własna, czyli baza wiedzy firmy i connectory do systemów sprzedażowo-księgowych.\n\nPokażę na żywo, jak od zera zbudować takiego asystenta: czym są connectory (demo na Google Calendar i KSeF MCP), czym jest skill, czyli rozpisana procedura zamiast pojedynczego zdania, oraz jak spiąć całość w Projects. Osobny blok poświęcę RODO i planowi Teams: brak trenowania modelu na danych firmy, administrator zarządzający connectorami, wymuszone konta firmowe i dashboard adopcji dla zarządu.\n\nWszystko na przykładach z mojej praktyki i ze szkoleń dla firm MŚP. Wyjdziesz z konkretnymi krokami na pierwszy tydzień wdrożenia — co kliknąć w poniedziałek rano.",
       "speakers": [
         "piotr-krych"
       ]
+    },
+    {
+      "id": "d2-zakonczenie",
+      "track": "all",
+      "day": 2,
+      "kind": "closing",
+      "topic": "Zakończenie konferencji",
+      "speakers": [],
+      "time": "17:15",
+      "end": "18:00",
+      "note": "Wspólnie, w sali IT.",
+      "hidden": true
+    },
+    {
+      "id": "d2-afterparty",
+      "track": "all",
+      "day": 2,
+      "kind": "afterparty",
+      "topic": "Afterparty",
+      "speakers": [],
+      "time": "20:00",
+      "end": "24:00",
+      "hidden": true
     }
   ]
 }

@@ -1,0 +1,24 @@
+---
+// Wspólny punkt dnia poza skalą siatki (rejestracja, otwarcie, zakończenie,
+// afterparty): pełne tło na szerokość obu ścieżek, napis na środku.
+import { timeRange } from '../lib/agenda.js';
+
+const { session } = Astro.props;
+
+const look = {
+  registration: 'bg-[#ebe7de] text-ink',
+  start: 'min-h-[96px] bg-[#d2cbbe] text-ink',
+  opening: 'min-h-[96px] bg-ink text-cream',
+  closing: 'bg-[#ebe7de] text-ink',
+  afterparty: 'min-h-[96px] bg-accent text-white',
+}[session.kind] ?? 'bg-[#ebe7de] text-ink';
+---
+
+<div class="grid grid-cols-[42px_1fr] items-center gap-x-2.5 lg:grid-cols-[52px_1fr] lg:gap-x-5">
+  <span class="text-right font-mono text-[12px] font-bold tabular-nums text-faint">{session.time}</span>
+  <div class={`flex min-h-[72px] flex-col items-center justify-center rounded-3xl px-6 py-4 text-center ${look}`}>
+    <time datetime={session.time} class="font-mono text-[12px] font-bold tabular-nums tracking-tight opacity-75">{timeRange(session)}</time>
+    <p class="mt-0.5 text-[19px] font-black tracking-[-0.02em]">{session.topic}</p>
+    {session.note && <p class="mt-0.5 text-[14px] opacity-75">{session.note}</p>}
+  </div>
+</div>

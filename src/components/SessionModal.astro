@@ -1,0 +1,113 @@
+---
+// Szczegóły sesji na pełnym ekranie: natywny <dialog>, więc Esc, focus trap
+// i warstwa nad stroną są za darmo. Otwiera go przycisk z data-open w siatce.
+import { peopleOf, timeRange } from '../lib/agenda.js';
+
+const { session, day, trackLabel } = Astro.props;
+
+const theme = {
+  it: { bar: 'bg-accent', label: 'text-accent-ink', chip: 'bg-accent/10 text-accent-ink' },
+  biznes: { bar: 'bg-biz', label: 'text-biz-ink', chip: 'bg-biz/10 text-biz-ink' },
+}[session.track];
+
+const kindLabel = { talk: 'Prelekcja', lt: 'Case study', panel: 'Panel', lightning: 'Lightning talks', networking: 'Networking' }[session.kind];
+
+const paragraphs = (text) =>
+  (text || '')
+    .split(/\n{2,}/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+const people = peopleOf(session);
+const isTalk = session.kind === 'talk' || session.kind === 'lt';
+const id = `sesja-${session.id}`;
+
+const initials = (name) =>
+  name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((p) => p[0].toUpperCase())
+    .join('');
+---
+
+<dialog id={id} class="session-modal" aria-labelledby={`${id}-title`}>
+  <div class={`h-1.5 w-full ${theme.bar}`}></div>
+  <div class="mx-auto flex min-h-[calc(100%-6px)] max-w-[860px] flex-col px-5 pb-20 pt-5 sm:px-10 sm:pt-8">
+    <div class="flex items-center justify-between gap-4">
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[12px] uppercase tracking-[0.14em] text-faint">
+        <span class={`inline-flex items-center gap-2 font-bold ${theme.label}`}>
+          <span class={`h-2.5 w-2.5 rounded-[3px] ${theme.bar}`} aria-hidden="true"></span>Ścieżka {trackLabel}
+        </span>
+        <span aria-hidden="true">//</span>
+        <span>{day.label} · {day.dateLabel}</span>
+        <span aria-hidden="true">//</span>
+        <span class="font-bold text-ink">{timeRange(session)}</span>
+      </p>
+      <form method="dialog">
+        <button
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-xl leading-none transition hover:border-ink/30"
+          aria-label="Zamknij"
+        >×</button>
+      </form>
+    </div>
+
+    <div class="mt-12 sm:mt-16">
+      {kindLabel && (
+        <span class={`inline-flex rounded-full px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.12em] ${theme.chip}`}>
+          {kindLabel}
+        </span>
+      )}
+      {isTalk && people.length > 0 && (
+        <p class="mt-5 text-[clamp(1.125rem,2.2vw,1.375rem)] font-bold tracking-[-0.01em] text-muted">
+          {people.map((p) => p.name).join(', ')}
+        </p>
+      )}
+      <h2 id={`${id}-title`} class="mt-2 text-balance text-[clamp(2rem,5vw,3.5rem)] font-black leading-[1.02] tracking-[-0.035em]">
+        {session.topic || 'Temat wkrótce'}
+      </h2>
+    </div>
+
+    {paragraphs(session.abstract).length > 0 && (
+      <div class="mt-10 flex max-w-[64ch] flex-col gap-4">
+        {paragraphs(session.abstract).map((p) => (
+          <p class="text-[clamp(1.0625rem,1.6vw,1.25rem)] leading-relaxed text-ink/85 text-pretty">{p}</p>
+        ))}
+      </div>
+    )}
+
+    {people.length > 0 && (
+      <div class="mt-14 border-t border-line pt-10">
+        <p class={`mb-8 font-mono text-[12px] uppercase tracking-[0.14em] ${theme.label}`}>
+          {people.length > 1 ? 'Na scenie' : 'Prowadzi'}
+        </p>
+        <div class="flex flex-col gap-10">
+          {people.map((p) => (
+            <div class="flex flex-col gap-5 sm:flex-row sm:gap-8">
+              <div class="logo-mask h-28 w-32 shrink-0 bg-ink">
+                {p.photo ? (
+                  <img
+                    src={p.photo}
+                    alt={p.name}
+                    loading="lazy"
+                    class="h-full w-full object-cover object-[50%_22%]"
+                    style={p.photoPosition ? `object-position:${p.photoPosition}` : undefined}
+                  />
+                ) : (
+                  <div class="flex h-full w-full items-center justify-center font-mono text-lg font-bold text-cream">{initials(p.name)}</div>
+                )}
+              </div>
+              <div class="min-w-0">
+                <p class="text-2xl font-black tracking-[-0.02em]">{p.name}</p>
+                <div class="mt-3 flex max-w-[64ch] flex-col gap-3">
+                  {paragraphs(p.bio).map((t) => (
+                    <p class="text-[15px] leading-relaxed text-muted text-pretty">{t}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</dialog>

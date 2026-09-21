@@ -1,0 +1,97 @@
+---
+// Plan jednego dnia. Wspólne punkty (rejestracja, otwarcie, zakończenie,
+// afterparty) to pasy poza skalą. Pomiędzy nimi siatka: godziny po lewej, każda
+// ścieżka jako panel z liniami co pół godziny, bloki ustawione i wysokie
+// proporcjonalnie do czasu (--ppm, px na minutę).
+// Na telefonie jedna ścieżka naraz, przełączana zakładkami.
+import TimeSlot from './TimeSlot.astro';
+import DayBand from './DayBand.astro';
+import SessionModal from './SessionModal.astro';
+import { dayTimeline, hasDetails } from '../lib/agenda.js';
+
+const { day } = Astro.props;
+const tl = dayTimeline(day.id);
+
+const theme = {
+  it: { bar: 'bg-accent', tab: 'aria-selected:bg-accent' },
+  biznes: { bar: 'bg-biz', tab: 'aria-selected:bg-biz' },
+};
+const colStart = ['lg:col-start-2', 'lg:col-start-3'];
+
+const at = (s) => `top:calc(var(--ppm) * ${s.top} + 3px);height:calc(var(--ppm) * ${s.length} - 6px)`;
+const withDetails = tl.tracks.flatMap((t) => t.sessions.filter(hasDetails).map((s) => ({ s, t })));
+---
+
+<div
+  class="timetable mt-8"
+  data-timetable
+  data-active={tl.tracks[0].id}
+  style={`--len:${tl.length};--offset-hour:${tl.offsetHour};--offset-half:${tl.offsetHalf}`}
+>
+  {tl.before.length > 0 && (
+    <div class="mb-3 flex flex-col gap-2">
+      {tl.before.map((s) => <DayBand session={s} />)}
+    </div>
+  )}
+
+  <div class="sticky top-[68px] z-30 -mx-1 mb-3 flex gap-2 bg-bg/90 px-1 py-2.5 backdrop-blur lg:hidden" role="tablist" aria-label="Ścieżka">
+    {tl.tracks.map((t, i) => (
+      <button
+        type="button"
+        role="tab"
+        data-tab={t.id}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        class={`flex-1 rounded-full border border-line bg-surface px-4 py-2.5 text-[14px] font-black uppercase tracking-[0.08em] transition aria-selected:border-transparent aria-selected:text-white ${theme[t.id].tab}`}
+      >
+        {t.label}
+      </button>
+    ))}
+  </div>
+
+  <div class="grid grid-cols-[42px_1fr] gap-x-2.5 lg:grid-cols-[52px_1fr_1fr] lg:gap-x-5">
+    {tl.tracks.map((t, i) => (
+      <div
+        data-track={t.id}
+        id={day.id === 1 ? t.id : undefined}
+        class={`sticky top-[68px] z-20 col-start-2 row-start-1 hidden scroll-mt-24 items-center gap-2.5 rounded-t-3xl border border-b-0 border-line bg-[#ebe7de] px-5 py-4 lg:flex ${colStart[i]}`}
+      >
+        <span class={`h-2.5 w-2.5 shrink-0 rounded-[3px] ${theme[t.id].bar}`} aria-hidden="true"></span>
+        <h3 class="text-[15px] font-black uppercase tracking-[0.08em]">Ścieżka {t.label}</h3>
+      </div>
+    ))}
+
+    <div class="relative col-start-1 row-start-2" aria-hidden="true">
+      {tl.hours.map((h) => (
+        <span
+          class="absolute right-0 -translate-y-1/2 font-mono text-[12px] font-bold tabular-nums text-faint"
+          style={`top:calc(var(--ppm) * ${h.top})`}
+        >{h.label}</span>
+      ))}
+    </div>
+
+    {tl.tracks.map((t, i) => (
+      <div
+        data-track={t.id}
+        class={`tt-lines relative col-start-2 row-start-2 overflow-hidden rounded-3xl border border-line bg-[#ebe7de] lg:rounded-t-none ${colStart[i]}`}
+        style="height:calc(var(--ppm) * var(--len))"
+      >
+        <span class="sr-only">Ścieżka {t.label}</span>
+        {t.sessions.map((s) => (
+          <div class="absolute inset-x-2" style={at(s)}>
+            <TimeSlot session={s} />
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  {tl.after.length > 0 && (
+    <div class="mt-3 flex flex-col gap-2">
+      {tl.after.map((s) => <DayBand session={s} />)}
+    </div>
+  )}
+
+  {withDetails.map(({ s, t }) => (
+    <SessionModal session={s} day={day} trackLabel={t.label} />
+  ))}
+</div>
