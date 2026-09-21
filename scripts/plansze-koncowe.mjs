@@ -1,4 +1,4 @@
-// Plansze końcowe do pionowych filmów (9:16): wsparcie, partner strategiczny, sponsorzy.
+// Plansze końcowe do pionowych filmów (9:16): wsparcie, partner strategiczny, patronat, sponsorzy, partnerzy.
 // Ten sam język co posty sponsorskie (ciemne tło, białe kafelki, mono podpisy), tyle że
 // układ robi HTML/CSS w headless Chrome, bo przy kilkunastu logotypach canvas byłby męczarnią.
 //
@@ -44,6 +44,13 @@ const boards = [
     items: [{ name: 'Województwo Podlaskie', logo: 'wojewodztwo-podlaskie.svg' }],
   },
   {
+    slug: 'patronat-honorowy',
+    tier: 'Dziękujemy',
+    head: ['PATRONAT', 'HONOROWY'],
+    cols: 1,
+    items: [{ name: 'Patronat Rektor Politechniki Białostockiej', logo: 'patronat-rektora-pb.svg' }],
+  },
+  {
     slug: 'sponsorzy',
     // bez nagłówka: jedenaście logotypów potrzebuje całej wysokości
     tier: 'Sponsorzy',
@@ -63,6 +70,22 @@ const boards = [
       // logo w bieli, więc ciemny kafelek zamiast białego
       { name: 'Spyrosoft', logo: 'spyrosoft-white.png', dark: true },
       { name: 'devstyle', logo: 'devstyle.png' },
+    ],
+  },
+  {
+    slug: 'partnerzy',
+    tier: 'Partnerzy',
+    head: [],
+    cols: 2,
+    items: [
+      { name: 'Google for Education', logo: 'google-for-education.svg' },
+      { name: 'Izba Przemysłowo-Handlowa w Białymstoku', logo: 'iph.svg' },
+      { name: 'Podlaska Fundacja Rozwoju Regionalnego', logo: 'pfrr.svg' },
+      // herb na granatowej płycie, więc kafelek w tym samym kolorze
+      { name: 'Podlaski Klub Biznesu', logo: 'pkb.webp', bg: '#0b214e' },
+      { name: 'Evoluma', logo: 'evoluma.svg' },
+      { name: '4Podlaskie', logo: '4podlaskie.svg' },
+      { name: 'Białostocki Park Naukowo-Technologiczny', logo: 'bpnt.svg' },
     ],
   },
 ];

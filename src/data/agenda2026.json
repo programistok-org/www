@@ -200,6 +200,12 @@
     {
       "id": "marek-ziemba",
       "name": "Marek Ziemba"
+    },
+    {
+      "id": "daniel-kaszynski",
+      "name": "Daniel Kaszyński",
+      "photo": "/prelegenci/daniel-kaszynski.webp",
+      "bio": "Dr Daniel Kaszyński jest wykładowcą Szkoły Głównej Handlowej w Warszawie oraz partnerem zarządzającym w DS360, odpowiedzialnym za jakość rozwiązań wdrażających modele AI i uczenia maszynowego u klientów spółki. Był dwukrotnym laureatem studenckiego plebiscytu „Inspiracje Roku” na najlepszego wykładowcę SGH. Odpowiadał za przygotowanie wniosków badawczych o łącznym przyznanym budżecie ponad 60 mln PLN. W latach 2015–2022 pracował w Ernst & Young Consulting, a w dotychczasowej karierze zawodowej uczestniczył w ponad pięćdziesięciu projektach realizowanych dla klientów z sektora publicznego i prywatnego, m.in. Ministerstwa Zdrowia, Urzędu Komunikacji Elektronicznej, PGNiG, PKO BP oraz Google."
     }
   ],
   "sessions": [
@@ -438,7 +444,9 @@
       "kind": "panel",
       "topic": "O oporze zespołu przed zmianą i problemach z wdrożeniem procesów",
       "abstract": "",
-      "speakers": []
+      "speakers": [
+        "daniel-kaszynski"
+      ]
     },
     {
       "id": "biznes-d1-michal-matejczyk",
@@ -457,7 +465,7 @@
       "day": 1,
       "kind": "lt",
       "topic": "Rzemiosło kontra AI. Case study 4szpaki",
-      "abstract": "",
+      "abstract": "Za dwa lata każdy konkurent będzie miał to samo AI, więc przewagą przestaje być narzędzie, a zostaje to, czego nie da się skopiować promptem. Pokażę, jak 4szpaki dzielą firmę na dwie prędkości: zaplecze automatyzujemy bez sentymentu, a produkt, identyfikację i miejsce budujemy ręcznie.",
       "speakers": [
         "grzegorz-sienkiewicz"
       ]

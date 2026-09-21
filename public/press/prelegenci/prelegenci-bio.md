@@ -150,3 +150,7 @@ _Brak zdjęcia w paczce._
 ## Marek Ziemba
 **Ścieżka Biznes, dzień 2:** Jak zepsuć marketing i sprzedaż B2B technologią
 _Brak zdjęcia w paczce._
+## Daniel Kaszyński
+**Ścieżka Biznes, dzień 1:** O oporze zespołu przed zmianą i problemach z wdrożeniem procesów
+Dr Daniel Kaszyński jest wykładowcą Szkoły Głównej Handlowej w Warszawie oraz partnerem zarządzającym w DS360, odpowiedzialnym za jakość rozwiązań wdrażających modele AI i uczenia maszynowego u klientów spółki. Był dwukrotnym laureatem studenckiego plebiscytu „Inspiracje Roku” na najlepszego wykładowcę SGH. Odpowiadał za przygotowanie wniosków badawczych o łącznym przyznanym budżecie ponad 60 mln PLN. W latach 2015–2022 pracował w Ernst & Young Consulting, a w dotychczasowej karierze zawodowej uczestniczył w ponad pięćdziesięciu projektach realizowanych dla klientów z sektora publicznego i prywatnego, m.in. Ministerstwa Zdrowia, Urzędu Komunikacji Elektronicznej, PGNiG, PKO BP oraz Google.
+Zdjęcie: `zdjecia/daniel-kaszynski.jpg`
