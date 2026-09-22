@@ -29,6 +29,7 @@ const LOGOS = [
   { name: 'Evoluma', file: '/evoluma.svg' },
   { name: 'BPN-T', file: '/bpnt.svg' },
   { name: '4Podlaskie', file: '/4podlaskie.svg' },
+  { name: 'Polskie Towarzystwo Gospodarcze', file: '/ptg.svg' },
   { name: 'Simpligo', file: '/simpligo.png' },
   { name: 'devstyle', file: '/devstyle.png' },
   { name: 'Spyrosoft', file: '/spyrosoft-white.png' },
@@ -76,6 +77,7 @@ const LOGOS = [
             <option value="speaker">Prelegent (PNG + video)</option>
             <option value="static">Statyczna (emoji + tekst, PNG)</option>
             <option value="sponsor">Sponsor / partner (logo, PNG)</option>
+            <option value="carousel">Karuzela (slajdy, ZIP + PDF)</option>
           </select>
         </div>
 
@@ -122,6 +124,60 @@ JEST</textarea>
           <input id="cardScale" type="range" min="0.4" max="1" step="0.01" value="1" />
         </div>
 
+        <div class="field" data-only="carousel">
+          <label>Slajdy (--- = nowy slajd)</label>
+          <textarea id="slides" style="min-height:320px;font-size:13px;line-height:1.45">ILE KOSZTUJE TWOJĄ FIRMĘ ZŁA DECYZJA TECHNOLOGICZNA?
+
+Miesiące pracy, budżet i cierpliwość zespołu.
+
+*Na pewno więcej niż 192 zł.
+---
+KUPIĆ GOTOWY SYSTEM CZY ZBUDOWAĆ WŁASNY?
+
+Gotowiec, własne rozwiązanie, kolejna integracja. Każda opcja ma swoją cenę.
+
+*Na Programistoku poznasz ją od ludzi, którzy już ją zapłacili.
+---
+GDZIE AI ZARABIA NA SIEBIE, A GDZIE PRZEPALA BUDŻET?
+
+Wdrożenia AI opowiedziane przez ludzi, którzy sprawdzili je we własnych firmach.
+
+*Co działa, co zawiodło i ile to kosztowało.
+---
+ERP. CYFRYZACJA.
+AUTOMATYZACJA.
+
+Historie firm, które przeszły przez wdrożenie od pierwszej decyzji do efektów.
+
+*Co zrobiłyby dziś inaczej i dlaczego.
+---
+PRAKTYCY POKAZUJĄ BŁĘDY, KTÓRYCH MOŻESZ UNIKNĄĆ.
+
+Na scenie: doświadczenia, pomyłki i twarde efekty.
+
+*A w przerwach rozmawiasz z ludźmi, którzy mają za sobą te same decyzje.
+---
+JEDEN BŁĄD MOŻE KOSZTOWAĆ MIESIĄCE.
+
+Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
+
+!192 ZŁ
+
+>PROGRAMISTOK.ORG</textarea>
+          <small>Pierwszy akapit = nagłówek, reszta = treść (akapity oddziela pusta linia).
+            Prefiks akapitu: <b>*</b> wyróżnienie, <b>!</b> duża liczba/cena, <b>&gt;</b> mono.</small>
+          <label style="margin-top:8px">Podgląd slajdu <span id="slideIdxv">1</span> (albo klik w kadr)</label>
+          <input id="slideIdx" type="range" min="1" max="6" step="1" value="1" />
+        </div>
+
+        <div class="field" data-only="carousel">
+          <label>Stopka</label>
+          <input id="carFoot" type="text" value="25–26.09.2026 // BIAŁYSTOK" />
+          <label style="text-transform:none;letter-spacing:0;color:#ccc;font-weight:400;display:flex;gap:8px;align-items:center;margin-top:6px">
+            <input id="carArrow" type="checkbox" checked /> strzałka „przesuń” (bez ostatniego)
+          </label>
+        </div>
+
         <div class="field" data-only="classic static">
           <label>Tekst (Enter = nowa linia)</label>
           <textarea id="text" placeholder="SOLD OUT">PIERWSZA PULA</textarea>
@@ -162,10 +218,10 @@ JEST</textarea>
           </div>
         </div>
 
-        <div class="field" data-only="static sponsor speaker">
+        <div class="field" data-only="static sponsor speaker carousel">
           <label>Kolor tła (dowolny)</label>
           <input id="bgpick" type="color" value="#dc1945" style="height:38px;padding:2px;background:#111;border:1px solid #444;border-radius:8px" />
-          <div class="swatches" id="themePresets" style="margin-top:8px" data-only="speaker">
+          <div class="swatches" id="themePresets" style="margin-top:8px" data-only="speaker carousel">
             <div class="sw" data-theme-bg="#14130f" data-theme-text="#f4f2ec" style="background:#14130f" title="ciemny"></div>
             <div class="sw" data-theme-bg="#f4f2ec" data-theme-text="#14130f" style="background:#f4f2ec" title="jasny"></div>
           </div>
@@ -246,13 +302,16 @@ JEST</textarea>
         </div>
 
 
-        <div class="field" data-only="classic speaker sponsor">
+        <div class="field" data-only="classic speaker sponsor carousel">
           <label>Format</label>
           <select id="format">
             <option value="1080x1350">Portret 4:5 (feed)</option>
             <option value="1080x1920">Story / Reels 9:16</option>
             <option value="1080x1080">Kwadrat 1:1 (feed)</option>
           </select>
+          <label data-only="sponsor static speaker carousel" style="text-transform:none;letter-spacing:0;color:#ccc;font-weight:400;display:flex;gap:8px;align-items:center;margin-top:6px">
+            <input id="hires" type="checkbox" checked /> grafiki w 2× (ostrzejsze na retinie, np. 2160×2700)
+          </label>
         </div>
 
         <div class="field">
@@ -296,7 +355,7 @@ JEST</textarea>
           </div>
         </div>
 
-        <div class="field" data-only="speaker static sponsor">
+        <div class="field" data-only="speaker static sponsor carousel">
           <label>Logo w rogu — wielkość <span id="logosizev">0.22</span></label>
           <input id="logosize" type="range" min="0.10" max="0.45" step="0.005" value="0.22" />
         </div>
@@ -309,7 +368,8 @@ JEST</textarea>
         </div>
 
         <button class="rec" id="rec916" data-only="speaker" style="background:#333">● Nagraj video mp4 (bieżący format)</button>
-        <button class="rec" id="zip" data-only="sponsor static speaker" style="background:#333">⬇ ZIP — wszystkie formaty</button>
+        <button class="rec" id="zip" data-only="sponsor static speaker carousel" style="background:#333">⬇ ZIP — wszystkie formaty</button>
+        <button class="rec" id="pdf" data-only="carousel" style="background:#333">⬇ PDF — karuzela LinkedIn</button>
         <button class="rec" id="combo" data-only="speaker" style="background:#333">⬇ Komplet — 4:5 PNG + 9:16 mp4</button>
         <div id="status"></div>
         <small id="hint">Nagrywa kompozyt (logo + tekst) do .webm. Czas = obroty × 5 s (idealna pętla). Potem konwersja ffmpegiem do mp4.</small>
@@ -366,6 +426,10 @@ JEST</textarea>
       const stillTierEl = document.getElementById('stillTier');
       const animPreviewEl = document.getElementById('animPreview');
       const durationEl = document.getElementById('duration');
+      const slidesEl = document.getElementById('slides');
+      const slideIdxEl = document.getElementById('slideIdx');
+      const carFootEl = document.getElementById('carFoot');
+      const carArrowEl = document.getElementById('carArrow');
 
       document.getElementById('themePresets').addEventListener('click', (e) => {
         const t = e.target.closest('.sw'); if (!t) return;
@@ -380,10 +444,11 @@ JEST</textarea>
         speaker: 'Ten sam układ co grafika statyczna, tylko elementy wchodzą po kolei: fade in z lekkim podjazdem od dołu. Zapis do .mp4 (H.264), jeśli przeglądarka potrafi, inaczej .webm.',
         static: 'Emoji ułożone pod kątem na jednolitym tle, tekst na środku, logo w rogu. Zapis do .png.',
         sponsor: 'Ogłoszenie sponsora / partnera: nagłówek, logo na kafelku, sygnet i data. Logo bierze z /public albo z wgranego pliku (SVG zalecane). Zapis do .png.',
+        carousel: 'Karuzela na IG / FB / LinkedIn: jeden slajd na blok między liniami ---. Zapisz PNG = bieżący slajd, ZIP = wszystkie slajdy w bieżącym formacie, PDF = dokument pod karuzelę na LinkedIn.',
         speakerStill: 'Zapowiedź prelegenta: zdjęcie na cały kadr, gradient, nazwisko i temat na dole. Preset zaciąga dane i zdjęcie z agendy. Zapis do .png, ZIP daje 1:1, 4:5 i 9:16.',
       };
 
-      const STILL = ['static', 'sponsor', 'speaker'];
+      const STILL = ['static', 'sponsor', 'speaker', 'carousel'];
 
       function applyMode() {
         const m = modeEl.value;
@@ -399,6 +464,13 @@ JEST</textarea>
           logoSizeEl.dispatchEvent(new Event('input'));
           pickSwatch('#f4f2ec');
         }
+        if (m === 'carousel' && !carouselInit) {
+          carouselInit = true;
+          bgPickEl.value = '#f4f2ec';
+          logoSizeEl.value = '0.12';
+          logoSizeEl.dispatchEvent(new Event('input'));
+          pickSwatch('#14130f');
+        }
         if (m === 'sponsor' && !sponsorInit) {
           sponsorInit = true;
           bgPickEl.value = '#1c1b16';
@@ -408,6 +480,7 @@ JEST</textarea>
         }
       }
       let sponsorInit = false;
+      let carouselInit = false;
       let stillInit = false;
       modeEl.addEventListener('change', applyMode);
 
@@ -423,6 +496,7 @@ JEST</textarea>
         [emVarEl, 'emvarv', 0],
         [emSeedEl, 'emseedv', 0],
         [cardScaleEl, 'cardScalev', 2],
+        [slideIdxEl, 'slideIdxv', 0],
       ];
       for (const [el, out, digits] of readouts) {
         const o = document.getElementById(out);
@@ -503,12 +577,18 @@ JEST</textarea>
         pivot.rotation.x = -0.14;
       });
 
-      function setFormat() {
-        [W, H] = formatEl.value.split('x').map(Number);
+      const hiresEl = document.getElementById('hires');
+
+      // 2× tylko dla grafik: układ liczy się od W/H, więc wystarczy większy kadr; video zostaje w 1080
+      function setFormat(video = false) {
+        const k = !video && hiresEl.checked && STILL.includes(modeEl.value) ? 2 : 1;
+        [W, H] = formatEl.value.split('x').map((n) => Number(n) * k);
         out.width = W; out.height = H;
       }
+      hiresEl.addEventListener('change', () => setFormat());
+      modeEl.addEventListener('change', () => setFormat());
       setFormat();
-      formatEl.addEventListener('change', setFormat);
+      formatEl.addEventListener('change', () => setFormat());
       applyMode();
 
       function pickSwatch(color) {
@@ -955,6 +1035,186 @@ JEST</textarea>
         drawGuides(inset);
       }
 
+      // karuzela: slajdy rozdziela linia ---, akapity pusta linia, pierwszy akapit to nagłówek
+      const BODY_FONT = '"Inter Variable", Inter, sans-serif';
+
+      function parseSlides() {
+        return slidesEl.value
+          .split(/^\s*---\s*$/m)
+          .map((s) => s.trim())
+          .filter(Boolean)
+          .map((s) => {
+            const [head = '', ...rest] = s.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+            const body = rest.map((p) => {
+              const kind = { '*': 'hl', '!': 'big', '>': 'mono' }[p[0]] || 'text';
+              const text = kind === 'text' ? p : p.split('\n').map((l) => l.replace(/^[*!>]\s*/, '')).join('\n');
+              return { kind, text };
+            });
+            return { head, body };
+          });
+      }
+
+      function syncSlideCount() {
+        const n = Math.max(1, parseSlides().length);
+        slideIdxEl.max = String(n);
+        if (Number(slideIdxEl.value) > n) slideIdxEl.value = String(n);
+        slideIdxEl.dispatchEvent(new Event('input'));
+      }
+      slidesEl.addEventListener('input', syncSlideCount);
+      syncSlideCount();
+
+      out.addEventListener('click', () => {
+        if (modeEl.value !== 'carousel') return;
+        const n = Number(slideIdxEl.max);
+        slideIdxEl.value = String((Number(slideIdxEl.value) % n) + 1);
+        slideIdxEl.dispatchEvent(new Event('input'));
+      });
+
+      // łamie tekst i zmniejsza font, aż zmieści się w szerokości i wysokości (żadne słowo nie wystaje)
+      function fitBlock(text, font, maxW, maxH, startPx, lineRatio) {
+        let px = startPx;
+        let lines = [];
+        while (px > 14) {
+          ctx.font = font(px);
+          lines = layoutLines(text, maxW);
+          const widest = Math.max(0, ...lines.map((l) => ctx.measureText(l).width));
+          if (widest <= maxW && lines.length * px * lineRatio <= maxH) break;
+          px -= 2;
+        }
+        return { px, lines };
+      }
+
+      const headFont = (px) => `${fontWeight} ${px}px ${fontFamily}`;
+
+      // jeden rozmiar nagłówka na całą karuzelę, żeby przy przesuwaniu nie skakał
+      function carouselHeadPx(slides, maxW) {
+        const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
+        const start = Math.min(W, H) * 0.092 * userScale;
+        return Math.min(...slides.map((s) => fitBlock(s.head, headFont, maxW, H * 0.3, start, 1.04).px));
+      }
+
+      function drawCarousel(index) {
+        const slides = parseSlides();
+        const bg = bgPickEl.value;
+        const dark = isDark(bg);
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, W, H);
+        if (!slides.length) return;
+
+        const i = Math.max(0, Math.min(slides.length - 1, (index ?? Number(slideIdxEl.value) - 1)));
+        const slide = slides[i];
+        const last = i === slides.length - 1;
+        const accent = bg.toLowerCase() === '#dc1945' ? textColor : '#dc1945';
+
+        const inset = safeInsets();
+        const m = W * 0.075;
+        const top = inset.top + m;
+        const bottom = H - inset.bottom - m;
+        const maxW = W - m * 2;
+
+        // sygnet + numer slajdu
+        const sygnet = Math.min(W, H) * (parseFloat(logoSizeEl.value) || 0.12);
+        const mark = dark ? sygnetLight : sygnetDark;
+        if (mark.complete && mark.naturalWidth) {
+          const r = sygnet / Math.max(mark.naturalWidth, mark.naturalHeight);
+          const mw = mark.naturalWidth * r, mh = mark.naturalHeight * r;
+          ctx.drawImage(mark, W - m - mw, top + (sygnet - mh) / 2, mw, mh);
+        }
+
+        const labelPx = Math.round(Math.min(W, H) * 0.026);
+        const spacing = Math.round(labelPx * 0.18);
+        const hadSpacing = 'letterSpacing' in ctx;
+        const pad2 = (n) => String(n).padStart(2, '0');
+        if (hadSpacing) ctx.letterSpacing = `${spacing}px`;
+        ctx.font = monoFont(labelPx);
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`${pad2(i + 1)} / ${pad2(slides.length)}`, m, top + sygnet * 0.42);
+
+        // stopka + strzałka
+        const foot = carFootEl.value.trim();
+        ctx.textBaseline = 'alphabetic';
+        ctx.globalAlpha = 0.72;
+        if (foot) ctx.fillText(foot.toUpperCase(), m, bottom);
+        ctx.globalAlpha = 1;
+        if (carArrowEl.checked && !last) {
+          ctx.font = monoFont(Math.round(labelPx * 1.9));
+          ctx.fillStyle = accent;
+          ctx.textAlign = 'right';
+          ctx.fillText('→', W - m, bottom + labelPx * 0.2);
+          ctx.textAlign = 'left';
+        }
+        if (hadSpacing) ctx.letterSpacing = '0px';
+
+        // blok treści między nagłówkiem strony a stopką
+        const areaTop = top + sygnet + H * 0.04;
+        const areaBottom = bottom - labelPx * 2.4;
+        const areaH = areaBottom - areaTop;
+        const barH = Math.max(3, Math.round(H * 0.006));
+        const headPx = carouselHeadPx(slides, maxW);
+
+        const layout = (k) => {
+          const gap = Math.min(W, H) * 0.045 * k;
+          const items = [];
+          const bodyPx = Math.min(W, H) * 0.042 * k;
+          const head = fitBlock(slide.head, headFont, maxW, H, headPx * Math.min(1, k + 0.15), 1.04);
+          items.push({ kind: 'head', ...head, lh: head.px * 1.04, font: headFont(head.px), color: textColor, alpha: 1 });
+          for (const p of slide.body) {
+            let spec;
+            if (p.kind === 'big') {
+              const f = (px) => `${fontWeight} ${px}px ${fontFamily}`;
+              const b = fitBlock(p.text, f, maxW, H, headPx * 1.7 * k, 1);
+              spec = { ...b, lh: b.px * 1, font: f(b.px), color: accent, alpha: 1 };
+            } else if (p.kind === 'mono') {
+              const px = Math.round(bodyPx * 0.9);
+              const f = () => monoFont(px);
+              ctx.font = f();
+              spec = { px, lines: layoutLines(p.text.toUpperCase(), maxW), lh: px * 1.5, font: f(), color: textColor, alpha: 0.86, mono: true };
+            } else {
+              const weight = p.kind === 'hl' ? 700 : 500;
+              const f = (px) => `${weight} ${px}px ${BODY_FONT}`;
+              const b = fitBlock(p.text, f, maxW, H, bodyPx, 1.34);
+              spec = { ...b, lh: b.px * 1.34, font: f(b.px), color: p.kind === 'hl' ? accent : textColor, alpha: p.kind === 'hl' ? 1 : 0.86 };
+            }
+            items.push({ kind: p.kind, gap, ...spec });
+          }
+          const barGap = gap * 0.9;
+          const h = barH + barGap + items.reduce((n, it) => n + (it.gap || 0) + it.lines.length * it.lh, 0);
+          return { items, h, barGap };
+        };
+
+        let k = 1;
+        let L = layout(k);
+        while (L.h > areaH && k > 0.5) { k -= 0.04; L = layout(k); }
+
+        // pasek i nagłówek zawsze w tym samym miejscu, żeby przy przesuwaniu nic nie skakało
+        let y = areaTop;
+
+        const barW = Math.min(maxW, W * 0.3);
+        const segW = barW / LOGO_BAR.length;
+        LOGO_BAR.forEach((c, n) => {
+          ctx.fillStyle = dark && c === '#14130f' ? '#f4f2ec' : c;
+          ctx.fillRect(Math.round(m + n * segW), y, Math.ceil(segW), barH);
+        });
+        y += barH + L.barGap;
+
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        for (const it of L.items) {
+          y += it.gap || 0;
+          ctx.font = it.font;
+          ctx.fillStyle = it.color;
+          ctx.globalAlpha = it.alpha;
+          if (it.mono && hadSpacing) ctx.letterSpacing = `${spacing}px`;
+          for (const l of it.lines) { ctx.fillText(l, m, y); y += it.lh; }
+          if (hadSpacing) ctx.letterSpacing = '0px';
+          ctx.globalAlpha = 1;
+        }
+
+        drawGuides(inset);
+      }
+
       function noise(i, j, salt) {
         const s = Math.sin(i * 127.1 + j * 311.7 + salt * 74.7) * 43758.5453;
         return s - Math.floor(s);
@@ -1040,6 +1300,7 @@ JEST</textarea>
 
         if (still) {
           if (modeEl.value === 'sponsor') drawSponsor();
+          else if (modeEl.value === 'carousel') drawCarousel();
           else if (modeEl.value === 'speaker') {
             drawSpeakerStill(animPreviewEl.checked || recording ? elapsed % animTotal() : undefined);
           } else drawStatic();
@@ -1171,17 +1432,98 @@ JEST</textarea>
 
       function renderStill() {
         if (modeEl.value === 'sponsor') drawSponsor();
+        else if (modeEl.value === 'carousel') drawCarousel();
         else if (modeEl.value === 'speaker') drawSpeakerStill();
         else drawStatic();
       }
 
       function stillSlug() {
         if (modeEl.value === 'sponsor') return slugify(`sponsor-${sponsorName}`);
+        if (modeEl.value === 'carousel') return `${carouselSlug()}-${String(slideIdxEl.value).padStart(2, '0')}`;
         if (modeEl.value === 'speaker') return slugify(speakerEl.value || 'prelegent');
         return slugify(textEl.value);
       }
 
+      function carouselSlug() {
+        return `karuzela-${slugify(parseSlides()[0]?.head || 'programistok')}`.slice(0, 60);
+      }
+
+      function bytesFromDataUrl(url) {
+        const bin = atob(url.split(',')[1]);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        return bytes;
+      }
+
+      // renderuje każdy slajd karuzeli w bieżącym formacie
+      function carouselFrames(encode) {
+        const n = parseSlides().length;
+        const frames = [];
+        exporting = true;
+        for (let i = 0; i < n; i++) {
+          drawCarousel(i);
+          frames.push(encode());
+        }
+        exporting = false;
+        return frames;
+      }
+
+      // PDF bez biblioteki: jedna strona na slajd, JPEG wklejony jako DCTDecode
+      function pdfFromJpegs(jpegs, w, h) {
+        const enc = new TextEncoder();
+        const chunks = [];
+        const offsets = [];
+        let len = 0;
+        const push = (x) => { const b = typeof x === 'string' ? enc.encode(x) : x; chunks.push(b); len += b.length; };
+        const obj = (id, body) => { offsets[id] = len; push(`${id} 0 obj\n`); body(); push('\nendobj\n'); };
+        const pw = Math.round(w / 2), ph = Math.round(h / 2);
+
+        push('%PDF-1.4\n');
+        push(new Uint8Array([37, 226, 227, 207, 211, 10]));
+        obj(1, () => push('<< /Type /Catalog /Pages 2 0 R >>'));
+        const kids = jpegs.map((_, i) => `${3 + i * 3} 0 R`).join(' ');
+        obj(2, () => push(`<< /Type /Pages /Kids [${kids}] /Count ${jpegs.length} >>`));
+        jpegs.forEach((jpg, i) => {
+          const id = 3 + i * 3;
+          const draw = `q ${pw} 0 0 ${ph} 0 0 cm /Im0 Do Q`;
+          obj(id, () => push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw} ${ph}] /Resources << /XObject << /Im0 ${id + 2} 0 R >> >> /Contents ${id + 1} 0 R >>`));
+          obj(id + 1, () => push(`<< /Length ${draw.length} >>\nstream\n${draw}\nendstream`));
+          obj(id + 2, () => {
+            push(`<< /Type /XObject /Subtype /Image /Width ${w} /Height ${h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpg.length} >>\nstream\n`);
+            push(jpg);
+            push('\nendstream');
+          });
+        });
+
+        const xref = len;
+        const size = 3 + jpegs.length * 3;
+        let tail = `xref\n0 ${size}\n0000000000 65535 f \n`;
+        for (let id = 1; id < size; id++) tail += `${String(offsets[id]).padStart(10, '0')} 00000 n \n`;
+        tail += `trailer\n<< /Size ${size} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+        push(tail);
+        return new Blob(chunks, { type: 'application/pdf' });
+      }
+
+      document.getElementById('pdf').addEventListener('click', () => {
+        const jpegs = carouselFrames(() => bytesFromDataUrl(out.toDataURL('image/jpeg', 0.92)));
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(pdfFromJpegs(jpegs, W, H));
+        a.download = `${carouselSlug()}-${W}x${H}.pdf`;
+        a.click();
+        statusEl.textContent = `pobrano ${a.download} (${jpegs.length} stron)`;
+      });
+
       document.getElementById('zip').addEventListener('click', () => {
+        if (modeEl.value === 'carousel') {
+          const slug = carouselSlug();
+          const files = carouselFrames(pngBytes).map((data, i) => ({ name: `${slug}-${String(i + 1).padStart(2, '0')}-${W}x${H}.png`, data }));
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(zipStore(files));
+          a.download = `${slug}-${W}x${H}.zip`;
+          a.click();
+          statusEl.textContent = `pobrano ${a.download} (${files.length} slajdów)`;
+          return;
+        }
         const prev = formatEl.value;
         const slug = stillSlug();
         const files = [];
@@ -1297,7 +1639,9 @@ JEST</textarea>
         const b = document.getElementById('rec916');
         b.disabled = true;
         btn.disabled = true;
+        setFormat(true);
         recordWebm(slugify(speakerEl.value || 'prelegent')).then((name) => {
+          setFormat();
           b.disabled = false;
           btn.disabled = false;
           statusEl.textContent = `pobrano ${name}`;
@@ -1318,7 +1662,7 @@ JEST</textarea>
         statusEl.textContent = `pobrano ${png}, nagrywam story…`;
 
         formatEl.value = '1080x1920';
-        setFormat();
+        setFormat(true);
         await new Promise((r) => setTimeout(r, 400));
         const webm = await recordWebm(slug);
 
