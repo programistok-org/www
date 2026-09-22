@@ -598,9 +598,11 @@
       "kind": "afterparty",
       "topic": "Afterparty",
       "speakers": [],
-      "time": "20:00",
-      "end": "24:00",
-      "hidden": true
+      "time": "19:00",
+      "place": "Zmiana Klimatu: Piętro Niżej",
+      "note": "Bilet płatny osobno, poza biletem konferencyjnym.",
+      "ticketUrl": "https://safetickets.pl/event/programistok26-official-afterparty",
+      "price": "33,50 zł"
     },
     {
       "id": "d2-rejestracja",
@@ -987,9 +989,11 @@
       "kind": "afterparty",
       "topic": "Afterparty",
       "speakers": [],
-      "time": "20:00",
-      "end": "24:00",
-      "hidden": true
+      "time": "19:00",
+      "place": "Zmiana Klimatu: Piętro Niżej",
+      "note": "Bilet płatny osobno, poza biletem konferencyjnym.",
+      "ticketUrl": "https://safetickets.pl/event/programistok26-official-afterparty",
+      "price": "33,50 zł"
     }
   ]
 }

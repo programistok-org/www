@@ -19,6 +19,17 @@ const look = {
   <div class={`flex min-h-[72px] flex-col items-center justify-center rounded-3xl px-6 py-4 text-center ${look}`}>
     <time datetime={session.time} class="font-mono text-[12px] font-bold tabular-nums tracking-tight opacity-75">{timeRange(session)}</time>
     <p class="mt-0.5 text-[19px] font-black tracking-[-0.02em]">{session.topic}</p>
+    {session.place && <p class="mt-0.5 text-[15px] font-bold">{session.place}</p>}
     {session.note && <p class="mt-0.5 text-[14px] opacity-75">{session.note}</p>}
+    {session.ticketUrl && (
+      <a
+        href={session.ticketUrl}
+        target="_blank"
+        rel="noopener"
+        class="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-[14px] font-bold text-accent transition-opacity hover:opacity-85"
+      >
+        Kup bilet{session.price && ` · ${session.price}`} →
+      </a>
+    )}
   </div>
 </div>
