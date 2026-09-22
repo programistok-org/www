@@ -86,6 +86,7 @@ const boards = [
       { name: 'Evoluma', logo: 'evoluma.svg' },
       { name: '4Podlaskie', logo: '4podlaskie.svg' },
       { name: 'Białostocki Park Naukowo-Technologiczny', logo: 'bpnt.svg' },
+      { name: 'Polskie Towarzystwo Gospodarcze', logo: 'ptg.svg' },
     ],
   },
 ];
