@@ -26,6 +26,7 @@
       "id": "it",
       "label": "IT",
       "name": "Ścieżka IT",
+      "room": "Aula Duża",
       "lead": "Architektura, jakość, skalowanie i praktyka inżynierska. Technologicznie agnostycznie.",
       "slots": 12
     },
@@ -33,6 +34,7 @@
       "id": "biznes",
       "label": "Biznes",
       "name": "Ścieżka Biznes",
+      "room": "Aula 030",
       "lead": "Decyzje technologiczne od strony biznesu: wdrożenia, koszty, efekty i wnioski.",
       "slots": 18
     }
@@ -244,7 +246,7 @@
       "end": "09:30",
       "topic": "Otwarcie konferencji",
       "speakers": [],
-      "note": "W sali IT."
+      "note": "W Auli Dużej."
     },
     {
       "id": "it-d1-michal-franc",
@@ -979,7 +981,7 @@
       "speakers": [],
       "time": "17:15",
       "end": "18:00",
-      "note": "Wspólnie, w sali IT.",
+      "note": "Wspólnie, w Auli Dużej.",
       "hidden": true
     },
     {

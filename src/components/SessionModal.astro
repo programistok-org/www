@@ -3,7 +3,7 @@
 // i warstwa nad stroną są za darmo. Otwiera go przycisk z data-open w siatce.
 import { peopleOf, tbaLabel, timeRange } from '../lib/agenda.js';
 
-const { session, day, trackLabel } = Astro.props;
+const { session, day, trackLabel, trackRoom } = Astro.props;
 
 const theme = {
   it: { bar: 'bg-accent', label: 'text-accent-ink', chip: 'bg-accent/10 text-accent-ink' },
@@ -38,6 +38,7 @@ const initials = (name) =>
         <span class={`inline-flex items-center gap-2 font-bold ${theme.label}`}>
           <span class={`h-2.5 w-2.5 rounded-[3px] ${theme.bar}`} aria-hidden="true"></span>Ścieżka {trackLabel}
         </span>
+        {trackRoom && <><span aria-hidden="true">//</span><span class="font-bold text-ink">{trackRoom}</span></>}
         <span aria-hidden="true">//</span>
         <span>{day.label} · {day.dateLabel}</span>
         <span aria-hidden="true">//</span>
