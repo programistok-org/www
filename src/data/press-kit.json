@@ -1,8 +1,8 @@
 {
-  "generated": "2026-09-21",
+  "generated": "2026-09-24",
   "zip": {
     "href": "/press/programistok-2026-press-kit.zip",
-    "size": "5.7 MB"
+    "size": "5.8 MB"
   },
   "nota": {
     "pdf": "/press/nota-prasowa/programistok-2026-nota-prasowa.pdf",
@@ -76,8 +76,8 @@
     }
   ],
   "prelegenci": {
-    "liczba": 31,
-    "zdjecia": 29,
+    "liczba": 32,
+    "zdjecia": 30,
     "bioMd": "/press/prelegenci/prelegenci-bio.md",
     "csv": "/press/prelegenci/prelegenci.csv",
     "osoby": [
@@ -155,14 +155,14 @@
         "name": "Michał Matejczyk",
         "photo": "/press/prelegenci/zdjecia/michal-matejczyk.jpg",
         "photoPosition": null,
-        "topic": "Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.",
+        "topic": "Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?",
         "track": "Biznes"
       },
       {
         "name": "Piotr Werner",
         "photo": "/press/prelegenci/zdjecia/piotr-werner.jpg",
         "photoPosition": null,
-        "topic": "Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?",
+        "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
         "track": "Biznes"
       },
       {
@@ -239,7 +239,7 @@
         "name": "Michał Szumski",
         "photo": "/press/prelegenci/zdjecia/michal-szumski.jpg",
         "photoPosition": "50% 18%",
-        "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
+        "topic": "Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?",
         "track": "Biznes"
       },
       {
@@ -293,6 +293,13 @@
       },
       {
         "name": "Dominika Wiśniewska",
+        "photo": "/press/prelegenci/zdjecia/dominika-wisniewska.jpg",
+        "photoPosition": null,
+        "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
+        "track": "Biznes"
+      },
+      {
+        "name": "Karol Przybyszewski",
         "photo": null,
         "photoPosition": null,
         "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",

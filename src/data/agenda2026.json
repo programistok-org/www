@@ -170,7 +170,8 @@
       "id": "adam-piotrowski",
       "name": "Adam Piotrowski",
       "photo": "/prelegenci/adam-piotrowski.webp",
-      "photoPosition": "50% 25%"
+      "photoPosition": "50% 25%",
+      "bio": "Prezes 2N IT. Ex-programista, choć w sercu wciąż jest miejsce do kodu (ze wschodu).\n\nOd 10 lat organizuje Programistok, od 12 lat wroclove.rb, od 13 lat BRUG, od 10 lat Nerds on lakes. Od 20 lat jest instruktorem żeglarstwa."
     },
     {
       "id": "michal-szumski",
@@ -222,7 +223,12 @@
     {
       "id": "dominika-wisniewska",
       "name": "Dominika Wiśniewska",
-      "org": "Google for Education"
+      "org": "Google for Education",
+      "photo": "/prelegenci/dominika-wisniewska.webp"
+    },
+    {
+      "id": "karol-przybyszewski",
+      "name": "Karol Przybyszewski"
     }
   ],
   "sessions": [
@@ -269,7 +275,7 @@
       "time": "09:40",
       "end": "10:10",
       "topic": "Biznes nam nie ufa — i wcale im się nie dziwię",
-      "abstract": "",
+      "abstract": "Liczby nie pozostawiają złudzeń. Zdecydowana większość prób digitalizacji organizacji, wdrożeń ERP-ów, CRM-ów i innych BMS-ów kończy się porażką. A nawet jeśli wdrożenia pozornie się udają, to okazują się niespełniające potrzeb biznesu.\n\nTaki stan rzeczy trwa od lat, a ludzie spoza IT nauczyli się nie ufać zapewnieniom naszej branży o tym, jakie to cuda zdziała nowa aplikacja. I słusznie — bo liczby nie kłamią.\n\nPorozmawiamy więc o tym, z czego biorą się te porażki, jak im zapobiegać lub przynajmniej minimalizować ich ryzyko. Zastanowimy się nad tym, jaka jest różnica między partnerem w biznesie a zwykłym wykonawcą usługi wdrożeniowej. Czyli przede wszystkim porozmawiamy o tym, jak rozmawiać — bo choć wszyscy mówimy pozornie jednym językiem, to rzadko się rozumiemy.",
       "speakers": [
         "adam-piotrowski"
       ]
@@ -448,9 +454,10 @@
       "abstract": "",
       "speakers": [
         "dominika-wisniewska",
-        "daniel-kaszynski"
-      ],
-      "tba": 2
+        "daniel-kaszynski",
+        "karol-przybyszewski",
+        "piotr-werner"
+      ]
     },
     {
       "id": "it-d1-panel",
@@ -823,9 +830,14 @@
       "kind": "panel",
       "time": "14:00",
       "end": "14:45",
-      "topic": "AI w optymalizacji i automatyzacji procesów",
+      "topic": "Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?",
       "abstract": "",
-      "speakers": []
+      "speakers": [
+        "przemyslaw-jozwiakowski",
+        "michal-matejczyk",
+        "michal-szumski"
+      ],
+      "tba": 1
     },
     {
       "id": "it-d2-panel",

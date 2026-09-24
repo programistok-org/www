@@ -65,7 +65,7 @@ Microsoft MVP w kategorii Azure Application PaaS, współwłaściciel 4BEARS Sp.
 Aktywny trener współpracujący z największymi ośrodkami edukacyjnymi w Polsce. Wykładowca Warszawskiej Wyższej Szkoły Informatyki. Lider społeczności bstok.ms i lublin.ms, prelegent wielu wydarzeń ogólnopolskich. Od 2010 roku magister inżynier informatyki, absolwent Politechniki Białostockiej.
 Zdjęcie: `zdjecia/marcin-iwanowski.jpg`
 ## Michał Matejczyk
-**Ścieżka Biznes, dzień 1:** Dobre i złe wdrożenia od strony procesowej. Co firmy zrobiły, żeby dostać na czas to, czego realnie potrzebują.
+**Ścieżka Biznes, dzień 2:** Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?
 Wiceprezes Zarządu i Dyrektor ds. Rozwoju w Entra Group. Ekspert z ponad 20-letnim doświadczeniem w obszarze produkcji, utrzymania ruchu, wdrażania projektów WCM w operacjach i zarządzania zmianą. Specjalizuje się w zmianach systemowych i procesowych w działach operacyjnych firm (produkcja, utrzymanie ruchu, jakość), angażowaniu i motywowaniu pracowników oraz zarządzaniu zmianą w oparciu o koncepcje Produkcji Klasy Światowej (WCM), TPM oraz Lean. Wypracowuje rozwiązania z zakresu zarządzania organizacją z wykorzystaniem wskaźników efektywności i wspiera firmy w transformacji oraz rozwoju kompetencji cyfrowych.
 
 Doświadczenie zdobywał w Polsce i za granicą, pracując dla kluczowych branż, m.in. przemysłu spożywczego, farmaceutycznego, ciężkiego, maszynowego, meblowego, chemicznego i wydobywczego. W Entra Group odpowiada przede wszystkim za realizację projektów w obszarach Produkcji i Utrzymania Ruchu oraz doskonalenie umiejętności miękkich pracowników w działach operacyjnych.
@@ -73,7 +73,7 @@ Doświadczenie zdobywał w Polsce i za granicą, pracując dla kluczowych branż
 Master Trener WCM, członek SIM (Stowarzyszenie Interim Managerów), autor publikacji naukowych z zakresu transformacji organizacji i korzyści z wdrażania modelu WCM. Absolwent kierunku Automatyka i Robotyka na Wydziale Elektrotechniki i Automatyki Politechniki Gdańskiej.
 Zdjęcie: `zdjecia/michal-matejczyk.jpg`
 ## Piotr Werner
-**Ścieżka Biznes, dzień 1:** Wdrożenie AI od Kuchni (Vikinga). Czy na pewno takie smaczne?
+**Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
 Mąż, ojciec, Head of Digital Analytics and Performance Marketing w Kuchni Vikinga. W codziennej pracy stara się tłumaczyć język techniczny na biznesowy (w obie strony) oraz odpowiadać na pytania: co, jak i dlaczego? Czasem również: kiedy?
 
 W e-commerce od 2014 r. Pracował głównie w in-house'owych zespołach, ma za sobą także epizod agencyjny. Zbudował od podstaw zespół analityki internetowej w Orange Polska, który pozostawił w dobrych rękach i przeniósł się do podlaskiej Kuchni Vikinga.
@@ -128,9 +128,12 @@ Zdjęcie: `zdjecia/piotr-jurewicz.jpg`
 Zdjęcie: `zdjecia/piotr-janiak.jpg`
 ## Adam Piotrowski
 **Ścieżka Biznes, dzień 1:** Biznes nam nie ufa — i wcale im się nie dziwię
+Prezes 2N IT. Ex-programista, choć w sercu wciąż jest miejsce do kodu (ze wschodu).
+
+Od 10 lat organizuje Programistok, od 12 lat wroclove.rb, od 13 lat BRUG, od 10 lat Nerds on lakes. Od 20 lat jest instruktorem żeglarstwa.
 Zdjęcie: `zdjecia/adam-piotrowski.jpg`
 ## Michał Szumski
-**Ścieżka Biznes, dzień 2:** O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat
+**Ścieżka Biznes, dzień 2:** Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?
 Pięć lat w Anglii: liceum i inżynier z matematyki na Loughborough University, potem trzy lata magisterki z automatyki i robotyki na Politechnice Warszawskiej. W Plum pracuje od 15 lat — zaczynał jako handlowiec, pracował w marketingu, na produkcji, jako programista, Scrum Master, Product Owner i kierownik sekcji programistów, a od ponad dwóch lat jest Prezesem Zarządu. Prywatnie siłownia, bieganie, książki i gry planszowe z dziećmi.
 
 Plum specjalizuje się we wdrażaniu i produkcji elektroniki NB-IoT w branżach HVAC, gaz i woda. R&D, jakość i rozwój produktu firma ma wpisane w DNA.
@@ -166,5 +169,8 @@ _Brak zdjęcia w paczce._
 Dr Daniel Kaszyński jest wykładowcą Szkoły Głównej Handlowej w Warszawie oraz partnerem zarządzającym w DS360, odpowiedzialnym za jakość rozwiązań wdrażających modele AI i uczenia maszynowego u klientów spółki. Był dwukrotnym laureatem studenckiego plebiscytu „Inspiracje Roku” na najlepszego wykładowcę SGH. Odpowiadał za przygotowanie wniosków badawczych o łącznym przyznanym budżecie ponad 60 mln PLN. W latach 2015–2022 pracował w Ernst & Young Consulting, a w dotychczasowej karierze zawodowej uczestniczył w ponad pięćdziesięciu projektach realizowanych dla klientów z sektora publicznego i prywatnego, m.in. Ministerstwa Zdrowia, Urzędu Komunikacji Elektronicznej, PGNiG, PKO BP oraz Google.
 Zdjęcie: `zdjecia/daniel-kaszynski.jpg`
 ## Dominika Wiśniewska
+**Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
+Zdjęcie: `zdjecia/dominika-wisniewska.jpg`
+## Karol Przybyszewski
 **Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
 _Brak zdjęcia w paczce._
