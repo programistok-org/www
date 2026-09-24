@@ -87,6 +87,7 @@ const boards = [
       { name: '4Podlaskie', logo: '4podlaskie.svg' },
       { name: 'Białostocki Park Naukowo-Technologiczny', logo: 'bpnt.svg' },
       { name: 'Polskie Towarzystwo Gospodarcze', logo: 'ptg.svg' },
+      { name: 'Jagiellonia Białystok', logo: 'jagiellonia.svg' },
     ],
   },
 ];
