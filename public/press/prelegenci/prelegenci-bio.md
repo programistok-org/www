@@ -168,8 +168,11 @@ _Brak zdjęcia w paczce._
 **Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
 Dr Daniel Kaszyński jest wykładowcą Szkoły Głównej Handlowej w Warszawie oraz partnerem zarządzającym w DS360, odpowiedzialnym za jakość rozwiązań wdrażających modele AI i uczenia maszynowego u klientów spółki. Był dwukrotnym laureatem studenckiego plebiscytu „Inspiracje Roku” na najlepszego wykładowcę SGH. Odpowiadał za przygotowanie wniosków badawczych o łącznym przyznanym budżecie ponad 60 mln PLN. W latach 2015–2022 pracował w Ernst & Young Consulting, a w dotychczasowej karierze zawodowej uczestniczył w ponad pięćdziesięciu projektach realizowanych dla klientów z sektora publicznego i prywatnego, m.in. Ministerstwa Zdrowia, Urzędu Komunikacji Elektronicznej, PGNiG, PKO BP oraz Google.
 Zdjęcie: `zdjecia/daniel-kaszynski.jpg`
-## Dominika Wiśniewska
+## Dominika Wiśniewska-Muszyńska
 **Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
+Managerka ds. rozwoju rozwiązań dla edukacji w Google for Education Polska, gdzie odpowiada za rozwój oferty edukacyjnej w Polsce. Ma wieloletnie doświadczenie zawodowe w obszarze wsparcia edukacji cyfrowej, promocji projektów edukacyjnych i biznesowych skierowanych do dzieci, młodzieży i dorosłych. Specjalizuje się w gromadzeniu społeczności wokół ważnych społecznie tematów (kompetencje przyszłości, włączenie cyfrowe, inkluzja społeczna). Jest propagatorką działań z zakresu wzmacniania kompetencji przyszłości wśród kadry nauczycielskiej oraz dyrektorów szkół.
+
+Jest doktorką nauk społecznych z zakresu nauki o mediach i autorką kilkunastu artykułów naukowych oraz monografii na temat zagranicznych systemów medialnych. Prowadzi działalność badawczą, w której zajmuje się m.in. rolą mediów w polityce, wpływem nowych mediów na społeczeństwo i językiem polityki. Prowadzi warsztaty i seminaria dyplomowe na Uniwersytecie SWPS w Warszawie.
 Zdjęcie: `zdjecia/dominika-wisniewska.jpg`
 ## Karol Przybyszewski
 **Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI

@@ -50,4 +50,4 @@ Facebook:  https://www.facebook.com/programistok
 LinkedIn:  https://www.linkedin.com/company/programistok-conference
 YouTube:   https://www.youtube.com/@programistok
 
-Paczka wygenerowana: 2026-09-24
+Paczka wygenerowana: 2026-09-25
