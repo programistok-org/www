@@ -78,6 +78,7 @@ const LOGOS = [
             <option value="static">Statyczna (emoji + tekst, PNG)</option>
             <option value="sponsor">Sponsor / partner (logo, PNG)</option>
             <option value="carousel">Karuzela (slajdy, ZIP + PDF)</option>
+            <option value="youtube">Miniaturka YouTube (JPG)</option>
           </select>
         </div>
 
@@ -218,16 +219,16 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
           </div>
         </div>
 
-        <div class="field" data-only="static sponsor speaker carousel">
+        <div class="field" data-only="static sponsor speaker carousel youtube">
           <label>Kolor tła (dowolny)</label>
           <input id="bgpick" type="color" value="#dc1945" style="height:38px;padding:2px;background:#111;border:1px solid #444;border-radius:8px" />
-          <div class="swatches" id="themePresets" style="margin-top:8px" data-only="speaker carousel">
+          <div class="swatches" id="themePresets" style="margin-top:8px" data-only="speaker carousel youtube">
             <div class="sw" data-theme-bg="#14130f" data-theme-text="#f4f2ec" style="background:#14130f" title="ciemny"></div>
             <div class="sw" data-theme-bg="#f4f2ec" data-theme-text="#14130f" style="background:#f4f2ec" title="jasny"></div>
           </div>
         </div>
 
-        <div class="field" data-only="speaker">
+        <div class="field" data-only="speaker youtube">
           <label>Prelegent — gotowe</label>
           <select id="speakerPreset">
             <option value="">— wpisz ręcznie —</option>
@@ -239,13 +240,13 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
           </select>
         </div>
 
-        <div class="field" data-only="classic speaker">
+        <div class="field" data-only="classic speaker youtube">
           <label>Tło / zdjęcie prelegenta</label>
           <input id="bgfile" type="file" accept="image/*" style="font-size:12px" />
           <button id="bgclear" type="button" style="font-size:12px;padding:4px;margin-top:4px;background:#333;color:#ccc;border:0;border-radius:6px;cursor:pointer">usuń obraz</button>
         </div>
 
-        <div class="field" data-only="classic speaker">
+        <div class="field" data-only="classic speaker youtube">
           <label>Kadr zdjęcia — skala <span id="zoomv">1.00</span></label>
           <input id="zoom" type="range" min="1" max="3" step="0.01" value="1" />
           <label>przesuń X <span id="offxv">0</span></label>
@@ -271,12 +272,12 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
           <input id="stillTier" type="text" value="// PRELEGENT" />
         </div>
 
-        <div class="field" data-only="speaker">
+        <div class="field" data-only="speaker youtube">
           <label>1. Imię i nazwisko (Enter = nowa linia)</label>
           <textarea id="speaker" placeholder="Jan Kowalski">Jan Kowalski</textarea>
         </div>
 
-        <div class="field" data-only="speaker">
+        <div class="field" data-only="speaker youtube">
           <label>2. Tytuł prelekcji (Enter = nowa linia)</label>
           <textarea id="talk" placeholder="Tytuł prelekcji"></textarea>
         </div>
@@ -355,7 +356,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
           </div>
         </div>
 
-        <div class="field" data-only="speaker static sponsor carousel">
+        <div class="field" data-only="speaker static sponsor carousel youtube">
           <label>Logo w rogu — wielkość <span id="logosizev">0.22</span></label>
           <input id="logosize" type="range" min="0.10" max="0.45" step="0.005" value="0.22" />
         </div>
@@ -368,7 +369,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         </div>
 
         <button class="rec" id="rec916" data-only="speaker" style="background:#333">● Nagraj video mp4 (bieżący format)</button>
-        <button class="rec" id="zip" data-only="sponsor static speaker carousel" style="background:#333">⬇ ZIP — wszystkie formaty</button>
+        <button class="rec" id="zip" data-only="sponsor static speaker carousel youtube" style="background:#333">⬇ ZIP — wszystkie formaty</button>
         <button class="rec" id="pdf" data-only="carousel" style="background:#333">⬇ PDF — karuzela LinkedIn</button>
         <button class="rec" id="combo" data-only="speaker" style="background:#333">⬇ Komplet — 4:5 PNG + 9:16 mp4</button>
         <div id="status"></div>
@@ -384,6 +385,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
     <script>
       import * as THREE from 'three';
       import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+      import FACES from '../data/faces.json';
 
       const OMEGA = (Math.PI * 2) / 5; // pełny obrót = 5 s
       const GL = 900; // wewnętrzny bufor logo
@@ -445,10 +447,11 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         static: 'Emoji ułożone pod kątem na jednolitym tle, tekst na środku, logo w rogu. Zapis do .png.',
         sponsor: 'Ogłoszenie sponsora / partnera: nagłówek, logo na kafelku, sygnet i data. Logo bierze z /public albo z wgranego pliku (SVG zalecane). Zapis do .png.',
         carousel: 'Karuzela na IG / FB / LinkedIn: jeden slajd na blok między liniami ---. Zapisz PNG = bieżący slajd, ZIP = wszystkie slajdy w bieżącym formacie, PDF = dokument pod karuzelę na LinkedIn.',
+        youtube: 'Miniaturka pod nagranie prezentacji na YouTube: 1280×720 (2× = 2560×1440), duży tytuł z lewej, głowa prelegenta w konturze sygnetu z prawej, logo w rogu. Preset zaciąga nazwisko, temat i zdjęcie z agendy. Zapis do .jpg (YouTube przyjmuje do 2 MB).',
         speakerStill: 'Zapowiedź prelegenta: zdjęcie na cały kadr, gradient, nazwisko i temat na dole. Preset zaciąga dane i zdjęcie z agendy. Zapis do .png, ZIP daje 1:1, 4:5 i 9:16.',
       };
 
-      const STILL = ['static', 'sponsor', 'speaker', 'carousel'];
+      const STILL = ['static', 'sponsor', 'speaker', 'carousel', 'youtube'];
 
       function applyMode() {
         const m = modeEl.value;
@@ -456,7 +459,8 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
           el.style.display = el.dataset.only.split(' ').includes(m) ? '' : 'none';
         });
         hintEl.textContent = HINTS[m];
-        btn.textContent = STILL.includes(m) ? '⬇ Zapisz PNG' : '● Nagraj';
+        document.getElementById('zip').textContent = m === 'youtube' ? '⬇ ZIP — wszyscy prelegenci' : '⬇ ZIP — wszystkie formaty';
+        btn.textContent = m === 'youtube' ? '⬇ Zapisz JPG' : STILL.includes(m) ? '⬇ Zapisz PNG' : '● Nagraj';
         if (m === 'speaker' && !stillInit) {
           stillInit = true;
           bgPickEl.value = '#14130f';
@@ -471,6 +475,13 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
           logoSizeEl.dispatchEvent(new Event('input'));
           pickSwatch('#14130f');
         }
+        if (m === 'youtube' && !youtubeInit) {
+          youtubeInit = true;
+          bgPickEl.value = '#f4f2ec';
+          logoSizeEl.value = '0.16';
+          logoSizeEl.dispatchEvent(new Event('input'));
+          pickSwatch('#14130f');
+        }
         if (m === 'sponsor' && !sponsorInit) {
           sponsorInit = true;
           bgPickEl.value = '#1c1b16';
@@ -480,6 +491,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         }
       }
       let sponsorInit = false;
+      let youtubeInit = false;
       let carouselInit = false;
       let stillInit = false;
       modeEl.addEventListener('change', applyMode);
@@ -511,6 +523,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
       let fontWeight = '800';
       let fontFamily = 'Montserrat, "Helvetica Neue", Arial, sans-serif';
       let bgImg = null;
+      let bgPhoto = null; // ścieżka zdjęcia z agendy, klucz do FACES
 
       const fontEl = document.getElementById('font');
       const bgfileEl = document.getElementById('bgfile');
@@ -533,10 +546,10 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
       bgfileEl.addEventListener('change', (e) => {
         const file = e.target.files[0]; if (!file) return;
         const img = new Image();
-        img.onload = () => { bgImg = img; };
+        img.onload = () => { bgImg = img; bgPhoto = null; };
         img.src = URL.createObjectURL(file);
       });
-      bgclearEl.addEventListener('click', () => { bgImg = null; bgfileEl.value = ''; });
+      bgclearEl.addEventListener('click', () => { bgImg = null; bgPhoto = null; bgfileEl.value = ''; });
 
       function drawCover(img, x, y, w, h) {
         const zoom = parseFloat(zoomEl.value) || 1;
@@ -545,6 +558,45 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         const dx = (parseFloat(offxEl.value) || 0) * w;
         const dy = (parseFloat(offyEl.value) || 0) * h;
         ctx.drawImage(img, x + (w - iw) / 2 + dx, y + (h - ih) / 2 + dy, iw, ih);
+      }
+
+      // kadr pod twarz (src/data/faces.json, scripts/detect-faces.mjs): twarz na ~1/3 wysokości
+      // i nad środkiem pola, tak żeby włosy się zmieściły. Bez danych o twarzy trzymamy górę zdjęcia.
+      // kolor tła zdjęcia z lewego górnego rogu, do dopełnienia kadru przy zbliżeniach
+      const edgeColors = new WeakMap();
+      function edgeColor(img) {
+        if (!edgeColors.has(img)) {
+          const c = document.createElement('canvas');
+          c.width = c.height = 1;
+          const cx = c.getContext('2d');
+          cx.drawImage(img, 0, 0, img.width * 0.04, img.height * 0.04, 0, 0, 1, 1);
+          const [r, g, b] = cx.getImageData(0, 0, 1, 1).data;
+          edgeColors.set(img, `rgb(${r},${g},${b})`);
+        }
+        return edgeColors.get(img);
+      }
+
+      function drawFaceCover(img, x, y, w, h, face) {
+        const cover = Math.max(w / img.width, h / img.height);
+        // przy zbliżeniu (twarz na pół zdjęcia) wolno lekko oddalić poniżej "cover",
+        // a brakujące tło dopełnia kolor z rogu zdjęcia
+        const target = face ? (0.34 * h) / (face.h * img.height) : cover;
+        const closeUp = face && face.h * img.height * cover > h * 0.5;
+        let r = closeUp ? Math.max(cover * 0.78, target) : Math.max(cover, target);
+        r *= parseFloat(zoomEl.value) || 1;
+        const iw = img.width * r, ih = img.height * r;
+        let ox = face ? x + w * 0.5 - face.cx * iw : x + (w - iw) / 2;
+        let oy = face ? y + h * 0.46 - face.cy * ih : y + (h - ih) * 0.2;
+        ox += (parseFloat(offxEl.value) || 0) * w;
+        oy += (parseFloat(offyEl.value) || 0) * h;
+        if (iw < w || ih < h) {
+          ctx.fillStyle = edgeColor(img);
+          ctx.fillRect(x, y, w, h);
+        }
+        // za wąskie zdjęcie stoi na środku, za niskie siedzi na dolnej krawędzi (ramiona do brzegu)
+        ox = iw < w ? x + (w - iw) / 2 : Math.min(x, Math.max(x + w - iw, ox));
+        oy = ih < h ? y + h - ih : Math.min(y, Math.max(y + h - ih, oy));
+        ctx.drawImage(img, ox, oy, iw, ih);
       }
 
       // three – logo z przezroczystym tłem (kompozyt daje 2D canvas)
@@ -582,7 +634,9 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
       // 2× tylko dla grafik: układ liczy się od W/H, więc wystarczy większy kadr; video zostaje w 1080
       function setFormat(video = false) {
         const k = !video && hiresEl.checked && STILL.includes(modeEl.value) ? 2 : 1;
-        [W, H] = formatEl.value.split('x').map((n) => Number(n) * k);
+        // YouTube ma jeden format, niezależny od listy formatów pod sociale
+        const fmt = modeEl.value === 'youtube' ? '1280x720' : formatEl.value;
+        [W, H] = fmt.split('x').map((n) => Number(n) * k);
         out.width = W; out.height = H;
       }
       hiresEl.addEventListener('change', () => setFormat());
@@ -666,6 +720,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         const img = new Image();
         img.onload = () => {
           bgImg = img;
+          bgPhoto = photo;
           zoomEl.value = '1'; zoomEl.dispatchEvent(new Event('input'));
           offxEl.value = '0'; offxEl.dispatchEvent(new Event('input'));
           offyEl.value = '0'; offyEl.dispatchEvent(new Event('input'));
@@ -751,7 +806,8 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
       }
 
       function wrapLines(text, maxW) {
-        const words = text.split(/\s+/).filter(Boolean);
+        // twarda spacja (U+00A0) skleja słowa, więc dzielimy tylko po zwykłych białych znakach
+        const words = text.split(/[ \t\r\n]+/).filter(Boolean);
         const lines = [];
         let line = '';
         for (const w of words) {
@@ -1035,6 +1091,101 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         drawGuides(inset);
       }
 
+      // miniaturka YouTube: tytuł ma być czytelny nawet w małym kafelku na liście, więc gra pierwsze skrzypce
+      function drawYoutube() {
+        const bg = bgPickEl.value;
+        const dark = isDark(bg);
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, W, H);
+
+        const m = H * 0.08;
+        const userScale = Math.max(0.3, Math.min(3, parseFloat(scaleEl.value) || 1));
+
+        // głowa w konturze sygnetu, tak jak na zapowiedzi prelegenta
+        const ratio = maskVB[1] / maskVB[0];
+        let boxH = H - m * 1.2;
+        let boxW = boxH / ratio;
+        if (boxW > W * 0.44) { boxW = W * 0.44; boxH = boxW * ratio; }
+        const px0 = W - m * 0.6 - boxW;
+        const py0 = (H - boxH) / 2;
+        const t = maskTransform(px0, py0, boxW, boxH);
+        ctx.save();
+        if (maskPath) {
+          ctx.translate(t.dx, t.dy);
+          ctx.scale(t.s, t.s);
+          ctx.clip(maskPath);
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+        ctx.fillStyle = dark ? 'rgba(255,255,255,0.06)' : 'rgba(20,19,15,0.06)';
+        ctx.fillRect(px0, py0, boxW, boxH);
+        if (bgImg) drawFaceCover(bgImg, px0, py0, boxW, boxH, bgPhoto && FACES[bgPhoto]);
+        else {
+          // bez zdjęcia: inicjały na czerwieni z logo zamiast pustego konturu
+          const words = speakerEl.value.trim().split(/\s+/).filter(Boolean);
+          const initials = words.length > 1 ? words[0][0] + words[words.length - 1][0] : (words[0] || '').slice(0, 2);
+          ctx.fillStyle = '#dc1945';
+          ctx.fillRect(px0, py0, boxW, boxH);
+          if (initials) {
+            ctx.font = `${fontWeight} ${Math.round(boxH * 0.42)}px ${fontFamily}`;
+            ctx.fillStyle = '#f4f2ec';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(initials.toUpperCase(), px0 + boxW / 2, py0 + boxH * 0.52);
+          }
+        }
+        ctx.restore();
+
+        // sygnet w lewym górnym rogu
+        const sygnet = Math.min(W, H) * (parseFloat(logoSizeEl.value) || 0.16);
+        const mark = dark ? sygnetLight : sygnetDark;
+        let markH = sygnet;
+        if (mark.complete && mark.naturalWidth) {
+          const r = sygnet / Math.max(mark.naturalWidth, mark.naturalHeight);
+          markH = mark.naturalHeight * r;
+          ctx.drawImage(mark, m, m, mark.naturalWidth * r, markH);
+        }
+
+        const colW = px0 - m - m * 0.7;
+        const name = speakerEl.value.replace(/\s*\n\s*/g, ' ').trim();
+        // jednoliterowe spójniki nie zostają na końcu linii
+        const talk = talkEl.value.trim().replace(/(^|\s)([aiouwzAIOUWZ])\s+/g, '$1$2\u00a0');
+
+        // nazwisko przy dolnej krawędzi, nad nim pasek w kolorach logo
+        let blockBottom = H - m;
+        const barH = Math.max(4, Math.round(H * 0.009));
+        if (name) {
+          // nazwisko zawsze tej samej wielkości, żeby miniaturki w playliście wyglądały jak seria
+          const namePx = Math.round(H * 0.058 * userScale);
+          ctx.font = `${fontWeight} ${namePx}px ${fontFamily}`;
+          ctx.fillStyle = textColor;
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'alphabetic';
+          ctx.fillText(name, m, blockBottom);
+          const barY = blockBottom - namePx * 1.25 - barH;
+          const barW = Math.min(colW, W * 0.2);
+          const segW = barW / LOGO_BAR.length;
+          LOGO_BAR.forEach((c, k) => {
+            ctx.fillStyle = dark && c === '#14130f' ? '#f4f2ec' : c;
+            ctx.fillRect(Math.round(m + k * segW), barY, Math.ceil(segW), barH);
+          });
+          blockBottom = barY;
+        }
+
+        // tytuł na całą wolną przestrzeń między sygnetem a nazwiskiem
+        if (talk) {
+          const areaTop = m + markH + H * 0.05;
+          const areaH = blockBottom - H * 0.05 - areaTop;
+          const fit = fitBlock(talk, headFont, colW, areaH, H * 0.15 * userScale, 1.04);
+          const lh = fit.px * 1.04;
+          ctx.font = headFont(fit.px);
+          ctx.fillStyle = textColor;
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'top';
+          let y = areaTop + (areaH - fit.lines.length * lh) / 2;
+          for (const l of fit.lines) { ctx.fillText(l, m, y); y += lh; }
+        }
+      }
+
       // karuzela: slajdy rozdziela linia ---, akapity pusta linia, pierwszy akapit to nagłówek
       const BODY_FONT = '"Inter Variable", Inter, sans-serif';
 
@@ -1301,6 +1452,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         if (still) {
           if (modeEl.value === 'sponsor') drawSponsor();
           else if (modeEl.value === 'carousel') drawCarousel();
+          else if (modeEl.value === 'youtube') drawYoutube();
           else if (modeEl.value === 'speaker') {
             drawSpeakerStill(animPreviewEl.checked || recording ? elapsed % animTotal() : undefined);
           } else drawStatic();
@@ -1433,6 +1585,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
       function renderStill() {
         if (modeEl.value === 'sponsor') drawSponsor();
         else if (modeEl.value === 'carousel') drawCarousel();
+        else if (modeEl.value === 'youtube') drawYoutube();
         else if (modeEl.value === 'speaker') drawSpeakerStill();
         else drawStatic();
       }
@@ -1441,6 +1594,7 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         if (modeEl.value === 'sponsor') return slugify(`sponsor-${sponsorName}`);
         if (modeEl.value === 'carousel') return `${carouselSlug()}-${String(slideIdxEl.value).padStart(2, '0')}`;
         if (modeEl.value === 'speaker') return slugify(speakerEl.value || 'prelegent');
+        if (modeEl.value === 'youtube') return `yt-${slugify(speakerEl.value || 'prelegent')}`;
         return slugify(textEl.value);
       }
 
@@ -1513,7 +1667,44 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         statusEl.textContent = `pobrano ${a.download} (${jpegs.length} stron)`;
       });
 
+      function loadImage(src) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = () => resolve(null);
+          img.src = src;
+        });
+      }
+
+      // wszystkie miniaturki naraz: każdy prelegent z agendy, kadr zdjęcia domyślny
+      async function youtubeZip() {
+        const keep = { name: speakerEl.value, talk: talkEl.value, img: bgImg, photo: bgPhoto, zoom: zoomEl.value, x: offxEl.value, y: offyEl.value };
+        zoomEl.value = '1'; offxEl.value = '0'; offyEl.value = '0';
+        const opts = [...speakerPresetEl.options].filter((o) => o.value);
+        const files = [];
+        exporting = true;
+        for (const [i, o] of opts.entries()) {
+          statusEl.textContent = `renderuję ${i + 1}/${opts.length}: ${o.dataset.name}`;
+          speakerEl.value = o.dataset.name || '';
+          talkEl.value = o.dataset.topic || '';
+          bgImg = o.dataset.photo ? await loadImage(o.dataset.photo) : null;
+          bgPhoto = o.dataset.photo || null;
+          drawYoutube();
+          const name = `${String(i + 1).padStart(2, '0')}-yt-${slugify(o.dataset.name || 'prelegent')}-${W}x${H}.jpg`;
+          files.push({ name, data: bytesFromDataUrl(out.toDataURL('image/jpeg', 0.9)) });
+        }
+        exporting = false;
+        speakerEl.value = keep.name; talkEl.value = keep.talk; bgImg = keep.img; bgPhoto = keep.photo;
+        zoomEl.value = keep.zoom; offxEl.value = keep.x; offyEl.value = keep.y;
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(zipStore(files));
+        a.download = `programistok-2026-miniaturki-yt.zip`;
+        a.click();
+        statusEl.textContent = `pobrano ${a.download} (${files.length} miniaturek)`;
+      }
+
       document.getElementById('zip').addEventListener('click', () => {
+        if (modeEl.value === 'youtube') { youtubeZip(); return; }
         if (modeEl.value === 'carousel') {
           const slug = carouselSlug();
           const files = carouselFrames(pngBytes).map((data, i) => ({ name: `${slug}-${String(i + 1).padStart(2, '0')}-${W}x${H}.png`, data }));
@@ -1586,9 +1777,11 @@ Dwa dni Programistoku, 25–26 września, Politechnika Białostocka:
         exporting = true;
         renderStill();
         const a = document.createElement('a');
-        a.href = out.toDataURL('image/png');
+        // YouTube przyjmuje miniaturki do 2 MB, a PNG w 2560×1440 potrafi to przekroczyć
+        const jpg = modeEl.value === 'youtube';
+        a.href = jpg ? out.toDataURL('image/jpeg', 0.9) : out.toDataURL('image/png');
         exporting = false;
-        a.download = `${slug}-${W}x${H}.png`;
+        a.download = `${slug}-${W}x${H}.${jpg ? 'jpg' : 'png'}`;
         a.click();
         return a.download;
       }
