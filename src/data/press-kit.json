@@ -2,7 +2,7 @@
   "generated": "2026-09-25",
   "zip": {
     "href": "/press/programistok-2026-press-kit.zip",
-    "size": "5.8 MB"
+    "size": "5.9 MB"
   },
   "nota": {
     "pdf": "/press/nota-prasowa/programistok-2026-nota-prasowa.pdf",
@@ -77,7 +77,7 @@
   ],
   "prelegenci": {
     "liczba": 32,
-    "zdjecia": 30,
+    "zdjecia": 31,
     "bioMd": "/press/prelegenci/prelegenci-bio.md",
     "csv": "/press/prelegenci/prelegenci.csv",
     "osoby": [
@@ -300,7 +300,7 @@
       },
       {
         "name": "Karol Przybyszewski",
-        "photo": null,
+        "photo": "/press/prelegenci/zdjecia/karol-przybyszewski.jpg",
         "photoPosition": null,
         "topic": "Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI",
         "track": "Biznes"

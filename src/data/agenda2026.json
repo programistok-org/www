@@ -229,7 +229,10 @@
     },
     {
       "id": "karol-przybyszewski",
-      "name": "Karol Przybyszewski"
+      "name": "Karol Przybyszewski",
+      "org": "Fundacja INFOTECH",
+      "photo": "/prelegenci/karol-przybyszewski.webp",
+      "bio": "Wiceprezes Fundacji INFOTECH."
     }
   ],
   "sessions": [

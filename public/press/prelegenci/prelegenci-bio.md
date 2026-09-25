@@ -176,4 +176,5 @@ Jest doktorką nauk społecznych z zakresu nauki o mediach i autorką kilkunastu
 Zdjęcie: `zdjecia/dominika-wisniewska.jpg`
 ## Karol Przybyszewski
 **Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
-_Brak zdjęcia w paczce._
+Wiceprezes Fundacji INFOTECH.
+Zdjęcie: `zdjecia/karol-przybyszewski.jpg`
