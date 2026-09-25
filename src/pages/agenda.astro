@@ -136,19 +136,34 @@ import { venue } from '../lib/venue.js';
 
     if (location.hash.startsWith('#sesja-')) open(location.hash.slice(1));
 
-    // marquee tylko tam, gdzie tekst faktycznie się nie mieści; ResizeObserver
-    // łapie też zmianę zakładki na telefonie (ukryty panel ma szerokość 0)
+    // krótki slot ma opis w jednej linii; jeśli karta ma miejsce w pionie, opis się zawija,
+    // a marquee zostaje tylko tam, gdzie tekst naprawdę się nie mieści.
+    // ResizeObserver patrzy na kartę (jej rozmiar wynika z siatki, nie z treści), więc
+    // przełączanie trybu nie wywołuje kolejnych pomiarów; łapie też zmianę zakładki na telefonie
     const fit = (el: HTMLElement) => {
+      delete el.dataset.wrap;
+      delete el.dataset.overflow;
       const shift = (el.firstElementChild as HTMLElement).scrollWidth - el.clientWidth;
-      if (el.clientWidth > 0 && shift > 2) {
-        el.dataset.overflow = '';
-        el.style.setProperty('--marquee-shift', `-${shift + 4}px`);
-        el.style.setProperty('--marquee-duration', `${Math.max(5, shift / 18)}s`);
-      } else {
-        delete el.dataset.overflow;
+      if (el.clientWidth === 0 || shift <= 2) return;
+
+      const card = el.closest<HTMLElement>('.group')!;
+      const lh = parseFloat(getComputedStyle(el).lineHeight);
+      const avail = card.getBoundingClientRect().bottom - parseFloat(getComputedStyle(card).paddingBottom) - el.getBoundingClientRect().top;
+      // od dwóch linii w górę zawijamy, a jak i tak za mało, ucinamy wielokropkiem (pełny tekst jest w modalu)
+      const lines = Math.floor((avail + 1) / lh);
+      if (lines >= 2) {
+        el.dataset.wrap = '';
+        el.style.setProperty('--lines', String(lines));
+        return;
       }
+
+      el.dataset.overflow = '';
+      el.style.setProperty('--marquee-shift', `-${shift + 4}px`);
+      el.style.setProperty('--marquee-duration', `${Math.max(5, shift / 18)}s`);
     };
-    const observer = new ResizeObserver((entries) => entries.forEach((e) => fit(e.target as HTMLElement)));
-    document.querySelectorAll<HTMLElement>('[data-marquee]').forEach((el) => observer.observe(el));
+    const observer = new ResizeObserver((entries) =>
+      entries.forEach((e) => e.target.querySelectorAll<HTMLElement>('[data-marquee]').forEach(fit)),
+    );
+    document.querySelectorAll<HTMLElement>('[data-marquee]').forEach((el) => observer.observe(el.closest('.group')!));
   </script>
 </BaseLayout>

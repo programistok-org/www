@@ -198,6 +198,17 @@
     text-overflow: clip;
   }
 
+  .marquee[data-wrap] {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--lines, 2);
+    white-space: normal;
+  }
+
+  .marquee[data-wrap] > span {
+    display: inline;
+  }
+
   .marquee[data-overflow] > span {
     animation: marquee var(--marquee-duration, 6s) ease-in-out infinite alternate;
   }
