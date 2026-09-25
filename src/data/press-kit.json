@@ -2,7 +2,7 @@
   "generated": "2026-09-25",
   "zip": {
     "href": "/press/programistok-2026-press-kit.zip",
-    "size": "5.9 MB"
+    "size": "6.1 MB"
   },
   "nota": {
     "pdf": "/press/nota-prasowa/programistok-2026-nota-prasowa.pdf",
@@ -77,7 +77,7 @@
   ],
   "prelegenci": {
     "liczba": 32,
-    "zdjecia": 31,
+    "zdjecia": 32,
     "bioMd": "/press/prelegenci/prelegenci-bio.md",
     "csv": "/press/prelegenci/prelegenci.csv",
     "osoby": [
@@ -176,7 +176,7 @@
         "name": "Przemysław Józwiakowski",
         "photo": "/press/prelegenci/zdjecia/przemyslaw-jozwiakowski.jpg",
         "photoPosition": null,
-        "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
+        "topic": "Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?",
         "track": "Biznes"
       },
       {
@@ -239,7 +239,7 @@
         "name": "Michał Szumski",
         "photo": "/press/prelegenci/zdjecia/michal-szumski.jpg",
         "photoPosition": "50% 18%",
-        "topic": "Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?",
+        "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
         "track": "Biznes"
       },
       {
@@ -279,7 +279,7 @@
       },
       {
         "name": "Mateusz Zalewski",
-        "photo": null,
+        "photo": "/press/prelegenci/zdjecia/mateusz-zalewski.jpg",
         "photoPosition": null,
         "topic": "Kupić czy zbudować? Jak podejść do wyboru platformy e-commerce — case study Commerce Weavers",
         "track": "Biznes"

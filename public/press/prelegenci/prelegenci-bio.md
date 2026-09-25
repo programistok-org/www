@@ -87,7 +87,7 @@ Dyrektor Marketingu / CMO w Intertech Sp. z o.o., z wieloletnim doświadczeniem 
 W Intertech odpowiada za całościową transformację wizerunkową marki oraz strategiczne projektowanie i wdrożenie cyfrowego ekosystemu klienta. Jest pomysłodawcą i inicjatorem projektu wirtualnego showroomu (3D/VR) oraz autorskiej aplikacji mobilnej myINTERTECH. Zwolennik praktycznego podejścia do technologii: traktuje ją nie jako marketingowy gadżet, lecz jako wieloetapowy proces skracający dystans do klienta. W ramach tworzonego środowiska digitalowego rozwija m.in. moduł „Mój Garaż” (dający użytkownikom maszyn natychmiastowy dostęp do dokumentacji i instrukcji), cyfrowy kanał zamówień części zamiennych, zdalne moduły szkoleniowe oraz narzędzia do budowania długofalowej bazy i relacji z użytkownikami końcowymi.
 Zdjęcie: `zdjecia/norbert-pawluczuk.jpg`
 ## Przemysław Józwiakowski
-**Ścieżka Biznes, dzień 2:** Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset
+**Ścieżka Biznes, dzień 2:** Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?
 Zaczynał poza technologią, w budownictwie. Przejście do IT nauczyło go rzeczy, która została z nim na lata: najciekawsze rozwiązania powstają na styku dziedzin, a nie w ich środku. Przez 15 lat budował, skalował i uczył technologii — prowadził Akademię Programowania, przez którą przeszło 500 programistów, zarządzał 50-osobowym zespołem technicznym, stworzył metodologię „Metawarstwy” używaną dziś przez ponad 10 000 osób.
 
 Dziś prowadzi Localhost Group — firmę, która robi coś celowo niepopularnego w branży. Zamiast sprzedawać firmom automatyzacje, buduje w nich wewnętrzne działy AI, które po dwunastu miesiącach działają samodzielnie. „Nie sprzedajemy narzędzi. Budujemy kompetencję, żeby je mieć na własność” — to zdanie kosztuje Localhost Group przychód z wiecznych retainerów i jest świadomym wyborem.
@@ -133,7 +133,7 @@ Prezes 2N IT. Ex-programista, choć w sercu wciąż jest miejsce do kodu (ze wsc
 Od 10 lat organizuje Programistok, od 12 lat wroclove.rb, od 13 lat BRUG, od 10 lat Nerds on lakes. Od 20 lat jest instruktorem żeglarstwa.
 Zdjęcie: `zdjecia/adam-piotrowski.jpg`
 ## Michał Szumski
-**Ścieżka Biznes, dzień 2:** Co zrobić zanim zaczniesz myśleć o wdrożeniu AI?
+**Ścieżka Biznes, dzień 2:** O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat
 Pięć lat w Anglii: liceum i inżynier z matematyki na Loughborough University, potem trzy lata magisterki z automatyki i robotyki na Politechnice Warszawskiej. W Plum pracuje od 15 lat — zaczynał jako handlowiec, pracował w marketingu, na produkcji, jako programista, Scrum Master, Product Owner i kierownik sekcji programistów, a od ponad dwóch lat jest Prezesem Zarządu. Prywatnie siłownia, bieganie, książki i gry planszowe z dziećmi.
 
 Plum specjalizuje się we wdrażaniu i produkcji elektroniki NB-IoT w branżach HVAC, gaz i woda. R&D, jakość i rozwój produktu firma ma wpisane w DNA.
@@ -163,7 +163,7 @@ Z zamiłowania radiowiec i lektor z 20-letnim doświadczeniem w pracy z mikrofon
 Zdjęcie: `zdjecia/marek-ziemba.jpg`
 ## Mateusz Zalewski
 **Ścieżka Biznes, dzień 1:** Kupić czy zbudować? Jak podejść do wyboru platformy e-commerce — case study Commerce Weavers
-_Brak zdjęcia w paczce._
+Zdjęcie: `zdjecia/mateusz-zalewski.jpg`
 ## Daniel Kaszyński
 **Ścieżka Biznes, dzień 1:** Rozwijanie kompetencji zespołu z użyciem (lub wbrew) AI
 Dr Daniel Kaszyński jest wykładowcą Szkoły Głównej Handlowej w Warszawie oraz partnerem zarządzającym w DS360, odpowiedzialnym za jakość rozwiązań wdrażających modele AI i uczenia maszynowego u klientów spółki. Był dwukrotnym laureatem studenckiego plebiscytu „Inspiracje Roku” na najlepszego wykładowcę SGH. Odpowiadał za przygotowanie wniosków badawczych o łącznym przyznanym budżecie ponad 60 mln PLN. W latach 2015–2022 pracował w Ernst & Young Consulting, a w dotychczasowej karierze zawodowej uczestniczył w ponad pięćdziesięciu projektach realizowanych dla klientów z sektora publicznego i prywatnego, m.in. Ministerstwa Zdrowia, Urzędu Komunikacji Elektronicznej, PGNiG, PKO BP oraz Google.

@@ -211,7 +211,8 @@
     },
     {
       "id": "mateusz-zalewski",
-      "name": "Mateusz Zalewski"
+      "name": "Mateusz Zalewski",
+      "photo": "/prelegenci/mateusz-zalewski.webp"
     },
     {
       "id": "daniel-kaszynski",
@@ -652,16 +653,16 @@
       ]
     },
     {
-      "id": "biznes-d2-michal-szumski",
+      "id": "biznes-d2-przemyslaw-jozwiakowski",
       "track": "biznes",
       "day": 2,
       "kind": "talk",
       "time": "09:40",
       "end": "10:10",
-      "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
-      "abstract": "Od bycia zalewanym wymaganiami klientów i działu handlowego oraz prób zadowolenia wszystkich, co kończyło się jedną wielką frustracją, do pipeline'u, który mamy dziś. Opowiem, jak go zbudowaliśmy, jak wciąż go ulepszamy i jak pilnujemy pewnych fundamentów — choćby tego, że Product Owner jest kluczowym decydentem.",
+      "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
+      "abstract": "Wszyscy mówią o AI, ale w dużych firmach wdrożenia wciąż grzęzną — i wcale nie dlatego, że technologia zawodzi. Na tej prezentacji pokażę, gdzie naprawdę pękają transformacje AI: w ludziach sparaliżowanych strachem i przeciążeniem, w przestarzałych systemach zamkniętych na integracje, i w starym sposobie myślenia, w którym wciąż „ja robię zadanie”, zamiast pozwolić agentowi pracować za mnie.\n\nW 30 minut rozłożę te przeszkody na czynniki pierwsze i pokażę, dlaczego atakowanie tylko jednej z nich to strata czasu. Wyjdziesz z konkretną mapą tego, co blokuje Twoją organizację — i wiedzą, od czego zacząć, żeby ruszyć z miejsca. Jeśli odpowiadasz za wdrażanie AI albo po prostu masz dość slajdów pełnych obietnic bez pokrycia, to jest prezentacja dla Ciebie.",
       "speakers": [
-        "michal-szumski"
+        "przemyslaw-jozwiakowski"
       ]
     },
     {
@@ -858,16 +859,16 @@
       ]
     },
     {
-      "id": "biznes-d2-przemyslaw-jozwiakowski",
+      "id": "biznes-d2-michal-szumski",
       "track": "biznes",
       "day": 2,
       "kind": "talk",
       "time": "14:50",
       "end": "15:20",
-      "topic": "Gdzie naprawdę pękają wdrożenia AI w dużych organizacjach: ludzie, systemy, mindset",
-      "abstract": "Wszyscy mówią o AI, ale w dużych firmach wdrożenia wciąż grzęzną — i wcale nie dlatego, że technologia zawodzi. Na tej prezentacji pokażę, gdzie naprawdę pękają transformacje AI: w ludziach sparaliżowanych strachem i przeciążeniem, w przestarzałych systemach zamkniętych na integracje, i w starym sposobie myślenia, w którym wciąż „ja robię zadanie”, zamiast pozwolić agentowi pracować za mnie.\n\nW 30 minut rozłożę te przeszkody na czynniki pierwsze i pokażę, dlaczego atakowanie tylko jednej z nich to strata czasu. Wyjdziesz z konkretną mapą tego, co blokuje Twoją organizację — i wiedzą, od czego zacząć, żeby ruszyć z miejsca. Jeśli odpowiadasz za wdrażanie AI albo po prostu masz dość slajdów pełnych obietnic bez pokrycia, to jest prezentacja dla Ciebie.",
+      "topic": "O transformacji, jaką przeszedł nasz dział rozwoju przez ostatnie 10 lat",
+      "abstract": "Od bycia zalewanym wymaganiami klientów i działu handlowego oraz prób zadowolenia wszystkich, co kończyło się jedną wielką frustracją, do pipeline'u, który mamy dziś. Opowiem, jak go zbudowaliśmy, jak wciąż go ulepszamy i jak pilnujemy pewnych fundamentów — choćby tego, że Product Owner jest kluczowym decydentem.",
       "speakers": [
-        "przemyslaw-jozwiakowski"
+        "michal-szumski"
       ]
     },
     {
