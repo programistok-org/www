@@ -1,0 +1,113 @@
+/* Hack-a-stok @ Programistok 2027 homepage: its own Tailwind build, separate from global.css (Programistok 2026 archive) */
+@import "tailwindcss" source(none);
+@source "../pages/index.astro";
+
+@theme inline {
+  --font-display: "Fraunces", serif;
+  --font-archivo: "Archivo Black", sans-serif;
+  --font-body: "Instrument Sans", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-ochre: var(--ochre);
+  --color-umber: var(--umber);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+}
+
+:root {
+  --background: oklch(0.95 0.025 85);
+  --foreground: oklch(0.18 0.01 60);
+  --card: oklch(0.92 0.03 85);
+  --card-foreground: oklch(0.18 0.01 60);
+  --primary: oklch(0.48 0.18 25);
+  --primary-foreground: oklch(0.96 0.02 85);
+  --secondary: oklch(0.33 0.06 155);
+  --secondary-foreground: oklch(0.95 0.025 85);
+  /* picked from the poster's palette: sand-gold and dark brown */
+  --ochre: oklch(0.8 0.075 80);
+  --umber: oklch(0.34 0.05 55);
+  --border: oklch(0.18 0.01 60);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
+}
+
+@utility font-archivo {
+  font-family: var(--font-archivo);
+}
+
+.hackaton-headline {
+  letter-spacing: 0;
+}
+.headline-green {
+  fill: var(--secondary);
+}
+.headline-crimson {
+  fill: var(--primary);
+}
+.headline-ink {
+  fill: var(--foreground);
+}
+.headline-paper {
+  fill: #fff;
+  stroke: var(--foreground);
+  stroke-width: 3px;
+}
+.hero-logotype {
+  position: relative;
+  z-index: 20;
+}
+.poster-hero {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+/* past 1200px the poster bleeds to the viewport's right edge; the left side already continues the page background */
+.poster-hero-image {
+  width: max(100%, 100% + 50vw - 600px);
+  max-width: none;
+  object-position: center 60%;
+}
+
+@media (min-width: 768px) {
+  .poster-hero {
+    aspect-ratio: 1.6;
+    min-height: 520px;
+  }
+  .hackaton-headline {
+    position: absolute;
+    top: 130px;
+    left: 4%;
+    width: 100%;
+    margin-top: 0;
+  }
+  .hero-register {
+    position: relative;
+    z-index: 20;
+  }
+}
+
+@media (min-width: 1100px) {
+  .poster-hero {
+    aspect-ratio: 1.8;
+  }
+}

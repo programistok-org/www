@@ -1,0 +1,268 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroLogo3D from '../components/HeroLogo3D.astro';
+import Cfp from '../components/Cfp.astro';
+import agenda from '../data/agenda2026.json';
+import SpeakerStrip from '../components/SpeakerStrip.astro';
+import { youtubeEmbedUrl } from '../lib/youtube.js';
+import { venue } from '../lib/venue.js';
+
+const heroVideo = youtubeEmbedUrl('https://www.youtube.com/watch?v=a2vtAt5nNzA');
+---
+
+<BaseLayout
+  title="Programistok 2026 · konferencja IT i biznes w Białymstoku"
+  description="Dwudniowa konferencja podlaskiej społeczności IT. 25–26.09.2026, Białystok. Dwie ścieżki: IT i Biznes."
+>
+  <!-- ===== HERO ===== -->
+  <section class="mx-auto grid max-w-[1200px] items-center gap-10 px-5 pb-10 pt-14 sm:px-8 lg:grid-cols-[auto_1fr] lg:gap-16 lg:pt-24" aria-labelledby="hero-title">
+    <!-- Wytłoczone logo 3D -->
+    <div class="flex justify-center lg:justify-start">
+      <HeroLogo3D class="aspect-square w-[clamp(210px,36vw,420px)]" />
+    </div>
+
+    <div>
+      <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.16em] text-faint">// Konferencja</p>
+
+      <p class="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-lg font-semibold tracking-tight sm:text-xl">
+        <span class="inline-flex items-center gap-2.5 tabular-nums">
+          <span class="h-3 w-3 rounded-[3px] bg-accent" aria-hidden="true"></span>
+          25–26.09.2026
+        </span>
+        <span class="hidden h-5 w-px bg-line sm:block" aria-hidden="true"></span>
+        <a href={venue.mapsUrl} rel="noopener" target="_blank" class="group inline-flex items-center gap-2 text-muted transition hover:text-ink">
+          <svg class="h-[1.05em] w-[1.05em] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span class="underline decoration-line decoration-[1.5px] underline-offset-[5px] transition group-hover:decoration-ink">{venue.shortName}</span>
+          <span class="text-faint transition group-hover:text-ink" aria-hidden="true">↗</span>
+        </a>
+      </p>
+
+      <h1 id="hero-title" class="text-[clamp(2.25rem,5.5vw,4.5rem)] font-bold leading-[0.96] tracking-[-0.03em]">
+        Programistok<span class="text-accent">'26</span>
+      </h1>
+
+      <p class="mt-7 max-w-[60ch] text-[clamp(1.125rem,2vw,1.4375rem)] leading-relaxed text-muted text-pretty">
+        Ogólnopolska konferencja technologii i biznesu organizowana w sercu Podlaskiego.
+        Dwie ścieżki poświęcone praktycznej wiedzy i doświadczeniom.
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-3.5">
+        <a href="/agenda" class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-7 py-4 text-base font-semibold text-ink transition hover:border-ink">
+          Agenda <span aria-hidden="true">→</span>
+        </a>
+        <a href="https://programistok2026.konfeo.com/pl/groups" rel="noopener" target="_blank" class="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-base font-bold text-white transition hover:brightness-110">
+          Kup bilety <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GRA + WIDEO ===== -->
+  <section class="mx-auto grid max-w-[1200px] gap-5 px-5 pb-16 sm:px-8 lg:grid-cols-2 lg:items-stretch" aria-label="Gra i wideo Programistok">
+    <a
+      href="/gra"
+      class="group relative isolate flex min-h-[320px] overflow-hidden rounded-3xl border border-line bg-[#071821] lg:order-last lg:min-h-0"
+      aria-label="Zagraj w grę Programistok w przeglądarce"
+    >
+      <img
+        src="/thegame.png"
+        alt=""
+        width="945"
+        height="836"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 -z-10 h-full w-full object-cover [image-rendering:pixelated] transition duration-500 group-hover:scale-[1.04]"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-t from-[#071821] via-[#071821]/75 to-[#071821]/15" aria-hidden="true"></div>
+
+      <div class="mt-auto flex w-full flex-wrap items-end justify-between gap-4 p-7 sm:p-8">
+        <div>
+          <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.16em] text-[#9ad07f]">// Gra</p>
+          <p class="text-[clamp(1.5rem,2.6vw,2rem)] font-black leading-[1.02] tracking-[-0.03em] text-[#e0f8cf]">
+            Zagraj w Programistok
+          </p>
+          <p class="mt-2 max-w-[30ch] text-base leading-relaxed text-[#e0f8cf]/80 text-pretty">
+            Przejdź się po miasteczku i poznaj prelegentów, sponsorów i partnerów. Prosto w przeglądarce.
+          </p>
+        </div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-bold text-white transition group-hover:brightness-110">
+          Zagraj <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </a>
+
+    <figure class="overflow-hidden rounded-3xl border border-line bg-ink">
+      <div class="aspect-video">
+        <iframe
+          src={heroVideo}
+          title="Programistok 2026"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          class="h-full w-full"
+        ></iframe>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ===== ŚCIEŻKI ===== -->
+  <section id="sciezki" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="sciezki-title">
+    <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Program</p>
+    <h2 id="sciezki-title" class="max-w-[18ch] text-[clamp(2rem,5vw,3.5rem)] font-black leading-[1.02] tracking-[-0.03em]">
+      Dwie ścieżki, jedna społeczność
+    </h2>
+    <p class="mt-5 max-w-[56ch] text-lg leading-relaxed text-muted text-pretty">
+      Dwa dni wystąpień na dwóch równoległych ścieżkach, do tego panele dyskusyjne
+      i lightning talki.
+    </p>
+
+    <SpeakerStrip />
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2">
+      <article class="group flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
+        <div class="mb-6 flex h-7 items-center">
+          <span class="h-1.5 w-16 rounded-full bg-accent"></span>
+        </div>
+        <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.12em] text-accent-ink">Ścieżka 01 · IT</p>
+        <h3 class="mb-4 text-2xl font-black tracking-[-0.02em]">Dla osób tworzących technologię</h3>
+        <p class="text-base leading-relaxed text-muted text-pretty">
+          Architektura systemów, skalowanie, jakość oprogramowania i praktyczne
+          doświadczenia z różnych obszarów IT.
+        </p>
+        <a href="/agenda#it" class="mt-auto inline-flex items-center gap-1.5 pt-6 font-semibold text-accent-ink transition group-hover:gap-2.5">
+          Agenda ścieżki IT <span aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <article class="group relative flex flex-col rounded-3xl border border-line bg-surface p-8 sm:p-10">
+        <div class="mb-6 flex h-7 items-center gap-3">
+          <div class="h-1.5 w-16 rounded-full bg-biz"></div>
+          <span class="rounded-full bg-biz/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-biz-ink">Nowość 2026</span>
+        </div>
+        <p class="mb-2 font-mono text-[13px] uppercase tracking-[0.12em] text-biz-ink">Ścieżka 02 · Biznes</p>
+        <h3 class="mb-4 text-2xl font-black tracking-[-0.02em]">Dla founderów, liderów i biznesu</h3>
+        <p class="text-base leading-relaxed text-muted text-pretty">
+          Jak wykorzystywać technologię do rozwoju organizacji, podejmować lepsze decyzje
+          i budować wartościowe relacje z ekspertami.
+        </p>
+        <div class="mt-auto flex flex-col items-start gap-2.5 pt-6">
+          <a href="/dla-biznesu" class="inline-flex items-center gap-1.5 font-semibold text-biz-ink transition group-hover:gap-2.5">
+            Poznaj ścieżkę biznesową <span aria-hidden="true">→</span>
+          </a>
+          <a href="/agenda#biznes" class="inline-flex items-center gap-1.5 font-semibold text-biz-ink transition hover:gap-2.5">
+            Agenda ścieżki Biznes <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== CFP ===== -->
+  {agenda.cfp.open && (
+    <section id="cfp" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-label="Call for Papers">
+      <Cfp />
+    </section>
+  )}
+
+  <!-- ===== O NAS ===== -->
+  <section id="o-nas" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="onas-title">
+    <div class="rounded-3xl bg-ink px-6 py-12 text-cream sm:px-12 lg:px-16 lg:py-20">
+      <p class="mb-8 font-mono text-[13px] uppercase tracking-[0.14em] text-cream-faint">// O nas</p>
+      <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <h2 id="onas-title" class="text-[clamp(2rem,4.5vw,3.25rem)] font-black leading-[1.03] tracking-[-0.03em]">
+          Programistok to społeczność i idea.
+        </h2>
+        <div class="flex max-w-[62ch] flex-col gap-5 text-[17px] leading-relaxed text-cream-dim text-pretty">
+          <p>Programistok to jedna z najbardziej rozpoznawalnych konferencji technologicznych organizowanych przez społeczność w Polsce.</p>
+          <p>Powstał z inicjatywy lokalnych meetupów, które połączyły siły, aby stworzyć ogólnopolskie wydarzenie na Podlasiu. Od ponad dekady Programistok gromadzi ekspertów z całej Polski i tworzy przestrzeń do rozmów o tym, co w technologii naprawdę ma znaczenie.</p>
+          <p>Program konferencji jest technologicznie agnostyczny. Zamiast skupiać się na jednym języku czy frameworku, rozmawiamy o wyzwaniach, które pozostają aktualne niezależnie od wykorzystywanego stosu technologicznego.</p>
+          <p>Od 2026 roku rozwijamy również ścieżkę Biznes. Tworzymy przestrzeń, w której technologia spotyka się z biznesem, a eksperci i przedsiębiorcy mogą wymieniać wiedzę, doświadczenia i pomysły.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MIEJSCE ===== -->
+  <section id="miejsce" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="miejsce-title">
+    <div class="flex flex-wrap items-end justify-between gap-8 rounded-3xl border border-line bg-surface p-8 sm:p-10 lg:p-14">
+      <div>
+        <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Miejsce</p>
+        <h2 id="miejsce-title" class="max-w-[20ch] text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.04] tracking-[-0.03em]">
+          {venue.name}
+        </h2>
+        <address class="mt-5 text-lg not-italic leading-relaxed text-muted">
+          {venue.street}<br />{venue.city}
+        </address>
+      </div>
+      <a
+        href={venue.mapsUrl}
+        rel="noopener"
+        target="_blank"
+        class="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-base font-bold text-white transition hover:brightness-110"
+      >
+        Otwórz w Mapach Google <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== BILETY ===== -->
+  <section id="bilety" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="bilety-title">
+    <div class="relative isolate overflow-hidden rounded-3xl px-6 py-14 text-white sm:px-12 lg:px-16 lg:py-24">
+      <!-- Foto tło + czarny overlay -->
+      <img src="/bg.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <div class="absolute inset-0 -z-10 bg-black/65"></div>
+
+      <h2 id="bilety-title" class="max-w-[16ch] text-[clamp(2.25rem,6vw,4.5rem)] font-black leading-[0.98] tracking-[-0.04em]">
+        Zapraszamy na Programistok 2026
+      </h2>
+      <p class="mt-6 font-mono text-sm uppercase tracking-wide text-white/85">25–26.09.2026 // Białystok // IT + Biznes</p>
+
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a
+          href="https://programistok2026.konfeo.com/pl/groups"
+          rel="noopener"
+          target="_blank"
+          class="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-ink transition hover:brightness-95"
+        >
+          Kup bilety <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          href="/wybieram-sie"
+          class="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-4 text-base font-semibold text-white transition hover:border-white"
+        >
+          Zrób grafikę „Wybieram się" <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href="https://discord.gg/eHSv6rC8tt"
+          rel="noopener"
+          target="_blank"
+          class="inline-flex items-center gap-2 rounded-full px-7 py-4 text-base font-semibold text-white transition hover:brightness-110"
+          style="background:#5865F2"
+        >
+          Discord <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          href="https://www.facebook.com/events/1014659034666232"
+          rel="noopener"
+          target="_blank"
+          class="inline-flex items-center gap-2 rounded-full px-7 py-4 text-base font-semibold text-white transition hover:brightness-110"
+          style="background:#1877F2"
+        >
+          Wydarzenie FB <span aria-hidden="true">↗</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/events/7483050508312535041?viewAsMember=true"
+          rel="noopener"
+          target="_blank"
+          class="inline-flex items-center gap-2 rounded-full px-7 py-4 text-base font-semibold text-white transition hover:brightness-110"
+          style="background:#0A66C2"
+        >
+          Wydarzenie LinkedIn <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
