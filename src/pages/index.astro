@@ -210,7 +210,7 @@ const audiences = [
           <!-- typographic logo: Inter Black is 5.69em wide for "Hack-a-stok", so 17cqw fills the slab at any column width -->
           <!-- my-auto centers the logo in the column on desktop, with the register button kept at the bottom;
                the negative right margin widens it into the poster half (the type scales with it) and z-10 lifts it above the image -->
-          <div class="relative z-10 mt-8 md:my-auto md:-mr-[60%]">
+          <div class="@container relative z-10 mt-8 md:my-auto md:-mr-[60%] md:pt-4">
             <h1 class="@container bg-foreground px-5 pb-6 pt-5 font-logo text-background md:px-7">
               <span class="block text-[17cqw] font-black leading-[0.95] tracking-[-0.05em]">
                 Hack<span class="text-ochre">-a-</span>stok
@@ -221,6 +221,11 @@ const audiences = [
             <div class="grid h-2.5 grid-cols-3" aria-hidden="true">
               <span class="bg-primary"></span><span class="bg-secondary"></span><span class="bg-ochre"></span>
             </div>
+            <!-- line 1 is 18.53em wide: 5.3cqw fills the column on phones; from md the column is 62.5% of this
+                 widened block, so 3.3cqw keeps the slogan on the paper, off the poster -->
+            <p class="mt-4 font-logo text-[5.3cqw] font-extrabold leading-[1.15] tracking-[-0.02em] md:text-[3.3cqw]">
+              Prawdziwe problemy. <span class="text-primary">Świeże pomysły.</span><br />Jeden weekend.
+            </p>
             <p class="mt-4 font-logo text-2xl font-black tracking-[-0.03em] md:text-4xl lg:text-5xl">
               <span class="text-primary">IT</span> × <span class="text-secondary">BIZNES</span>
             </p>
