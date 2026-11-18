@@ -201,48 +201,31 @@ const audiences = [
         <div
           class="relative flex flex-col border-b-2 border-foreground px-5 pb-10 pt-7 md:border-b-0 md:border-r-2 md:px-10 md:pb-9"
         >
-          <div class="hero-logotype flex flex-col items-start">
+          <div class="flex flex-col items-start">
             <img src={asset('programistok-z-napisem.svg')} alt="Programistok logo" class="mt-1 w-60" />
             <div>
               <p class="-mt-2 ml-16 text-sm font-bold">przedstawia</p>
             </div>
           </div>
-          <h1 aria-label="HACK A STOK — IT × BIZNES" class="hackaton-headline pointer-events-none z-10 mt-5 font-archivo">
-            <!-- viewBox hugs the drawn content so mobile gets no dead space; the paper's top-right corner overflows on purpose -->
-            <svg viewBox="0 82 500 354" class="block w-full overflow-visible" aria-hidden="true">
-              <defs>
-                <!-- hard shadow like the paper's: no blur, black at 35%, offset down-right -->
-                <filter id="lettering-shadow">
-                  <feDropShadow dx="5" dy="5" stdDeviation="0" flood-opacity="0.35"></feDropShadow>
-                </filter>
-                <filter id="tagline-shadow">
-                  <feDropShadow dx="5" dy="5" stdDeviation="0" flood-opacity="0.175"></feDropShadow>
-                </filter>
-              </defs>
-              <!-- paper and its hard shadow match the lettering's -8.2° tilt around the paper's center (243, 211) -->
-              <rect x="24" y="67" width="438" height="288" transform="translate(10 10) rotate(-8.2 243 211)" class="headline-ink"></rect>
-              <rect x="24" y="67" width="438" height="288" transform="rotate(-8.2 243 211)" class="headline-paper"></rect>
-              <!-- the SVG is drawn at -8.2° already: canvas 3072×1536, lettering centered at (1551, 750);
-                   0.2 scale centers it on the paper with some padding -->
-              <image
-                href={asset('variant-9-vector.svg')}
-                x="-67"
-                y="61"
-                width="614"
-                height="307"
-                filter="url(#lettering-shadow)"></image>
-              <!-- 85% of the original 52px size, 8 lower to clear the paper's shadow;
-                   the outer group keeps the shadow offset in screen space like the lettering's -->
-              <g filter="url(#tagline-shadow)">
-                <g transform="translate(0 8) rotate(-8.2 20 240)">
-                  <text x="40" y="433" font-size="44" class="headline-crimson">IT</text>
-                  <text x="98" y="430.5" font-size="44" class="headline-ink">×</text>
-                  <text x="134" y="433" font-size="44" class="headline-green">BIZNES</text>
-                </g>
-              </g>
-            </svg>
-          </h1>
-          <div class="hero-register mt-6 flex justify-end md:mt-auto">
+          <!-- typographic logo: Inter Black is 5.69em wide for "Hack-a-stok", so 17cqw fills the slab at any column width -->
+          <!-- my-auto centers the logo in the column on desktop, with the register button kept at the bottom;
+               the negative right margin widens it into the poster half (the type scales with it) and z-10 lifts it above the image -->
+          <div class="relative z-10 mt-8 md:my-auto md:-mr-[60%]">
+            <h1 class="@container bg-foreground px-5 pb-6 pt-5 font-logo text-background md:px-7">
+              <span class="block text-[17cqw] font-black leading-[0.95] tracking-[-0.05em]">
+                Hack<span class="text-ochre">-a-</span>stok
+              </span>
+              <span class="mt-[2cqw] block text-[7cqw] font-medium tracking-[-0.02em]">@ Programistok 2027</span>
+            </h1>
+            <!-- the PDF's three-colour stripe, in this page's palette -->
+            <div class="grid h-2.5 grid-cols-3" aria-hidden="true">
+              <span class="bg-primary"></span><span class="bg-secondary"></span><span class="bg-ochre"></span>
+            </div>
+            <p class="mt-4 font-logo text-2xl font-black tracking-[-0.03em] md:text-4xl lg:text-5xl">
+              <span class="text-primary">IT</span> × <span class="text-secondary">BIZNES</span>
+            </p>
+          </div>
+          <div class="mt-8 flex justify-end">
             <button type="button" disabled class={soonClass}>Zapisz się<span class={badgeClass}>Już wkrótce</span></button>
           </div>
         </div>

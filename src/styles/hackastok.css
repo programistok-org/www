@@ -1,11 +1,14 @@
 /* Hack-a-stok @ Programistok 2027 homepage: its own Tailwind build, separate from global.css (Programistok 2026 archive) */
 @import "tailwindcss" source(none);
 @source "../pages/index.astro";
+/* self-hosted, already a dependency of the main site; used for the typographic logo */
+@import "@fontsource-variable/inter/index.css";
 
 @theme inline {
   --font-display: "Fraunces", serif;
   --font-archivo: "Archivo Black", sans-serif;
   --font-body: "Instrument Sans", sans-serif;
+  --font-logo: "Inter Variable", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -56,27 +59,6 @@
   font-family: var(--font-archivo);
 }
 
-.hackaton-headline {
-  letter-spacing: 0;
-}
-.headline-green {
-  fill: var(--secondary);
-}
-.headline-crimson {
-  fill: var(--primary);
-}
-.headline-ink {
-  fill: var(--foreground);
-}
-.headline-paper {
-  fill: #fff;
-  stroke: var(--foreground);
-  stroke-width: 3px;
-}
-.hero-logotype {
-  position: relative;
-  z-index: 20;
-}
 .poster-hero {
   max-width: 1200px;
   margin-inline: auto;
@@ -92,17 +74,6 @@
   .poster-hero {
     aspect-ratio: 1.6;
     min-height: 520px;
-  }
-  .hackaton-headline {
-    position: absolute;
-    top: 130px;
-    left: 4%;
-    width: 100%;
-    margin-top: 0;
-  }
-  .hero-register {
-    position: relative;
-    z-index: 20;
   }
 }
 
