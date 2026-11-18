@@ -6,17 +6,17 @@ import '../styles/hackastok.css';
 const title = 'Hack-a-stok @ Programistok 2027 — Białystok';
 const description =
   'Prawdziwe problemy. Świeże pomysły. Jeden weekend. Hackathon, na którym programiści i firmy z Podlasia wspólnie budują działające prototypy.';
-const asset = (name) => `/hack-a-stok/${name}`;
+// '/' on programistok.org; '/hack/' for the preview build (astro build --base /hack/) at hzub.github.io/hack
+const base = import.meta.env.BASE_URL;
+const asset = (name) => `${base}hack-a-stok/${name}`;
+// shortcut: the preview ships only this page, so its archive link goes to the live 2026 site; drop once the preview is gone
+const archiveUrl = base === '/' ? '/2026' : 'https://programistok.org/';
 
-// Replace with your real registration form URL.
-const REGISTER_URL = 'https://forms.gle/your-registration-form';
-// Companies apply by email until the official form is published.
-const COMPANY_FORM_URL = 'mailto:ap@2n.pl?subject=Hack-a-stok%20%E2%80%94%20zg%C5%82oszenie%20problemu';
-
-const registerClass =
-  'inline-block border-2 border-foreground px-8 py-4 text-lg font-semibold shadow-[6px_6px_0_0_var(--foreground)] transition-all hover:bg-secondary hover:text-secondary-foreground active:translate-x-1 active:translate-y-1 active:shadow-none';
-// mailto in a new tab leaves a blank tab behind
-const target = (href) => (href.startsWith('mailto:') ? undefined : '_blank');
+// Registration isn't open yet: every CTA is a disabled button with a "Już wkrótce" badge.
+const soonClass =
+  'relative inline-block cursor-not-allowed border-2 border-foreground/40 bg-[oklch(0.86_0.01_85)] px-8 py-4 text-lg font-semibold text-foreground/55';
+const badgeClass =
+  'absolute -top-3 -right-3 rotate-6 whitespace-nowrap border-2 border-foreground bg-foreground px-2 py-0.5 font-archivo text-xs uppercase text-background';
 
 const manifesto = [
   'Problemy w firmach rzadko czekają dlatego, że są trudne. Czekają, bo nikt nie miał czasu sprawdzić, jak je rozwiązać.',
@@ -121,7 +121,7 @@ const audiences = [
         'Do połowy stycznia 2027, na razie mailowo. Pierwsza edycja: tylko 4 wyzwania. Napisz, na czym polega problem i kogo dotyczy, jak go dziś rozwiązujecie i ile to kosztuje, jak wyglądałby sukces, jakie dane możecie udostępnić i kto z firmy będzie opiekunem wyzwania.',
       ],
     ],
-    cta: { href: COMPANY_FORM_URL, label: 'Zgłoś problem: ap@2n.pl →' },
+    cta: 'Zgłoś problem',
   },
   {
     title: 'Dla hakerów',
@@ -138,7 +138,7 @@ const audiences = [
         'Rozwiązanie należy do zespołu, który je stworzył. Zwycięski zespół przekazuje firmie prawa do prototypu, a dalszą współpracę możecie ustalić bezpośrednio.',
       ],
     ],
-    cta: { href: REGISTER_URL, label: 'Zapisz się →' },
+    cta: 'Zapisz się',
   },
 ];
 ---
@@ -184,12 +184,16 @@ const audiences = [
   <body>
     <main class="min-h-screen overflow-hidden">
       <header
-        class="flex items-center justify-between gap-2 border-b-2 border-foreground bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground md:px-4"
+        class="flex items-center justify-between gap-2 whitespace-nowrap border-b-2 border-foreground bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground md:px-4"
       >
-        <a href="/2026" class="underline underline-offset-4 hover:no-underline">Programistok 2026</a>
+        <a href={archiveUrl} class="group flex items-center gap-2">
+          <span class="border border-current px-1.5 font-archivo text-[10px] uppercase">Archiwum</span>
+          <span class="underline underline-offset-4 group-hover:no-underline">Programistok 2026</span>
+        </a>
         <span class="flex items-center gap-2">
           <time datetime="2027-03" class="font-archivo">Marzec 2027</time>
-          <span>Białystok</span>
+          <!-- no room next to the archive link on phones -->
+          <span class="hidden sm:inline">Białystok</span>
         </span>
       </header>
 
@@ -239,9 +243,7 @@ const audiences = [
             </svg>
           </h1>
           <div class="hero-register mt-6 flex justify-end md:mt-auto">
-            <a href={REGISTER_URL} target="_blank" rel="noreferrer" class={`${registerClass} bg-primary text-primary-foreground`}>
-              Zapisz się →
-            </a>
+            <button type="button" disabled class={soonClass}>Zapisz się<span class={badgeClass}>Już wkrótce</span></button>
           </div>
         </div>
         <div class="relative min-h-[60vh] md:min-h-0">
@@ -334,14 +336,7 @@ const audiences = [
                   ))}
                 </dl>
                 <div class="mt-10">
-                  <a
-                    href={a.cta.href}
-                    target={target(a.cta.href)}
-                    rel="noreferrer"
-                    class={`${registerClass} bg-primary text-primary-foreground`}
-                  >
-                    {a.cta.label}
-                  </a>
+                  <button type="button" disabled class={soonClass}>{a.cta}<span class={badgeClass}>Już wkrótce</span></button>
                 </div>
               </div>
             </div>
@@ -419,9 +414,7 @@ const audiences = [
           <span class="italic">w Białymstoku.</span>
         </h2>
         <div class="mt-10">
-          <a href={REGISTER_URL} target="_blank" rel="noreferrer" class={`${registerClass} bg-background text-foreground`}>
-            Zapisz się →
-          </a>
+          <button type="button" disabled class={soonClass}>Zapisz się<span class={badgeClass}>Już wkrótce</span></button>
         </div>
       </section>
 
@@ -430,8 +423,7 @@ const audiences = [
           Hack-a-stok @ Programistok 2027 · Białystok · od społeczności dla społeczności, pro-bono, od 2015
         </span>
         <span>
-          Kontakt: Adam Piotrowski · <a href="mailto:ap@2n.pl" class="underline">ap@2n.pl</a> ·{' '}
-          <a href="tel:+48668842999" class="underline">668 842 999</a>
+          Kontakt: <a href="mailto:konferencja@programistok.org" class="underline">konferencja@programistok.org</a>
         </span>
       </footer>
     </main>
