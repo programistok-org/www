@@ -10,8 +10,7 @@ const description =
 // '/' on programistok.org; '/hack/' for the preview build (astro build --base /hack/) at hzub.github.io/hack
 const base = import.meta.env.BASE_URL;
 const asset = (name) => `${base}hack-a-stok/${name}`;
-// shortcut: the preview ships only this page, so its archive link goes to the live 2026 site; drop once the preview is gone
-const archiveUrl = base === '/' ? '/2026' : 'https://programistok.org/';
+const archiveUrl = `${base}2026`;
 
 const companiesFormUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfJtN3HhNF-XEplfgfdKXxdLIK2NE6sY1-sl4yYt9RjOzf26g/viewform';
