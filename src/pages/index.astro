@@ -13,17 +13,17 @@ const asset = (name) => `${base}hack-a-stok/${name}`;
 // shortcut: the preview ships only this page, so its archive link goes to the live 2026 site; drop once the preview is gone
 const archiveUrl = base === '/' ? '/2026' : 'https://programistok.org/';
 
-// Google Forms made by scripts/hack-a-stok-forms.gs
 const companiesFormUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfJtN3HhNF-XEplfgfdKXxdLIK2NE6sY1-sl4yYt9RjOzf26g/viewform';
 const hackersFormUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfuhncu3Ikc7-rhW6SeQ5XUMlXGw5L2eVsM-tFNqVWiAXYzjw/viewform';
 
-// next to each "Zapisz się" a second link jumps to the newsletter form
 const ctaClass =
   'inline-block border-2 border-foreground px-8 py-4 text-lg font-semibold shadow-[6px_6px_0_0_var(--foreground)] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]';
 const signupClass = `${ctaClass} bg-primary text-primary-foreground`;
 const notifyClass = `${ctaClass} bg-ochre text-foreground`;
+// for the red closing section, where a red button would vanish
+const paperClass = `${ctaClass} bg-background text-foreground`;
 
 const manifesto = [
   'Problemy w firmach rzadko czekają dlatego, że są trudne. Czekają, bo nikt nie miał czasu sprawdzić, jak je rozwiązać.',
@@ -193,17 +193,12 @@ const audiences = [
   <body>
     <main class="min-h-screen overflow-hidden">
       <header
-        class="flex items-center justify-between gap-2 whitespace-nowrap border-b-2 border-foreground bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground md:px-4"
+        class="flex items-center justify-end whitespace-nowrap border-b-2 border-foreground bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground md:px-4"
       >
         <a href={archiveUrl} class="group flex items-center gap-2">
           <span class="border border-current px-1.5 font-archivo text-[10px] uppercase">Archiwum</span>
           <span class="underline underline-offset-4 group-hover:no-underline">Programistok 2026</span>
         </a>
-        <span class="flex items-center gap-2">
-          <time datetime="2027-03" class="font-archivo">Marzec 2027</time>
-          <!-- no room next to the archive link on phones -->
-          <span class="hidden sm:inline">Białystok</span>
-        </span>
       </header>
 
       <section class="poster-hero relative grid md:grid-cols-2">
@@ -224,7 +219,7 @@ const audiences = [
               <span class="block text-[17cqw] font-black leading-[0.95] tracking-[-0.05em]">
                 Hack<span class="text-ochre">-a-</span>stok
               </span>
-              <span class="mt-[2cqw] block text-[7cqw] font-medium tracking-[-0.02em]">Białystok, Marzec 2027</span>
+              <span class="mt-[2cqw] block text-[4.7cqw] font-medium tracking-[-0.02em]">Białystok, Marzec 2027</span>
             </h1>
             <!-- the PDF's three-colour stripe, in this page's palette -->
             <div class="grid h-2.5 grid-cols-3" aria-hidden="true">
@@ -240,8 +235,9 @@ const audiences = [
             </p>
           </div>
           <div class="mt-8 flex flex-wrap items-center justify-end gap-6">
-            <a href={hackersFormUrl} target="_blank" rel="noopener" class={signupClass}>Zapisz się <span aria-hidden="true">↗</span></a>
-            <a href="#newsletter" class={notifyClass}>Powiadom mnie <span aria-hidden="true">↓</span></a>
+            <a href={hackersFormUrl} target="_blank" rel="noopener" class={signupClass}>Zgłoś zespół <span aria-hidden="true">↗</span></a>
+            <!-- two lines keep it beside the team button in the half-width column -->
+            <a href="#newsletter" class={notifyClass}>Zapisz się<br />do newslettera <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="relative min-h-[60vh] md:min-h-0">
@@ -428,11 +424,9 @@ const audiences = [
           <span class="italic">w Białymstoku.</span>
         </h2>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-6">
-          <!-- red on red would vanish: the paper variant here -->
-          <a href={hackersFormUrl} target="_blank" rel="noopener" class={`${ctaClass} bg-background text-foreground`}>
-            Zapisz się <span aria-hidden="true">↗</span>
-          </a>
-          <a href="#newsletter" class={notifyClass}>Powiadom mnie <span aria-hidden="true">↑</span></a>
+          <a href={hackersFormUrl} target="_blank" rel="noopener" class={paperClass}>Zgłoś zespół <span aria-hidden="true">↗</span></a>
+          <a href={companiesFormUrl} target="_blank" rel="noopener" class={paperClass}>Zgłoś problem <span aria-hidden="true">↗</span></a>
+          <a href="#newsletter" class={notifyClass}>Zapisz się do newslettera <span aria-hidden="true">↑</span></a>
         </div>
       </section>
 
