@@ -19,7 +19,7 @@ const hackersFormUrl =
   'https://docs.google.com/forms/d/e/1FAIpQLSfuhncu3Ikc7-rhW6SeQ5XUMlXGw5L2eVsM-tFNqVWiAXYzjw/viewform';
 
 const ctaClass =
-  'inline-block border-2 border-foreground px-8 py-4 text-lg font-semibold shadow-[6px_6px_0_0_var(--foreground)] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]';
+  'inline-block content-center border-2 border-foreground px-8 py-4 text-lg font-semibold shadow-[6px_6px_0_0_var(--foreground)] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]';
 const signupClass = `${ctaClass} bg-primary text-primary-foreground`;
 const notifyClass = `${ctaClass} bg-ochre text-foreground`;
 // for the red closing section, where a red button would vanish
@@ -234,10 +234,12 @@ const audiences = [
               <span class="text-primary">IT</span> × <span class="text-secondary">BIZNES</span>
             </p>
           </div>
-          <div class="mt-8 flex flex-wrap items-center justify-end gap-6">
-            <a href={hackersFormUrl} target="_blank" rel="noopener" class={signupClass}>Zgłoś zespół <span aria-hidden="true">↗</span></a>
-            <!-- two lines keep it beside the team button in the half-width column -->
-            <a href="#newsletter" class={notifyClass}>Zapisz się<br />do newslettera <span aria-hidden="true">↓</span></a>
+          <!-- stretch: the one-line button matches the two-line one's height, content-center keeps its label centred -->
+          <div class="mt-8 flex flex-wrap items-stretch justify-end gap-6">
+            <!-- `!` overrides ctaClass's padding and size: same-property Tailwind classes don't win by order -->
+            <a href={hackersFormUrl} target="_blank" rel="noopener" class={`${signupClass} py-3!`}>Zgłoś zespół <span aria-hidden="true">↗</span></a>
+            <!-- two lines keep it beside the team button in the half-width column; smaller and tighter to keep the pair low -->
+            <a href="#newsletter" class={`${notifyClass} py-3! text-base! leading-tight!`}>Zapisz się<br />do newslettera <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="relative min-h-[60vh] md:min-h-0">
@@ -258,12 +260,12 @@ const audiences = [
         <div class="mx-auto max-w-300 px-5 py-16 md:px-10 md:py-24">
           <h2 class="font-display text-5xl font-black italic md:text-7xl">Co to jest?</h2>
           <p class="mt-8 max-w-3xl text-2xl leading-snug">
-            Hack-a-stok @ Programistok 2027 to hackathon, na którym programiści i firmy z Podlasia wspólnie budują
+            Programistok przedstawia <strong class="font-semibold text-ochre">Hack-a-stok</strong>! To hackathon*, na którym programiści i firmy z Podlasia wspólnie budują
             działające prototypy. Firmy przynoszą prawdziwe problemy, a zespoły przez jeden weekend zamieniają je w
             konkretne rozwiązania.
           </p>
           <p class="mt-6 max-w-3xl text-lg leading-snug">
-            Nazwa łączy <em>hack</em> — w żargonie programistów sprytne, nieoczywiste rozwiązanie problemu — i{' '}
+            (*) Nazwa łączy <em>hack</em> — w żargonie programistów sprytne, nieoczywiste rozwiązanie problemu — i{' '}
             <em>maraton</em>. I nie, nie ma to nic wspólnego z włamywaniem: to weekendowy warsztat projektowy, w którym
             kilka zespołów niezależnie od siebie szuka najlepszego rozwiązania tego samego wyzwania. Sprawdzony format, z
             którego korzystają korporacje, administracja publiczna i uczelnie.
