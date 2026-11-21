@@ -4,6 +4,7 @@ import HeroLogo3D from '../components/HeroLogo3D.astro';
 import Cfp from '../components/Cfp.astro';
 import agenda from '../data/agenda2026.json';
 import SpeakerStrip from '../components/SpeakerStrip.astro';
+import Newsletter from '../components/Newsletter.astro';
 import { youtubeEmbedUrl } from '../lib/youtube.js';
 import { venue } from '../lib/venue.js';
 
@@ -263,6 +264,26 @@ const heroVideo = youtubeEmbedUrl('https://www.youtube.com/watch?v=a2vtAt5nNzA')
           Wydarzenie LinkedIn <span aria-hidden="true">↗</span>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section id="newsletter" class="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-14" aria-labelledby="newsletter-title">
+    <div class="grid gap-8 rounded-3xl border border-line bg-surface p-8 sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-14">
+      <div>
+        <p class="mb-4 font-mono text-[13px] uppercase tracking-[0.14em] text-faint">// Newsletter</p>
+        <h2 id="newsletter-title" class="max-w-[20ch] text-[clamp(1.75rem,4vw,2.75rem)] font-black leading-[1.04] tracking-[-0.03em]">
+          Nie przegap kolejnej edycji
+        </h2>
+        <p class="mt-5 max-w-[48ch] text-lg leading-relaxed text-muted text-pretty">
+          Zapisz się do newslettera Programistok: napiszemy o kolejnych edycjach konferencji, hackathonie Hack-a-stok
+          i innych wydarzeniach społeczności.
+        </p>
+      </div>
+      <Newsletter
+        inputClass="rounded-xl border border-line bg-bg px-4 py-3 transition focus:border-ink"
+        buttonClass="mt-2 justify-self-start rounded-full bg-accent px-7 py-4 text-base font-bold text-white transition hover:brightness-110"
+      />
     </div>
   </section>
 </BaseLayout>

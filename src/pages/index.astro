@@ -2,6 +2,7 @@
 // Hack-a-stok @ Programistok 2027 — temporarily the homepage; the Programistok 2026 site lives at /2026.
 // Ported from the makers-meet-industry React app (static content, no client JS).
 import '../styles/hackastok.css';
+import Newsletter from '../components/Newsletter.astro';
 
 const title = 'Hack-a-stok @ Programistok 2027 — Białystok';
 const description =
@@ -12,11 +13,17 @@ const asset = (name) => `${base}hack-a-stok/${name}`;
 // shortcut: the preview ships only this page, so its archive link goes to the live 2026 site; drop once the preview is gone
 const archiveUrl = base === '/' ? '/2026' : 'https://programistok.org/';
 
-// Registration isn't open yet: every CTA is a disabled button with a "Już wkrótce" badge.
-const soonClass =
-  'relative inline-block cursor-not-allowed border-2 border-foreground/40 bg-[oklch(0.86_0.01_85)] px-8 py-4 text-lg font-semibold text-foreground/55';
-const badgeClass =
-  'absolute -top-3 -right-3 rotate-6 whitespace-nowrap border-2 border-foreground bg-foreground px-2 py-0.5 font-archivo text-xs uppercase text-background';
+// Google Forms made by scripts/hack-a-stok-forms.gs
+const companiesFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfJtN3HhNF-XEplfgfdKXxdLIK2NE6sY1-sl4yYt9RjOzf26g/viewform';
+const hackersFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfuhncu3Ikc7-rhW6SeQ5XUMlXGw5L2eVsM-tFNqVWiAXYzjw/viewform';
+
+// next to each "Zapisz się" a second link jumps to the newsletter form
+const ctaClass =
+  'inline-block border-2 border-foreground px-8 py-4 text-lg font-semibold shadow-[6px_6px_0_0_var(--foreground)] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]';
+const signupClass = `${ctaClass} bg-primary text-primary-foreground`;
+const notifyClass = `${ctaClass} bg-ochre text-foreground`;
 
 const manifesto = [
   'Problemy w firmach rzadko czekają dlatego, że są trudne. Czekają, bo nikt nie miał czasu sprawdzić, jak je rozwiązać.',
@@ -118,10 +125,11 @@ const audiences = [
       ],
       [
         'Zgłoszenia problemów',
-        'Do połowy stycznia 2027, na razie mailowo. Pierwsza edycja: tylko 4 wyzwania. Napisz, na czym polega problem i kogo dotyczy, jak go dziś rozwiązujecie i ile to kosztuje, jak wyglądałby sukces, jakie dane możecie udostępnić i kto z firmy będzie opiekunem wyzwania.',
+        'Do połowy stycznia 2027, przez formularz poniżej. Pierwsza edycja: tylko 4 wyzwania. Opiszesz w nim, na czym polega problem i kogo dotyczy, jak go dziś rozwiązujecie i ile to kosztuje, jak wyglądałby sukces, jakie dane możecie udostępnić i kto z firmy będzie opiekunem wyzwania.',
       ],
     ],
     cta: 'Zgłoś problem',
+    form: companiesFormUrl,
   },
   {
     title: 'Dla hakerów',
@@ -139,6 +147,7 @@ const audiences = [
       ],
     ],
     cta: 'Zapisz się',
+    form: hackersFormUrl,
   },
 ];
 ---
@@ -215,7 +224,7 @@ const audiences = [
               <span class="block text-[17cqw] font-black leading-[0.95] tracking-[-0.05em]">
                 Hack<span class="text-ochre">-a-</span>stok
               </span>
-              <span class="mt-[2cqw] block text-[7cqw] font-medium tracking-[-0.02em]">@ Programistok 2027</span>
+              <span class="mt-[2cqw] block text-[7cqw] font-medium tracking-[-0.02em]">Białystok, Marzec 2027</span>
             </h1>
             <!-- the PDF's three-colour stripe, in this page's palette -->
             <div class="grid h-2.5 grid-cols-3" aria-hidden="true">
@@ -230,8 +239,9 @@ const audiences = [
               <span class="text-primary">IT</span> × <span class="text-secondary">BIZNES</span>
             </p>
           </div>
-          <div class="mt-8 flex justify-end">
-            <button type="button" disabled class={soonClass}>Zapisz się<span class={badgeClass}>Już wkrótce</span></button>
+          <div class="mt-8 flex flex-wrap items-center justify-end gap-6">
+            <a href={hackersFormUrl} target="_blank" rel="noopener" class={signupClass}>Zapisz się <span aria-hidden="true">↗</span></a>
+            <a href="#newsletter" class={notifyClass}>Powiadom mnie <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="relative min-h-[60vh] md:min-h-0">
@@ -323,8 +333,11 @@ const audiences = [
                     </div>
                   ))}
                 </dl>
-                <div class="mt-10">
-                  <button type="button" disabled class={soonClass}>{a.cta}<span class={badgeClass}>Już wkrótce</span></button>
+                <div class="mt-10 flex flex-wrap items-center gap-6">
+                  <a href={a.form} target="_blank" rel="noopener" class={signupClass}>{a.cta} <span aria-hidden="true">↗</span></a>
+                  {a.cta === 'Zapisz się' && (
+                    <a href="#newsletter" class={notifyClass}>Powiadom mnie <span aria-hidden="true">↓</span></a>
+                  )}
                 </div>
               </div>
             </div>
@@ -394,6 +407,19 @@ const audiences = [
         </div>
       </section>
 
+      <section id="newsletter" class="border-b-2 border-foreground">
+        <div class="mx-auto grid max-w-300 gap-10 px-5 py-16 md:grid-cols-2 md:px-10 md:py-24">
+          <div>
+            <h2 class="font-display text-5xl font-black italic md:text-7xl">Newsletter</h2>
+            <p class="mt-8 max-w-xl text-xl leading-snug">
+              Zapisz się do newslettera Programistok, a napiszemy, gdy ogłosimy wyzwania i miejsce hackathonu — i o
+              kolejnych wydarzeniach społeczności.
+            </p>
+          </div>
+          <Newsletter inputClass="border-2 border-foreground bg-card px-3 py-2.5" buttonClass={`mt-2 justify-self-start ${signupClass}`} />
+        </div>
+      </section>
+
       <section class="bg-primary px-5 py-20 text-center text-primary-foreground md:py-28">
         <p class="mb-6 font-archivo text-lg uppercase">Prawdziwe problemy. Świeże pomysły. Jeden weekend.</p>
         <h2 class="font-display text-5xl font-black md:text-7xl">
@@ -401,8 +427,12 @@ const audiences = [
           <br />
           <span class="italic">w Białymstoku.</span>
         </h2>
-        <div class="mt-10">
-          <button type="button" disabled class={soonClass}>Zapisz się<span class={badgeClass}>Już wkrótce</span></button>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-6">
+          <!-- red on red would vanish: the paper variant here -->
+          <a href={hackersFormUrl} target="_blank" rel="noopener" class={`${ctaClass} bg-background text-foreground`}>
+            Zapisz się <span aria-hidden="true">↗</span>
+          </a>
+          <a href="#newsletter" class={notifyClass}>Powiadom mnie <span aria-hidden="true">↑</span></a>
         </div>
       </section>
 
@@ -411,7 +441,7 @@ const audiences = [
           Hack-a-stok @ Programistok 2027 · Białystok · od społeczności dla społeczności, pro-bono, od 2015
         </span>
         <span>
-          Kontakt: <a href="mailto:konferencja@programistok.org" class="underline">konferencja@programistok.org</a>
+          Kontakt: <a href="mailto:konferencja@programistok.org" class="underline">konferencja@programistok.org</a> · <a href="https://tinyurl.com/programistok-polityka" rel="noopener" target="_blank" class="underline">Polityka prywatności</a>
         </span>
       </footer>
     </main>

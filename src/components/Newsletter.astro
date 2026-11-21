@@ -1,0 +1,65 @@
+---
+// Newsletter signup widget from github.com/kprzybys/programistok-newsletter (widget-zapisu.html, see its README).
+// listmonk accepts it only from domains in its CORS list (today programistok.org): elsewhere, e.g. localhost
+// or the hzub.github.io preview, submitting ends with „Nieprawidłowa CAPTCHA”.
+// Each page passes its own Tailwind classes; the hack-a-stok build only scans pages/index.astro, so none live here.
+const { inputClass = '', buttonClass = '' } = Astro.props;
+---
+
+<form class="pn-newsletter" method="post" action="https://newsletter.programistok.org/subscription/form">
+  <input type="hidden" name="l" value="cf120714-df42-427e-8648-d3f0e15671be" />
+  <!-- bot trap: must stay empty and hidden -->
+  <input
+    type="text"
+    name="nonce"
+    value=""
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+    style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"
+  />
+
+  <label class="pn-label" for="pn-email">E-mail</label>
+  <input class:list={['pn-input', inputClass]} id="pn-email" type="email" name="email" required placeholder="twoj@adres.pl" />
+
+  <label class="pn-label" for="pn-name">Imię (opcjonalnie)</label>
+  <input class:list={['pn-input', inputClass]} id="pn-name" type="text" name="name" />
+
+  <altcha-widget
+    challengeurl="https://newsletter.programistok.org/api/public/captcha/altcha"
+    hidefooter
+    strings='{"label":"Nie jestem robotem","verifying":"Sprawdzam…","verified":"Sprawdzone","error":"Weryfikacja nie powiodła się. Spróbuj ponownie.","expired":"Weryfikacja wygasła. Spróbuj ponownie.","waitAlert":"Trwa sprawdzanie… proszę czekać.","ariaLinkLabel":"Odwiedź altcha.org"}'
+  ></altcha-widget>
+  <script is:inline type="module" src="https://newsletter.programistok.org/public/static/altcha.umd.js" async defer></script>
+
+  <p class="pn-zgoda">
+    Zapisując się, zgadzasz się na otrzymywanie newslettera Programistok o wydarzeniach społeczności. Administratorem
+    danych jest Fundacja INFOTECH. Zgodę wycofasz w każdej chwili linkiem w stopce maila. Szczegóły: <a
+      href="https://docs.google.com/document/d/e/2PACX-1vRWogmUU8FlOhbRNm_A41MQgTH4jAUly1wn5yYIOBlQBonfrwv3rmQr3dKMWMZ3E97kInJgaXk5j9ff/pub"
+      target="_blank"
+      rel="noopener">polityka prywatności</a
+    >.
+  </p>
+
+  <button class:list={['pn-button', buttonClass]} type="submit">Zapisz się</button>
+</form>
+
+<style>
+  /* layout only: unlayered styles here would beat the pages' Tailwind utilities */
+  .pn-newsletter {
+    display: grid;
+    gap: 0.5rem;
+    max-width: 28rem;
+  }
+  .pn-zgoda {
+    font-size: 0.85em;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+  .pn-zgoda a {
+    text-decoration: underline;
+  }
+  .pn-button {
+    cursor: pointer;
+  }
+</style>
